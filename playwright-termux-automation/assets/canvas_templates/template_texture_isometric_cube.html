@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Seamless Texture Tile Stage — Isometric Cube</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+    }
+
+    /* Fixed-size capture stage for tiled canvas */
+    #capture-stage {
+      position: relative;
+      width: 800px;
+      height: 800px;
+      background: #000000;
+      border: 1px solid #1c1c22;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Isolated single tile container for direct seamless tile unit capture */
+    #tile-unit {
+      position: absolute;
+      top: -9999px;
+      left: -9999px;
+      width: 128px;
+      height: 128px;
+      background: #000000;
+      overflow: hidden;
+    }
+
+    svg.canvas-fill {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Seamless diagonal drift animation for pattern coordinate space */
+    @keyframes patternDrift {
+      0% {
+        transform: translate(0px, 0px);
+      }
+      100% {
+        transform: translate(128px, 128px);
+      }
+    }
+
+    /* Pulse animation for accent nodes */
+    @keyframes nodePulse {
+      0%, 100% {
+        opacity: 0.35;
+        fill: #DE2626;
+        filter: drop-shadow(0 0 2px #DE2626);
+      }
+      50% {
+        opacity: 1.0;
+        fill: #FFFFFF;
+        filter: drop-shadow(0 0 8px #DE2626);
+      }
+    }
+
+    .anim-drift {
+      animation: patternDrift 6s linear infinite;
+    }
+
+    .anim-pulse {
+      animation: nodePulse 3s ease-in-out infinite;
+    }
+
+    /* Telemetry overlay */
+    .telemetry-tag {
+      position: absolute;
+      bottom: 16px;
+      left: 16px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: rgba(255, 255, 255, 0.4);
+      background: rgba(0, 0, 0, 0.75);
+      padding: 4px 8px;
+      border: 1px solid #1c1c22;
+      pointer-events: none;
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Full Tiled Canvas Stage (800x800) -->
+  <div id="capture-stage">
+    <svg class="canvas-fill" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Seamless 128x128 Isometric Cube Pattern -->
+        <pattern id="isometric-cube-pattern" width="128" height="128" patternUnits="userSpaceOnUse" class="anim-drift">
+          <!-- Background cell fill -->
+          <rect width="128" height="128" fill="#050508"/>
+
+          <!-- Primary Isometric Cube Unit A (Center: 64, 64) -->
+          <!-- Top Face -->
+          <polygon points="64,36 96,52 64,68 32,52" fill="#181820" stroke="#2c2c36" stroke-width="1"/>
+          <!-- Left Face -->
+          <polygon points="32,52 64,68 64,100 32,84" fill="#0d0d12" stroke="#2c2c36" stroke-width="1"/>
+          <!-- Right Face -->
+          <polygon points="64,68 96,52 96,84 64,100" fill="#13131a" stroke="#2c2c36" stroke-width="1"/>
+          <!-- Isometric Accent Floating Top (104a Taxonomy) -->
+          <polygon points="64,28 88,40 64,52 40,40" fill="none" stroke="#DE2626" stroke-width="1.2" opacity="0.85"/>
+
+          <!-- Secondary Half-Offset Cube Units for Seamless Edge Tiling -->
+          <!-- Top-Left Corner Cube (0, 0) -->
+          <polygon points="0,-28 32,-12 0,4 -32,-12" fill="#181820" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="-32,-12 0,4 0,36 -32,20" fill="#0d0d12" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="0,4 32,-12 32,20 0,36" fill="#13131a" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="0,-36 24,-24 0,-12 -24,-24" fill="none" stroke="#DE2626" stroke-width="1.2" opacity="0.85"/>
+
+          <!-- Top-Right Corner Cube (128, 0) -->
+          <polygon points="128,-28 160,-12 128,4 96,-12" fill="#181820" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="96,-12 128,4 128,36 96,20" fill="#0d0d12" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="128,4 160,-12 160,20 128,36" fill="#13131a" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="128,-36 152,-24 128,-12 104,-24" fill="none" stroke="#DE2626" stroke-width="1.2" opacity="0.85"/>
+
+          <!-- Bottom-Left Corner Cube (0, 128) -->
+          <polygon points="0,100 32,116 0,132 -32,116" fill="#181820" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="-32,116 0,132 0,164 -32,148" fill="#0d0d12" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="0,132 32,116 32,148 0,164" fill="#13131a" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="0,92 24,104 0,116 -24,104" fill="none" stroke="#DE2626" stroke-width="1.2" opacity="0.85"/>
+
+          <!-- Bottom-Right Corner Cube (128, 128) -->
+          <polygon points="128,100 160,116 128,132 96,116" fill="#181820" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="96,116 128,132 128,164 96,148" fill="#0d0d12" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="128,132 160,116 160,148 128,164" fill="#13131a" stroke="#2c2c36" stroke-width="1"/>
+          <polygon points="128,92 152,104 128,116 104,104" fill="none" stroke="#DE2626" stroke-width="1.2" opacity="0.85"/>
+
+          <!-- Pulsing Micro-Nodes on Vertices -->
+          <circle cx="64" cy="68" r="2" class="anim-pulse"/>
+          <circle cx="0" cy="4" r="2" class="anim-pulse"/>
+          <circle cx="128" cy="4" r="2" class="anim-pulse"/>
+          <circle cx="0" cy="132" r="2" class="anim-pulse"/>
+          <circle cx="128" cy="132" r="2" class="anim-pulse"/>
+        </pattern>
+      </defs>
+
+      <!-- Fill entire canvas with seamless pattern -->
+      <rect width="100%" height="100%" fill="url(#isometric-cube-pattern)"/>
+
+      <!-- Ambient Vignette -->
+      <radialGradient id="vignette" cx="50%" cy="50%" r="60%">
+        <stop offset="60%" stop-color="#000000" stop-opacity="0"/>
+        <stop offset="100%" stop-color="#000000" stop-opacity="0.85"/>
+      </radialGradient>
+      <rect width="100%" height="100%" fill="url(#vignette)" pointer-events="none"/>
+    </svg>
+
+    <div class="telemetry-tag">TEXTURE_TILE // ISOMETRIC_CUBE_128PX</div>
+  </div>
+
+  <!-- Single 128x128 Tile Unit (Extractable by Playwright: --selector "#tile-unit svg") -->
+  <div id="tile-unit">
+    <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <rect width="128" height="128" fill="#050508"/>
+      <polygon points="64,36 96,52 64,68 32,52" fill="#181820" stroke="#2c2c36" stroke-width="1"/>
+      <polygon points="32,52 64,68 64,100 32,84" fill="#0d0d12" stroke="#2c2c36" stroke-width="1"/>
+      <polygon points="64,68 96,52 96,84 64,100" fill="#13131a" stroke="#2c2c36" stroke-width="1"/>
+      <polygon points="64,28 88,40 64,52 40,40" fill="none" stroke="#DE2626" stroke-width="1.2" opacity="0.85"/>
+      <circle cx="64" cy="68" r="2" fill="#DE2626"/>
+    </svg>
+  </div>
+
+  <script>
+    window.isReadyToCapture = false;
+
+    window.pauseAnimation = function() {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationPlayState = 'paused';
+      });
+    };
+
+    window.playAnimation = function() {
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationPlayState = 'running';
+      });
+    };
+
+    window.seekProgress = function(progress) {
+      const totalDurationSec = 6.0;
+      const targetTimeSec = progress * totalDurationSec;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDelay = `-${targetTimeSec}s`;
+        el.style.animationPlayState = 'paused';
+      });
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        window.isReadyToCapture = true;
+      }, 300);
+    });
+  </script>
+</body>
+</html>
