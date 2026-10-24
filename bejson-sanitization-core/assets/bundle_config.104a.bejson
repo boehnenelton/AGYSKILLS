@@ -1,0 +1,46 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Skill_Bundle_bejson-sanitization-core",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "SkillConfigRecord"
+  ],
+  "Fields": [
+    {
+      "name": "config_setting_key",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_value",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_canonical_name",
+      "bejson-sanitization-core",
+      "Canonical kebab-case skill identifier."
+    ],
+    [
+      "skill_layer_tier",
+      "1",
+      "Assigned 6-tier architectural layer (1-6)."
+    ],
+    [
+      "relational_id",
+      "a0b243c6-f7d5-4894-8856-5b16e87bc493",
+      "Release-scoped recency fingerprint."
+    ],
+    [
+      "created_at_utc",
+      "2026-10-22T06:34:22Z",
+      "UTC ISO-8601 creation timestamp."
+    ]
+  ]
+}

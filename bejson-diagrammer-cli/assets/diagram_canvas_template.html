@@ -1,0 +1,1233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>__DIAGRAM_TITLE__</title>
+  <style>
+    /*
+     * BEJSON Diagrammer Read-Only Canvas Template
+     * Adheres to Tri-Color Palette Standard (#000000 / #FFFFFF / #DE2626)
+     */
+    :root {
+      --bg: #000000;
+      --fg: #FFFFFF;
+      --panel: #111111;
+      --panel-hdr: #181818;
+      --accent: #DE2626;
+      --accent-hover: #b91c1c;
+      --border: #2e2e2e;
+      --input-bg: #0a0a0a;
+      --input-fg: #f0f0f0;
+      --grid: #1e1e1e;
+      --muted: #888888;
+      --code-bg: #0d0d0d;
+    }
+
+    body.light {
+      --bg: #FFFFFF;
+      --fg: #000000;
+      --panel: #F8F8F8;
+      --panel-hdr: #EEEEEE;
+      --border: #D0D0D0;
+      --input-bg: #FFFFFF;
+      --input-fg: #000000;
+      --grid: #E8E8E8;
+      --muted: #666666;
+      --code-bg: #F0F0F0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-color: var(--bg);
+      color: var(--fg);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    /* Top Floating Toolbar (Horizontal Canvas Controls) */
+    .top-floating-bar {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 40px;
+      background-color: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 10px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+      z-index: 35;
+      backdrop-filter: blur(8px);
+    }
+
+    .brand-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-right: 8px;
+      border-right: 1px solid var(--border);
+      font-weight: 800;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .brand-dot {
+      width: 8px;
+      height: 8px;
+      background-color: var(--accent);
+      border-radius: 2px;
+      box-shadow: 0 0 6px rgba(222, 38, 38, 0.5);
+    }
+
+    .btn-ctrl {
+      height: 28px;
+      padding: 0 9px;
+      background-color: var(--panel-hdr);
+      color: var(--fg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-ctrl:hover {
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border-color: var(--accent);
+    }
+
+    .zoom-pill {
+      font-size: 11px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--muted);
+      min-width: 44px;
+      text-align: center;
+    }
+
+    /* Rulers */
+    .ruler-corner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 30px;
+      height: 30px;
+      background-color: var(--panel-hdr);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      z-index: 25;
+    }
+
+    .ruler-h {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      right: 0;
+      height: 30px;
+      background-color: var(--panel-hdr);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .ruler-v {
+      position: absolute;
+      top: 30px;
+      left: 0;
+      bottom: 0;
+      width: 30px;
+      background-color: var(--panel-hdr);
+      border-right: 1px solid var(--border);
+      overflow: hidden;
+      z-index: 20;
+    }
+
+    .tick {
+      position: absolute;
+      font-size: 9px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    .tick-h {
+      top: 0;
+      height: 100%;
+      border-left: 1px solid var(--border);
+      padding-left: 3px;
+      padding-top: 14px;
+    }
+
+    .tick-v {
+      left: 0;
+      width: 100%;
+      border-top: 1px solid var(--border);
+      padding-left: 3px;
+      padding-top: 2px;
+    }
+
+    /* Viewport & Canvas */
+    #viewport {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      right: 0;
+      bottom: 0;
+      overflow: auto;
+      background-color: var(--bg);
+      cursor: default;
+    }
+
+    #canvas-container {
+      width: 3600px;
+      height: 3000px;
+      position: relative;
+      background-color: var(--bg);
+      background-image: linear-gradient(var(--grid) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+      background-size: 50px 50px;
+      transform-origin: 0 0;
+    }
+
+    svg#canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    /* Bottom-Right Floating Action Button (FAB) to open Sidebar */
+    .fab-sidebar-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      height: 46px;
+      padding: 0 18px;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border: 1px solid var(--accent);
+      border-radius: 23px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(222, 38, 38, 0.45);
+      z-index: 60;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fab-sidebar-btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(222, 38, 38, 0.55);
+    }
+
+    .fab-icon {
+      font-size: 15px;
+      line-height: 1;
+    }
+
+    /* Right Sidebar Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 380px;
+      background-color: var(--panel);
+      border-left: 1px solid var(--border);
+      transform: translateX(100%);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 70;
+      display: flex;
+      flex-direction: column;
+      box-shadow: -6px 0 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    /* Floating Horizontal Zoom Controls at the top of the Sidebar */
+    .sidebar-floating-zoom {
+      padding: 12px 14px;
+      background-color: var(--panel-hdr);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .sidebar-zoom-label {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--muted);
+    }
+
+    .sidebar-zoom-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .drawer-hdr {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: var(--panel);
+    }
+
+    .drawer-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+    }
+
+    .drawer-close {
+      background: none;
+      border: none;
+      color: var(--fg);
+      font-size: 18px;
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .drawer-close:hover {
+      color: var(--accent);
+    }
+
+    .drawer-body {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      font-size: 12px;
+    }
+
+    .sidebar-section {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .sidebar-section-title {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--fg);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .schema-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .btn-copy-schema {
+      padding: 5px 11px;
+      background-color: var(--accent);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-copy-schema:hover {
+      background-color: var(--accent-hover);
+    }
+
+    .btn-copy-schema.copied {
+      background-color: #10B981;
+    }
+
+    /* Schema Text Input Box */
+    .schema-input-box {
+      width: 100%;
+      height: 260px;
+      background-color: var(--code-bg);
+      color: var(--input-fg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      resize: vertical;
+      outline: none;
+      user-select: text;
+      white-space: pre;
+      overflow: auto;
+    }
+
+    .schema-input-box:focus {
+      border-color: var(--accent);
+    }
+
+    .element-card {
+      background-color: var(--panel-hdr);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      margin-top: 8px;
+    }
+
+    .element-card-empty {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: center;
+      padding: 12px 0;
+      font-style: italic;
+    }
+
+    .meta-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      font-size: 11px;
+      border-bottom: 1px solid rgba(128, 128, 128, 0.15);
+    }
+
+    .meta-row:last-child {
+      border-bottom: none;
+    }
+
+    .meta-key {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .meta-val {
+      font-weight: 700;
+      font-family: ui-monospace, monospace;
+    }
+
+    .status-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--panel);
+      color: var(--fg);
+      border: 1px solid var(--accent);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 11px;
+      font-weight: 600;
+      z-index: 100;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      display: none;
+    }
+
+    .node-text-wrap {
+      pointer-events: none;
+    }
+
+    /* Mobile 100px Lower Browser Toolbar Inset Standard */
+    :root {
+      --mobile-toolbar-inset: 100px;
+    }
+
+    @media (max-width: 768px) {
+      .fab-sidebar-btn {
+        bottom: calc(var(--mobile-toolbar-inset) + env(safe-area-inset-bottom, 0px) + 16px) !important;
+        right: 16px !important;
+      }
+      .drawer {
+        width: 100% !important;
+        max-width: 100% !important;
+        bottom: 0 !important;
+      }
+      .drawer-body {
+        padding-bottom: calc(var(--mobile-toolbar-inset) + env(safe-area-inset-bottom, 0px) + 30px) !important;
+      }
+      #viewport {
+        bottom: var(--mobile-toolbar-inset) !important;
+      }
+    }
+  </style>
+</head>
+<body class="dark">
+
+  <!-- Top Floating Toolbar: Horizontal Zoom & View Controls -->
+  <div class="top-floating-bar">
+    <div class="brand-pill">
+      <div class="brand-dot"></div>
+      <span id="brand-title">__DIAGRAM_TITLE__</span>
+    </div>
+    <button id="btn-fit-view" class="btn-ctrl" title="Fit all shapes to view">Fit View</button>
+    <button id="btn-zoom-out" class="btn-ctrl" title="Zoom Out">－</button>
+    <span id="zoom-text" class="zoom-pill">85%</span>
+    <button id="btn-zoom-in" class="btn-ctrl" title="Zoom In">＋</button>
+    <button id="btn-zoom-reset" class="btn-ctrl" title="Reset Zoom">Reset</button>
+    <button id="btn-theme-toggle" class="btn-ctrl" title="Toggle Light/Dark Theme">🌓 Theme</button>
+  </div>
+
+  <!-- Rulers -->
+  <div class="ruler-corner"></div>
+  <div id="ruler-top" class="ruler-h"></div>
+  <div id="ruler-left" class="ruler-v"></div>
+
+  <!-- Viewport -->
+  <div id="viewport">
+    <div id="canvas-container">
+      <svg id="canvas" xmlns="http://www.w3.org/2000/svg"></svg>
+    </div>
+  </div>
+
+  <!-- Bottom-Right Floating Button to Open Sidebar -->
+  <button id="btn-fab-sidebar" class="fab-sidebar-btn" title="Open Sidebar & Schema Viewer">
+    <span class="fab-icon">☰</span>
+    <span>Sidebar & Schema</span>
+  </button>
+
+  <!-- Right Sidebar Drawer -->
+  <aside id="drawer" class="drawer">
+    <!-- Floating Horizontal Zoom Controls at the top of the Sidebar -->
+    <div class="sidebar-floating-zoom">
+      <span class="sidebar-zoom-label">Zoom Controls</span>
+      <div class="sidebar-zoom-controls">
+        <button id="sb-btn-zoom-out" class="btn-ctrl" title="Zoom Out">－</button>
+        <span id="sb-zoom-text" class="zoom-pill">85%</span>
+        <button id="sb-btn-zoom-in" class="btn-ctrl" title="Zoom In">＋</button>
+        <button id="sb-btn-zoom-reset" class="btn-ctrl" title="Reset">100%</button>
+        <button id="sb-btn-fit-view" class="btn-ctrl" title="Fit All">Fit</button>
+      </div>
+    </div>
+
+    <!-- Sidebar Header -->
+    <div class="drawer-hdr">
+      <h3 class="drawer-title" id="drawer-diagram-name">Diagram Inspector</h3>
+      <button id="btn-drawer-close" class="drawer-close" title="Close Sidebar">✕</button>
+    </div>
+
+    <!-- Sidebar Content -->
+    <div class="drawer-body">
+      <!-- Section 1: Overview & Metrics -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Diagram Overview</div>
+        <div class="meta-row">
+          <span class="meta-key">Nodes (Shapes)</span>
+          <span class="meta-val" id="meta-shapes-count">0</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Relationships</span>
+          <span class="meta-val" id="meta-connectors-count">0</span>
+        </div>
+        <div class="meta-row">
+          <span class="meta-key">Territory Zones</span>
+          <span class="meta-val" id="meta-territories-count">0</span>
+        </div>
+      </div>
+
+      <!-- Section 2: Selected Element Inspection -->
+      <div class="sidebar-section">
+        <div class="sidebar-section-title">Selected Element</div>
+        <div id="selected-element-details">
+          <div class="element-card-empty">Click any shape, connector, or zone on the canvas to inspect its properties.</div>
+        </div>
+      </div>
+
+      <!-- Section 3: Schema Input Box with Copy Button -->
+      <div class="sidebar-section" style="border-bottom: none;">
+        <div class="schema-header-row">
+          <span class="sidebar-section-title" style="margin-bottom: 0;">Diagram Schema</span>
+          <button id="btn-copy-schema" class="btn-copy-schema" title="Copy schema JSON to clipboard">
+            📋 Copy Schema
+          </button>
+        </div>
+        <p style="font-size: 11px; color: var(--muted); margin-bottom: 8px;">
+          View or copy the raw BEJSON Diagrammer schema below:
+        </p>
+        <textarea id="schema-input-box" class="schema-input-box" readonly spellcheck="false" placeholder="Diagram schema JSON will appear here..."></textarea>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Toast Notification -->
+  <div id="status-toast" class="status-toast">Ready</div>
+
+  <!-- Injected Diagram Data Slot -->
+  <script id="injected-diagram-data" type="application/json">
+/* __DIAGRAM_DATA__ */
+  </script>
+
+  <!-- Core Read-Only Canvas Application Engine -->
+  <script>
+  (function () {
+    'use strict';
+
+    const SIZE_CLASSES = {
+      small:  { w: 100, h: 100 },
+      medium: { w: 200, h: 100 },
+      large:  { w: 300, h: 150 },
+      huge:   { w: 600, h: 300 },
+    };
+
+    class ReadOnlyDiagramViewer {
+      constructor() {
+        this.diagram = {
+          diagramId: "diagram_view",
+          name: "Architecture Diagram",
+          shapes: [],
+          connectors: [],
+          territories: []
+        };
+
+        this.selectedShapeId = null;
+        this.selectedConnectorId = null;
+        this.selectedTerritoryId = null;
+
+        this.zoom = 0.85;
+        this.isPanning = false;
+        this.panStart = { x: 0, y: 0, scrollLeft: 0, scrollTop: 0 };
+
+        this.initDOM();
+        this.loadInjectedData();
+        this.bindEvents();
+        this.render();
+        this.updateStats();
+        this.updateSchemaBox();
+        this.drawRulers();
+
+        // Auto fit view slightly after load
+        setTimeout(() => this.fitView(), 120);
+      }
+
+      initDOM() {
+        this.viewport = document.getElementById("viewport");
+        this.canvasContainer = document.getElementById("canvas-container");
+        this.svg = document.getElementById("canvas");
+        this.rulerTop = document.getElementById("ruler-top");
+        this.rulerLeft = document.getElementById("ruler-left");
+        this.drawer = document.getElementById("drawer");
+        this.fabSidebar = document.getElementById("btn-fab-sidebar");
+        this.brandTitle = document.getElementById("brand-title");
+        this.drawerDiagramName = document.getElementById("drawer-diagram-name");
+        this.zoomText = document.getElementById("zoom-text");
+        this.sbZoomText = document.getElementById("sb-zoom-text");
+        this.toast = document.getElementById("status-toast");
+
+        // Schema & Details elements
+        this.schemaBox = document.getElementById("schema-input-box");
+        this.btnCopySchema = document.getElementById("btn-copy-schema");
+        this.elementDetails = document.getElementById("selected-element-details");
+
+        this.metaShapes = document.getElementById("meta-shapes-count");
+        this.metaConnectors = document.getElementById("meta-connectors-count");
+        this.metaTerritories = document.getElementById("meta-territories-count");
+      }
+
+      loadInjectedData() {
+        let loaded = false;
+        const scriptTag = document.getElementById("injected-diagram-data");
+        if (scriptTag) {
+          const raw = scriptTag.textContent.trim();
+          if (raw && !raw.startsWith("/* " + "__DIAGRAM_DATA__" + " */")) {
+            try {
+              const parsed = JSON.parse(raw);
+              this.normalizeAndSetDiagram(parsed);
+              loaded = true;
+            } catch (e) {
+              console.warn("Could not parse injected diagram JSON:", e);
+            }
+          }
+        }
+
+        if (!loaded) {
+          // Default Starter
+          this.diagram = {
+            diagramId: "arch_starter",
+            name: "Cloud Microservices Architecture",
+            territories: [
+              { id: "terr_1", kind: "rect", cx: 460, cy: 220, size: 380, label: "Ingress / Edge Tier", color: "#DE2626" },
+              { id: "terr_2", kind: "rect", cx: 460, cy: 520, size: 420, label: "Core Services Zone", color: "#000000" },
+              { id: "terr_3", kind: "rect", cx: 460, cy: 820, size: 360, label: "Data Persistence Layer", color: "#404040" }
+            ],
+            shapes: [
+              { id: "node_gw", label: "API Gateway", text: "Reverse proxy, TLS termination, and rate limiting", kind: "rect", sizeClass: "medium", color: "#d9d9d9", fontColor: "auto", cx: 460, cy: 220, parentId: null },
+              { id: "node_auth", label: "Auth Service", text: "OAuth2 / OIDC JWT token issuing & session rotation", kind: "rect", sizeClass: "medium", color: "#b3b3b3", fontColor: "auto", cx: 300, cy: 500, parentId: "node_gw" },
+              { id: "node_catalog", label: "Catalog Service", text: "Product metadata, pricing, and category indexing", kind: "rect", sizeClass: "medium", color: "#b3b3b3", fontColor: "auto", cx: 620, cy: 500, parentId: "node_gw" },
+              { id: "node_auth_db", label: "Auth Store (Redis)", text: "Memory caching for session blacklist & token limits", kind: "rect", sizeClass: "small", color: "#8c8c8c", fontColor: "auto", cx: 300, cy: 800, parentId: "node_auth" },
+              { id: "node_catalog_db", label: "Catalog DB (Postgres)", text: "ACID persistence with read-replica federation", kind: "rect", sizeClass: "small", color: "#8c8c8c", fontColor: "auto", cx: 620, cy: 800, parentId: "node_catalog" }
+            ],
+            connectors: [
+              { id: "conn_1", from: "node_gw", to: "node_auth", flow: "forward" },
+              { id: "conn_2", from: "node_gw", to: "node_catalog", flow: "forward" },
+              { id: "conn_3", from: "node_auth", to: "node_auth_db", flow: "forward" },
+              { id: "conn_4", from: "node_catalog", to: "node_catalog_db", flow: "forward" }
+            ]
+          };
+        }
+
+        const title = this.diagram.name || "Architecture Diagram";
+        if (this.brandTitle) this.brandTitle.textContent = title;
+        if (this.drawerDiagramName) this.drawerDiagramName.textContent = title;
+        document.title = title;
+      }
+
+      normalizeAndSetDiagram(data) {
+        if (!data || typeof data !== "object") return;
+
+        if (data.Format === "BEJSON" && (data.Format_Version === "104db" || data.Format_Version === "104")) {
+          const converted = bejson104dbToDiagram(data);
+          if (converted) {
+            this.diagram = {
+              diagramId: "diag_" + Date.now(),
+              name: converted.name,
+              description: converted.description,
+              shapes: converted.shapes,
+              connectors: converted.connectors,
+              territories: converted.territories
+            };
+            return;
+          }
+        }
+
+        const normShapes = (data.shapes || []).map((s, idx) => ({
+          id: s.id || s.tempId || `shape_${idx + 1}`,
+          label: s.label || `Node ${idx + 1}`,
+          text: s.text || "",
+          kind: s.kind || "rect",
+          sizeClass: s.sizeClass || "medium",
+          color: s.color || "#d9d9d9",
+          fontColor: s.fontColor || "auto",
+          cx: typeof s.cx === "number" ? s.cx : 300 + (idx % 4) * 240,
+          cy: typeof s.cy === "number" ? s.cy : 200 + Math.floor(idx / 4) * 160,
+          parentId: s.parentId || s.parentTempId || null
+        }));
+
+        const idMap = new Map();
+        (data.shapes || []).forEach((s, idx) => {
+          const normId = normShapes[idx].id;
+          if (s.tempId) idMap.set(s.tempId, normId);
+          if (s.id) idMap.set(s.id, normId);
+          if (s.label) idMap.set(s.label, normId);
+        });
+
+        const normConnectors = (data.connectors || []).map((c, idx) => ({
+          id: c.id || `conn_${idx + 1}`,
+          from: idMap.get(c.fromTempId) || idMap.get(c.from) || c.from || c.fromTempId,
+          to: idMap.get(c.toTempId) || idMap.get(c.to) || c.to || c.toTempId,
+          flow: c.flow || "forward"
+        }));
+
+        const normTerritories = (data.territories || []).map((t, idx) => ({
+          id: t.id || `terr_${idx + 1}`,
+          kind: t.kind || "rect",
+          cx: typeof t.cx === "number" ? t.cx : 300,
+          cy: typeof t.cy === "number" ? t.cy : 300,
+          size: typeof t.size === "number" ? t.size : 280,
+          label: t.label || `Zone ${idx + 1}`,
+          color: t.color || "#000000"
+        }));
+
+        this.diagram = {
+          diagramId: data.diagramId || "diag_" + Date.now(),
+          name: data.name || data.DB_Name || "Architecture Diagram",
+          shapes: normShapes,
+          connectors: normConnectors,
+          territories: normTerritories
+        };
+      }
+
+      bindEvents() {
+        window.addEventListener("resize", () => this.drawRulers());
+        this.viewport.addEventListener("scroll", () => this.updateRulers());
+
+        // Top Horizontal Floating Controls
+        document.getElementById("btn-zoom-in")?.addEventListener("click", () => this.setZoom(this.zoom + 0.1));
+        document.getElementById("btn-zoom-out")?.addEventListener("click", () => this.setZoom(this.zoom - 0.1));
+        document.getElementById("btn-zoom-reset")?.addEventListener("click", () => this.setZoom(0.85));
+        document.getElementById("btn-fit-view")?.addEventListener("click", () => this.fitView());
+        document.getElementById("btn-theme-toggle")?.addEventListener("click", () => {
+          document.body.classList.toggle("light");
+          this.render();
+        });
+
+        // Sidebar Horizontal Floating Zoom Controls
+        document.getElementById("sb-btn-zoom-in")?.addEventListener("click", () => this.setZoom(this.zoom + 0.1));
+        document.getElementById("sb-btn-zoom-out")?.addEventListener("click", () => this.setZoom(this.zoom - 0.1));
+        document.getElementById("sb-btn-zoom-reset")?.addEventListener("click", () => this.setZoom(1.0));
+        document.getElementById("sb-btn-fit-view")?.addEventListener("click", () => this.fitView());
+
+        // Floating Bottom-Right Button to open sidebar
+        this.fabSidebar?.addEventListener("click", () => this.toggleDrawer());
+        document.getElementById("btn-drawer-close")?.addEventListener("click", () => this.toggleDrawer(false));
+
+        // Schema Copy button
+        this.btnCopySchema?.addEventListener("click", () => this.copySchemaToClipboard());
+
+        // Click on schema box selects all text for easy copy
+        this.schemaBox?.addEventListener("click", () => {
+          this.schemaBox.select();
+        });
+
+        // Pan with canvas drag
+        this.svg.addEventListener("pointerdown", (e) => this.onCanvasPointerDown(e));
+        window.addEventListener("pointermove", (e) => this.onWindowPointerMove(e));
+        window.addEventListener("pointerup", () => this.onWindowPointerUp());
+
+        // Wheel zoom with Ctrl or Meta
+        this.viewport.addEventListener("wheel", (e) => {
+          if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            const delta = e.deltaY < 0 ? 0.05 : -0.05;
+            this.setZoom(this.zoom + delta);
+          }
+        }, { passive: false });
+      }
+
+      setZoom(z) {
+        this.zoom = Math.max(0.2, Math.min(2.5, z));
+        this.canvasContainer.style.transform = `scale(${this.zoom})`;
+        const pct = `${Math.round(this.zoom * 100)}%`;
+        if (this.zoomText) this.zoomText.textContent = pct;
+        if (this.sbZoomText) this.sbZoomText.textContent = pct;
+        this.drawRulers();
+      }
+
+      fitView() {
+        if (this.diagram.shapes.length === 0) {
+          this.setZoom(0.85);
+          return;
+        }
+
+        let minX = 99999, maxX = 0, minY = 99999, maxY = 0;
+        this.diagram.shapes.forEach(s => {
+          const d = SIZE_CLASSES[s.sizeClass] || SIZE_CLASSES.medium;
+          minX = Math.min(minX, s.cx - d.w / 2);
+          maxX = Math.max(maxX, s.cx + d.w / 2);
+          minY = Math.min(minY, s.cy - d.h / 2);
+          maxY = Math.max(maxY, s.cy + d.h / 2);
+        });
+
+        const padding = 140;
+        const totalW = (maxX - minX) + padding * 2;
+        const totalH = (maxY - minY) + padding * 2;
+        const vpW = this.viewport.clientWidth;
+        const vpH = this.viewport.clientHeight;
+
+        const scaleX = vpW / totalW;
+        const scaleY = vpH / totalH;
+        const targetZoom = Math.min(1.2, Math.max(0.3, Math.min(scaleX, scaleY)));
+
+        this.setZoom(targetZoom);
+        this.viewport.scrollLeft = Math.max(0, (minX - padding) * targetZoom);
+        this.viewport.scrollTop = Math.max(0, (minY - padding) * targetZoom);
+        this.updateRulers();
+        this.flashToast("Fitted view to diagram");
+      }
+
+      drawRulers() {
+        if (!this.rulerTop || !this.rulerLeft) return;
+        this.rulerTop.innerHTML = "";
+        this.rulerLeft.innerHTML = "";
+
+        const step = 100;
+        const maxExtent = 3600;
+
+        for (let i = 0; i <= maxExtent; i += step) {
+          const th = document.createElement("div");
+          th.className = "tick tick-h";
+          th.style.left = `${i * this.zoom}px`;
+          th.textContent = i;
+          this.rulerTop.appendChild(th);
+
+          const tv = document.createElement("div");
+          tv.className = "tick tick-v";
+          tv.style.top = `${i * this.zoom}px`;
+          tv.textContent = i;
+          this.rulerLeft.appendChild(tv);
+        }
+      }
+
+      updateRulers() {
+        if (!this.rulerTop || !this.rulerLeft) return;
+        this.rulerTop.style.transform = `translateX(${-this.viewport.scrollLeft}px)`;
+        this.rulerLeft.style.transform = `translateY(${-this.viewport.scrollTop}px)`;
+      }
+
+      toggleDrawer(open) {
+        if (open !== undefined) {
+          this.drawer.classList.toggle("open", open);
+        } else {
+          this.drawer.classList.toggle("open");
+        }
+      }
+
+      flashToast(msg) {
+        if (!this.toast) return;
+        this.toast.textContent = msg;
+        this.toast.style.display = "block";
+        clearTimeout(this.toastTimer);
+        this.toastTimer = setTimeout(() => {
+          this.toast.style.display = "none";
+        }, 2200);
+      }
+
+      updateStats() {
+        if (this.metaShapes) this.metaShapes.textContent = this.diagram.shapes.length;
+        if (this.metaConnectors) this.metaConnectors.textContent = this.diagram.connectors.length;
+        if (this.metaTerritories) this.metaTerritories.textContent = this.diagram.territories.length;
+      }
+
+      updateSchemaBox() {
+        if (this.schemaBox) {
+          this.schemaBox.value = JSON.stringify(this.diagram, null, 2);
+        }
+      }
+
+      copySchemaToClipboard() {
+        if (!this.schemaBox) return;
+        const text = this.schemaBox.value;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(() => {
+            this.handleCopySuccess();
+          }).catch(() => {
+            this.fallbackCopy();
+          });
+        } else {
+          this.fallbackCopy();
+        }
+      }
+
+      fallbackCopy() {
+        this.schemaBox.select();
+        try {
+          document.execCommand("copy");
+          this.handleCopySuccess();
+        } catch (_) {
+          this.flashToast("Please select text in input box and copy");
+        }
+      }
+
+      handleCopySuccess() {
+        if (this.btnCopySchema) {
+          const original = this.btnCopySchema.innerHTML;
+          this.btnCopySchema.innerHTML = "✓ Copied!";
+          this.btnCopySchema.classList.add("copied");
+          setTimeout(() => {
+            this.btnCopySchema.innerHTML = original;
+            this.btnCopySchema.classList.remove("copied");
+          }, 2000);
+        }
+        this.flashToast("Schema copied to clipboard!");
+      }
+
+      selectShape(id) {
+        this.selectedShapeId = id;
+        this.selectedConnectorId = null;
+        this.selectedTerritoryId = null;
+
+        const s = this.diagram.shapes.find(x => x.id === id);
+        if (s && this.elementDetails) {
+          this.elementDetails.innerHTML = `
+            <div class="element-card">
+              <div class="meta-row"><span class="meta-key">Type</span><span class="meta-val">Shape (${s.kind})</span></div>
+              <div class="meta-row"><span class="meta-key">ID</span><span class="meta-val">${s.id}</span></div>
+              <div class="meta-row"><span class="meta-key">Label</span><span class="meta-val" style="font-family: inherit;">${escapeXml(s.label)}</span></div>
+              <div class="meta-row"><span class="meta-key">Size Class</span><span class="meta-val">${s.sizeClass}</span></div>
+              <div class="meta-row"><span class="meta-key">Coordinates</span><span class="meta-val">(${s.cx}, ${s.cy})</span></div>
+              ${s.parentId ? `<div class="meta-row"><span class="meta-key">Parent Node</span><span class="meta-val">${s.parentId}</span></div>` : ""}
+              ${s.text ? `<div style="margin-top: 8px; font-size: 11px; color: var(--muted); line-height: 1.4;">${escapeXml(s.text)}</div>` : ""}
+            </div>
+          `;
+          this.toggleDrawer(true);
+        }
+        this.render();
+      }
+
+      selectTerritory(id) {
+        this.selectedTerritoryId = id;
+        this.selectedShapeId = null;
+        this.selectedConnectorId = null;
+
+        const t = this.diagram.territories.find(x => x.id === id);
+        if (t && this.elementDetails) {
+          this.elementDetails.innerHTML = `
+            <div class="element-card">
+              <div class="meta-row"><span class="meta-key">Type</span><span class="meta-val">Territory (${t.kind})</span></div>
+              <div class="meta-row"><span class="meta-key">Zone Name</span><span class="meta-val" style="font-family: inherit;">${escapeXml(t.label)}</span></div>
+              <div class="meta-row"><span class="meta-key">Center</span><span class="meta-val">(${t.cx}, ${t.cy})</span></div>
+              <div class="meta-row"><span class="meta-key">Size</span><span class="meta-val">${t.size}px</span></div>
+              <div class="meta-row"><span class="meta-key">Color</span><span class="meta-val">${t.color}</span></div>
+            </div>
+          `;
+          this.toggleDrawer(true);
+        }
+        this.render();
+      }
+
+      selectConnector(id) {
+        this.selectedConnectorId = id;
+        this.selectedShapeId = null;
+        this.selectedTerritoryId = null;
+
+        const c = this.diagram.connectors.find(x => x.id === id);
+        if (c && this.elementDetails) {
+          const s1 = this.diagram.shapes.find(s => s.id === c.from);
+          const s2 = this.diagram.shapes.find(s => s.id === c.to);
+          this.elementDetails.innerHTML = `
+            <div class="element-card">
+              <div class="meta-row"><span class="meta-key">Type</span><span class="meta-val">Relationship</span></div>
+              <div class="meta-row"><span class="meta-key">Source</span><span class="meta-val" style="font-family: inherit;">${s1 ? s1.label : c.from}</span></div>
+              <div class="meta-row"><span class="meta-key">Target</span><span class="meta-val" style="font-family: inherit;">${s2 ? s2.label : c.to}</span></div>
+              <div class="meta-row"><span class="meta-key">Flow</span><span class="meta-val">${c.flow || "forward"}</span></div>
+            </div>
+          `;
+          this.toggleDrawer(true);
+        }
+        this.render();
+      }
+
+      clearSelection() {
+        this.selectedShapeId = null;
+        this.selectedConnectorId = null;
+        this.selectedTerritoryId = null;
+        if (this.elementDetails) {
+          this.elementDetails.innerHTML = `<div class="element-card-empty">Click any shape, connector, or zone on the canvas to inspect its properties.</div>`;
+        }
+        this.render();
+      }
+
+      onCanvasPointerDown(e) {
+        if (e.target === this.svg) {
+          this.clearSelection();
+          this.isPanning = true;
+          this.panStart = {
+            x: e.clientX,
+            y: e.clientY,
+            scrollLeft: this.viewport.scrollLeft,
+            scrollTop: this.viewport.scrollTop
+          };
+          this.svg.style.cursor = "grabbing";
+        }
+      }
+
+      onWindowPointerMove(e) {
+        if (this.isPanning) {
+          const dx = e.clientX - this.panStart.x;
+          const dy = e.clientY - this.panStart.y;
+          this.viewport.scrollLeft = this.panStart.scrollLeft - dx;
+          this.viewport.scrollTop = this.panStart.scrollTop - dy;
+          this.updateRulers();
+        }
+      }
+
+      onWindowPointerUp() {
+        if (this.isPanning) {
+          this.isPanning = false;
+          this.svg.style.cursor = "default";
+        }
+      }
+
+      render() {
+        const isLight = document.body.classList.contains("light");
+
+        let svgHtml = `
+          <defs>
+            <marker id="arrow-forward" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#888888"/>
+            </marker>
+            <marker id="arrow-forward-sel" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#DE2626"/>
+            </marker>
+            <marker id="arrow-backward" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+              <path d="M9,0 L9,6 L0,3 z" fill="#888888"/>
+            </marker>
+            <marker id="arrow-backward-sel" markerWidth="10" markerHeight="10" refX="0" refY="3" orient="auto">
+              <path d="M9,0 L9,6 L0,3 z" fill="#DE2626"/>
+            </marker>
+          </defs>
+        `;
+
+        // 1. Territories layer (background regions)
+        this.diagram.territories.forEach(t => {
+          const isSel = this.selectedTerritoryId === t.id;
+          const strokeW = isSel ? 4 : 2;
+          const strokeCol = isSel ? "#DE2626" : t.color;
+          const opacity = isLight ? 0.08 : 0.18;
+
+          if (t.kind === "circle") {
+            const r = t.size / 2;
+            svgHtml += `
+              <g style="cursor: pointer;" onclick="event.stopPropagation(); window.__readOnlyApp.selectTerritory('${t.id}')">
+                <circle cx="${t.cx}" cy="${t.cy}" r="${r}" fill="${t.color}" fill-opacity="${opacity}" stroke="${strokeCol}" stroke-width="${strokeW}" stroke-dasharray="6,4"/>
+                <text x="${t.cx}" y="${t.cy - r + 24}" fill="${isLight ? "#000000" : "#FFFFFF"}" font-size="12" font-weight="800" text-anchor="middle" letter-spacing="0.5">${t.label.toUpperCase()}</text>
+              </g>
+            `;
+          } else {
+            const x = t.cx - t.size / 2;
+            const y = t.cy - t.size / 2;
+            svgHtml += `
+              <g style="cursor: pointer;" onclick="event.stopPropagation(); window.__readOnlyApp.selectTerritory('${t.id}')">
+                <rect x="${x}" y="${y}" width="${t.size}" height="${t.size}" rx="8" fill="${t.color}" fill-opacity="${opacity}" stroke="${strokeCol}" stroke-width="${strokeW}" stroke-dasharray="6,4"/>
+                <text x="${x + 14}" y="${y + 24}" fill="${isLight ? "#000000" : "#FFFFFF"}" font-size="12" font-weight="800" letter-spacing="0.5">${t.label.toUpperCase()}</text>
+              </g>
+            `;
+          }
+        });
+
+        // 2. Connectors layer (lines between shapes)
+        this.diagram.connectors.forEach(c => {
+          const s1 = this.diagram.shapes.find(s => s.id === c.from);
+          const s2 = this.diagram.shapes.find(s => s.id === c.to);
+          if (!s1 || !s2) return;
+
+          const isSel = this.selectedConnectorId === c.id;
+          const strokeColor = isSel ? "#DE2626" : (isLight ? "#666666" : "#888888");
+          const strokeWidth = isSel ? 3.5 : 2;
+
+          let markerStart = "";
+          let markerEnd = "";
+          const flow = c.flow || "forward";
+
+          if (flow === "forward") {
+            markerEnd = `url(#arrow-forward${isSel ? "-sel" : ""})`;
+          } else if (flow === "backward") {
+            markerStart = `url(#arrow-backward${isSel ? "-sel" : ""})`;
+          } else if (flow === "bidirectional") {
+            markerStart = `url(#arrow-backward${isSel ? "-sel" : ""})`;
+            markerEnd = `url(#arrow-forward${isSel ? "-sel" : ""})`;
+          }
+
+          const dx = s2.cx - s1.cx;
+          const dy = s2.cy - s1.cy;
+          const dist = Math.hypot(dx, dy) || 1;
+
+          const d1 = SIZE_CLASSES[s1.sizeClass] || SIZE_CLASSES.medium;
+          const d2 = SIZE_CLASSES[s2.sizeClass] || SIZE_CLASSES.medium;
+
+          const r1 = Math.min(d1.w, d1.h) / 2.2;
+          const r2 = Math.min(d2.w, d2.h) / 2.2;
+
+          const x1 = s1.cx + (dx / dist) * r1;
+          const y1 = s1.cy + (dy / dist) * r1;
+          const x2 = s2.cx - (dx / dist) * r2;
+          const y2 = s2.cy - (dy / dist) * r2;
+
+          svgHtml += `
+            <g style="cursor: pointer;" onclick="event.stopPropagation(); window.__readOnlyApp.selectConnector('${c.id}')">
+              <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="transparent" stroke-width="16"/>
+              <line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${strokeColor}" stroke-width="${strokeWidth}" marker-start="${markerStart}" marker-end="${markerEnd}"/>
+            </g>
+          `;
+        });
+
+        // 3. Shapes layer
+        this.diagram.shapes.forEach(s => {
+          const d = SIZE_CLASSES[s.sizeClass] || SIZE_CLASSES.medium;
+          const x = s.cx - d.w / 2;
+          const y = s.cy - d.h / 2;
+          const isSel = this.selectedShapeId === s.id;
+          const strokeColor = isSel ? "#DE2626" : (isLight ? "#AAAAAA" : "#333333");
+          const strokeWidth = isSel ? 3.5 : 1.5;
+
+          let fontColor = "#000000";
+          if (s.fontColor === "#ffffff" || s.fontColor === "#000000") {
+            fontColor = s.fontColor;
+          } else {
+            if (s.color && s.color.startsWith("#") && s.color.length === 7) {
+              const r = parseInt(s.color.slice(1, 3), 16);
+              const g = parseInt(s.color.slice(3, 5), 16);
+              const b = parseInt(s.color.slice(5, 7), 16);
+              const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+              fontColor = brightness > 128 ? "#000000" : "#FFFFFF";
+            }
+          }
+
+          svgHtml += `
+            <g transform="translate(${x}, ${y})" style="cursor: pointer;"
+               onclick="event.stopPropagation(); window.__readOnlyApp.selectShape('${s.id}')">
+          `;
+
+          if (s.kind === "circle") {
+            const r = d.w / 2;
+            svgHtml += `
+              <circle cx="${r}" cy="${r}" r="${r}" fill="${s.color || "#d9d9d9"}" stroke="${strokeColor}" stroke-width="${strokeWidth}" filter="drop-shadow(0 2px 5px rgba(0,0,0,0.25))"/>
+              <text x="${r}" y="${s.text ? r - 8 : r + 4}" fill="${fontColor}" font-size="12" font-weight="700" text-anchor="middle">${escapeXml(s.label)}</text>
+            `;
+            if (s.text) {
+              svgHtml += `
+                <text x="${r}" y="${r + 14}" fill="${fontColor}" opacity="0.8" font-size="9" text-anchor="middle">${escapeXml(s.text.slice(0, 24))}${s.text.length > 24 ? "…" : ""}</text>
+              `;
+            }
+          } else {
+            svgHtml += `
+              <rect width="${d.w}" height="${d.h}" rx="6" fill="${s.color || "#d9d9d9"}" stroke="${strokeColor}" stroke-width="${strokeWidth}" filter="drop-shadow(0 2px 6px rgba(0,0,0,0.3))"/>
+              <text x="${d.w / 2}" y="${s.text ? 36 : d.h / 2 + 5}" fill="${fontColor}" font-size="12" font-weight="700" text-anchor="middle">${escapeXml(s.label)}</text>
+            `;
+            if (s.text) {
+              svgHtml += `
+                <foreignObject x="10" y="44" width="${d.w - 20}" height="${d.h - 52}" class="node-text-wrap">
+                  <div xmlns="http://www.w3.org/1999/xhtml" style="font-size: 10px; color: ${fontColor}; opacity: 0.85; line-height: 1.35; overflow: hidden; display: -webkit-box; -webkit-line-clamp: ${d.h > 120 ? "4" : "2"}; -webkit-box-orient: vertical; text-align: center;">
+                    ${escapeXml(s.text)}
+                  </div>
+                </foreignObject>
+              `;
+            }
+          }
+
+          svgHtml += `</g>`;
+        });
+
+        this.svg.innerHTML = svgHtml;
+      }
+    }
+
+    function escapeXml(unsafe) {
+      if (!unsafe) return "";
+      return String(unsafe)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      window.__readOnlyApp = new ReadOnlyDiagramViewer();
+    });
+  })();
+  </script>
+</body>
+</html>

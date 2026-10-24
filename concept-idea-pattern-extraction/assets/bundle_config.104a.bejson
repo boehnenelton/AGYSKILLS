@@ -1,0 +1,46 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Skill_Bundle_concept-idea-pattern-extraction",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "SkillConfigRecord"
+  ],
+  "Fields": [
+    {
+      "name": "config_setting_key",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_value",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_canonical_name",
+      "concept-idea-pattern-extraction",
+      "Canonical kebab-case skill identifier."
+    ],
+    [
+      "skill_layer_tier",
+      "5",
+      "Assigned 6-tier architectural layer (1-6)."
+    ],
+    [
+      "relational_id",
+      "4f8e1c92-7a3b-4d50-9b14-6e2c8a0d5f31",
+      "Release-scoped recency fingerprint."
+    ],
+    [
+      "created_at_utc",
+      "2026-10-18T18:05:00Z",
+      "UTC ISO-8601 creation timestamp."
+    ]
+  ]
+}

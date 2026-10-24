@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        :root {
+            --bg-page: #000000;
+            --primary: #DE2626; /* The strict BEHTML red */
+            --top-dock-height: 80px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 
+           Body is strictly locked. overflow: hidden eradicates the 
+           ability for the mobile browser to scroll or bounce. 
+        */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-page);
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            overflow: hidden; 
+            width: 100vw;
+            height: 100dvh; 
+        }
+
+        /* Top-Docked Control Panel (Formerly the Footer) */
+        .global-docked-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--top-dock-height);
+            background-color: #0a0a0a;
+            border-bottom: 2px solid var(--primary);
+            /* Pads downward to clear iOS dynamic islands / Android notches */
+            padding: calc(12px + env(safe-area-inset-top, 0px)) 16px 12px 16px;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            box-shadow: 0 4px 20px rgba(222, 38, 38, 0.15);
+        }
+
+        .layer-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: monospace;
+            font-size: 15px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .layer-control input[type="range"] {
+            accent-color: var(--primary);
+            width: 160px;
+        }
+
+        /* 
+           The BEHTML Canvas 
+           Pushed down exactly below the top-docked panel.
+        */
+        .behtml-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-auto-rows: 32px; /* Ry = 32px per row */
+            /* Start the grid safely below the top UI */
+            padding-top: calc(var(--top-dock-height) + env(safe-area-inset-top, 0px) + 16px);
+            background-image: 
+                linear-gradient(to right, #1f1f1f 1px, transparent 1px),
+                linear-gradient(to bottom, #1f1f1f 1px, transparent 1px);
+            background-size: 12.5% 32px;
+            height: 100dvh;
+        }
+
+        /* Z-Panels: Capped at 14 rows (448px) to guarantee no scrolling */
+        .z-panel {
+            grid-column: 1 / span 8;
+            grid-row: 1 / span 14; 
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-auto-rows: 32px;
+            pointer-events: none; 
+            transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), opacity 0.2s ease;
+        }
+
+        .behtml-cell {
+            pointer-events: auto;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: bold;
+            text-align: center;
+            padding: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        /* --- LAYER 0 STYLES --- */
+        .obj-l0-hero { 
+            /* INVERTED COLOR: Pure white background, black text */
+            background: #ffffff; 
+            color: #000000; 
+            border: 2px solid #999;
+            font-size: 14px;
+        }
+        .obj-l0-sidebar { background: #111111; color: #aaaaaa; border-color: #444; }
+        .obj-l0-content { background: #1a1a1a; color: #ffffff; border-color: #444; }
+
+        /* --- LAYER 1 STYLES --- */
+        .obj-l1-modal { 
+            /* INVERTED COLOR: White background, Red BEHTML text */
+            background: #ffffff; 
+            color: var(--primary); 
+            border: 3px solid var(--primary);
+            font-size: 13px;
+        }
+        .obj-l1-toast { background: #222222; color: #ffffff; border-left: 4px solid var(--primary); }
+
+        /* --- LAYER 2 STYLES --- */
+        .obj-l2-fab { 
+            background: var(--primary); 
+            color: #ffffff; 
+            border-radius: 999px;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+        }
+        .obj-l2-badge { background: #000000; color: #ffffff; border: 2px solid var(--primary); border-radius: 4px; }
+    </style>
+</head>
+<body>
+
+    
+    <header class="global-docked-top">
+        <div class="layer-control">
+            <label for="z-slider">VIEW LAYER:</label>
+            <input type="range" id="z-slider" min="0" max="2" step="1" value="2">
+            <span id="layer-readout" style="color: var(--primary); font-size: 20px;">2</span>
+        </div>
+    </header>
+
+    <div class="behtml-grid" id="main-grid">
+        
+        
+        <div class="z-panel" data-z-layer="0" style="z-index: 0;">
+            
+            <div class="behtml-cell obj-l0-hero" style="grid-column: 1 / span 8; grid-row: 1 / span 3;">
+                Title
+            </div>
+            
+            <div class="behtml-cell obj-l0-sidebar" style="grid-column: 1 / span 2; grid-row: 5 / span 8;">
+                Sidebar
+            </div>
+
+            <div class="behtml-cell obj-l0-content" style="grid-column: 4 / span 5; grid-row: 5 / span 8;">
+                Body
+            </div>
+        </div>
+
+        
+        <div class="z-panel" data-z-layer="1" style="z-index: 32;">
+            
+            <div class="behtml-cell obj-l1-modal" style="grid-column: 3 / span 4; grid-row: 6 / span 4;">
+                Title
+            </div>
+
+            <div class="behtml-cell obj-l1-toast" style="grid-column: 4 / span 5; grid-row: 13 / span 2;">
+                Toast
+            </div>
+        </div>
+
+        
+        <div class="z-panel" data-z-layer="2" style="z-index: 64;">
+            
+            <div class="behtml-cell obj-l2-badge" style="grid-column: 2 / span 2; grid-row: 2 / span 1;">
+                Badge
+            </div>
+
+            <button class="behtml-cell obj-l2-fab" style="grid-column: 7 / span 2; grid-row: 9 / span 2;">
+                Action Button
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        const zSlider = document.getElementById('z-slider');
+        const layerReadout = document.getElementById('layer-readout');
+        const panels = document.querySelectorAll('.z-panel');
+        
+        // BEHTML Spatial Constants
+        const Z_LAYER_PX = 32;
+        const LAYER_RECEDE_OPACITY_STEP = 1 / 3;
+
+        function updateZStack(activeViewLayer) {
+            layerReadout.textContent = activeViewLayer;
+
+            panels.forEach(panel => {
+                const layer = parseInt(panel.dataset.zLayer, 10);
+                
+                if (layer === activeViewLayer) {
+                    // Front viewed layer
+                    panel.style.transform = 'translate(0px, 0px)';
+                    panel.style.opacity = '1';
+                    Array.from(panel.children).forEach(cell => cell.style.pointerEvents = 'auto');
+                } else if (layer < activeViewLayer) {
+                    // Receding layers (pull back 32px and fade 33.3% per layer of distance)
+                    const distance = activeViewLayer - layer;
+                    const opacity = Math.max(0, 1 - (LAYER_RECEDE_OPACITY_STEP * distance));
+                    
+                    panel.style.transform = `translate(${distance * Z_LAYER_PX}px, ${distance * Z_LAYER_PX}px)`;
+                    panel.style.opacity = opacity.toString();
+                    
+                    // Kill pointer events if fully faded (3+ layers back)
+                    const eventState = opacity <= 0 ? 'none' : 'auto';
+                    Array.from(panel.children).forEach(cell => cell.style.pointerEvents = eventState);
+                } else {
+                    // Hidden layers physically above the active view
+                    panel.style.transform = 'translate(0px, 0px)';
+                    panel.style.opacity = '0';
+                    Array.from(panel.children).forEach(cell => cell.style.pointerEvents = 'none');
+                }
+            });
+        }
+
+        zSlider.addEventListener('input', (e) => {
+            updateZStack(parseInt(e.target.value, 10));
+        });
+
+        // Initialize depth stack
+        updateZStack(2);
+    </script>
+</body>
+</html>

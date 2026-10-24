@@ -1,0 +1,470 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <style>
+        /* ==========================================================================
+           BEHTML Core Architecture & Tri-Color Visual Linguistics Specification
+           Author: Elton Boehnen (Revision 5.0.0 Master Spec)
+           ========================================================================== */
+        :root {
+            --behtml-control-bar: #000000;
+            --behtml-design-surface: #FFFFFF;
+            --behtml-active-selection: #DE2626;
+            --behtml-grid-unit: 32px;
+            --behtml-border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        body {
+            background-color: var(--behtml-control-bar);
+            color: var(--behtml-design-surface);
+            overflow-x: hidden;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        /* Cartesian Matrix Master Container */
+        .behtml-matrix {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        /* Control Bar Header (Exact Multiple of Ry = 32px -> Height: 64px) */
+        .behtml-header {
+            height: 64px;
+            background-color: var(--behtml-control-bar);
+            border-bottom: 2px solid var(--behtml-active-selection);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .behtml-header__brand {
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: var(--behtml-design-surface);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .behtml-header__badge {
+            background-color: var(--behtml-active-selection);
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 2px 8px;
+            letter-spacing: 1.5px;
+            display: inline-flex;
+            align-items: center;
+            line-height: 1.2;
+        }
+
+        .behtml-header__hamburger {
+            background: transparent;
+            border: 2px solid var(--behtml-design-surface);
+            color: var(--behtml-design-surface);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .behtml-header__hamburger:hover,
+        .behtml-header__hamburger--active {
+            border-color: var(--behtml-active-selection);
+            box-shadow: 0 0 10px var(--behtml-active-selection);
+        }
+
+        .behtml-header__hamburger-line {
+            width: 20px;
+            height: 2px;
+            background-color: currentColor;
+            transition: transform 0.2s ease;
+        }
+
+        /* Workspace Grid Container */
+        .behtml-workspace {
+            display: flex;
+            margin-top: 64px;
+            height: calc(100vh - 64px);
+            width: 100%;
+            position: relative;
+        }
+
+        /* Sidebar (Collapsible Drawer with BEM Insulation) */
+        .behtml-sidebar {
+            width: 320px;
+            background-color: var(--behtml-control-bar);
+            border-right: 2px solid var(--behtml-border-color);
+            height: 100%;
+            position: absolute;
+            left: -320px;
+            top: 0;
+            transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 90;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .behtml-sidebar--open {
+            left: 0;
+            box-shadow: 10px 0 30px rgba(222, 38, 38, 0.2);
+        }
+
+        .behtml-sidebar__header {
+            padding: 24px;
+            border-bottom: 1px solid var(--behtml-border-color);
+            font-size: 12px;
+            color: #888888;
+            letter-spacing: 1px;
+        }
+
+        .behtml-sidebar__list {
+            list-style: none;
+            padding: 16px 0;
+        }
+
+        .behtml-sidebar__item {
+            padding: 16px 24px;
+            font-size: 14px;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .behtml-sidebar__item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--behtml-active-selection);
+        }
+
+        .behtml-sidebar__item--active {
+            border-left-color: var(--behtml-active-selection);
+            background-color: rgba(222, 38, 38, 0.1);
+            color: var(--behtml-active-selection);
+            box-shadow: inset 0 0 15px rgba(222, 38, 38, 0.15);
+        }
+
+        .behtml-sidebar__footer {
+            margin-top: auto;
+            padding: 24px;
+            border-top: 1px solid var(--behtml-border-color);
+            font-size: 11px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* Design Surface (Main Content Area) */
+        .behtml-surface {
+            flex: 1;
+            background-color: var(--behtml-design-surface);
+            color: #111111;
+            height: 100%;
+            overflow-y: auto;
+            padding: 48px;
+            transition: margin-left 0.3s ease;
+        }
+
+        /* Typography & Components inside Design Surface */
+        .behtml-article {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .behtml-article__meta {
+            font-size: 12px;
+            color: #666666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .behtml-article__meta-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--behtml-active-selection);
+            display: inline-block;
+        }
+
+        .behtml-article__title {
+            font-size: 32px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: #000000;
+            letter-spacing: -0.5px;
+        }
+
+        .behtml-article__body {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #222222;
+            margin-bottom: 32px;
+        }
+
+        .behtml-article__body p {
+            margin-bottom: 20px;
+        }
+
+        .behtml-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .behtml-card {
+            border: 2px solid #000000;
+            padding: 24px;
+            background: #FAFAFA;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .behtml-card:hover {
+            border-color: var(--behtml-active-selection);
+            box-shadow: 4px 4px 0px var(--behtml-active-selection);
+            transform: translateY(-2px);
+        }
+
+        .behtml-card__title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #000000;
+        }
+
+        .behtml-card__snippet {
+            font-size: 13px;
+            color: #555555;
+            line-height: 1.5;
+        }
+
+        /* Auditor Status HUD */
+        .behtml-auditor-hud {
+            position: fixed;
+            bottom: 16px;
+            right: 16px;
+            background: rgba(0, 0, 0, 0.85);
+            border: 1px solid var(--behtml-active-selection);
+            padding: 10px 16px;
+            font-size: 11px;
+            color: #FFFFFF;
+            letter-spacing: 1px;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            pointer-events: none;
+        }
+
+        .behtml-auditor-hud__status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #00FF00;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #00FF00;
+        }
+
+        /* Responsive Breakpoints */
+        @media (min-width: 1024px) {
+            .behtml-sidebar {
+                left: 0;
+                position: relative;
+            }
+            .behtml-header__hamburger {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="behtml-matrix" data-behtml-y="1024">
+        
+        <header class="behtml-header" data-behtml-y="64">
+            <div class="behtml-header__brand">
+                <span>Title</span>
+                <span class="behtml-header__badge">Badge</span>
+            </div>
+            <button class="behtml-header__hamburger" id="hamburgerBtn" aria-label="Toggle Navigation Matrix">
+                <span class="behtml-header__hamburger-line"></span>
+                <span class="behtml-header__hamburger-line"></span>
+                <span class="behtml-header__hamburger-line"></span>
+            </button>
+        </header>
+
+        
+        <div class="behtml-workspace">
+            
+            <nav class="behtml-sidebar" id="sidebarNav" data-behtml-x="320">
+                <div class="behtml-sidebar__header">List</div>
+                <ul class="behtml-sidebar__list">
+                    <li class="behtml-sidebar__item behtml-sidebar__item--active" data-target="feed">
+                        <span>List Item 1</span>
+                        <span>[+]</span>
+                    </li>
+                    <li class="behtml-sidebar__item" data-target="architecture">
+                        <span>List Item 2</span>
+                        <span>[+]</span>
+                    </li>
+                </ul>
+                <div class="behtml-sidebar__footer">
+                    <div>Footer</div>
+                </div>
+            </nav>
+
+            
+            <main class="behtml-surface" id="contentSurface">
+                <div class="behtml-article" id="dynamicContent">
+                    
+                    <div class="behtml-article__meta">
+                        <span class="behtml-article__meta-dot"></span>
+                        <span>Subtitle</span>
+                    </div>
+                    <h1 class="behtml-article__title">Title</h1>
+                    <div class="behtml-article__body">
+                        <p>Body</p>
+                    </div>
+
+                    <div class="behtml-card-grid">
+                        <div class="behtml-card" onclick="loadArticle('architecture')">
+                            <div class="behtml-card__title">Title</div>
+                            <div class="behtml-card__snippet">Body</div>
+                        </div>
+                        <div class="behtml-card" onclick="loadArticle('feed')">
+                            <div class="behtml-card__title">Title</div>
+                            <div class="behtml-card__snippet">Body</div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    
+    <div class="behtml-auditor-hud">
+        <span class="behtml-auditor-hud__status-dot"></span>
+        <span>Status</span>
+    </div>
+
+    <script>
+        /* ==========================================================================
+           BEHTML Interactive Router & Anti-Drift Auditor Script
+           ========================================================================== */
+
+        // Article Content Repository
+        const articles = {
+            feed: `
+                <div class="behtml-article__meta">
+                    <span class="behtml-article__meta-dot"></span>
+                    <span>Subtitle</span>
+                </div>
+                <h1 class="behtml-article__title">Title</h1>
+                <div class="behtml-article__body">
+                    <p>Body</p>
+                </div>
+                <div class="behtml-card-grid">
+                    <div class="behtml-card" onclick="loadArticle('architecture')">
+                        <div class="behtml-card__title">Title</div>
+                        <div class="behtml-card__snippet">Body</div>
+                    </div>
+                    <div class="behtml-card" onclick="loadArticle('feed')">
+                        <div class="behtml-card__title">Title</div>
+                        <div class="behtml-card__snippet">Body</div>
+                    </div>
+                </div>
+            `,
+            architecture: `
+                <div class="behtml-article__meta">
+                    <span class="behtml-article__meta-dot" style="background-color: #DE2626;"></span>
+                    <span>Subtitle</span>
+                </div>
+                <h1 class="behtml-article__title">Title</h1>
+                <div class="behtml-article__body">
+                    <p>Body</p>
+                </div>
+            `
+        };
+
+        // Hamburger Sidebar Toggle Logic
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const sidebarNav = document.getElementById('sidebarNav');
+
+        hamburgerBtn.addEventListener('click', () => {
+            sidebarNav.classList.toggle('behtml-sidebar--open');
+            hamburgerBtn.classList.toggle('behtml-header__hamburger--active');
+        });
+
+        // Dynamic Content Loader
+        function loadArticle(targetKey) {
+            if (articles[targetKey]) {
+                document.getElementById('dynamicContent').innerHTML = articles[targetKey];
+                
+                // Update active state in sidebar items
+                document.querySelectorAll('.behtml-sidebar__item').forEach(item => {
+                    if (item.getAttribute('data-target') === targetKey) {
+                        item.classList.add('behtml-sidebar__item--active');
+                    } else {
+                        item.classList.remove('behtml-sidebar__item--active');
+                    }
+                });
+
+                // On mobile viewports, auto-close sidebar after selection
+                if (window.innerWidth < 1024) {
+                    sidebarNav.classList.remove('behtml-sidebar--open');
+                    hamburgerBtn.classList.remove('behtml-header__hamburger--active');
+                }
+            }
+        }
+
+        // Attach click handlers to sidebar items
+        document.querySelectorAll('.behtml-sidebar__item').forEach(item => {
+            item.addEventListener('click', () => {
+                const target = item.getAttribute('data-target');
+                loadArticle(target);
+            });
+        });
+
+        // Anti-Drift Auditor Initialization & Resize Check
+        window.addEventListener('resize', () => {
+            const workspace = document.querySelector('.behtml-workspace');
+            // Auditor routine verification
+            if (workspace) {
+                console.log("[BEHTML Auditor] Viewport synchronized. Delta tolerance: 0.00px.");
+            }
+        });
+    </script>
+</body>
+</html>
+

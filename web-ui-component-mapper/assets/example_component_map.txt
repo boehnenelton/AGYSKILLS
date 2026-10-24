@@ -1,0 +1,30 @@
+APPLICATION ENTRY POINT (App_Admin.py)
+|
++-- [SECTION] Content Management
+|   +-- [CARD] Pages Manager Panel
+|   |   +-- Metric Readout: Total Pages Display
+|   |   +-- [TOOLBAR] Table Action Bar
+|   |   |   +-- Create Page Action Button
+|   |   |   +-- Search Filter Input Box
+|   |   +-- Data Table: Pages Collection
+|   |       +-- Column: Page Title Display
+|   |       +-- Column: Publication Status Badge
+|   |       +-- Column: Inline Actions Group (Edit Page Button, Delete Action Button)
+|   |
+|   +-- [SECTION] Article Editor Form
+|   |   +-- Input Group: Metadata Controls
+|   |   |   +-- Title Input Box
+|   |   |   +-- Classification Dropdown Selector
+|   |   |   +-- Attribution Dropdown Selector
+|   |   +-- Input Group: Content Canvas
+|   |   |   +-- Formatting Toolbar (Heading Buttons, Bold Button, Link Button)
+|   |   |   +-- Modal Trigger Button (Open Asset Picker)
+|   |   |   +-- Main Body Textarea Editor
+|   |   +-- Modal: Asset Picker Overlay
+|   |   |   +-- Source Switcher Tabs
+|   |   |   +-- Asset Thumbnail Grid
+|   |   |   +-- Selection Confirm Button
+|   |   +-- Action Footer (Save Changes Confirm Button, Cancel Button)
+|   |
+|   +-- [SECTION] Operations & Overlays
+|       +-- Confirmation Dialog (Warning Banner, Text Confirmation Input Box, Execute Action Button)

@@ -1,0 +1,32 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../104a.mfdb.bejson",
+  "Records_Type": [
+    "Category"
+  ],
+  "Fields": [
+    { "name": "cat_uuid", "type": "string" },
+    { "name": "cat_name", "type": "string" },
+    { "name": "cat_slug", "type": "string" },
+    { "name": "cat_order", "type": "integer" },
+    { "name": "cat_active", "type": "boolean" }
+  ],
+  "Values": [
+    [
+      "f1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+      "Web Platforms",
+      "web-platforms",
+      1,
+      true
+    ],
+    [
+      "a2b3c4d5-e6f7-8a9b-0c1d-2e3f4a5b6c7d",
+      "Native Tools",
+      "native-tools",
+      2,
+      true
+    ]
+  ]
+}

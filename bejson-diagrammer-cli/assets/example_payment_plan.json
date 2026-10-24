@@ -1,0 +1,114 @@
+{
+  "diagramId": "diag_90",
+  "name": "Distributed Payment Gateway",
+  "shapes": [
+    {
+      "tempId": "s_ingress",
+      "label": "API Gateway & Router",
+      "text": "Edge reverse proxy with TLS termination.",
+      "kind": "rect",
+      "sizeClass": "medium",
+      "color": "#d9d9d9",
+      "fontColor": "auto",
+      "cx": 500,
+      "cy": 200,
+      "parentTempId": null
+    },
+    {
+      "tempId": "s_auth",
+      "label": "Auth & Session Service",
+      "text": "OAuth2 / JWT issuance, security token verification.",
+      "kind": "rect",
+      "sizeClass": "medium",
+      "color": "#b3b3b3",
+      "fontColor": "auto",
+      "cx": 300,
+      "cy": 500,
+      "parentTempId": "s_ingress"
+    },
+    {
+      "tempId": "s_work",
+      "label": "Domain Worker Engine",
+      "text": "Core transactional state machine and business orchestrator.",
+      "kind": "rect",
+      "sizeClass": "medium",
+      "color": "#b3b3b3",
+      "fontColor": "auto",
+      "cx": 650,
+      "cy": 500,
+      "parentTempId": "s_ingress"
+    },
+    {
+      "tempId": "s_cache",
+      "label": "Redis Cache Layer",
+      "text": "In-memory token blacklist and distributed rate limiting.",
+      "kind": "rect",
+      "sizeClass": "small",
+      "color": "#8c8c8c",
+      "fontColor": "auto",
+      "cx": 300,
+      "cy": 800,
+      "parentTempId": "s_auth"
+    },
+    {
+      "tempId": "s_storage",
+      "label": "Relational Data Store",
+      "text": "PostgreSQL cluster with automated failover and read replicas.",
+      "kind": "rect",
+      "sizeClass": "small",
+      "color": "#8c8c8c",
+      "fontColor": "auto",
+      "cx": 650,
+      "cy": 800,
+      "parentTempId": "s_work"
+    }
+  ],
+  "connectors": [
+    {
+      "fromTempId": "s_ingress",
+      "toTempId": "s_auth",
+      "flow": "forward"
+    },
+    {
+      "fromTempId": "s_ingress",
+      "toTempId": "s_work",
+      "flow": "forward"
+    },
+    {
+      "fromTempId": "s_auth",
+      "toTempId": "s_cache",
+      "flow": "forward"
+    },
+    {
+      "fromTempId": "s_work",
+      "toTempId": "s_storage",
+      "flow": "forward"
+    }
+  ],
+  "territories": [
+    {
+      "kind": "rect",
+      "cx": 500,
+      "cy": 200,
+      "size": 400,
+      "label": "Public Ingress Zone",
+      "color": "#DE2626"
+    },
+    {
+      "kind": "rect",
+      "cx": 500,
+      "cy": 500,
+      "size": 440,
+      "label": "Internal Microservices",
+      "color": "#000000"
+    },
+    {
+      "kind": "rect",
+      "cx": 500,
+      "cy": 800,
+      "size": 400,
+      "label": "Data Persistence",
+      "color": "#404040"
+    }
+  ]
+}

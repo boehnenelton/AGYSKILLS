@@ -1,0 +1,416 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Ecosystem_Definitions_Cartography",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "DefinitionRecord"
+  ],
+  "Fields": [
+    {
+      "name": "term_uuid",
+      "type": "string"
+    },
+    {
+      "name": "canonical_term",
+      "type": "string"
+    },
+    {
+      "name": "domain_category",
+      "type": "string"
+    },
+    {
+      "name": "inline_definition",
+      "type": "string"
+    },
+    {
+      "name": "technical_contract_summary",
+      "type": "string"
+    },
+    {
+      "name": "synonyms_aliases_csv",
+      "type": "string"
+    },
+    {
+      "name": "canonical_reference_pointer",
+      "type": "string"
+    },
+    {
+      "name": "policy_binding",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "def-0001-tmpl-0001",
+      "Template",
+      "Deliverable_Types",
+      "An uninstantiated, production-ready structural skeleton populated exclusively with literal placeholder labels or parameter slots.",
+      "Zero filler, zero copy, zero pseudo-content. Must pass verify_zero_filler.py.",
+      "template,scaffold,blueprint,skeleton,wireframe",
+      "template-literal-skeleton/references/template_example_demonstration_taxonomy.md",
+      "Policy \u00a712.4"
+    ],
+    [
+      "def-0002-exmp-0002",
+      "Example",
+      "Deliverable_Types",
+      "A focused, pedagogical snippet or micro-implementation illustrating how a specific component, pattern, or syntax works in isolation.",
+      "Contains minimal contextual sample data strictly necessary to teach the pattern; not a complete application.",
+      "example,code snippet,sample,usage example,pattern snippet",
+      "template-literal-skeleton/references/template_example_demonstration_taxonomy.md",
+      "Policy \u00a712.4"
+    ],
+    [
+      "def-0003-demo-0003",
+      "Demonstration",
+      "Deliverable_Types",
+      "A fully assembled, end-to-end operational showcase or test harness displaying multiple integrated features working together under live conditions.",
+      "Contains live event handlers, telemetry feeds, layer depth sliders, dev-grid overlays, and realistic fixtures.",
+      "demonstration,demo,showcase,test harness,proof of concept,poc",
+      "template-literal-skeleton/references/template_example_demonstration_taxonomy.md",
+      "Policy \u00a712.4"
+    ],
+    [
+      "def-0004-refr-0004",
+      "Reference",
+      "Deliverable_Types",
+      "An authoritative, non-executable technical specification, invariant sheet, cheat sheet, or API contract documenting definitions, constants, and constraints.",
+      "Fact-dense, declarative documentation. Pure contracts without runtime dependencies or scaffolding.",
+      "reference,specification,cheat sheet,spec,lookup table,standard",
+      "template-literal-skeleton/references/template_example_demonstration_taxonomy.md",
+      "Policy \u00a712.4"
+    ],
+    [
+      "def-0005-ry00-0005",
+      "Ry",
+      "BEHTML",
+      "The vertical row quantization baseline unit fixed at exactly 32 pixels in BEHTML spatial geometry.",
+      "All vertical layout heights, gutters, and component bands must be integer multiples of 32px (N * 32px).",
+      "ry,ry unit,row unit,ry=32px,row quantization",
+      "behtml-design-preferences/references/behtml_design_preferences_spec.md",
+      "Policy \u00a78.4"
+    ],
+    [
+      "def-0006-zpln-0006",
+      "Z-Plane Occlusion",
+      "BEHTML",
+      "A stacking layer system where each discrete UI layer occupies z-index = layer * 32 with 100% background opacity to prevent see-through bleed.",
+      "Layers stack at z-index 0, 32, 64, 96 with solid #FFFFFF or #000000 backdrops.",
+      "z-plane,z plane occlusion,layer stacking,layer occlusion",
+      "behtml-design-preferences/references/behtml_design_preferences_spec.md",
+      "Policy \u00a78.3"
+    ],
+    [
+      "def-0007-fmap-0007",
+      "Field Map Cache",
+      "BEJSON",
+      "An O(1) in-memory index dictionary mapping BEJSON column name strings to integer positional offsets (_FieldMap).",
+      "Strictly prohibits positional row indexing (row[i]); all reads and writes resolve through dynamic fmap[field_name].",
+      "field map,field map cache,fmap,_FieldMap,dynamic field index",
+      "bejson-104-core/references/bejson_104_spec.md",
+      "Policy \u00a76.2"
+    ],
+    [
+      "def-0008-lock-0008",
+      "ResilientPIDLock",
+      "BEJSON",
+      "A crash-resilient atomic file write protocol using PID-named temporary files, fsync, and atomic POSIX renaming.",
+      "Writes to .bejson_<pid>_<rand>.tmp, flushes buffers, executes os.fsync, and replaces the target file via os.replace.",
+      "resilient pid lock,pid lock,atomic write,atomic persistence",
+      "bejson-104-core/references/bejson_104_spec.md",
+      "Policy \u00a76.2"
+    ],
+    [
+      "def-0009-zero-0009",
+      "Zero-Filler Skeleton Law",
+      "Policy",
+      "An unwavering global mandate prohibiting filler content, 'lorem ipsum', or fake stories across all generated templates.",
+      "All template structural slots must use simple, literal placeholder text labels ('Title', 'Content Body', 'Menu Header').",
+      "zero-filler,zero filler law,literal placeholder rule,no lorem ipsum",
+      "template-literal-skeleton/references/literal_placeholder_rule_spec.md",
+      "Policy \u00a712.1"
+    ],
+    [
+      "def-0010-tric-0010",
+      "Tri-Color Palette",
+      "UI_Branding",
+      "The mandatory tri-color aesthetic contract: pure White (#FFFFFF), pure Black (#000000), and vivid Red (#DE2626).",
+      "Backgrounds and texts are pure black or white; red is reserved exclusively for active, hover, and alert accentuation.",
+      "tri-color,tri color palette,policy 8.1,color scheme,red accent",
+      "behtml-design-preferences/references/behtml_design_preferences_spec.md",
+      "Policy \u00a78.1"
+    ],
+    [
+      "def-0011-ownw-0011",
+      "Owning Writer",
+      "Architecture",
+      "The single designated module possessing exclusive write and mutation authority over an entity in a BEJSON schema registry.",
+      "Hand-rolled database inserts and unauthorized file mutations are strictly forbidden; all operations call the owning writer.",
+      "owning writer,write owner,single write owner,owner module",
+      "component-taxonomy-architect/references/component_taxonomy_spec.md",
+      "Policy \u00a710.4"
+    ],
+    [
+      "def-0012-cart-0012",
+      "Cartographer",
+      "Architecture",
+      "An automated ecosystem indexer that scans, catalogs, verifies layers, and audits pairwise trigger collision boundaries.",
+      "Scans skill or definition manifests, compiles 104a catalog registries, and generates Markdown collision matrices.",
+      "cartographer,certographer,ecosystem cartographer,skill cartographer,definitions cartographer",
+      "skill-ecosystem-cartographer/SKILL.md",
+      "Policy \u00a77.2"
+    ],
+    [
+      "def-0013-prnh-0013",
+      "Parent_Hierarchy",
+      "MFDB",
+      "A built-in exception key in BEJSON 104 containing a relative path from an entity file back to its owning manifest or parent.",
+      "Permitted in 104 as the only built-in exception key; enables discovery without global directory scans.",
+      "parent_hierarchy,parent hierarchy,back-reference,manifest link",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Crash Course 23 (Part 2)"
+    ],
+    [
+      "def-0014-rtpr-0014",
+      "Record_Type_Parent",
+      "BEJSON",
+      "The mandatory first field and discriminator in BEJSON 104db, mapping each subsequent field to a specific entity.",
+      "Fields[0] must be Record_Type_Parent; every other field must declare a matching Record_Type_Parent property.",
+      "record_type_parent,discriminator,104db discriminator,entity owner",
+      "bejson-104-core/references/bejson_104_spec.md",
+      "Crash Course 23 (Part 1)"
+    ],
+    [
+      "def-0015-posi-0015",
+      "Positional Integrity",
+      "BEJSON",
+      "The core architectural invariant that field definitions in Fields precisely match the value order in each row of Values.",
+      "Eliminates key lookups; enables O(1) index-based access, rapid streaming parsing, and integrated schema validation.",
+      "positional integrity,column order,index-based access,field order",
+      "bejson-104-core/references/bejson_104_spec.md",
+      "Crash Course 23 (Part 1)"
+    ],
+    [
+      "def-0016-null-0016",
+      "Null Padding",
+      "BEJSON",
+      "The placement of null values for non-applicable entity fields or missing data to maintain row length and positional integrity.",
+      "Mandatory in 104db across entity boundaries; optional in 104/104a for missing scalar data.",
+      "null padding,null-padding,padding,null pad",
+      "bejson-104-core/references/bejson_104_spec.md",
+      "Crash Course 23 (Part 1)"
+    ],
+    [
+      "def-0017-csun-0017",
+      "Column-Schema Uniformity",
+      "BEJSON",
+      "The strict invariant that all nested BEJSON 104 documents within the same parent column must share identical field schemas.",
+      "Enforced by bejson_core_nesting; any schema deviation across nested rows triggers hard error E134.",
+      "column-schema uniformity,column schema uniformity,nesting uniformity,e134",
+      "bejson-104-nesting-core/references/bejson_104_nesting_spec.md",
+      "Crash Course 23 (Part 1)"
+    ],
+    [
+      "def-0018-nsta-0018",
+      "NestAddress",
+      "BEJSON",
+      "A 4-tuple physical coordinate (parent_path, row, col, depth) acting as an implicit foreign key for nested tabular cells.",
+      "Eliminates manual foreign key declarations in recursive sub-tables; coordinates resolve hierarchically.",
+      "nestaddress,nest address,nesting coordinate,implicit foreign key",
+      "bejson-104-nesting-core/references/bejson_104_nesting_spec.md",
+      "Crash Course 23 (Part 1)"
+    ],
+    [
+      "def-0019-mfmn-0019",
+      "MFDB Manifest",
+      "MFDB",
+      "A root-level BEJSON 104a registry file (104a.mfdb.bejson) with Records_Type: ['mfdb'] tracking all database entity files.",
+      "Must reside at DB root; requires entity_name and file_path fields with unique, non-null values.",
+      "mfdb manifest,104a.mfdb.bejson,manifest registry,root manifest",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Crash Course 23 (Part 2)"
+    ],
+    [
+      "def-0020-disc-0020",
+      "MFDB Discovery Algorithm",
+      "MFDB",
+      "The deterministic 5-step file-local identification protocol to discover whether a .bejson file is a manifest, entity, or standalone.",
+      "No directory scans needed; checks Format_Version, filename, and Parent_Hierarchy key natively.",
+      "discovery algorithm,mfdb discovery,file role discovery,native discovery",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Crash Course 23 (Part 2)"
+    ],
+    [
+      "def-0021-fedr-0021",
+      "Master-Slave Federation",
+      "MFDB",
+      "A tiered multi-node architecture using Network_Role (Master vs Slave) to maximize AI context efficiency through structural blindness.",
+      "Slaves push logs via one-way push; Masters push policies via inverse drop-zone atomic swaps.",
+      "master-slave federation,network_role,structural blindness,federated mfdb",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Crash Course 23 (Part 2)"
+    ],
+    [
+      "def-0022-m132-0022",
+      "MFDB-132",
+      "MFDB",
+      "A packaging specification collapsing an entire multi-file database into a single Chunked-104a container with cryptographic sticky mounts.",
+      "Uses .mfdb132_lock with SHA-256 caching to instantly reuse extracted workspaces and pre-write validation gates.",
+      "mfdb-132,mfdb132,chunked-104a,sticky mount,.mfdb132_lock",
+      "mfdb-104-chunker/references/mfdb_132_chunking_spec.md",
+      "Crash Course 23 (Part 2)"
+    ],
+    [
+      "def-0023-cmpm-0023",
+      "UI Component Map",
+      "Architecture",
+      "A database-agnostic, five-tier hierarchical ASCII tree map modeling interface composition from entry surface down to atomic controls.",
+      "Enforces pure structural composition without leaking backend database schemas, foreign keys, or SQL columns.",
+      "ui component map,component map,component mapper,web-ui-component-mapper,ascii component tree",
+      "web-ui-component-mapper/references/component_mapping_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0024-suip-0024",
+      "Schema-to-UI Projection",
+      "Architecture",
+      "A deterministic compilation pipeline projecting backend data schemas, entity fields, and semantic suffixes into complete UI component hierarchies.",
+      "Enforces the Zero Unmapped Fields Law: all schema fields are mapped to view presentations or form inputs.",
+      "schema-to-ui projection,schema projection,taxonomy ui component architect,zero unmapped fields",
+      "taxonomy-ui-component-architect/references/schema_to_ui_projection_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0025-uist-0025",
+      "UI-to-Schema Taxonomy Synthesis",
+      "Architecture",
+      "A deterministic compilation pipeline translating abstract UI component maps into optimized backend data taxonomies across 104 and 105 formats.",
+      "Applies code-taxonomy-architect prefixing, synthetic UUID primary keys, declarative foreign keys, and semantic suffixes.",
+      "ui-to-schema taxonomy synthesis,ui component taxonomy architect,schema synthesis,derive schema from ui",
+      "ui-component-taxonomy-architect/references/ui_to_schema_architecture_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0026-hgpn-0026",
+      "Hierarchy-Group-Purpose Naming",
+      "Architecture",
+      "A standard requiring variable identifiers to explicitly signal architectural scope, domain group, and semantic purpose.",
+      "Formula: <hierarchy_or_scope>_<group_or_domain>_<purpose_or_role>. Strictly prohibits cryptic or single-letter variable names.",
+      "hierarchy-group-purpose,hgp,hgp naming,self-describing variables,long variable names,policy 6.1",
+      "code-taxonomy-architect/references/self_describing_variable_spec.md",
+      "Policy \u00a76.1"
+    ],
+    [
+      "def-0027-mkm-0027",
+      "MasterKeyMap",
+      "Architecture",
+      "The centralized relational referential index (The Key Holder) connecting cross-taxonomy entities and compiled route paths.",
+      "Decouples disparate taxonomy tables (pages, videos, documents) by maintaining edge relationships (source, target, edge kind, compiled route) in an isolated index.",
+      "masterkeymap,keymap,the key holder,cross-taxonomy index,relational key holder",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0028-pwc-0028",
+      "Portable Widget Contract",
+      "Architecture",
+      "Architectural invariant for atomic, self-contained interactive components embedded inside content documents.",
+      "Mandates instance-level CSS scoping (.w-<name>-<id>), zero external CDN dependencies, IIFE script execution isolation, and BECSS Tri-Color compliance.",
+      "portable widget contract,widget contract,self-contained widget,instance-scoped css",
+      "behtml-104-builder/references/behtml_104_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0029-ttcs-0029",
+      "Two-Tier Content Store",
+      "Architecture",
+      "Partitioning pattern decoupling lightweight tabular index metadata from heavy prose, code, and evaluative structures.",
+      "Tabular metadata resides in flat 104 data stores, while long-form HTML/Markdown bodies and review structures reside in individual 104db records keyed by UUID.",
+      "two-tier content store,two tier storage,pages_db,104db content store,detached body storage",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0030-escl-0030",
+      "Empty-Safe Container Law",
+      "Architecture",
+      "Frontend rendering law requiring dynamic visual containers to suppress completely from output when zero items match.",
+      "Prevents rendering empty card wrappers, blank TOCs, or placeholder boxes when related records or headings fall below threshold.",
+      "empty-safe container law,empty-safe,empty container suppression,zero-item suppression",
+      "behtml-templates/references/behtml_exemplar_templates_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0031-atoc-0031",
+      "Auto-TOC Protocol",
+      "Architecture",
+      "Deterministic table-of-contents generator scanning h2 and h3 heading tags and injecting URL-safe anchor slugs.",
+      "Suppresses the TOC container completely if fewer than two headings exist (N < 2), preserving pre-authored anchor slugs.",
+      "auto-toc,table of contents protocol,heading scan,toc suppression",
+      "large-website-architect/references/site_scaffold_architecture.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0032-sfl-0032",
+      "Scaffold Fluff Linter",
+      "Architecture",
+      "Black-box compliance auditor detecting banned copy filler, framework telemetry leaks, and unauthorized image hosts in template code.",
+      "Enforces Policy \u00a77.3 Negative Constraints against lorem ipsum, sample text, framework loaded comments, and external placeholder images.",
+      "scaffold fluff linter,fluff linter,zero-filler auditor,framework leak linter",
+      "template-literal-skeleton/references/scaffold_fluff_linter_spec.md",
+      "Policy \u00a77.3"
+    ],
+    [
+      "def-0033-mtve-0033",
+      "Taxonomy-Driven MTV Engine",
+      "Architecture",
+      "Scaffolding architecture compiling content models (BEJSON 104a), template archetypes (BEHTML 8-lane), and views directly from declarative blueprints.",
+      "Replaces runtime CMS database locks and admin servers with a zero-filler static codebase generation pipeline.",
+      "taxonomy-driven mtv,mtv scaffold engine,model template view scaffolding,blueprint compiler",
+      "taxonomy-ui-component-architect/references/schema_to_ui_projection_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0034-mfdbt-0034",
+      "MFDB Federation Topology",
+      "Architecture",
+      "Multi-tiered database architecture linking a root Master manifest to multiple domain-specific Slave manifests and entity stores.",
+      "Guarantees bidirectional manifest-to-entity integrity, isolated write partitions, and master-slave network role enforcement.",
+      "mfdb federation topology,federation topology,master slave mfdb,multi-manifest federation",
+      "mfdb-104-core/references/mfdb_104_spec.md",
+      "Architecture Standard"
+    ],
+    [
+      "def-0035-agyp-0035",
+      "AGY Policy",
+      "Policy",
+      "The authoritative system policy specification governing Antigravity CLI and Gemini CLI agent operations, initialization protocols, and architectural constraints located at ~/.gemini/GEMINI.md.",
+      "Mandatory policy document binding all agent sessions; enforces initialization maintenance, solid numeric versioning, GUID governance, zero-filler skeletons, and environment sourcing.",
+      "agy policy,gemini.md,GEMINI.md,antigravity policy,policy file,agy_policy",
+      "~/.gemini/GEMINI.md",
+      "Policy Absolutism / System Binding"
+    ],
+    [
+      "def-0036-ttyp-0036",
+      "Tracker Types",
+      "Policy",
+      "The standardized taxonomy of permitted project runtime categories in BEJSON project trackers: \"bash\", \"python\", \"powershell\", \"skill\", \"website\", \"app\", \"android_app\", \"react\", \"angular\", or null.",
+      "Policy \u00a73.6 & \u00a74.6 mandatory field in .bejson_project.json specifying project implementation archetype; rejects arbitrary strings.",
+      "tracker types,project types,tracker type,project_type,allowed project types",
+      "~/.gemini/GEMINI.md#3.6",
+      "Policy \u00a73.6 / \u00a74.6"
+    ],
+    [
+      "def-0037-effa-0037",
+      "Efficiency Audit",
+      "Architecture",
+      "A Layer 2 verification probe that audits systems, codebases, and stores for computational inefficiency, dead code, duplicate routines, loop I/O churn, and structural redundancy.",
+      "Policy \u00a76.2, \u00a710.6, \u00a712.1 verification gate scanning targets for EFF_01 through EFF_08 diagnostic codes via probe_efficiency.py.",
+      "efficiency audit,audit efficiency,probe efficiency,redundancy probe,system redundancy,audit-efficiency-auditor",
+      "audit-efficiency-auditor/SKILL.md",
+      "Layer 2 Verification / System Optimization"
+    ]
+  ]
+}

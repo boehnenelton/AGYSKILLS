@@ -1,0 +1,41 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../104a.mfdb.bejson",
+  "Records_Type": [
+    "ProjectShowcase"
+  ],
+  "Fields": [
+    { "name": "project_uuid", "type": "string" },
+    { "name": "project_slug", "type": "string" },
+    { "name": "project_title", "type": "string" },
+    { "name": "project_sub", "type": "string" },
+    { "name": "project_tech_stack", "type": "string" },
+    { "name": "project_cat_uuid_fk", "type": "string" },
+    { "name": "project_overview_html", "type": "string" },
+    { "name": "project_spec_meta", "type": "string" }
+  ],
+  "Values": [
+    [
+      "b3c4d5e6-f7a8-9b0c-1d2e-3f4a5b6c7d8e",
+      "behtml-visual-framework",
+      "BEHTML Spatial Layout Engine",
+      "Deterministic 8-lane quantization engine eliminating visual drift.",
+      "[\"Python\", \"TypeScript\", \"BEJSON 104a\", \"BECSS\"]",
+      "f1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+      "<h2>Challenge</h2><p>Standard CSS frameworks produce non-deterministic layout shifts across varied viewports.</p>",
+      "{\"Release\": \"300\", \"Quantization\": \"Ry=32px\", \"Palette\": \"Tri-Color\"}"
+    ],
+    [
+      "c4d5e6f7-a8b9-0c1d-2e3f-4a5b6c7d8e9f",
+      "mfdb-multi-file-database",
+      "MFDB Multi-File Database Architecture",
+      "High-performance local-first storage using atomic .tmp writes and manifest locks.",
+      "[\"Python\", \"POSIX Shell\", \"BEJSON 104a\"]",
+      "a2b3c4d5-e6f7-8a9b-0c1d-2e3f4a5b6c7d",
+      "<h2>Challenge</h2><p>Managing large relational data sets on constrained devices without heavyweight SQL daemons.</p>",
+      "{\"Release\": \"300\", \"Lock\": \"ResilientPIDLock\", \"Atomicity\": \"Strict\"}"
+    ]
+  ]
+}

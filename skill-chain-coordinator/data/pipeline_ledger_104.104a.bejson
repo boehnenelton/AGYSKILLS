@@ -1,0 +1,166 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Antigravity_DAG_Pipeline_Coordination",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "DagStageExecution"
+  ],
+  "Fields": [
+    {
+      "name": "dag_stage_uuid",
+      "type": "string"
+    },
+    {
+      "name": "dag_pipeline_run_id",
+      "type": "string"
+    },
+    {
+      "name": "dag_stage_sequence_number",
+      "type": "integer"
+    },
+    {
+      "name": "dag_skill_entry_fk",
+      "type": "string"
+    },
+    {
+      "name": "dag_skill_canonical_name",
+      "type": "string"
+    },
+    {
+      "name": "dag_skill_layer_tier_number",
+      "type": "integer"
+    },
+    {
+      "name": "dag_upstream_stage_uuid_fk",
+      "type": "string"
+    },
+    {
+      "name": "dag_execution_mode_kind",
+      "type": "string"
+    },
+    {
+      "name": "dag_workspace_isolation_mode",
+      "type": "string"
+    },
+    {
+      "name": "dag_subagent_conversation_id",
+      "type": "string"
+    },
+    {
+      "name": "dag_input_artifact_path",
+      "type": "string"
+    },
+    {
+      "name": "dag_handoff_artifact_path",
+      "type": "string"
+    },
+    {
+      "name": "dag_handoff_sha256_hash",
+      "type": "string"
+    },
+    {
+      "name": "dag_gate_validator_command",
+      "type": "string"
+    },
+    {
+      "name": "dag_gate_exit_code_metric",
+      "type": "integer"
+    },
+    {
+      "name": "dag_stage_lifecycle_state",
+      "type": "string"
+    },
+    {
+      "name": "dag_contract_frozen_flag",
+      "type": "boolean"
+    },
+    {
+      "name": "dag_stage_created_at",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "956fa0c9-c8fe-52df-90d8-6244fa4157c5",
+      "run_20261017_091157",
+      1,
+      "ba554a1f-3519-5474-ade3-ed119954cf21",
+      "planning-schema-planner",
+      5,
+      null,
+      "plan",
+      "inherit",
+      "subagent-stage-01",
+      "skills/",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "bcdda9aa697e5541f7a2ea357854a811b21527cefd7c629b54a59dd91e18dbdd",
+      "python3 skill_architect_linter.py planning-schema-planner",
+      0,
+      "VERIFIED",
+      true,
+      "2026-10-17T09:11:57Z"
+    ],
+    [
+      "197a31c6-a066-5b36-8068-c8c652b9fef9",
+      "run_20261017_091157",
+      2,
+      "5adbcce6-7a41-5429-a25b-15f5cc1275d8",
+      "template-104-template",
+      4,
+      "956fa0c9-c8fe-52df-90d8-6244fa4157c5",
+      "accept-edits",
+      "inherit",
+      "subagent-stage-02",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "bcdda9aa697e5541f7a2ea357854a811b21527cefd7c629b54a59dd91e18dbdd",
+      "python3 skill_architect_linter.py template-104-template",
+      0,
+      "VERIFIED",
+      true,
+      "2026-10-17T09:11:57Z"
+    ],
+    [
+      "d2891c2b-43cb-5fe5-86ba-39f701a8f0c2",
+      "run_20261017_091157",
+      3,
+      "070dffc4-2af5-5761-bb8b-5a417d0a99b9",
+      "bejson-104-validator",
+      2,
+      "197a31c6-a066-5b36-8068-c8c652b9fef9",
+      "accept-edits",
+      "inherit",
+      "subagent-stage-03",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "bcdda9aa697e5541f7a2ea357854a811b21527cefd7c629b54a59dd91e18dbdd",
+      "python3 skill_architect_linter.py bejson-104-validator",
+      0,
+      "VERIFIED",
+      true,
+      "2026-10-17T09:11:57Z"
+    ],
+    [
+      "dfac36bc-da62-59de-a78f-0ef20925a7a3",
+      "run_20261017_091157",
+      4,
+      "74a893c6-bed7-5881-bb16-dbf9d2be24c5",
+      "bejson-104-core",
+      1,
+      "d2891c2b-43cb-5fe5-86ba-39f701a8f0c2",
+      "accept-edits",
+      "inherit",
+      "subagent-stage-04",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "/storage/emulated/0/Documents/AGY/skills/skill-ecosystem-cartographer/data/skill_registry_catalog.104a.bejson",
+      "bcdda9aa697e5541f7a2ea357854a811b21527cefd7c629b54a59dd91e18dbdd",
+      "python3 skill_architect_linter.py bejson-104-core",
+      0,
+      "VERIFIED",
+      true,
+      "2026-10-17T09:11:57Z"
+    ]
+  ]
+}

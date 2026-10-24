@@ -1,0 +1,46 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Skill_Bundle_behtml-design-preferences",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "SkillConfigRecord"
+  ],
+  "Fields": [
+    {
+      "name": "config_setting_key",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_value",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_canonical_name",
+      "behtml-design-preferences",
+      "Canonical kebab-case skill identifier."
+    ],
+    [
+      "skill_layer_tier",
+      "4",
+      "Assigned 6-tier architectural layer (1-6)."
+    ],
+    [
+      "relational_id",
+      "3c9a71e2-8d4b-4f19-a605-9e2b4d8c1f73",
+      "Release-scoped recency fingerprint."
+    ],
+    [
+      "created_at_utc",
+      "2026-10-18T17:54:00Z",
+      "UTC ISO-8601 creation timestamp."
+    ]
+  ]
+}

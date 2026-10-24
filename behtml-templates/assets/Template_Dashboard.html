@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>BEHTML Production Dashboard // Spatial Application Archetype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           BEHTML Production Dashboard Template (Spatial App & Console Archetype)
+           Author: Elton Boehnen · boehnenelton2024@gmail.com
+           Standards: Policy 8.1 Tri-Color (#000000, #FFFFFF, #DE2626)
+                      8-Lane Grid (12.5% columns) or 16-Wide Sublanes (6.25%)
+                      Ry = 32px Row Quantization
+                      Z-Plane Layering (layer * 32)
+                      Development Grid vs. Production Clean Transparent State
+           ========================================================================== */
+        :root {
+            --app-height: 100dvh;
+            --top-dock-height: 64px;
+            --ry-unit: 32px;
+            --bg-page: #000000;
+            --bg-cell: #0c0c0c;
+            --bg-card: #141414;
+            --text-main: #FFFFFF;
+            --color-accent: #DE2626;
+            --color-accent-hover: #b91c1c;
+            --border-cell: 1px solid #222222;
+            --border-subtle: 1px solid #1a1a1a;
+            --color-muted: #888888;
+            --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            overflow: hidden;
+            width: 100vw;
+            height: var(--app-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Contained Scrollbars */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+        /* Top Docked Control Hub (Fixed Header) */
+        .dashboard-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--top-dock-height);
+            background-color: #050505;
+            border-bottom: 2px solid var(--color-accent);
+            padding: calc(env(safe-area-inset-top, 0px) + 8px) 24px 8px 24px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .dash-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: var(--font-mono);
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .dash-badge {
+            background: var(--color-accent);
+            color: #FFFFFF;
+            padding: 3px 8px;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .layer-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+        }
+
+        .layer-controls input[type="range"] {
+            accent-color: var(--color-accent);
+            width: 120px;
+            cursor: pointer;
+        }
+
+        .layer-readout {
+            color: var(--color-accent);
+            font-size: 18px;
+            font-weight: 900;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .debug-toggle-btn {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 4px 10px;
+            background: #111111;
+            border: 1px solid #333333;
+            color: #cccccc;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.2s ease;
+        }
+
+        .debug-toggle-btn.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* 8-Lane Spatial Grid Canvas (with optional 16-sublane precision) */
+        .behtml-dashboard-canvas {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-auto-rows: var(--ry-unit);
+            padding: calc(var(--top-dock-height) + 16px) 16px 16px 16px;
+            gap: 12px;
+            height: var(--app-height);
+            width: 100vw;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        /* Debug Grid Overlay (Development Only, Transparent in Production) */
+        .behtml-dashboard-canvas.show-debug-grid {
+            background-image: 
+                linear-gradient(to right, rgba(222, 38, 38, 0.15) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(222, 38, 38, 0.15) 1px, transparent 1px);
+            background-size: 12.5% 32px;
+        }
+
+        /* Spatial Cell Base */
+        .behtml-dash-cell {
+            background: var(--bg-cell);
+            border: var(--border-cell);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .cell-header {
+            padding: 10px 14px;
+            border-bottom: 1px solid #1a1a1a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: #080808;
+            color: #dddddd;
+        }
+
+        .cell-header span.tag {
+            color: var(--color-accent);
+        }
+
+        .cell-body {
+            padding: 14px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        /* Navigation Sidebar Cell: Columns 1-2, Rows 1-18 */
+        .cell-sidebar {
+            grid-column: 1 / span 2;
+            grid-row: 1 / span 18;
+        }
+
+        .nav-group-title {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            margin-top: 12px;
+        }
+
+        .nav-group-title:first-child { margin-top: 0; }
+
+        .nav-tree-item {
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #bbbbbb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tree-item:hover,
+        .nav-tree-item.active {
+            background: #141414;
+            color: #FFFFFF;
+            border-left-color: var(--color-accent);
+        }
+
+        /* Metric KPI Cards: Columns 3-4, 5-6, 7-8, Rows 1-4 */
+        .cell-kpi-1 { grid-column: 3 / span 2; grid-row: 1 / span 4; }
+        .cell-kpi-2 { grid-column: 5 / span 2; grid-row: 1 / span 4; }
+        .cell-kpi-3 { grid-column: 7 / span 2; grid-row: 1 / span 4; }
+
+        .kpi-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            text-align: center;
+        }
+
+        .kpi-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .kpi-value {
+            font-family: var(--font-mono);
+            font-size: 26px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin: 4px 0;
+        }
+
+        .kpi-trend {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        /* Main Data Table Container: Columns 3-8, Rows 5-13 */
+        .cell-table {
+            grid-column: 3 / span 6;
+            grid-row: 5 / span 9;
+        }
+
+        table.dash-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-align: left;
+        }
+
+        table.dash-table th {
+            background-color: #111111;
+            padding: 8px 12px;
+            border-bottom: 2px solid var(--color-accent);
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        table.dash-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #1a1a1a;
+            color: #cccccc;
+        }
+
+        table.dash-table tr:hover td {
+            background-color: #121212;
+            color: #FFFFFF;
+        }
+
+        .badge-status {
+            padding: 2px 6px;
+            font-size: 9px;
+            font-weight: 700;
+            border-radius: 2px;
+            background: rgba(222, 38, 38, 0.2);
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            text-transform: uppercase;
+        }
+
+        /* Tactical Telemetry Console: Columns 3-8, Rows 14-18 */
+        .cell-telemetry {
+            grid-column: 3 / span 6;
+            grid-row: 14 / span 5;
+            background: #070707;
+        }
+
+        .console-stream {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            line-height: 1.6;
+            color: #999999;
+        }
+
+        .stream-line {
+            display: flex;
+            gap: 12px;
+        }
+
+        .stream-ts { color: var(--color-muted); }
+        .stream-mod { color: var(--color-accent); font-weight: 700; }
+        .stream-msg { color: #dddddd; }
+
+        /* Multi-Layer Z-Planes (layer * 32) */
+        .z-overlay-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            display: none;
+            z-index: 32;
+        }
+
+        .z-overlay-layer.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: auto;
+            background: rgba(0, 0, 0, 0.75);
+        }
+
+        .dash-modal {
+            background: #0f0f0f;
+            border: 2px solid var(--color-accent);
+            width: 90%;
+            max-width: 600px;
+            padding: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+        }
+
+        .dash-modal-title {
+            font-family: var(--font-mono);
+            font-size: 16px;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--color-accent);
+            padding-bottom: 8px;
+        }
+
+        .dash-modal-body {
+            font-size: 13px;
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .behtml-dashboard-canvas {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                height: auto;
+                overflow-y: visible;
+            }
+            body { overflow-y: auto; }
+            .cell-sidebar, .cell-kpi-1, .cell-kpi-2, .cell-kpi-3, .cell-table, .cell-telemetry {
+                grid-column: 1 / -1;
+                grid-row: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Docked Control Hub -->
+    <header class="dashboard-header">
+        <div class="dash-brand">
+            <span>Brand</span>
+            <span class="dash-badge">Badge</span>
+        </div>
+        <div class="layer-controls">
+            <button class="debug-toggle-btn" id="gridToggleBtn" type="button" onclick="toggleDebugGrid()">Toggle Dev Grid</button>
+            <label for="layerSlider">Layer Depth:</label>
+            <input type="range" id="layerSlider" min="0" max="2" value="0" oninput="updateLayerDepth(this.value)">
+            <span class="layer-readout" id="layerReadout">0</span>
+        </div>
+    </header>
+
+    <!-- 8-Lane / 16-Sublane Deterministic Stage Canvas -->
+    <main class="behtml-dashboard-canvas" id="dashCanvas">
+        <!-- Sidebar Cell (Columns 1-2, Rows 1-18) -->
+        <section class="behtml-dash-cell cell-sidebar">
+            <div class="cell-header">
+                <span>Menu Header</span>
+                <span class="tag">8-LANE</span>
+            </div>
+            <div class="cell-body">
+                <div class="nav-group-title">Section 1</div>
+                <div class="nav-tree-item active">
+                    <span>Menu Item 1</span>
+                    <span>&bull;</span>
+                </div>
+                <div class="nav-tree-item">
+                    <span>Menu Item 2</span>
+                    <span>&bull;</span>
+                </div>
+                <div class="nav-group-title">Section 2</div>
+                <div class="nav-tree-item">
+                    <span>Menu Item 3</span>
+                    <span>&bull;</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Metric 1 (Columns 3-4, Rows 1-4) -->
+        <section class="behtml-dash-cell cell-kpi-1">
+            <div class="cell-body">
+                <div class="kpi-container">
+                    <div class="kpi-label">KPI Label 1</div>
+                    <div class="kpi-value">Value 1</div>
+                    <div class="kpi-trend">Status 1</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Metric 2 (Columns 5-6, Rows 1-4) -->
+        <section class="behtml-dash-cell cell-kpi-2">
+            <div class="cell-body">
+                <div class="kpi-container">
+                    <div class="kpi-label">KPI Label 2</div>
+                    <div class="kpi-value">Value 2</div>
+                    <div class="kpi-trend">Status 2</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- KPI Metric 3 (Columns 7-8, Rows 1-4) -->
+        <section class="behtml-dash-cell cell-kpi-3">
+            <div class="cell-body">
+                <div class="kpi-container">
+                    <div class="kpi-label">KPI Label 3</div>
+                    <div class="kpi-value">Value 3</div>
+                    <div class="kpi-trend">Status 3</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Data Table (Columns 3-8, Rows 5-13) -->
+        <section class="behtml-dash-cell cell-table">
+            <div class="cell-header">
+                <span>Table Header</span>
+                <span class="tag">Table Tag</span>
+            </div>
+            <div class="cell-body" style="padding: 0;">
+                <table class="dash-table">
+                    <thead>
+                        <tr>
+                            <th>Column 1</th>
+                            <th>Column 2</th>
+                            <th>Column 3</th>
+                            <th>Column 4</th>
+                            <th>Column 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cell 1-1</td>
+                            <td>Cell 1-2</td>
+                            <td>Cell 1-3</td>
+                            <td>Cell 1-4</td>
+                            <td><span class="badge-status">Status 1</span></td>
+                        </tr>
+                        <tr>
+                            <td>Cell 2-1</td>
+                            <td>Cell 2-2</td>
+                            <td>Cell 2-3</td>
+                            <td>Cell 2-4</td>
+                            <td><span class="badge-status">Status 2</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Tactical Telemetry Console (Columns 3-8, Rows 14-18) -->
+        <section class="behtml-dash-cell cell-telemetry">
+            <div class="cell-header">
+                <span>Console Header</span>
+                <span class="tag">Console Tag</span>
+            </div>
+            <div class="cell-body">
+                <div class="console-stream">
+                    <div class="stream-line">
+                        <span class="stream-ts">[00:00:01]</span>
+                        <span class="stream-mod">Module 1</span>
+                        <span class="stream-msg">Log Message 1</span>
+                    </div>
+                    <div class="stream-line">
+                        <span class="stream-ts">[00:00:02]</span>
+                        <span class="stream-mod">Module 2</span>
+                        <span class="stream-msg">Log Message 2</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Z-Plane Overlay (Layer 1: z-index = 32) -->
+    <div class="z-overlay-layer" id="layerOverlay">
+        <div class="dash-modal">
+            <div class="dash-modal-title">Modal Header</div>
+            <div class="dash-modal-body">
+                Content Body
+            </div>
+            <button class="debug-toggle-btn active" type="button" onclick="closeLayerModal()">Action Dismiss</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleDebugGrid() {
+            const canvas = document.getElementById('dashCanvas');
+            const btn = document.getElementById('gridToggleBtn');
+            canvas.classList.toggle('show-debug-grid');
+            btn.classList.toggle('active');
+        }
+
+        function updateLayerDepth(val) {
+            document.getElementById('layerReadout').textContent = val;
+            const overlay = document.getElementById('layerOverlay');
+            if (parseInt(val, 10) > 0) {
+                overlay.classList.add('active');
+            } else {
+                overlay.classList.remove('active');
+            }
+        }
+
+        function closeLayerModal() {
+            document.getElementById('layerSlider').value = 0;
+            updateLayerDepth(0);
+        }
+
+        function syncDashHeight() {
+            if (window.visualViewport) {
+                document.documentElement.style.setProperty('--app-height', `${window.visualViewport.height}px`);
+            }
+        }
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', syncDashHeight);
+        }
+        syncDashHeight();
+    </script>
+</body>
+</html>

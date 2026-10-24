@@ -1,0 +1,72 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Concept_Nuance_Patterns",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "ConceptNuancePattern"
+  ],
+  "Fields": [
+    {
+      "name": "nuance_pattern_uuid",
+      "type": "string"
+    },
+    {
+      "name": "nuance_pattern_code",
+      "type": "string"
+    },
+    {
+      "name": "nuance_concept_domain",
+      "type": "string"
+    },
+    {
+      "name": "nuance_surface_element",
+      "type": "string"
+    },
+    {
+      "name": "nuance_latent_mechanism",
+      "type": "string"
+    },
+    {
+      "name": "nuance_coupled_dependencies",
+      "type": "string"
+    },
+    {
+      "name": "nuance_failure_mode",
+      "type": "string"
+    },
+    {
+      "name": "nuance_confidence_tier",
+      "type": "string"
+    },
+    {
+      "name": "nuance_created_at",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "b72c4e10-8a3d-4f91-9c12-3e5a7b9d0f41",
+      "CNP-001",
+      "behtml-design-preferences",
+      "border-left: 3px solid transparent on .section-meta-bar",
+      "Reserves exact 3px horizontal box-model offset to align metadata text flush with h2 text (which has border-left: 3px solid #DE2626) without extending the visible red bar.",
+      ".behtml-doc-canvas h2 (border-left: 3px solid var(--color-accent); padding-left: 0.75rem)",
+      "Omitting the 3px transparent border shifts metadata text 3px left, breaking vertical optical alignment with the section heading.",
+      "locked_invariant",
+      "2026-10-18T18:04:00Z"
+    ],
+    [
+      "c83d5f21-9b4e-4a02-8d23-4f6b8c0e1a52",
+      "CNP-002",
+      "behtml-design-preferences",
+      "Row 19 unallocated grid row between .behtml-doc-canvas (Rows 2..18) and .behtml-widget-shelf (Rows 20..24)",
+      "Creates an exact 1 * Ry (32px) structural breathing buffer without requiring margin hacks or visible divider lines.",
+      "--ry-unit: 32px; .behtml-doc-canvas (grid-row: 2 / span 17); .behtml-widget-shelf (grid-row: 20 / span 5)",
+      "Starting the widget shelf at Row 19 eliminates the 32px spatial separation and crowds the 150x150 widget slots against the scrolling prose canvas.",
+      "locked_invariant",
+      "2026-10-18T18:04:00Z"
+    ]
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Skill_Bundle_ideation-blog-post-planner",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "SkillConfigRecord"
+  ],
+  "Fields": [
+    {
+      "name": "config_setting_key",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_value",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_canonical_name",
+      "ideation-blog-post-planner",
+      "Canonical kebab-case skill identifier."
+    ],
+    [
+      "skill_layer_tier",
+      "5",
+      "Assigned 6-tier architectural layer (1-6)."
+    ],
+    [
+      "relational_id",
+      "8a1c03e7-96d7-47e9-be5c-dd4a1da9567c",
+      "Release-scoped recency fingerprint."
+    ],
+    [
+      "created_at_utc",
+      "2026-10-22T07:07:55Z",
+      "UTC ISO-8601 creation timestamp."
+    ]
+  ]
+}

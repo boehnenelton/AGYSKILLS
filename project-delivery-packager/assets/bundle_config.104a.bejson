@@ -1,0 +1,46 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Skill_Bundle_project-delivery-packager",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "SkillConfigRecord"
+  ],
+  "Fields": [
+    {
+      "name": "config_setting_key",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_value",
+      "type": "string"
+    },
+    {
+      "name": "config_setting_description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_canonical_name",
+      "project-delivery-packager",
+      "Canonical kebab-case skill identifier."
+    ],
+    [
+      "skill_layer_tier",
+      "6",
+      "Assigned 6-tier architectural layer (1-6)."
+    ],
+    [
+      "relational_id",
+      "f7da5a48-0e7d-4585-9ce1-3e2d5ce2c690",
+      "Release-scoped recency fingerprint."
+    ],
+    [
+      "created_at_utc",
+      "2026-10-22T06:56:04Z",
+      "UTC ISO-8601 creation timestamp."
+    ]
+  ]
+}

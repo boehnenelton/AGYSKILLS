@@ -1,0 +1,38 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Archetype_Id": "archetype_video_hub",
+  "Archetype_Name": "Video Hub & Streaming Archive",
+  "Archetype_Description": "Taxonomy and schema blueprint for streaming channels, video tutorials, and curated playlists.",
+  "Canonical_Prefixes": {
+    "Category": "cat_",
+    "ExternalMedia": "extmedia_",
+    "MediaPlaylist": "playlist_"
+  },
+  "Bound_Templates": [
+    "scaffold_video_feed.html",
+    "scaffold_video_player.html",
+    "scaffold_media_grid.html"
+  ],
+  "Entities": [
+    {
+      "name": "Category",
+      "primary_key": "cat_uuid",
+      "prefix": "cat_",
+      "file_path": "data/category.bejson"
+    },
+    {
+      "name": "ExternalMedia",
+      "primary_key": "extmedia_uuid",
+      "prefix": "extmedia_",
+      "file_path": "data/externalmedia.bejson"
+    },
+    {
+      "name": "MediaPlaylist",
+      "primary_key": "playlist_uuid",
+      "prefix": "playlist_",
+      "file_path": "data/mediaplaylist.bejson"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "ScriptConfig"
+  ],
+  "Fields": [
+    {
+      "name": "setting_name",
+      "type": "string"
+    },
+    {
+      "name": "setting_value",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "local_lib_directory",
+      "lib/",
+      "Relative path to local dep folder."
+    ],
+    [
+      "master_lib_source",
+      "$ADMIN_LIBRARIES",
+      "Fallback master library directory."
+    ],
+    [
+      "log_level",
+      "INFO",
+      "Default operational log level."
+    ],
+    [
+      "strict_mode",
+      "true",
+      "Enforce strict era-specific validation rules."
+    ]
+  ]
+}

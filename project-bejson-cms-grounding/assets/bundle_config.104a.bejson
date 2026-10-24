@@ -1,0 +1,39 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "SkillBundleConfig"
+  ],
+  "Fields": [
+    {
+      "name": "setting_name",
+      "type": "string"
+    },
+    {
+      "name": "setting_value",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_identifier",
+      "project-bejson-cms-grounding",
+      "Canonical identifier for the BEJSON CMS project grounding skill."
+    ],
+    [
+      "target_repository",
+      "/storage/emulated/0/Admin/Dev/Python/Development/BEJSON_CMS",
+      "Canonical root filesystem location of the BEJSON CMS project."
+    ],
+    [
+      "project_index_exemption",
+      "EXEMPT_NOT_ON_DEVICE",
+      "User override: cli_project_register.py is not present on this device."
+    ]
+  ]
+}

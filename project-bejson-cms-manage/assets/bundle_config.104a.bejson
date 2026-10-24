@@ -1,0 +1,39 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "SkillBundleConfig"
+  ],
+  "Fields": [
+    {
+      "name": "setting_name",
+      "type": "string"
+    },
+    {
+      "name": "setting_value",
+      "type": "string"
+    },
+    {
+      "name": "description",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "skill_identifier",
+      "project-bejson-cms-manage",
+      "Canonical identifier for the BEJSON CMS operational management skill."
+    ],
+    [
+      "cli_executable_path",
+      "/storage/emulated/0/Admin/Dev/Python/Development/BEJSON_CMS/src/cms-manage.py",
+      "Absolute filesystem path to the cms-manage.py executable."
+    ],
+    [
+      "project_index_exemption",
+      "EXEMPT_NOT_ON_DEVICE",
+      "User override: cli_project_register.py is not present on this device."
+    ]
+  ]
+}

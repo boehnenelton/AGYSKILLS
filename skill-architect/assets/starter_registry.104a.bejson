@@ -1,0 +1,19 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Antigravity_Skill_Bundle_Config",
+  "Schema_Version": "1.0.0",
+  "Records_Type": ["SkillConfigRecord"],
+  "Fields": [
+    {"name": "config_setting_key", "type": "string"},
+    {"name": "config_setting_value", "type": "string"},
+    {"name": "config_setting_description", "type": "string"}
+  ],
+  "Values": [
+    ["skill_layer_tier", "1", "Assigned 6-tier architectural layer (1-6)."],
+    ["sandbox_required", "true", "Mandates --sandbox on all agy subprocess calls."],
+    ["max_body_lines", "500", "Stage 2 progressive disclosure line ceiling."],
+    ["max_description_chars", "1024", "Stage 1 discovery frontmatter description cap."]
+  ]
+}

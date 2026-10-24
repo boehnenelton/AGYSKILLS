@@ -1,0 +1,67 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "105",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "Content"
+  ],
+  "Fields": [
+    {
+      "name": "record_uuid",
+      "type": "string",
+      "field_uuid": "a763907c-0d18-5bcf-bc37-ed8a9e8f981d"
+    },
+    {
+      "name": "cont_uuid",
+      "type": "string",
+      "field_uuid": "30b004cf-acf6-54a2-9d5d-29cd2729f92d"
+    },
+    {
+      "name": "cont_title",
+      "type": "string",
+      "field_uuid": "fe4a7073-d6cc-56c6-8d72-27034fd98958"
+    },
+    {
+      "name": "cont_status",
+      "type": "string",
+      "field_uuid": "d101284f-b406-51e4-a180-0dbdf6ee28f1"
+    },
+    {
+      "name": "cont_classification_id_fk",
+      "type": "string",
+      "field_uuid": "a5bff661-46ce-5728-bc79-b8d591ac136c",
+      "fk_target_entity": "Classification",
+      "fk_on_delete": "cascade"
+    },
+    {
+      "name": "cont_attribution_id_fk",
+      "type": "string",
+      "field_uuid": "502db16c-5995-5df4-b116-82a4d7534221",
+      "fk_target_entity": "Attribution",
+      "fk_on_delete": "cascade"
+    },
+    {
+      "name": "cont_content_body",
+      "type": "string",
+      "field_uuid": "144da358-e374-5985-88b4-f9db09c7ed13"
+    },
+    {
+      "name": "cont_asset_id_fk",
+      "type": "string",
+      "field_uuid": "c3fb519a-736e-5d79-b881-acd11486fc40",
+      "fk_target_entity": "Asset",
+      "fk_on_delete": "cascade"
+    },
+    {
+      "name": "cont_is_active",
+      "type": "boolean",
+      "field_uuid": "a1b8c375-086f-573f-8a52-bda3966baf1c"
+    },
+    {
+      "name": "cont_created_at",
+      "type": "string",
+      "field_uuid": "e9eed965-7ad7-555a-acb5-def84080d867"
+    }
+  ],
+  "Values": []
+}

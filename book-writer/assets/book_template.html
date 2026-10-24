@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{PAGE_TITLE}}</title>
+
+<!-- Standard SEO Metadata -->
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="keywords" content="{{META_KEYWORDS}}">
+<meta name="author" content="{{AUTHOR_NAME}}">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="{{CANONICAL_URL}}">
+
+<!-- Open Graph Protocol (Facebook, LinkedIn, Discord) -->
+<meta property="og:type" content="book">
+<meta property="og:title" content="{{OG_TITLE}}">
+<meta property="og:description" content="{{OG_DESCRIPTION}}">
+<meta property="og:url" content="{{CANONICAL_URL}}">
+<meta property="og:site_name" content="{{SITE_NAME}}">
+<meta property="og:locale" content="en_US">
+<meta property="book:author" content="{{AUTHOR_NAME}}">
+<meta property="book:release_date" content="{{DATE_PUBLISHED}}">
+<meta property="book:tag" content="{{BOOK_GENRE}}">
+
+<!-- Twitter Card Metadata -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{TWITTER_TITLE}}">
+<meta name="twitter:description" content="{{TWITTER_DESCRIPTION}}">
+
+<!-- Schema.org JSON-LD Structured Data for Search Engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "{{BOOK_TITLE}}",
+  "headline": "{{BOOK_TITLE}}",
+  "description": "{{BOOK_DESCRIPTION}}",
+  "author": {
+    "@type": "Person",
+    "name": "{{AUTHOR_NAME}}",
+    "url": "{{AUTHOR_URL}}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "{{PUBLISHER_NAME}}",
+    "url": "{{PUBLISHER_URL}}"
+  },
+  "datePublished": "{{DATE_PUBLISHED}}",
+  "inLanguage": "en",
+  "genre": "{{BOOK_GENRE}}",
+  "hasPart": [
+{{JSON_LD_CHAPTERS}}
+  ]
+}
+</script>
+
+<style>
+/* Reset & Base Containment */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #FFFFFF;
+  color: #000000;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.65;
+  margin: 0;
+  padding: 0 1rem;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.book-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 2.5rem 0 4rem 0;
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Source Code Pro', Menlo, Monaco, Consolas, monospace;
+  color: #000000;
+  letter-spacing: -0.02em;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+h1.book-main-title {
+  font-size: 2.25rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+  border-bottom: 2px solid #000000;
+  padding-bottom: 1rem;
+}
+
+.book-subtitle {
+  font-size: 1.15rem;
+  color: #444444;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.book-meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.875rem;
+  color: #555555;
+  padding: 0.75rem 0;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid #EEEEEE;
+}
+
+.book-meta-item strong {
+  color: #000000;
+}
+
+/* Table of Contents */
+.book-toc {
+  background: #FAFAFA;
+  border: 1px solid #E5E5E5;
+  border-left: 4px solid #DE2626;
+  border-radius: 4px;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0 3rem 0;
+}
+
+.book-toc h2 {
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.book-toc ol {
+  margin: 0;
+  padding-left: 1.5rem;
+}
+
+.book-toc li {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.book-toc a {
+  color: #000000;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.book-toc a:hover {
+  color: #DE2626;
+  text-decoration: underline;
+}
+
+/* Chapter Articles */
+article {
+  margin-bottom: 4rem;
+  padding-top: 1rem;
+  border-top: 1px dashed #DDDDDD;
+}
+
+article:first-of-type {
+  border-top: none;
+}
+
+.chapter-badge {
+  display: inline-block;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #DE2626;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+article h2 {
+  font-size: 1.65rem;
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  font-size: 1rem;
+}
+
+a {
+  color: #DE2626;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: #000000;
+}
+
+/* Code & Schema Containment Boxes */
+.bw-table-wrap, .bw-code-wrap, .bw-schema-box {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.5rem 0;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px;
+}
+
+.bw-table-wrap:focus, .bw-code-wrap:focus, .bw-schema-box:focus {
+  outline: 2px solid #DE2626;
+  outline-offset: 2px;
+}
+
+.bw-table-wrap table {
+  border-collapse: collapse;
+  width: max-content;
+  min-width: 100%;
+  font-size: 0.9rem;
+}
+
+.bw-table-wrap th, .bw-table-wrap td {
+  padding: 0.6rem 0.85rem;
+  border: 1px solid #E0E0E0;
+  text-align: left;
+}
+
+.bw-table-wrap th {
+  background: #F4F4F4;
+  font-weight: 600;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.bw-code-wrap, .bw-schema-box {
+  background: #000000;
+  padding: 0;
+}
+
+.bw-schema-box {
+  border-color: #DE2626;
+}
+
+.bw-code-wrap pre, .bw-schema-box pre {
+  margin: 0;
+  padding: 1.2rem;
+  white-space: pre-wrap;
+  color: #FFFFFF;
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 0.9em;
+  background: #F5F5F5;
+  padding: 0.2em 0.4em;
+  border-radius: 3px;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+blockquote {
+  border-left: 3px solid #DE2626;
+  margin: 1.5rem 0;
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  color: #444444;
+  font-style: italic;
+  background: #FAFAFA;
+}
+
+/* Footer & Attribution */
+footer.book-footer {
+  margin-top: 5rem;
+  border-top: 2px solid #000000;
+  padding-top: 1.5rem;
+  font-size: 0.85rem;
+  color: #555555;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+footer.book-footer a {
+  color: #000000;
+}
+
+footer.book-footer a:hover {
+  color: #DE2626;
+}
+
+/* Print Optimization */
+@media print {
+  body {
+    padding: 0;
+    font-size: 11pt;
+  }
+  .book-container {
+    max-width: 100%;
+  }
+  article {
+    page-break-after: always;
+  }
+  .book-toc {
+    border: none;
+    background: transparent;
+    padding: 0;
+  }
+  .bw-code-wrap, .bw-schema-box {
+    border: 1px solid #000000;
+    background: #FAFAFA;
+  }
+  .bw-code-wrap pre, .bw-schema-box pre {
+    color: #000000;
+  }
+}
+</style>
+</head>
+<body>
+<div class="book-container">
+
+<header class="book-header">
+  <h1 class="book-main-title">{{BOOK_TITLE}}</h1>
+  <div class="book-subtitle">{{BOOK_SUBTITLE}}</div>
+  
+  <div class="book-meta-bar">
+    <div class="book-meta-item"><strong>Author:</strong> {{AUTHOR_NAME}}</div>
+    <div class="book-meta-item"><strong>Category:</strong> {{BOOK_GENRE}}</div>
+    <div class="book-meta-item"><strong>Published:</strong> {{DATE_PUBLISHED}}</div>
+    <div class="book-meta-item"><strong>Sections:</strong> {{CHAPTER_COUNT}} Chapters</div>
+  </div>
+</header>
+
+<nav class="book-toc" role="navigation" aria-label="Table of Contents">
+  <h2>Table of Contents</h2>
+  <ol>
+{{TABLE_OF_CONTENTS}}
+  </ol>
+</nav>
+
+<main class="book-content">
+{{CHAPTERS_BODY}}
+</main>
+
+<footer class="book-footer">
+  <div>
+    <strong>{{BOOK_TITLE}}</strong> &copy; {{CURRENT_YEAR}} {{AUTHOR_NAME}}
+  </div>
+  <div>
+    Built with <a href="{{PUBLISHER_URL}}">Cli_Bookwriter</a> &middot; Standard BEJSON Ecosystem
+  </div>
+</footer>
+
+</div>
+</body>
+</html>

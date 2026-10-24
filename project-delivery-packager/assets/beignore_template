@@ -1,0 +1,29 @@
+# Standard BEJSON Project Exclusion Rules (.beignore)
+# Policy §3.4 Packaging & Archive Exclusions
+
+# Python bytecode & cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Runtime locks & temporary files
+*.lock
+*.tmp
+.tmp*
+.bejson_*
+data/temp/
+
+# VCS artifacts
+.git/
+.gitignore
+.gitattributes
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# Output & snapshots
+exports/
+backups/
+*.bak

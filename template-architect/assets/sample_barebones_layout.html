@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Title</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --fg: #000000;
+    --accent: #DE2626;
+    --border: #000000;
+  }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header.scaffold-header {
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+    font-weight: 700;
+  }
+  .scaffold-body {
+    display: flex;
+    flex: 1;
+  }
+  aside.scaffold-sidebar {
+    width: 240px;
+    border-right: 1px solid var(--border);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  main.scaffold-main {
+    flex: 1;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  footer.scaffold-footer {
+    border-top: 1px solid var(--border);
+    padding: 16px 20px;
+    font-size: 0.85rem;
+  }
+  .scaffold-box {
+    border: 1px dashed var(--border);
+    padding: 12px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+  <header class="scaffold-header">App Header</header>
+  <div class="scaffold-body">
+    <aside class="scaffold-sidebar">
+      <div class="scaffold-box">Sidebar link1</div>
+      <div class="scaffold-box">Sidebar link2</div>
+    </aside>
+    <main class="scaffold-main">
+      <h1>Page Title</h1>
+      <div class="scaffold-box" style="min-height: 240px;">Body Paragraph text</div>
+    </main>
+  </div>
+  <footer class="scaffold-footer">footer_text</footer>
+</body>
+</html>

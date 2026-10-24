@@ -1,0 +1,78 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "Concept_Idea_Patterns",
+  "Schema_Version": "1.0.0",
+  "Records_Type": [
+    "ConceptIdeaPattern"
+  ],
+  "Fields": [
+    {
+      "name": "idea_pattern_uuid",
+      "type": "string"
+    },
+    {
+      "name": "idea_pattern_code",
+      "type": "string"
+    },
+    {
+      "name": "idea_pattern_name",
+      "type": "string"
+    },
+    {
+      "name": "idea_archetype_family",
+      "type": "string"
+    },
+    {
+      "name": "idea_problem_solved",
+      "type": "string"
+    },
+    {
+      "name": "idea_mechanism_signature",
+      "type": "string"
+    },
+    {
+      "name": "idea_trigger_when",
+      "type": "string"
+    },
+    {
+      "name": "idea_anti_pattern_blocked",
+      "type": "string"
+    },
+    {
+      "name": "idea_target_layer_tier",
+      "type": "integer"
+    },
+    {
+      "name": "idea_created_at",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "d14e6f32-1c5a-4b80-9e34-5a7c9d1f2b63",
+      "CIP-001",
+      "Viewport-Locked Contained Canvas Pattern",
+      "spatial_ui",
+      "Eliminates full-window scroll jitter while keeping header and bottom widget shelf permanently anchored.",
+      "Locks body (overflow: hidden; height: var(--app-height)) synced via visualViewport and confines vertical scrolling to a 17-row (544px) inner main canvas.",
+      "Building single-page BEHTML documents, specifications, or telemetry consoles.",
+      "Unbounded window scrolling that pushes headers or bottom widget docks off-screen.",
+      4,
+      "2026-10-18T18:05:00Z"
+    ],
+    [
+      "e25f7a43-2d6b-4c91-8f45-6b8d0e2a3c74",
+      "CIP-002",
+      "Two-Stage Concept Nuance to Pattern Extraction Handoff",
+      "workflow_pipeline",
+      "Bridges raw conceptual brainstorming with forensic specification analysis without conflating broad harvesting and deep inspection.",
+      "Uses concept-idea-pattern-extraction to harvest and cluster atomic ideas into pattern cards, then routes locked designs to concept-nuance-pattern-analysis for 6-axis invariant dissection.",
+      "Converting unstructured user ideation or existing templates into reusable ecosystem skills.",
+      "Surface-level summaries that miss subtle mechanical couplings or lose raw seed ideas.",
+      5,
+      "2026-10-18T18:05:00Z"
+    ]
+  ]
+}

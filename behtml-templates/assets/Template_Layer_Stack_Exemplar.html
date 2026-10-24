@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>BEHTML Multi-Layer Stacking Exemplar // 4-Layer Architecture</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           BEHTML Multi-Layer Stacking Exemplar Template (Interactive 4-Layer System)
+           Author: Elton Boehnen · boehnenelton2024@gmail.com
+           Standards: Policy 8.1 Tri-Color (#000000, #FFFFFF, #DE2626)
+                      8-Lane Grid (12.5% columns) or 16-Wide Sublanes (6.25%)
+                      Ry = 32px Vertical Row Quantization
+                      Z-Plane Mathematical Occlusion: z-index = layer * 32
+                      Production Occlusion vs. IDE Depth Inspection
+                      Zero-Filler Structural Skeleton
+           ========================================================================== */
+        :root {
+            --app-height: 100dvh;
+            --top-dock-height: 64px;
+            --ry-unit: 32px;
+            --bg-page: #000000;
+            --bg-cell: #0a0a0a;
+            --bg-card: #121212;
+            --bg-panel: #161616;
+            --text-main: #FFFFFF;
+            --color-accent: #DE2626;
+            --color-accent-hover: #b91c1c;
+            --border-cell: 1px solid #222222;
+            --border-subtle: 1px solid #1a1a1a;
+            --color-muted: #888888;
+            --font-ui: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-main);
+            font-family: var(--font-ui);
+            overflow: hidden;
+            width: 100vw;
+            height: var(--app-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Contained Scrollbars */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 2px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--color-accent); }
+
+        /* ==========================================================================
+           LAYER 4: PERSISTENT CHROME & GLOBAL NAVIGATION (z-index: 128)
+           ========================================================================== */
+        .layer-4-chrome {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--top-dock-height);
+            background-color: #050505;
+            border-bottom: 2px solid var(--color-accent);
+            padding: 0 16px;
+            z-index: 128;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: opacity 0.2s ease;
+        }
+
+        .chrome-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .hamburger-btn {
+            background: transparent;
+            border: 1px solid #333333;
+            color: #FFFFFF;
+            width: 36px;
+            height: 36px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+        }
+        .hamburger-btn:hover {
+            border-color: var(--color-accent);
+        }
+        .hamburger-line {
+            width: 18px;
+            height: 2px;
+            background-color: #FFFFFF;
+        }
+
+        .brand-badge {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .brand-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--color-accent);
+            border-radius: 50%;
+        }
+
+        /* Layer Switch Control Bar */
+        .layer-control-hub {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background-color: #0d0d0d;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #222222;
+        }
+
+        .layer-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+        }
+
+        .layer-btn {
+            background: transparent;
+            border: 1px solid #333333;
+            color: #888888;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+        .layer-btn:hover {
+            color: #FFFFFF;
+            border-color: #555555;
+        }
+        .layer-btn.active {
+            background-color: var(--color-accent);
+            color: #FFFFFF;
+            border-color: var(--color-accent);
+        }
+
+        .toggle-btn {
+            background: #181818;
+            border: 1px solid #333333;
+            color: #FFFFFF;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 4px 8px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .toggle-btn:hover {
+            border-color: var(--color-accent);
+        }
+        .toggle-btn.active {
+            border-color: var(--color-accent);
+            color: var(--color-accent);
+        }
+
+        /* Sidebar Navigation Drawer (Layer 4) */
+        .sidebar-drawer {
+            position: fixed;
+            top: var(--top-dock-height);
+            left: -320px;
+            width: 320px;
+            height: calc(100% - var(--top-dock-height));
+            background-color: #080808;
+            border-right: 1px solid #222222;
+            z-index: 128;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 24px 16px;
+            transition: left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .sidebar-drawer.open {
+            left: 0;
+        }
+        .drawer-nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .drawer-nav-item a {
+            display: block;
+            padding: 10px 12px;
+            color: #CCCCCC;
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 13px;
+            border-radius: 4px;
+            border: 1px solid transparent;
+        }
+        .drawer-nav-item a:hover,
+        .drawer-nav-item a.active {
+            color: #FFFFFF;
+            background-color: #121212;
+            border-color: #222222;
+            border-left: 3px solid var(--color-accent);
+        }
+        .drawer-footer {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-muted);
+            border-top: 1px solid #1a1a1a;
+            padding-top: 12px;
+            line-height: 1.5;
+        }
+
+        /* ==========================================================================
+           STAGE WRAPPER & SPATIAL CANVAS (LAYER 1 BASE)
+           ========================================================================== */
+        .stage-wrapper {
+            position: absolute;
+            top: var(--top-dock-height);
+            left: 0;
+            width: 100vw;
+            height: calc(100% - var(--top-dock-height));
+            overflow-y: auto;
+            overflow-x: hidden;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-auto-rows: var(--ry-unit);
+            padding: 16px;
+            gap: 8px;
+        }
+
+        /* Development Grid Visualizer Overlay */
+        .stage-wrapper.debug-grid {
+            background-image: 
+                linear-gradient(to right, rgba(222, 38, 38, 0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(222, 38, 38, 0.08) 1px, transparent 1px);
+            background-size: 12.5% var(--ry-unit);
+        }
+
+        /* Depth Inspection Mode (IDE Mode) */
+        body.ide-depth-mode .layer-container {
+            border: 1px dashed rgba(222, 38, 38, 0.6) !important;
+        }
+        body.ide-depth-mode .layer-3-dialogue {
+            background-color: rgba(22, 22, 22, 0.85) !important;
+            backdrop-filter: blur(4px);
+        }
+
+        /* ==========================================================================
+           LAYER 1: BASE CANVAS & STRUCTURAL VOID (z-index: 0)
+           ========================================================================== */
+        .layer-1-canvas {
+            grid-column: 1 / -1;
+            grid-row: 1 / 3;
+            background-color: #060606;
+            border: var(--border-subtle);
+            border-left: 3px solid #444444;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 0;
+            transition: opacity 0.2s ease;
+        }
+        .void-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .void-metric {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-muted);
+        }
+
+        /* ==========================================================================
+           LAYER 2: SURFACE CONTENT & INTERACTIVE CONTROLS (z-index: 32)
+           ========================================================================== */
+        .layer-2-kpi {
+            grid-column: span 2;
+            grid-row: span 3;
+            background-color: var(--bg-card);
+            border: var(--border-cell);
+            border-top: 2px solid var(--color-accent);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 32;
+            transition: opacity 0.2s ease;
+        }
+        .kpi-title {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+        }
+        .kpi-value {
+            font-family: var(--font-mono);
+            font-size: 22px;
+            font-weight: 800;
+            color: #FFFFFF;
+        }
+        .kpi-badge {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-accent);
+        }
+
+        .layer-2-switches {
+            grid-column: span 2;
+            grid-row: span 3;
+            background-color: var(--bg-card);
+            border: var(--border-cell);
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 32;
+            transition: opacity 0.2s ease;
+        }
+
+        .switch-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .switch-row:last-child {
+            border-bottom: none;
+        }
+        .switch-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: #CCCCCC;
+        }
+
+        /* Fire Switch Component */
+        .fire-switch {
+            width: 36px;
+            height: 18px;
+            background-color: #222222;
+            border-radius: 9px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        .fire-switch::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 14px;
+            height: 14px;
+            background-color: #FFFFFF;
+            border-radius: 50%;
+            transition: transform 0.2s ease;
+        }
+        .fire-switch.active {
+            background-color: var(--color-accent);
+        }
+        .fire-switch.active::after {
+            transform: translateX(18px);
+        }
+
+        /* Layer 2: BEJSON Data Table */
+        .layer-2-table-container {
+            grid-column: 1 / -1;
+            grid-row: span 8;
+            background-color: var(--bg-cell);
+            border: var(--border-cell);
+            display: flex;
+            flex-direction: column;
+            z-index: 32;
+            overflow: hidden;
+            transition: opacity 0.2s ease;
+        }
+
+        .table-toolbar {
+            height: var(--ry-unit);
+            background-color: #0f0f0f;
+            border-bottom: var(--border-subtle);
+            padding: 0 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .toolbar-title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+        .toolbar-action-btn {
+            background: #1f1f1f;
+            border: 1px solid #333333;
+            color: #FFFFFF;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 2px;
+            cursor: pointer;
+        }
+        .toolbar-action-btn:hover {
+            border-color: var(--color-accent);
+        }
+
+        .table-scroll {
+            flex: 1;
+            overflow: auto;
+        }
+        .bejson-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            text-align: left;
+        }
+        .bejson-table th {
+            background-color: #121212;
+            color: var(--color-muted);
+            padding: 8px 12px;
+            border-bottom: 2px solid var(--color-accent);
+            text-transform: uppercase;
+            font-size: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        .bejson-table td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #181818;
+            color: #DDDDDD;
+        }
+        .bejson-table tr:hover td {
+            background-color: #161616;
+            color: #FFFFFF;
+        }
+        .status-pill {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .status-pill.active {
+            background-color: rgba(222, 38, 38, 0.2);
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+        }
+        .status-pill.idle {
+            background-color: #1e1e1e;
+            color: #888888;
+            border: 1px solid #333333;
+        }
+
+        /* ==========================================================================
+           LAYER 3: CONTEXTUAL PANELS & EPHEMERAL DIALOGUES (z-index: 96)
+           Enforces Production Occlusion: 100% Opaque Void Background
+           ========================================================================== */
+        .layer-3-backdrop {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 95;
+        }
+        .layer-3-backdrop.open {
+            display: block;
+        }
+
+        .layer-3-dialogue {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: min(540px, 90vw);
+            background-color: var(--bg-panel);
+            border: 1px solid #333333;
+            border-top: 3px solid var(--color-accent);
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.9);
+            z-index: 96;
+            flex-direction: column;
+            border-radius: 4px;
+        }
+        .layer-3-dialogue.open {
+            display: flex;
+        }
+
+        .dialogue-header {
+            height: 48px;
+            background-color: #0c0c0c;
+            border-bottom: var(--border-subtle);
+            padding: 0 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .dialogue-title {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .dialogue-close {
+            background: transparent;
+            border: none;
+            color: var(--color-muted);
+            font-size: 16px;
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+        .dialogue-close:hover {
+            color: var(--color-accent);
+        }
+
+        .dialogue-body {
+            padding: 20px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-family: var(--font-ui);
+            font-size: 13px;
+        }
+        .form-row {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .form-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-muted);
+            text-transform: uppercase;
+        }
+        .form-input {
+            background-color: #080808;
+            border: 1px solid #2a2a2a;
+            color: #FFFFFF;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            padding: 8px 12px;
+            border-radius: 3px;
+            outline: none;
+        }
+        .form-input:focus {
+            border-color: var(--color-accent);
+        }
+
+        .dialogue-footer {
+            height: 52px;
+            background-color: #0c0c0c;
+            border-top: var(--border-subtle);
+            padding: 0 16px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-cancel {
+            background: transparent;
+            border: 1px solid #333333;
+            color: #888888;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 6px 14px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn-apply {
+            background-color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            color: #FFFFFF;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 6px 14px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .btn-apply:hover {
+            background-color: var(--color-accent-hover);
+        }
+
+        /* Footer Credits (Policy §9.2) */
+        .stage-footer {
+            grid-column: 1 / -1;
+            grid-row: span 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #1a1a1a;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-muted);
+            padding: 8px 0;
+            z-index: 0;
+        }
+        .author-link {
+            color: var(--color-muted);
+            text-decoration: none;
+        }
+        .author-link:hover {
+            color: var(--color-accent);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- =======================================================================
+         LAYER 4: PERSISTENT CHROME & GLOBAL NAVIGATION (z-index: 128)
+         ======================================================================= -->
+    <header class="layer-4-chrome layer-container" data-layer="4">
+        <div class="chrome-left">
+            <button class="hamburger-btn" id="btn-hamburger" title="Toggle Navigation Drawer">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            <div class="brand-badge">
+                <span class="brand-dot"></span>
+                <span>BEHTML // LAYER STACK</span>
+            </div>
+        </div>
+
+        <!-- On-Screen Layer Switch Control -->
+        <div class="layer-control-hub">
+            <span class="layer-label">Active Plane:</span>
+            <button class="layer-btn active" data-target="all">ALL</button>
+            <button class="layer-btn" data-target="1">L1: VOID</button>
+            <button class="layer-btn" data-target="2">L2: SURFACE</button>
+            <button class="layer-btn" data-target="3">L3: PANEL</button>
+            <button class="layer-btn" data-target="4">L4: CHROME</button>
+            <button class="toggle-btn" id="btn-toggle-grid" title="Toggle 8-Lane Ry=32px Development Grid">GRID</button>
+            <button class="toggle-btn" id="btn-toggle-depth" title="Toggle IDE Depth Inspection Mode">DEPTH</button>
+            <button class="toggle-btn" id="btn-open-dialogue" title="Open Layer 3 Dialogue">OPEN L3</button>
+        </div>
+    </header>
+
+    <!-- Layer 4: Collapsible Navigation Drawer Sidebar -->
+    <nav class="sidebar-drawer layer-container" id="sidebar-drawer" data-layer="4">
+        <ul class="drawer-nav-list">
+            <li class="drawer-nav-item"><a href="#layer1" class="active">Layer 1: Structural Void</a></li>
+            <li class="drawer-nav-item"><a href="#layer2">Layer 2: Interactive Surface</a></li>
+            <li class="drawer-nav-item"><a href="#layer3">Layer 3: Dialogue Panels</a></li>
+            <li class="drawer-nav-item"><a href="#layer4">Layer 4: Persistent Chrome</a></li>
+            <li class="drawer-nav-item"><a href="#libraries">Library Stacking Mechanics</a></li>
+        </ul>
+        <div class="drawer-footer">
+            BEHTML Stacking Exemplar v1.0.0<br>
+            Policy §8.1 Tri-Color Protocol<br>
+            Elton Boehnen · boehnenelton2024@gmail.com
+        </div>
+    </nav>
+
+    <!-- =======================================================================
+         SPATIAL STAGE WRAPPER (8-Lane Grid, Ry=32px Rows)
+         ======================================================================= -->
+    <main class="stage-wrapper" id="stage-wrapper">
+
+        <!-- ===================================================================
+             LAYER 1: BASE CANVAS & STRUCTURAL VOID (z-index: 0)
+             =================================================================== -->
+        <section class="layer-1-canvas layer-container" data-layer="1">
+            <div class="void-title">Base Structural Void (Layer 1)</div>
+            <div class="void-metric">Viewport: 100vw × --app-height | Grid: 8-Lane (12.5%) | Ry: 32px Quantized</div>
+        </section>
+
+        <!-- ===================================================================
+             LAYER 2: SURFACE CONTENT & INTERACTIVE CONTROLS (z-index: 32)
+             =================================================================== -->
+        <div class="layer-2-kpi layer-container" data-layer="2">
+            <div class="kpi-title">Metric 1 // Ingest Rate</div>
+            <div class="kpi-value">1,420</div>
+            <div class="kpi-badge">+12.4% / CYCLE</div>
+        </div>
+
+        <div class="layer-2-kpi layer-container" data-layer="2">
+            <div class="kpi-title">Metric 2 // Latency Budget</div>
+            <div class="kpi-value">31.2 <span style="font-size:13px; color:#888;">ms</span></div>
+            <div class="kpi-badge">QUANTIZED RY=32px</div>
+        </div>
+
+        <div class="layer-2-kpi layer-container" data-layer="2">
+            <div class="kpi-title">Metric 3 // Memory Ceiling</div>
+            <div class="kpi-value">4.2 <span style="font-size:13px; color:#888;">MB</span></div>
+            <div class="kpi-badge">O(1) FIELD-MAP CACHE</div>
+        </div>
+
+        <!-- Fire Switches & Hardware Toggles (Layer 2) -->
+        <div class="layer-2-switches layer-container" data-layer="2">
+            <div class="switch-row">
+                <span class="switch-label">Fire Switch 1</span>
+                <div class="fire-switch active" data-switch="1"></div>
+            </div>
+            <div class="switch-row">
+                <span class="switch-label">Fire Switch 2</span>
+                <div class="fire-switch" data-switch="2"></div>
+            </div>
+            <div class="switch-row">
+                <span class="switch-label">Fire Switch 3</span>
+                <div class="fire-switch active" data-switch="3"></div>
+            </div>
+        </div>
+
+        <!-- BEJSON 104a Tabular Surface View (Layer 2) -->
+        <section class="layer-2-table-container layer-container" data-layer="2">
+            <div class="table-toolbar">
+                <span class="toolbar-title">BEJSON 104a Records Surface (Layer 2)</span>
+                <button class="toolbar-action-btn" id="btn-refresh-table">REFRESH SWEEP</button>
+            </div>
+            <div class="table-scroll">
+                <table class="bejson-table">
+                    <thead>
+                        <tr>
+                            <th>Record ID</th>
+                            <th>Entity Identifier</th>
+                            <th>Target Role</th>
+                            <th>Z-Plane</th>
+                            <th>Status Metric</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>REC_001</td>
+                            <td>viewport_stage_matrix</td>
+                            <td>Void Boundary</td>
+                            <td>Layer 1</td>
+                            <td><span class="status-pill active">ACTIVE</span></td>
+                        </tr>
+                        <tr>
+                            <td>REC_002</td>
+                            <td>kpi_ingest_widget</td>
+                            <td>Surface Content</td>
+                            <td>Layer 2</td>
+                            <td><span class="status-pill active">ACTIVE</span></td>
+                        </tr>
+                        <tr>
+                            <td>REC_003</td>
+                            <td>fire_switch_bank</td>
+                            <td>Hardware Control</td>
+                            <td>Layer 2</td>
+                            <td><span class="status-pill active">ACTIVE</span></td>
+                        </tr>
+                        <tr>
+                            <td>REC_004</td>
+                            <td>context_config_dialogue</td>
+                            <td>Ephemeral Focus</td>
+                            <td>Layer 3</td>
+                            <td><span class="status-pill idle">STANDBY</span></td>
+                        </tr>
+                        <tr>
+                            <td>REC_005</td>
+                            <td>docked_hub_chrome</td>
+                            <td>Persistent Nav</td>
+                            <td>Layer 4</td>
+                            <td><span class="status-pill active">ACTIVE</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Stage Footer Credits (Policy §9.2) -->
+        <footer class="stage-footer layer-container" data-layer="1">
+            <span>BEHTML Spatial Specification v1.0.0</span>
+            <span>Elton Boehnen · <a href="mailto:boehnenelton2024@gmail.com" class="author-link">boehnenelton2024@gmail.com</a> · <a href="https://boehnenelton2024.pages.dev" class="author-link" target="_blank">boehnenelton2024.pages.dev</a></span>
+        </footer>
+
+    </main>
+
+    <!-- =======================================================================
+         LAYER 3: CONTEXTUAL PANELS & EPHEMERAL DIALOGUES (z-index: 96)
+         Production Occlusion: 100% Solid Void Background (Halts bleed-through)
+         ======================================================================= -->
+    <div class="layer-3-backdrop" id="layer-3-backdrop"></div>
+    <div class="layer-3-dialogue layer-container" id="layer-3-dialogue" data-layer="3">
+        <div class="dialogue-header">
+            <span class="dialogue-title">Contextual Dialogue Panel (Layer 3)</span>
+            <button class="dialogue-close" id="btn-close-dialogue">✕</button>
+        </div>
+        <div class="dialogue-body">
+            <p style="color:#AAAAAA; font-size:12px; line-height:1.4;">
+                <strong>Production Occlusion Rule:</strong> Layer 3 panels possess a 100% opaque void background to completely occlude Layer 2 surface controls and prevent underlying click-through.
+            </p>
+            <div class="form-row">
+                <label class="form-label">Parameter Identifier</label>
+                <input type="text" class="form-input" value="PARAM_STREAM_BURST_RATE" readonly>
+            </div>
+            <div class="form-row">
+                <label class="form-label">Quantized Threshold (Ry Multiples)</label>
+                <input type="number" class="form-input" value="32" step="32">
+            </div>
+            <div class="form-row">
+                <label class="form-label">Driver Mode Selection</label>
+                <input type="text" class="form-input" value="termux" readonly>
+            </div>
+        </div>
+        <div class="dialogue-footer">
+            <button class="btn-cancel" id="btn-cancel-dialogue">CANCEL</button>
+            <button class="btn-apply" id="btn-apply-dialogue">APPLY SPECIFICATION</button>
+        </div>
+    </div>
+
+    <!-- =======================================================================
+         INTERACTIVE CONTROL SCRIPT: VIEWPORT SYNC & LAYER ISOLATION
+         ======================================================================= -->
+    <script>
+        // 1. Dynamic Viewport Height Synchronization
+        function syncAppHeight() {
+            if (window.visualViewport) {
+                document.documentElement.style.setProperty('--app-height', `${window.visualViewport.height}px`);
+            }
+        }
+        if (window.visualViewport) {
+            window.visualViewport.addEventListener('resize', syncAppHeight);
+        }
+        syncAppHeight();
+
+        // 2. Navigation Drawer Toggle (Layer 4)
+        const btnHamburger = document.getElementById('btn-hamburger');
+        const sidebarDrawer = document.getElementById('sidebar-drawer');
+        btnHamburger.addEventListener('click', () => {
+            sidebarDrawer.classList.toggle('open');
+        });
+
+        // Close drawer when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!sidebarDrawer.contains(e.target) && !btnHamburger.contains(e.target) && sidebarDrawer.classList.contains('open')) {
+                sidebarDrawer.classList.remove('open');
+            }
+        });
+
+        // 3. Layer 3 Dialogue Controls
+        const btnOpenDialogue = document.getElementById('btn-open-dialogue');
+        const btnCloseDialogue = document.getElementById('btn-close-dialogue');
+        const btnCancelDialogue = document.getElementById('btn-cancel-dialogue');
+        const btnApplyDialogue = document.getElementById('btn-apply-dialogue');
+        const layer3Backdrop = document.getElementById('layer-3-backdrop');
+        const layer3Dialogue = document.getElementById('layer-3-dialogue');
+
+        function openLayer3() {
+            layer3Backdrop.classList.add('open');
+            layer3Dialogue.classList.add('open');
+        }
+        function closeLayer3() {
+            layer3Backdrop.classList.remove('open');
+            layer3Dialogue.classList.remove('open');
+        }
+
+        btnOpenDialogue.addEventListener('click', openLayer3);
+        btnCloseDialogue.addEventListener('click', closeLayer3);
+        btnCancelDialogue.addEventListener('click', closeLayer3);
+        btnApplyDialogue.addEventListener('click', closeLayer3);
+        layer3Backdrop.addEventListener('click', closeLayer3);
+
+        // 4. Fire Switch Toggles (Layer 2)
+        document.querySelectorAll('.fire-switch').forEach(sw => {
+            sw.addEventListener('click', () => {
+                sw.classList.toggle('active');
+            });
+        });
+
+        // 5. Development Grid Toggle
+        const btnToggleGrid = document.getElementById('btn-toggle-grid');
+        const stageWrapper = document.getElementById('stage-wrapper');
+        btnToggleGrid.addEventListener('click', () => {
+            stageWrapper.classList.toggle('debug-grid');
+            btnToggleGrid.classList.toggle('active');
+        });
+
+        // 6. IDE Depth Inspection Mode Toggle
+        const btnToggleDepth = document.getElementById('btn-toggle-depth');
+        btnToggleDepth.addEventListener('click', () => {
+            document.body.classList.toggle('ide-depth-mode');
+            btnToggleDepth.classList.toggle('active');
+        });
+
+        // 7. On-Screen Layer Switch Control (All vs Individual Layer Isolation)
+        const layerButtons = document.querySelectorAll('.layer-btn');
+        const allLayerContainers = document.querySelectorAll('.layer-container');
+
+        layerButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                layerButtons.forEach(b => b.classList.remove('active'));
+                button.classList.add('active');
+
+                const targetLayer = button.getAttribute('data-target');
+
+                if (targetLayer === 'all') {
+                    allLayerContainers.forEach(container => {
+                        container.style.opacity = '1';
+                        container.style.pointerEvents = 'auto';
+                    });
+                    return;
+                }
+
+                // Isolate selected layer
+                allLayerContainers.forEach(container => {
+                    const containerLayer = container.getAttribute('data-layer');
+                    if (containerLayer === targetLayer) {
+                        container.style.opacity = '1';
+                        container.style.pointerEvents = 'auto';
+                    } else {
+                        container.style.opacity = '0.08';
+                        container.style.pointerEvents = 'none';
+                    }
+                });
+
+                // Auto-open modal if Layer 3 selected
+                if (targetLayer === '3') {
+                    openLayer3();
+                } else {
+                    closeLayer3();
+                }
+
+                // Auto-open sidebar if Layer 4 selected
+                if (targetLayer === '4') {
+                    sidebarDrawer.classList.add('open');
+                } else {
+                    sidebarDrawer.classList.remove('open');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

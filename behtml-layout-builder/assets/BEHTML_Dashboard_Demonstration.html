@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>Title</title>
+    <style>
+        /* ==========================================================================
+           1. BEHTML CORE DESIGN TOKENS & RESET
+           Incorporating strict OKLCH values from becss-core.css
+           ========================================================================== */
+        :root {
+            --app-height: 100dvh;
+            --top-dock-height: 70px;
+            
+            /* BEHTML Strict OKLCH Palette */
+            --bg-page: oklch(15% 0 0);
+            --bg-alt: oklch(20% 0 0);
+            --canvas-grid: oklch(25% 0 0);
+            --primary: oklch(58.1% 0.217 27.4); /* The exact verified red */
+            --primary-hover: oklch(50% 0.2 27.4);
+            
+            /* Typography */
+            --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-mono: 'Roboto Mono', ui-monospace, SFMono-Regular, monospace;
+            
+            /* Elevation & Borders */
+            --border-subtle: 1px solid oklch(30% 0 0);
+            --border-muted: 1px solid oklch(25% 0 0);
+            --radius: 6px;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-page);
+            color: #ffffff;
+            font-family: var(--font-sans);
+            overflow: hidden; 
+            width: 100vw;
+            height: var(--app-height); 
+        }
+
+        /* Custom Scrollbar for contained elements */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: oklch(40% 0 0); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+
+        /* ==========================================================================
+           2. TOP DOCKED CONTROL HUB
+           ========================================================================== */
+        .global-docked-top {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--top-dock-height);
+            background-color: oklch(10% 0 0);
+            border-bottom: 2px solid var(--primary);
+            padding: calc(8px + env(safe-area-inset-top, 0px)) 24px 8px 24px;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand-lockup {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 800;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .brand-badge {
+            background: var(--primary);
+            color: #fff;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .layer-control {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 13px;
+        }
+
+        .layer-control input[type="range"] {
+            accent-color: var(--primary);
+            width: 140px;
+            cursor: pointer;
+        }
+
+        .layer-readout {
+            color: var(--primary);
+            font-size: 22px;
+            font-weight: 900;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        /* ==========================================================================
+           3. THE BEHTML SPATIAL CANVAS
+           ========================================================================== */
+        .behtml-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr); 
+            grid-auto-rows: 32px;
+            padding-top: calc(var(--top-dock-height) + env(safe-area-inset-top, 0px) + 16px);
+            background-image: 
+                linear-gradient(to right, var(--canvas-grid) 1px, transparent 1px),
+                linear-gradient(to bottom, var(--canvas-grid) 1px, transparent 1px);
+            background-size: 12.5% 32px;
+            height: var(--app-height);
+            position: relative;
+        }
+
+        .z-panel {
+            grid-column: 1 / span 8;
+            grid-row: 1 / span 24; 
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            grid-auto-rows: 32px;
+            pointer-events: none; 
+        }
+
+        .behtml-cell {
+            pointer-events: auto;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background: var(--bg-alt);
+            border: var(--border-subtle);
+            border-radius: var(--radius);
+        }
+
+        /* ==========================================================================
+           4. LAYER 0: BASE DASHBOARD ARCHITECTURE (Z-Index: 0)
+           ========================================================================== */
+        
+        /* Reduced Header Sizes */
+        .obj-l0-header {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 24px;
+        }
+
+        .obj-l0-header .system-title {
+            color: oklch(60% 0 0); 
+            font-family: var(--font-mono); 
+            font-size: 11px; /* REDUCED FONT */
+            letter-spacing: 0.1em;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 12px; /* REDUCED FONT */
+            font-weight: 600;
+        }
+
+        .avatar {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* Hierarchical Nav Tree Sidebar */
+        .obj-l0-sidebar {
+            padding: 16px 8px;
+            gap: 4px;
+            overflow-y: auto;
+        }
+
+        .obj-l0-sidebar details { margin-bottom: 4px; }
+        .obj-l0-sidebar summary {
+            list-style: none; cursor: pointer; padding: 6px 12px;
+            font-weight: 600; font-size: 0.8rem; /* REDUCED FONT */
+            border-radius: var(--radius);
+            display: flex; align-items: center; justify-content: space-between;
+            color: oklch(80% 0 0);
+        }
+        
+        .obj-l0-sidebar summary:hover { background: oklch(25% 0 0); }
+        .obj-l0-sidebar summary::after {
+            content: '\276F'; 
+            font-size: 0.7rem;
+            transition: transform 0.2s;
+            font-family: "Segoe UI Symbol", "Noto Sans Symbols", sans-serif;
+        }
+        .obj-l0-sidebar details[open] > summary::after { transform: rotate(90deg); }
+        .navtree-nested {
+            padding-left: 20px; margin-top: 2px; border-left: 1px solid var(--border-muted);
+            margin-left: 12px; display: flex; flex-direction: column; gap: 2px;
+        }
+        
+        .nav-item {
+            padding: 6px 12px;
+            color: oklch(60% 0 0);
+            font-size: 0.75rem; /* REDUCED FONT */
+            font-weight: 500;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .nav-item:hover { background: oklch(25% 0 0); color: #fff; }
+
+        /* Metric Cards */
+        .obj-l0-metric {
+            padding: 16px;
+            justify-content: center;
+        }
+        .metric-label { font-size: 10px; color: oklch(60% 0 0); text-transform: uppercase; } /* REDUCED */
+        .metric-value { font-size: 22px; font-weight: 800; color: #fff; margin-top: 4px; } /* REDUCED */
+        .metric-trend { font-size: 11px; color: var(--primary); margin-top: 4px; font-weight: bold; }
+
+        /* BEJSON Data Table */
+        .obj-l0-table-container {
+            padding: 16px;
+            overflow-y: auto;
+        }
+        
+        .table-header {
+            font-size: 12px; /* REDUCED */
+            font-weight: bold;
+            color: oklch(80% 0 0);
+            margin-bottom: 12px;
+            border-bottom: var(--border-muted);
+            padding-bottom: 8px;
+        }
+
+        .becss-bejson-table__table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.8rem; /* REDUCED */
+            min-width: 400px; 
+        }
+        .becss-bejson-table__th {
+            background: oklch(22% 0 0);
+            padding: 8px 12px;
+            font-weight: 600;
+            border-bottom: 2px solid var(--border-subtle);
+        }
+        .becss-bejson-table__td {
+            padding: 8px 12px;
+            border-bottom: 1px solid var(--border-muted);
+            vertical-align: middle;
+        }
+        .becss-bejson-table__status {
+            font-size: 0.7rem;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: oklch(30% 0.1 150);
+            color: #fff;
+        }
+
+        /* ==========================================================================
+           5. LAYER 1: INVERTED OVERLAY (Z-Index: 32)
+           ========================================================================== */
+        
+        .obj-l1-modal {
+            background: #ffffff;
+            color: #000000;
+            border: 4px solid var(--primary);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column; 
+            /* Grid gutters enforced natively by internal padding instead of margin to preserve box sizing */
+        }
+
+        .modal-header {
+            font-size: 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-bottom: 3px solid #000;
+            padding: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f8f8;
+            flex-shrink: 0; /* Prevents header from collapsing */
+        }
+
+        .modal-tag {
+            background: var(--primary);
+            color: #fff;
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-weight: bold;
+        }
+
+        /* --- THE SCROLLABLE CONTENT CONTAINER --- */
+        .modal-scroll-area {
+            flex: 1; /* Takes up all remaining vertical space in the grid cell */
+            overflow-y: auto; /* Vertically scrolls only this inner box */
+            padding: 24px;
+            font-size: 14px;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .clarification-note {
+            background: #f0f0f0;
+            border-left: 6px solid var(--primary);
+            padding: 16px 24px;
+            margin: 20px 0;
+            font-family: var(--font-mono);
+            font-size: 13px;
+        }
+
+        .clarification-note strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .modal-footer {
+            padding: 16px 24px;
+            border-top: 1px solid #ddd;
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            background: #fff;
+            flex-shrink: 0; /* Prevents footer from collapsing */
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #000;
+            border: 2px solid #000;
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .btn-solid {
+            background: var(--primary);
+            color: #fff;
+            border: 2px solid var(--primary);
+            padding: 10px 20px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        /* ==========================================================================
+           6. LAYER 2: GOD MODE / FLOATING CONTROLS (Z-Index: 64)
+           ========================================================================== */
+        
+        .obj-l2-toast {
+            background: oklch(10% 0 0);
+            border: var(--border-subtle);
+            border-left: 6px solid var(--primary);
+            border-radius: 6px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.8);
+            padding: 16px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toast-text { font-size: 13px; font-weight: 600; }
+
+        .obj-l2-fab {
+            background: var(--primary);
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            box-shadow: 0 8px 24px rgba(222, 38, 38, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+        }
+
+        .obj-l2-fab:hover {
+            transform: scale(1.05);
+            background: var(--primary-hover);
+        }
+
+        .fab-icon { font-size: 24px; line-height: 1; font-weight: 300; }
+
+    </style>
+</head>
+<body>
+
+    
+    <header class="global-docked-top">
+        <div class="brand-lockup">
+            <span>Title</span>
+            <span class="brand-badge">Badge</span>
+        </div>
+        <div class="layer-control">
+            <label for="z-slider">ACTIVE LAYER:</label>
+            
+            <input type="range" id="z-slider" min="0" max="2" step="1" value="0">
+            <span class="layer-readout" id="layer-readout">0</span>
+        </div>
+    </header>
+
+    <div class="behtml-grid" id="main-grid">
+        
+        
+        <div class="z-panel" data-z-layer="0" id="panel-0" style="z-index: 0;">
+            
+            
+            <div class="behtml-cell obj-l0-header" style="grid-column: 1 / span 8; grid-row: 1 / span 2;">
+                <div class="system-title">Title</div>
+                <div class="user-profile">
+                    <span>User</span>
+                    <div class="avatar">U</div>
+                </div>
+            </div>
+
+            
+            <div class="behtml-cell obj-l0-sidebar" style="grid-column: 1 / span 2; grid-row: 3 / span 20;">
+                <details open>
+                    <summary>List</summary>
+                    <div class="navtree-nested">
+                        <div class="nav-item">List Item 1</div>
+                        <div class="nav-item">List Item 2</div>
+                    </div>
+                </details>
+            </div>
+
+            
+            <div class="behtml-cell obj-l0-metric" style="grid-column: 3 / span 2; grid-row: 3 / span 3;">
+                <div class="metric-label">Title</div>
+                <div class="metric-value">Value</div>
+                <div class="metric-trend">Trend</div>
+            </div>
+
+            <div class="behtml-cell obj-l0-metric" style="grid-column: 5 / span 2; grid-row: 3 / span 3;">
+                <div class="metric-label">Title</div>
+                <div class="metric-value">Value</div>
+                <div class="metric-trend" style="color: oklch(60% 0 0);">Trend</div>
+            </div>
+
+            <div class="behtml-cell obj-l0-metric" style="grid-column: 7 / span 2; grid-row: 3 / span 3;">
+                <div class="metric-label">Title</div>
+                <div class="metric-value">Value</div>
+                <div class="metric-trend" style="color: oklch(60% 0 0);">Trend</div>
+            </div>
+
+            
+            <div class="behtml-cell obj-l0-table-container" style="grid-column: 3 / span 6; grid-row: 6 / span 17;">
+                <div class="table-header">Title</div>
+                <table class="becss-bejson-table__table">
+                    <thead>
+                        <tr>
+                            <th class="becss-bejson-table__th">Column 1</th>
+                            <th class="becss-bejson-table__th">Column 2</th>
+                            <th class="becss-bejson-table__th">Column 3</th>
+                            <th class="becss-bejson-table__th">Column 4</th>
+                            <th class="becss-bejson-table__th">Column 5</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="becss-bejson-table__td">Item 1</td>
+                            <td class="becss-bejson-table__td">Item 2</td>
+                            <td class="becss-bejson-table__td">Item 3</td>
+                            <td class="becss-bejson-table__td">Item 4</td>
+                            <td class="becss-bejson-table__td"><span class="becss-bejson-table__status">Status</span></td>
+                        </tr>
+                        <tr>
+                            <td class="becss-bejson-table__td">Item 1</td>
+                            <td class="becss-bejson-table__td">Item 2</td>
+                            <td class="becss-bejson-table__td">Item 3</td>
+                            <td class="becss-bejson-table__td">Item 4</td>
+                            <td class="becss-bejson-table__td"><span class="becss-bejson-table__status">Status</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+        <div class="z-panel" data-z-layer="1" id="panel-1" style="z-index: 32; display: none;">
+            
+            
+            <div class="behtml-cell obj-l1-modal" style="grid-column: 2 / span 6; grid-row: 4 / span 16;">
+                
+                
+                <div class="modal-header">
+                    <span>Title</span>
+                    <span class="modal-tag">Tag</span>
+                </div>
+                
+                <div class="modal-scroll-area">
+                    <p>Body</p>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn-outline">Cancel</button>
+                    <button class="btn-solid">Submit</button>
+                </div>
+
+            </div>
+        </div>
+
+        
+        <div class="z-panel" data-z-layer="2" id="panel-2" style="z-index: 64; display: none;">
+            
+            
+            <div class="behtml-cell obj-l2-toast" style="grid-column: 5 / span 3; grid-row: 2 / span 2;">
+                <span class="toast-text">Toast</span>
+                <span style="color: #666; cursor: pointer; font-family: var(--font-mono);">[X]</span>
+            </div>
+
+            
+            <button class="behtml-cell obj-l2-fab" style="grid-column: 8 / span 1; grid-row: 21 / span 2;">
+                <span class="fab-icon">+</span>
+            </button>
+
+        </div>
+
+    </div>
+
+    <script>
+        const zSlider = document.getElementById('z-slider');
+        const layerReadout = document.getElementById('layer-readout');
+        const panels = document.querySelectorAll('.z-panel');
+        
+        /**
+         * PRODUCTION OVERLAY LOGIC
+         * Strict isolation: The active layer is set to display: grid. 
+         * All other layers are set to display: none.
+         */
+        function isolateActiveLayer(activeLayerIndex) {
+            layerReadout.textContent = activeLayerIndex;
+
+            panels.forEach(panel => {
+                const panelLayer = parseInt(panel.dataset.zLayer, 10);
+                
+                if (panelLayer === activeLayerIndex) {
+                    panel.style.display = 'grid'; // Fully visible
+                } else {
+                    panel.style.display = 'none'; // Completely hidden
+                }
+            });
+        }
+
+        zSlider.addEventListener('input', (e) => {
+            isolateActiveLayer(parseInt(e.target.value, 10));
+        });
+
+        // Initialize viewport tracking for mobile browser toolbars
+        if (window.visualViewport) {
+            const syncViewportHeight = () => {
+                document.documentElement.style.setProperty(
+                    '--app-height',
+                    `${window.visualViewport.height}px`
+                );
+            };
+            window.visualViewport.addEventListener('resize', syncViewportHeight);
+            syncViewportHeight();
+        }
+
+        // Initialize at Layer 0 (Base Dashboard)
+        isolateActiveLayer(0);
+    </script>
+</body>
+</html>

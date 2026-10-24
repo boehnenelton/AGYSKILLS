@@ -1,0 +1,1031 @@
+<!--
+================================================================================
+NAME: Template_Declaration_of_Standardization.html
+DESCRIPTION: Canonical BEHTML 16-Sublane (Ry=32px) Declaration of Standardization
+             Specialized Document Template with Multi-File Tab Switcher & Input Box.
+VERSION: 100
+DATE_CREATED: 2026-10-18
+AUTHOR: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
+RELATIONAL_ID: e941c75c-e52c-4ab8-b6e4-62ba6f89cc91
+================================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"/>
+    <title>Declaration of Standardization</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --app-height: 100dvh;
+            --ry-unit: 32px;
+            --bg-canvas: #ffffff;
+            --text-primary: #000000;
+            --color-accent: #DE2626;
+            --color-muted-gray: #71717a;
+            --color-disabled-gray: #a1a1aa;
+            --color-disabled-bg: #f4f4f5;
+            --border-canvas: 1px solid transparent;
+            --font-ui: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Viewport lock: window never scrolls, inner document canvas handles overflow */
+        body {
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            font-family: var(--font-ui);
+            font-size: 15px;
+            line-height: 1.6;
+            width: 100vw;
+            height: var(--app-height);
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* 16-sublane grid: Sublane 1 (0.5 cell: 6.25%), Sublanes 2..15 (7 cells: 87.5%), Sublane 16 (0.5 cell: 6.25%) */
+        .behtml-stage {
+            display: grid;
+            grid-template-columns: 6.25% repeat(14, 6.25%) 6.25%;
+            grid-auto-rows: var(--ry-unit);
+            width: 100vw;
+            height: var(--app-height);
+            background-color: var(--bg-canvas);
+        }
+
+        /* Row 1: Full-width Title Bar with bottom accent */
+        .behtml-title-bar {
+            grid-column: 1 / -1;
+            grid-row: 1 / span 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            border-bottom: 2px solid var(--color-accent);
+            background-color: var(--bg-canvas);
+            z-index: 20;
+        }
+
+        .behtml-title-bar h1 {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+        }
+
+        .behtml-title-bar h1 span {
+            color: var(--color-accent);
+        }
+
+        /* Canvas: 17 rows (Rows 2..18 = 544px) - Completely transparent bottom border */
+        .behtml-doc-canvas {
+            grid-column: 2 / 16;
+            grid-row: 2 / span 17;
+            height: calc(17 * var(--ry-unit));
+            max-height: calc(17 * var(--ry-unit));
+            display: block;
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: 16px 24px 20px;
+            background-color: var(--bg-canvas);
+            border: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .behtml-doc-canvas > * {
+            flex-shrink: 0;
+        }
+
+        /* 0.5-Cell Side Boundaries: Completely transparent and seamless */
+        .behtml-edge-gutter {
+            background-color: var(--bg-canvas);
+            pointer-events: none;
+        }
+
+        .gutter-left {
+            grid-column: 1 / 2;
+            grid-row: 2 / span 17;
+            border-right: 1px solid transparent;
+        }
+
+        .gutter-right {
+            grid-column: 16 / -1;
+            grid-row: 2 / span 17;
+            border-left: 1px solid transparent;
+        }
+
+        .behtml-doc-canvas::-webkit-scrollbar {
+            width: 4px;
+        }
+        .behtml-doc-canvas::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .behtml-doc-canvas::-webkit-scrollbar-thumb {
+            background: var(--color-disabled-gray);
+        }
+        .behtml-doc-canvas::-webkit-scrollbar-thumb:hover {
+            background: var(--color-accent);
+        }
+
+        /* Section Heading & Sub-Heading Metadata Block */
+        .behtml-doc-canvas h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-top: 1.25rem;
+            margin-bottom: 0.25rem;
+            border-left: 3px solid var(--color-accent);
+            padding-left: 0.75rem;
+            line-height: 1.2;
+        }
+
+        .behtml-doc-canvas h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .section-meta-bar {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            padding-left: 0.75rem;
+            border-left: 3px solid transparent;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .section-meta-bar span {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .section-meta-bar em {
+            color: var(--color-muted-gray);
+            font-style: italic;
+        }
+
+        .behtml-doc-canvas p {
+            margin-bottom: 1.25rem;
+            color: var(--text-primary);
+            text-align: justify;
+        }
+
+        strong, b {
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        em, i {
+            font-style: italic;
+            color: var(--color-muted-gray);
+        }
+
+        /* Pattern Cards Grid inside Canvas */
+        .pattern-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 12px;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .pattern-card {
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--text-primary);
+            border-left: 4px solid var(--color-accent);
+            padding: 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .pattern-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 1px solid #e4e4e7;
+            padding-bottom: 4px;
+        }
+
+        .pattern-card-header span {
+            color: var(--color-accent);
+        }
+
+        .pattern-card-body {
+            font-size: 0.82rem;
+            line-height: 1.45;
+            color: var(--text-primary);
+        }
+
+        .pattern-card-footer {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--color-muted-gray);
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Multi-File Tab Switcher & Embedded Standardization Input Box */
+        .std-multifile-switcher {
+            margin: 0.5rem 0 1.5rem;
+            border: 1px solid var(--text-primary);
+            background-color: var(--bg-canvas);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .std-tab-strip {
+            display: flex;
+            overflow-x: auto;
+            border-bottom: 2px solid var(--color-accent);
+            background-color: var(--bg-canvas);
+            scrollbar-width: none;
+        }
+
+        .std-tab-strip::-webkit-scrollbar {
+            height: 0;
+        }
+
+        .std-file-tab {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            font-weight: 700;
+            padding: 8px 14px;
+            border: none;
+            border-right: 1px solid #e4e4e7;
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0.03em;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .std-file-tab:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-canvas);
+        }
+
+        .std-file-tab.active {
+            background-color: var(--color-accent);
+            color: var(--bg-canvas);
+            border-right-color: var(--color-accent);
+        }
+
+        .std-file-meta-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 6px 12px;
+            border-bottom: 1px solid #e4e4e7;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background-color: var(--bg-canvas);
+        }
+
+        .std-file-meta-bar .meta-key {
+            color: var(--color-muted-gray);
+        }
+
+        .std-file-meta-bar .meta-val {
+            color: var(--color-accent);
+            font-weight: 700;
+        }
+
+        .std-declaration-title-input {
+            width: 100%;
+            border: none;
+            border-bottom: 1px solid #e4e4e7;
+            padding: 8px 12px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-primary);
+            background-color: var(--bg-canvas);
+            outline: none;
+        }
+
+        .std-declaration-title-input:focus {
+            border-bottom: 1px solid var(--color-accent);
+        }
+
+        .std-template-input-box {
+            display: block;
+            width: 100%;
+            min-height: 224px;
+            height: calc(7 * var(--ry-unit));
+            padding: 12px;
+            border: none;
+            border-left: 4px solid var(--color-accent);
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+            overflow-y: auto;
+            white-space: pre;
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        /* Telemetry Data Table */
+        .data-table-wrapper {
+            margin: 1.25rem 0 1.75rem;
+            overflow-x: auto;
+            border: 1px solid var(--text-primary);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+        }
+
+        th {
+            background-color: var(--bg-canvas);
+            color: var(--text-primary);
+            font-weight: 700;
+            text-align: left;
+            padding: 8px 12px;
+            border-bottom: 2px solid var(--color-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 8px 12px;
+            border-bottom: 1px solid #e4e4e7;
+            color: var(--text-primary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status-badge {
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .status-badge-disabled {
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            background-color: var(--color-disabled-bg);
+            color: var(--color-disabled-gray);
+            border: 1px solid var(--color-disabled-gray);
+            text-transform: uppercase;
+        }
+
+        /* Monospace Pre Block */
+        code {
+            font-family: var(--font-mono);
+            font-size: 0.85em;
+            color: var(--color-accent);
+            font-weight: 500;
+        }
+
+        pre, textarea, .text-box {
+            display: block;
+            width: 100%;
+            min-height: calc(3 * var(--ry-unit));
+            line-height: 1.5;
+            background-color: var(--bg-canvas);
+            border: 1px solid var(--text-primary);
+            border-left: 4px solid var(--color-accent);
+            padding: 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            color: var(--text-primary);
+            box-sizing: border-box;
+            flex-shrink: 0;
+        }
+
+        pre code {
+            color: var(--text-primary);
+            font-size: 0.85rem;
+            white-space: pre;
+            line-height: 1.5;
+        }
+
+        /* Action Buttons */
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        button {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 8px 16px;
+            border: 1px solid var(--color-accent);
+            background-color: var(--color-accent);
+            color: #ffffff;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        button:hover {
+            background-color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+
+        button:disabled {
+            background-color: var(--color-disabled-bg);
+            border-color: var(--color-disabled-gray);
+            color: var(--color-disabled-gray);
+            cursor: not-allowed;
+        }
+
+        /* Monospace Author Null Footer Bar */
+        .author-null-footer {
+            margin-top: 2rem;
+            padding-top: 14px;
+            border-top: 1px solid var(--text-primary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .author-null-footer .auth-field {
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+
+        .author-null-footer .null-token {
+            color: var(--color-muted-gray);
+            font-style: italic;
+        }
+
+        /* Widgets Shelf: Shifted to Row 20 (Height 5 rows = 160px) */
+        .behtml-widget-shelf {
+            grid-column: 2 / 16;
+            grid-row: 20 / span 5;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            padding: 0 16px;
+            background-color: var(--bg-canvas);
+        }
+
+        /* 150x150 Widget Blocks: Completely transparent seamless borders */
+        .widget-block {
+            width: 150px;
+            min-width: 150px;
+            max-width: 150px;
+            height: 150px;
+            min-height: 150px;
+            max-height: 150px;
+            border: 1px solid transparent;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: var(--bg-canvas);
+            flex-shrink: 0;
+        }
+
+        .widget-block-header {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 4px;
+        }
+
+        .widget-block-body {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            color: var(--color-muted-gray);
+            font-style: italic;
+            text-align: center;
+        }
+
+        .widget-block-footer {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--color-accent);
+            text-transform: uppercase;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="behtml-stage">
+        <!-- Row 1: Full-Width Seamless Title Bar with Red Bottom Line -->
+        <header class="behtml-title-bar">
+            <h1><span>//</span> DECLARATION OF STANDARDIZATION <span>01</span></h1>
+        </header>
+
+        <!-- 0.5-Cell Side Boundaries: Completely transparent -->
+        <div class="behtml-edge-gutter gutter-left"></div>
+        <div class="behtml-edge-gutter gutter-right"></div>
+
+        <!-- Canvas: 17 Rows = 544px, Completely transparent borders -->
+        <main class="behtml-doc-canvas">
+            <h2>Declaration of Standardization</h2>
+            <div class="section-meta-bar">
+                <div>DOC_TYPE: <span>STANDARDIZATION_DECLARATION</span></div>
+                <div>DATE: <span>2026-10-18</span></div>
+                <div>AUTHOR: <span>NULL</span></div>
+                <div>STATUS: <em>RATIFIED // LOCKED</em></div>
+            </div>
+
+            <p>This <strong>Declaration of Standardization</strong> establishes the immutable structural, schema, and spatial contracts across the ecosystem. All declared schemas, templates, and conceptual pattern cards embedded inside the <strong>Multi-File Standardization Switcher</strong> below enforce <em>O(1) Field Map Cache resolution</em>, <em>boundary-layer whitespace sanitization</em>, and <em>16-sublane Ry=32px spatial quantization</em>.</p>
+
+            <h2>Declared Pattern Cards</h2>
+            <div class="pattern-card-grid">
+                <div class="pattern-card">
+                    <div class="pattern-card-header"><span>CIP-001</span> FIELD MAP CACHE</div>
+                    <div class="pattern-card-body">Resolves all BEJSON column reads and writes via <code>field_map[col_name]</code>; positional indexing (<code>row[0]</code>) is strictly prohibited.</div>
+                    <div class="pattern-card-footer"><span>LAYER 1..6</span><span>LOCKED</span></div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-card-header"><span>CNP-001</span> SEAMLESS STAGE</div>
+                    <div class="pattern-card-body">16-sublane X-axis (<code>6.25% / 87.5% / 6.25%</code>) and <code>Ry=32px</code> vertical rows with <code>1px solid transparent</code> boundaries.</div>
+                    <div class="pattern-card-footer"><span>LAYER 4</span><span>LOCKED</span></div>
+                </div>
+                <div class="pattern-card">
+                    <div class="pattern-card-header"><span>CIP-002</span> GUID GOVERNANCE</div>
+                    <div class="pattern-card-body">Retains <code>GUID_PLACEHOLDER</code> until populated by <code>cli_project_register.py</code>; updates <code>RELATIONAL_ID</code> per payload change.</div>
+                    <div class="pattern-card-footer"><span>POLICY 4.6</span><span>LOCKED</span></div>
+                </div>
+            </div>
+
+            <h2>Embedded Standardization Templates (Multi-File Switcher)</h2>
+            <div class="std-multifile-switcher" id="stdSwitcher">
+                <div class="std-tab-strip" id="stdTabStrip" role="tablist">
+                    <button type="button" class="std-file-tab active" data-tab-key="schema_104a">schema_104a.bejson</button>
+                    <button type="button" class="std-file-tab" data-tab-key="entity_104">entity_104.bejson</button>
+                    <button type="button" class="std-file-tab" data-tab-key="entity_105">entity_105.bejson</button>
+                    <button type="button" class="std-file-tab" data-tab-key="project_v170">bejson_project.json</button>
+                    <button type="button" class="std-file-tab" data-tab-key="pattern_card">pattern_card.md</button>
+                    <button type="button" class="std-file-tab" data-tab-key="behtml_doc">behtml_doc.html</button>
+                </div>
+                <div class="std-file-meta-bar">
+                    <div>FILE: <span class="meta-val" id="stdActiveFilename">schema_104a.bejson</span></div>
+                    <div>STANDARD: <span class="meta-val" id="stdActiveStandard">BEJSON 104a (Release 300)</span></div>
+                    <div>LINES: <span class="meta-val" id="stdActiveLineCount">0</span></div>
+                    <div>STATE: <span class="meta-val" id="stdActiveState">CANONICAL</span></div>
+                </div>
+                <input
+                    type="text"
+                    id="stdDeclarationHeaderInput"
+                    class="std-declaration-title-input"
+                    value="DECLARATION // BEJSON 104a ScriptConfig & Registry Standard"
+                    aria-label="Standardization Declaration Rule Summary"
+                />
+                <textarea
+                    id="stdTemplateInputBox"
+                    class="std-template-input-box"
+                    spellcheck="false"
+                    aria-label="Embedded Standardization Template Input Box"
+                ></textarea>
+            </div>
+
+            <div class="control-row">
+                <button type="button" id="btnCommitStd">Commit Declaration</button>
+                <button type="button" id="btnCopyStd">Copy Active Template</button>
+                <button type="button" id="btnNewTabStd">Add Template Tab</button>
+                <button type="button" id="btnResetStd">Reset Baseline</button>
+            </div>
+
+            <h2>Ratified Standardization Registry</h2>
+            <div class="data-table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Template Key</th>
+                            <th>Standard / Dialect</th>
+                            <th>Locked Invariant</th>
+                            <th>Template Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>schema_104a.bejson</code></td>
+                            <td>BEJSON 104a [Rel 300]</td>
+                            <td><span class="status-badge">PRIMITIVE_FIELDS</span></td>
+                            <td><button type="button" data-load-tab="schema_104a">Load Tab</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>entity_104.bejson</code></td>
+                            <td>BEJSON 104 [Rel 300]</td>
+                            <td><span class="status-badge">O(1)_FIELD_MAP</span></td>
+                            <td><button type="button" data-load-tab="entity_104">Load Tab</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>entity_105.bejson</code></td>
+                            <td>BEJSON 105 [Rel 301]</td>
+                            <td><span class="status-badge">FIELD_RECORD_UUID</span></td>
+                            <td><button type="button" data-load-tab="entity_105">Load Tab</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>bejson_project.json</code></td>
+                            <td>Schema v1.7.0 [104a]</td>
+                            <td><span class="status-badge">GUID_PLACEHOLDER</span></td>
+                            <td><button type="button" data-load-tab="project_v170">Load Tab</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>pattern_card.md</code></td>
+                            <td>Concepts L5 [CIP/CNP]</td>
+                            <td><span class="status-badge">6_AXIS_NUANCE</span></td>
+                            <td><button type="button" data-load-tab="pattern_card">Load Tab</button></td>
+                        </tr>
+                        <tr>
+                            <td><code>behtml_doc.html</code></td>
+                            <td>BEHTML 16-Sublane</td>
+                            <td><span class="status-badge">RY_32PX_544PX</span></td>
+                            <td><button type="button" data-load-tab="behtml_doc">Load Tab</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>Execution & Verification Contract</h2>
+            <pre><code>{
+  "declaration_format": "BEHTML_STANDARDIZATION_DECLARATION",
+  "stage_columns": "6.25% repeat(14, 6.25%) 6.25%",
+  "canvas_rows": "2 / span 17 (544px)",
+  "buffer_row": "19 (32px)",
+  "widget_shelf_rows": "20 / span 5 (160px)",
+  "field_map_required": true,
+  "author_signature": null
+}</code></pre>
+
+            <footer class="author-null-footer">
+                <div>AUTHOR: <span class="auth-field">null</span> · Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton</div>
+                <div class="null-token">VERSION 100 // RELATIONAL_ID: e941c75c-e52c-4ab8-b6e4-62ba6f89cc91</div>
+            </footer>
+        </main>
+
+        <!-- Widgets Shelf: Centered, Transparent Outer Box Borders -->
+        <section class="behtml-widget-shelf">
+            <div class="widget-block">
+                <div class="widget-block-header">STD TABS</div>
+                <div class="widget-block-body"><em id="widgetTabCount">6 Embedded</em></div>
+                <div class="widget-block-footer" id="widgetActiveKey">SCHEMA_104A</div>
+            </div>
+            <div class="widget-block">
+                <div class="widget-block-header">STAGE LOCK</div>
+                <div class="widget-block-body"><em>16x24 [Ry=32px]</em></div>
+                <div class="widget-block-footer" id="widgetCommitState">RATIFIED</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const VERSION = 100;
+        const RELATIONAL_ID = "e941c75c-e52c-4ab8-b6e4-62ba6f89cc91";
+
+        if (window.visualViewport) {
+            const syncCanvasHeight = () => {
+                document.documentElement.style.setProperty(
+                    '--app-height',
+                    `${window.visualViewport.height}px`
+                );
+            };
+            window.visualViewport.addEventListener('resize', syncCanvasHeight);
+            syncCanvasHeight();
+        }
+
+        const BASELINE_TEMPLATES = {
+            schema_104a: {
+                filename: "schema_104a.bejson",
+                standard: "BEJSON 104a (Release 300)",
+                declaration: "DECLARATION // BEJSON 104a ScriptConfig & Schema Registry Template",
+                content: `{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["ScriptConfig"],
+  "Fields": [
+    {"name": "setting_name",  "type": "string"},
+    {"name": "setting_value", "type": "any"},
+    {"name": "description",   "type": "string"}
+  ],
+  "Values": [
+    ["local_lib_directory", "lib/", "Relative path to local dependency folder."],
+    ["master_lib_source", "$ADMIN_LIBRARIES", "Fallback if local lib missing."],
+    ["log_level", "INFO", "Default runtime log level."]
+  ]
+}`
+            },
+            entity_104: {
+                filename: "entity_104.bejson",
+                standard: "BEJSON 104 (Release 300)",
+                declaration: "DECLARATION // BEJSON 104 Foundational Entity Table (O(1) field_map)",
+                content: `{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["{{ENTITY_NAME:-StandardEntity}}"],
+  "Fields": [
+    {"name": "{{ENTITY_PREFIX:-ent}}_uuid", "type": "string"},
+    {"name": "{{ENTITY_PREFIX:-ent}}_code", "type": "string"},
+    {"name": "{{ENTITY_PREFIX:-ent}}_status", "type": "string"},
+    {"name": "{{ENTITY_PREFIX:-ent}}_created_at", "type": "string"}
+  ],
+  "Values": [
+    [
+      "00000000-0000-4000-8000-000000000001",
+      "STD-001",
+      "COMMITTED",
+      "2026-10-18T00:00:00Z"
+    ]
+  ]
+}`
+            },
+            entity_105: {
+                filename: "entity_105.bejson",
+                standard: "BEJSON 105 (Release 301)",
+                declaration: "DECLARATION // BEJSON 105 Integrity Era Entity (field_uuid + record_uuid)",
+                content: `{
+  "Format": "BEJSON",
+  "Format_Version": "105",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["{{ENTITY_NAME:-IntegrityEntity}}"],
+  "Fields": [
+    {
+      "name": "{{ENTITY_PREFIX:-ent}}_uuid",
+      "type": "string",
+      "field_uuid": "11111111-1111-4111-8111-111111111111"
+    },
+    {
+      "name": "{{ENTITY_PREFIX:-ent}}_payload",
+      "type": "string",
+      "field_uuid": "22222222-2222-4222-8222-222222222222"
+    },
+    {
+      "name": "{{ENTITY_PREFIX:-ent}}_created_at",
+      "type": "string",
+      "field_uuid": "33333333-3333-4333-8333-333333333333"
+    }
+  ],
+  "Values": [
+    [
+      "99999999-9999-4999-8999-999999999999",
+      "00000000-0000-4000-8000-000000000001",
+      "VERIFIED_105_PAYLOAD",
+      "2026-10-18T00:00:00Z"
+    ]
+  ]
+}`
+            },
+            project_v170: {
+                filename: "bejson_project.json",
+                standard: "Policy 4.6 Schema v1.7.0 (104a)",
+                declaration: "DECLARATION // Base Project Tracker Schema v1.7.0 (Strict GUID Governance)",
+                content: `{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Session_Id": "<uuidv4_session_guid>",
+  "Project_Name": "PROJECT_NAME_PLACEHOLDER",
+  "Project_Modified_Date": "2026-10-18",
+  "Project_Description": "Standardized project tracker baseline.",
+  "Schema_Version": "1.7.0",
+  "Project_Version": "100",
+  "Package_Version": "100",
+  "Project_GUID": "GUID_PLACEHOLDER",
+  "Versioned_UUID": "VERSIONED_GUID_PLACEHOLDER",
+  "Is_Registered": false,
+  "Project_Type": "Standalone_Tool",
+  "Records_Type": ["RootPackage"],
+  "Fields": [
+    {"name": "Project_Name", "type": "string"},
+    {"name": "Project_Version", "type": "string"},
+    {"name": "Package_Version", "type": "string"},
+    {"name": "Project_GUID", "type": "string"},
+    {"name": "Versioned_UUID", "type": "string"},
+    {"name": "Main_Executable", "type": "string"},
+    {"name": "Runtime_Type", "type": "string"},
+    {"name": "BEJSON_Lib_Version", "type": "string"},
+    {"name": "Change_Log", "type": "string"}
+  ],
+  "Values": [
+    [
+      "PROJECT_NAME_PLACEHOLDER",
+      "100",
+      "100",
+      "GUID_PLACEHOLDER",
+      "VERSIONED_GUID_PLACEHOLDER",
+      "src/main.py",
+      "python3",
+      "300",
+      "100 | 2026-10-18 | Initial standardized creation."
+    ]
+  ]
+}`
+            },
+            pattern_card: {
+                filename: "pattern_card.md",
+                standard: "Concepts Domain L5 (CIP / CNP)",
+                declaration: "DECLARATION // Concept Idea & Nuance Pattern Card Standard",
+                content: `# Pattern Card {{PATTERN_CODE:-CIP-001}}: {{PATTERN_NAME:-Pattern Title}}
+
+- **Archetype Family:** {{FAMILY:-spatial_ui | data_substrate | heuristic_proxy | governance_guardrail}}
+- **Surface Element:** {{SURFACE_ELEMENT:-Observable property or token}}
+- **Latent Structural Mechanism:** {{LATENT_MECHANISM:-Why this pattern works mechanically}}
+- **Coupled Dependencies:** {{COUPLED_DEPS:-Parameters locked to this invariant}}
+- **Failure Mode if Violated:** {{FAILURE_MODE:-Exact regression when altered}}
+- **Formal Verification Rule:**
+  IF [Condition] AND [DomainBoundary] THEN [Requirement] UNLESS [Exception]`
+            },
+            behtml_doc: {
+                filename: "behtml_doc.html",
+                standard: "BEHTML 16-Sublane Stage (Ry=32px)",
+                declaration: "DECLARATION // Canonical 16-Sublane x 24-Row BEHTML Document Skeleton",
+                content: `<!-- 16-Sublane Stage: 6.25% (Left Gutter) + 87.5% (14-Sublane Canvas) + 6.25% (Right Gutter) -->
+<div class="behtml-stage">
+  <!-- Row 1 (32px): Full-Width Title Bar with 2px solid #DE2626 bottom border -->
+  <header class="behtml-title-bar">
+    <h1><span>//</span> {{DOC_TITLE:-DOCUMENT SPECIFICATION}} <span>{{DOC_INDEX:-01}}</span></h1>
+  </header>
+  <!-- Rows 2..18 (544px): Transparent 1px solid side gutters -->
+  <div class="behtml-edge-gutter gutter-left"></div>
+  <div class="behtml-edge-gutter gutter-right"></div>
+  <!-- Rows 2..18 (544px): Inner-scrolling canvas with 1px solid transparent bottom border -->
+  <main class="behtml-doc-canvas">
+    <h2>{{SECTION_HEADING:-Section Heading}}</h2>
+    <div class="section-meta-bar">
+      <div>DATE: <span>{{DATE_ISO:-2026-10-18}}</span></div>
+      <div>AUTHOR: <span>NULL</span></div>
+      <div>STATUS: <em>COMMITTED</em></div>
+    </div>
+    <p>{{SECTION_BODY:-Canonical body content inside 544px contained canvas.}}</p>
+    <footer class="author-null-footer">
+      <div>AUTHOR: <span class="auth-field">null</span></div>
+      <div class="null-token">REVISION: NULL_POINTER // UNSET</div>
+    </footer>
+  </main>
+  <!-- Row 19 (32px): Unallocated spatial buffer -->
+  <!-- Rows 20..24 (160px): Centered 150x150px transparent-bordered widget blocks -->
+  <section class="behtml-widget-shelf">
+    <div class="widget-block">
+      <div class="widget-block-header">WIDGET 01</div>
+      <div class="widget-block-body"><em>150x150 Slot</em></div>
+      <div class="widget-block-footer">ACTIVE</div>
+    </div>
+  </section>
+</div>`
+            }
+        };
+
+        const workingStore = JSON.parse(JSON.stringify(BASELINE_TEMPLATES));
+        let activeTabKey = "schema_104a";
+
+        const tabStripEl = document.getElementById("stdTabStrip");
+        const filenameEl = document.getElementById("stdActiveFilename");
+        const standardEl = document.getElementById("stdActiveStandard");
+        const lineCountEl = document.getElementById("stdActiveLineCount");
+        const stateEl = document.getElementById("stdActiveState");
+        const titleInputEl = document.getElementById("stdDeclarationHeaderInput");
+        const textareaEl = document.getElementById("stdTemplateInputBox");
+        const widgetTabCountEl = document.getElementById("widgetTabCount");
+        const widgetActiveKeyEl = document.getElementById("widgetActiveKey");
+        const widgetCommitStateEl = document.getElementById("widgetCommitState");
+
+        function updateLineCount() {
+            const lines = textareaEl.value.split("\n").length;
+            lineCountEl.textContent = String(lines);
+        }
+
+        function switchTab(tabKey) {
+            if (!workingStore[tabKey]) return;
+            workingStore[activeTabKey].content = textareaEl.value;
+            workingStore[activeTabKey].declaration = titleInputEl.value;
+            activeTabKey = tabKey;
+
+            const rec = workingStore[tabKey];
+            filenameEl.textContent = rec.filename;
+            standardEl.textContent = rec.standard;
+            titleInputEl.value = rec.declaration;
+            textareaEl.value = rec.content;
+            stateEl.textContent = "ACTIVE";
+            widgetActiveKeyEl.textContent = tabKey.toUpperCase();
+            updateLineCount();
+
+            Array.from(tabStripEl.querySelectorAll(".std-file-tab")).forEach((btn) => {
+                btn.classList.toggle("active", btn.getAttribute("data-tab-key") === tabKey);
+            });
+        }
+
+        tabStripEl.addEventListener("click", (ev) => {
+            const btn = ev.target.closest(".std-file-tab");
+            if (btn) {
+                switchTab(btn.getAttribute("data-tab-key"));
+            }
+        });
+
+        document.querySelectorAll("[data-load-tab]").forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const targetKey = btn.getAttribute("data-load-tab");
+                switchTab(targetKey);
+                document.getElementById("stdSwitcher").scrollIntoView({ behavior: "smooth", block: "nearest" });
+            });
+        });
+
+        textareaEl.addEventListener("input", () => {
+            stateEl.textContent = "MODIFIED*";
+            widgetCommitStateEl.textContent = "PENDING";
+            updateLineCount();
+        });
+
+        document.getElementById("btnCommitStd").addEventListener("click", () => {
+            workingStore[activeTabKey].content = textareaEl.value;
+            workingStore[activeTabKey].declaration = titleInputEl.value;
+            stateEl.textContent = "COMMITTED";
+            widgetCommitStateEl.textContent = "RATIFIED";
+        });
+
+        document.getElementById("btnCopyStd").addEventListener("click", () => {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(textareaEl.value);
+            }
+            stateEl.textContent = "COPIED";
+        });
+
+        document.getElementById("btnResetStd").addEventListener("click", () => {
+            if (BASELINE_TEMPLATES[activeTabKey]) {
+                workingStore[activeTabKey] = JSON.parse(JSON.stringify(BASELINE_TEMPLATES[activeTabKey]));
+                titleInputEl.value = workingStore[activeTabKey].declaration;
+                textareaEl.value = workingStore[activeTabKey].content;
+                stateEl.textContent = "RESET";
+                widgetCommitStateEl.textContent = "RATIFIED";
+                updateLineCount();
+            }
+        });
+
+        document.getElementById("btnNewTabStd").addEventListener("click", () => {
+            const idx = Object.keys(workingStore).length + 1;
+            const newKey = `custom_std_${idx}`;
+            const newFilename = `standard_${idx}.104a.bejson`;
+            workingStore[newKey] = {
+                filename: newFilename,
+                standard: "Custom Declared Standard (104a)",
+                declaration: `DECLARATION // Custom Standardization Template 0${idx}`,
+                content: `{\n  "Format": "BEJSON",\n  "Format_Version": "104a",\n  "Format_Creator": "Elton Boehnen",\n  "Records_Type": ["CustomStandard"],\n  "Fields": [\n    {"name": "std_key", "type": "string"},\n    {"name": "std_rule", "type": "string"}\n  ],\n  "Values": []\n}`
+            };
+            const newBtn = document.createElement("button");
+            newBtn.type = "button";
+            newBtn.className = "std-file-tab";
+            newBtn.setAttribute("data-tab-key", newKey);
+            newBtn.textContent = newFilename;
+            tabStripEl.appendChild(newBtn);
+            widgetTabCountEl.textContent = `${Object.keys(workingStore).length} Embedded`;
+            switchTab(newKey);
+        });
+
+        // Initialize default active tab
+        switchTab("schema_104a");
+    </script>
+</body>
+</html>

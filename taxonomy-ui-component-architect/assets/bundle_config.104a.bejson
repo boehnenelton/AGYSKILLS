@@ -1,0 +1,20 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Skill_Name": "taxonomy-ui-component-architect",
+  "Schema_Version": "1.0.0",
+  "Records_Type": ["SkillBundleConfig"],
+  "Fields": [
+    {"name": "file_path", "type": "string"},
+    {"name": "file_role", "type": "string"},
+    {"name": "is_executable", "type": "boolean"}
+  ],
+  "Values": [
+    ["SKILL.md", "manifest", false],
+    ["references/schema_to_ui_projection_spec.md", "reference_specification", false],
+    ["assets/projected_component_map.txt", "example_asset", false],
+    ["scripts/project_schema_to_ui.py", "projection_tool", true],
+    ["assets/bundle_config.104a.bejson", "bundle_manifest", false]
+  ]
+}

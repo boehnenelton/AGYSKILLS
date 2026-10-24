@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEJSON_Template_HTML_Full</title>
+<style>
+  :root {
+    --bg: #FFFFFF;
+    --fg: #000000;
+    --accent: #DE2626;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, Segoe UI, Roboto, sans-serif;
+    margin: 0;
+    padding: 2rem;
+    line-height: 1.5;
+  }
+  h1 {
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: 0.5rem;
+  }
+  code, pre {
+    background: #000000;
+    color: #FFFFFF;
+    padding: 0.75rem;
+    display: block;
+    overflow-x: auto;
+    border-left: 4px solid var(--accent);
+  }
+  footer {
+    margin-top: 3rem;
+    padding-top: 1rem;
+    border-top: 1px solid #000000;
+    font-size: 0.85rem;
+  }
+  a {
+    color: var(--accent);
+  }
+</style>
+</head>
+<body>
+
+<h1>BEJSON_Template_HTML_Full</h1>
+
+<section id="about">
+  <p>Embedded: BEJSON Core error registry (BEJSON_ERRORS) + BEJSON Core (window.BEJSON: field-map cache, serialize, encrypt/decrypt, stats) + BEJSON Core validator.</p>
+  <p>This page is a basic template. Nothing here calls the embedded library
+  automatically &mdash; open the console and call the functions yourself,
+  e.g. <code>validate_bejson_string(jsonString)</code>.</p>
+</section>
+
+<!--
+Name:           BEJSON_Template_HTML_Full
+Description:    Basic HTML template with the BEJSON Core error registry, BEJSON Core, and BEJSON Core validator embedded (JavaScript), not auto-invoked.
+Version:        1 (Package_Version 100)
+Date Created:   2026-09-09
+Author:         Elton Boehnen
+Contact:        boehnenelton2024@gmail.com | boehnenelton2024.pages.dev | github.com/boehnenelton
+Format_Creator: Elton Boehnen
+RELATIONAL_ID:  f2b8d61a-7e34-49c0-a1f6-3b9d2e8c5a17
+Release_Version: 300
+-->
+
+<script>
+// ==== lib_bejson_Core_bejson_errors.js (embedded) ====
+const BEJSON_ERRORS = {
+    E_INVALID_JSON: 1,
+    E_MISSING_MANDATORY_KEY: 2,
+    E_INVALID_FORMAT: 3,
+    E_INVALID_VERSION: 4,
+    E_INVALID_RECORDS_TYPE: 5,
+    E_INVALID_FIELDS: 6,
+    E_INVALID_VALUES: 7,
+    E_TYPE_MISMATCH: 8,
+    E_RECORD_LENGTH_MISMATCH: 9,
+    E_RESERVED_KEY_COLLISION: 10,
+    E_INVALID_RECORD_TYPE_PARENT: 11,
+    E_NULL_VIOLATION: 12,
+    E_FILE_NOT_FOUND: 13,
+    E_PERMISSION_DENIED: 14,
+    E_ATOMIC_WRITE_FAILED: 15,
+    E_INVALID_FORMAT_CREATOR: 16,
+    E_CORE_PARSE_ERROR: 17,
+    E_CORE_SERIALIZATION_ERROR: 18,
+    E_CORE_NULL_DOCUMENT: 19,
+    E_CORE_INVALID_VERSION: 20,
+    E_CORE_INVALID_OPERATION: 21,
+    E_CORE_INDEX_OUT_OF_BOUNDS: 22,
+    E_CORE_FIELD_NOT_FOUND: 23,
+    E_CORE_TYPE_CONVERSION_FAILED: 24,
+    E_CORE_BACKUP_FAILED: 25,
+    E_CORE_WRITE_FAILED: 26,
+    E_CORE_QUERY_FAILED: 27,
+    E_CORE_ENCRYPTION_FAILED: 28,
+    E_CORE_DECRYPTION_FAILED: 29,
+    E_MFDB_NOT_MANIFEST: 30,
+    E_MFDB_NOT_ENTITY_FILE: 31,
+    E_MFDB_MANIFEST_RECORDS_TYPE: 32,
+    E_MFDB_ENTITY_NOT_FOUND: 33,
+    E_MFDB_ENTITY_NAME_MISMATCH: 34,
+    E_MFDB_DUPLICATE_ENTRY: 35,
+    E_MFDB_NO_PARENT_HIERARCHY: 36,
+    E_MFDB_MANIFEST_NOT_FOUND: 37,
+    E_MFDB_BIDIRECTIONAL_FAIL: 38,
+    E_MFDB_FK_UNRESOLVED: 39,
+    E_MFDB_MISSING_REQUIRED_FIELD: 40,
+    E_MFDB_NULL_REQUIRED: 41,
+    E_MFDB_INVALID_ARCHIVE: 42,
+    E_MFDB_CORE_MANIFEST_NOT_FOUND: 50,
+    E_MFDB_CORE_ENTITY_NOT_FOUND: 51,
+    E_MFDB_CORE_WRITE_FAILED: 52,
+    E_MFDB_CORE_LOCK_FAILED: 53,
+    E_MFDB_CORE_INVALID_OPERATION: 54,
+    E_MFDB_CORE_INDEX_OUT_OF_BOUNDS: 55,
+    E_MFDB_CORE_JOIN_FAILED: 56,
+    E_MFDB_CORE_ARCHIVE_ERROR: 70,
+    E_MFDB_CORE_MOUNT_CONFLICT: 71,
+    E_MFDB_CORE_CREATE_FAILED: 72
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = BEJSON_ERRORS;
+}
+if (typeof window !== 'undefined') {
+    window.BEJSON_ERRORS = BEJSON_ERRORS;
+}
+</script>
+
+<script>
+// ==== lib_bejson_Core_bejson_core.js (embedded) ====
+'use strict';
+
+const RELEASE_VERSION = 300;
+
+let crypto = (typeof window !== 'undefined' && window.crypto) ? window.crypto : null;
+if (!crypto && typeof require !== 'undefined') {
+    try { crypto = require('crypto').webcrypto; } catch (e) {}
+}
+
+class BEJSONCoreError extends Error {
+    constructor(message, code) {
+        super(message);
+        this.code = code;
+        this.name = "BEJSONCoreError";
+    }
+}
+
+const _KEY_CACHE_MAX_SLOTS = 12;
+const _keyCache = [];
+
+async function _getOrDeriveKey(password, salt, providedKey = null) {
+    if (providedKey) return providedKey;
+    const saltB64 = CryptoUtils.ab2base64(salt);
+    const hitIdx = _keyCache.findIndex((e) => e.password === password && e.salt === saltB64);
+    if (hitIdx !== -1) {
+        const [hit] = _keyCache.splice(hitIdx, 1);
+        _keyCache.push(hit);
+        return hit.key;
+    }
+    const key = await CryptoUtils.deriveKey(password, salt);
+    if (_keyCache.length >= _KEY_CACHE_MAX_SLOTS) {
+        _keyCache.shift();
+    }
+    _keyCache.push({ password, salt: saltB64, key });
+    return key;
+}
+
+const CryptoUtils = {
+    async deriveKey(password, salt) {
+        const enc = new TextEncoder();
+        const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(password), { name: "PBKDF2" }, false, ["deriveKey"]);
+        return await crypto.subtle.deriveKey(
+            { name: "PBKDF2", salt: salt, iterations: 100000, hash: "SHA-256" },
+            keyMaterial,
+            { name: "AES-GCM", length: 256 },
+            false,
+            ["encrypt", "decrypt"]
+        );
+    },
+    ab2base64(buf) { const b = new Uint8Array(buf); let s = ''; for (let i = 0; i < b.length; i++) s += String.fromCharCode(b[i]); return btoa(s); },
+    base642ab(base64) { const b = atob(base64); return new Uint8Array(b.length).map((_, i) => b.charCodeAt(i)); },
+    async encryptRecord(doc, recordIndex, password, providedSalt = null, providedKey = null) {
+        if (recordIndex < 0 || recordIndex >= doc.Values.length) throw new BEJSONCoreError("Index out of bounds", BEJSON_ERRORS.E_CORE_INDEX_OUT_OF_BOUNDS);
+        const record = doc.Values[recordIndex];
+        const salt = providedSalt || crypto.getRandomValues(new Uint8Array(16));
+        const key = await _getOrDeriveKey(password, salt, providedKey);
+        const saltB64 = this.ab2base64(salt);
+        const newRecord = [...record];
+        for (let i = 0; i < newRecord.length; i++) {
+            const field = doc.Fields[i];
+            if (field.name === "Record_Type_Parent" || field.name === "is_encrypted") continue;
+            const val = newRecord[i];
+            if (val === null) continue;
+            if (typeof val === "object" && val._enc === "AES-GCM") continue;
+            const dataEnc = new TextEncoder().encode(JSON.stringify(val));
+            const iv = crypto.getRandomValues(new Uint8Array(12));
+            const ciphertext = await crypto.subtle.encrypt({ name: "AES-GCM", iv: iv }, key, dataEnc);
+            newRecord[i] = { _enc: "AES-GCM", salt: saltB64, iv: this.ab2base64(iv), ct: this.ab2base64(ciphertext) };
+        }
+        const ieIdx = doc.Fields.findIndex(f => f.name === "is_encrypted");
+        if (ieIdx !== -1) newRecord[ieIdx] = true;
+        doc.Values[recordIndex] = newRecord;
+        return doc;
+    },
+    async decryptRecord(doc, recordIndex, password) {
+        if (recordIndex < 0 || recordIndex >= doc.Values.length) throw new BEJSONCoreError("Index out of bounds", BEJSON_ERRORS.E_CORE_INDEX_OUT_OF_BOUNDS);
+        const record = doc.Values[recordIndex];
+        const newRecord = [...record];
+        for (let i = 0; i < newRecord.length; i++) {
+            const val = newRecord[i];
+            let saltB64, ivB64, ctB64;
+            if (val && typeof val === "object" && val._enc === "AES-GCM") {
+                saltB64 = val.salt; ivB64 = val.iv; ctB64 = val.ct;
+            }
+            if (!saltB64 || !ivB64 || !ctB64) continue;
+            try {
+                const salt = this.base642ab(saltB64);
+                const iv = this.base642ab(ivB64);
+                const ct = this.base642ab(ctB64);
+                const key = await _getOrDeriveKey(password, salt);
+                const decrypted = await crypto.subtle.decrypt({ name: "AES-GCM", iv: iv }, key, ct);
+                newRecord[i] = JSON.parse(new TextDecoder().decode(decrypted));
+            } catch (e) {
+                throw new BEJSONCoreError("Decryption failed at field " + i + ": " + e.message, BEJSON_ERRORS.E_CORE_DECRYPTION_FAILED);
+            }
+        }
+        doc.Values[recordIndex] = newRecord;
+        return doc;
+    }
+};
+
+const _FIELD_MAP_CACHE = new Map();
+
+function bejson_core_get_field_map(doc) {
+    if (!doc || !doc.Fields) return {};
+    if (doc._bejson_field_map) return doc._bejson_field_map;
+    const fieldNames = doc.Fields.map(f => f.name);
+    const cacheKey = (doc.Format_Version || '104') + ':' + fieldNames.join(',');
+    let fieldMap;
+    if (_FIELD_MAP_CACHE.has(cacheKey)) {
+        fieldMap = _FIELD_MAP_CACHE.get(cacheKey);
+    } else {
+        fieldMap = {};
+        doc.Fields.forEach((f, i) => { fieldMap[f.name] = i; });
+        _FIELD_MAP_CACHE.set(cacheKey, fieldMap);
+    }
+    try { doc._bejson_field_map = fieldMap; } catch(e) {}
+    return fieldMap;
+}
+
+function bejson_core_get_field_index(doc, fieldName) {
+    const fieldMap = bejson_core_get_field_map(doc);
+    const idx = fieldMap[fieldName];
+    return (idx !== undefined) ? idx : -1;
+}
+
+function bejson_core_serialize(doc, indent = 2) {
+    if (!doc) return "";
+    const cleanDoc = {};
+    Object.keys(doc).forEach(key => {
+        if (!key.startsWith("_")) cleanDoc[key] = doc[key];
+    });
+    return JSON.stringify(cleanDoc, null, indent);
+}
+
+function bejson_core_get_stats(doc) {
+    if (!doc || !doc.Values) return { records: 0, fields: 0 };
+    return { records: doc.Values.length, fields: doc.Fields ? doc.Fields.length : 0 };
+}
+
+const CoreExports = {
+    RELEASE_VERSION,
+    Crypto: CryptoUtils,
+    bejson_core_get_stats,
+    bejson_core_get_field_map,
+    bejson_core_get_field_index,
+    bejson_core_serialize
+};
+
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = CoreExports;
+}
+if (typeof window !== 'undefined') {
+    window.BEJSON = window.BEJSON || {};
+    Object.assign(window.BEJSON, CoreExports);
+}
+</script>
+
+<script>
+// ==== lib_bejson_Core_bejson_validator.js (embedded) ====
+'use strict';
+
+const VALID_VERSIONS    = new Set(['104', '104a', '104db']);
+const MANDATORY_KEYS    = ['Format', 'Format_Version', 'Format_Creator', 'Records_Type', 'Fields', 'Values'];
+const VALID_FIELD_TYPES = new Set(['string', 'integer', 'number', 'boolean', 'array', 'object']);
+
+class BEJSONValidationError extends Error {
+  constructor(message, code) {
+    super(message);
+    this.name = 'BEJSONValidationError';
+    this.code = code;
+  }
+}
+
+class ValidationState {
+  constructor() {
+    this.errors      = [];
+    this.warnings    = [];
+    this.currentFile = '';
+  }
+  reset() { this.errors = []; this.warnings = []; this.currentFile = ''; }
+  addError(message, location = '', context = '') {
+    let entry = 'ERROR';
+    if (location) entry += ` | Location: ${location}`;
+    entry += ` | Message: ${message}`;
+    if (context) entry += ` | Context: ${context}`;
+    this.errors.push(entry);
+  }
+  addWarning(message, location = '') {
+    let entry = 'WARNING';
+    if (location) entry += ` | Location: ${location}`;
+    entry += ` | Message: ${message}`;
+    this.warnings.push(entry);
+  }
+  getErrors() { return [...this.errors]; }
+  getWarnings() { return [...this.warnings]; }
+  hasErrors() { return this.errors.length > 0; }
+  hasWarnings() { return this.warnings.length > 0; }
+  errorCount() { return this.errors.length; }
+  warningCount() { return this.warnings.length; }
+}
+
+const _state = new ValidationState();
+
+function bejson_validator_check_json_syntax(input) {
+  if (typeof input === 'object' && input !== null) return input;
+  try { return JSON.parse(input); } catch (err) {
+    _state.addError(`Invalid JSON syntax: ${err.message}`, 'JSON Parse');
+    throw new BEJSONValidationError(`Invalid JSON syntax: ${err.message}`, BEJSON_ERRORS.E_INVALID_JSON);
+  }
+}
+
+function bejson_validator_check_mandatory_keys(doc) {
+  for (const key of MANDATORY_KEYS) {
+    if (!(key in doc)) {
+      _state.addError(`Missing mandatory top-level key: '${key}'`, 'Top-Level Keys');
+      throw new BEJSONValidationError(`Missing mandatory key: ${key}`, BEJSON_ERRORS.E_MISSING_MANDATORY_KEY);
+    }
+  }
+  if (doc['Format'] !== 'BEJSON') {
+    _state.addError(`Invalid Format`, 'Top-Level Keys/Format');
+    throw new BEJSONValidationError('Invalid Format', BEJSON_ERRORS.E_INVALID_FORMAT);
+  }
+  const version = doc['Format_Version'] ?? '';
+  if (!VALID_VERSIONS.has(version)) {
+    _state.addError(`Invalid version`, 'Top-Level Keys/Format_Version');
+    throw new BEJSONValidationError(`Invalid version: ${version}`, BEJSON_ERRORS.E_INVALID_VERSION);
+  }
+  return version;
+}
+
+function bejson_validator_validate_string(jsonString) {
+  _state.reset();
+  const doc = bejson_validator_check_json_syntax(jsonString);
+  bejson_validator_check_mandatory_keys(doc);
+  return true;
+}
+
+function validate_bejson_string(jsonString) {
+  try {
+    bejson_validator_validate_string(jsonString);
+    return { valid: true, errors: [] };
+  } catch (e) {
+    return { valid: false, errors: _state.getErrors(), code: e.code };
+  }
+}
+
+function core_stats(doc) {
+  return window.BEJSON.bejson_core_get_stats(doc);
+}
+</script>
+
+<footer>
+  BEJSON Template &middot; Elton Boehnen &middot;
+  <a href="mailto:boehnenelton2024@gmail.com">boehnenelton2024@gmail.com</a> &middot;
+  <a href="https://boehnenelton2024.pages.dev">boehnenelton2024.pages.dev</a> &middot;
+  <a href="https://github.com/boehnenelton">github.com/boehnenelton</a>
+</footer>
+</body>
+</html>
