@@ -21,6 +21,26 @@
   ],
   "Values": [
     [
+      "2026-10-24T04:17:15Z",
+      "beos---bejson-operating-system---main",
+      "/storage/emulated/0/Admin/Resources/Chunks/Chunked_beos---bejson-operating-system---main.104a.bejson.txt"
+    ],
+    [
+      "2026-10-24T04:13:44Z",
+      "antigravity_cli_layered_skill_architecture_report",
+      "/storage/emulated/0/Admin/Resources/Chunks/Chunked_antigravity_cli_layered_skill_architecture_report.104a.bejson.txt"
+    ],
+    [
+      "2026-10-24T04:13:11Z",
+      "Sword_Slasher_Drafting",
+      "/storage/emulated/0/Admin/Resources/Chunks/Chunked_Sword_Slasher_Drafting.104a.bejson.txt"
+    ],
+    [
+      "2026-10-24T04:13:06Z",
+      "Sword_Slasher_Engine_JS",
+      "/storage/emulated/0/Admin/Resources/Chunks/Chunked_Sword_Slasher_Engine_JS.104a.bejson.txt"
+    ],
+    [
       "2026-10-23T17:07:44Z",
       "out",
       "/storage/emulated/0/Admin/Processing/Autobase64/Chunked_out.104a.bejson.txt"
