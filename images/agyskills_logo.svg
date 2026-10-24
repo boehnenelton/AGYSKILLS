@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 420" width="840" height="420">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0a0c" />
+      <stop offset="50%" stop-color="#000000" />
+      <stop offset="100%" stop-color="#141418" />
+    </linearGradient>
+
+    <!-- Red Accent Gradient -->
+    <linearGradient id="redAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FF3333" />
+      <stop offset="60%" stop-color="#DE2626" />
+      <stop offset="100%" stop-color="#990000" />
+    </linearGradient>
+
+    <!-- Isometric Face Shading -->
+    <linearGradient id="cubeTop" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2a2a30" />
+      <stop offset="100%" stop-color="#3d3d46" />
+    </linearGradient>
+    <linearGradient id="cubeLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#18181c" />
+      <stop offset="100%" stop-color="#101014" />
+    </linearGradient>
+    <linearGradient id="cubeRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111115" />
+      <stop offset="100%" stop-color="#08080a" />
+    </linearGradient>
+
+    <!-- Red Core Cube -->
+    <linearGradient id="redCubeTop" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FF4D4D" />
+      <stop offset="100%" stop-color="#DE2626" />
+    </linearGradient>
+    <linearGradient id="redCubeLeft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#CC1F1F" />
+      <stop offset="100%" stop-color="#991414" />
+    </linearGradient>
+    <linearGradient id="redCubeRight" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#991414" />
+      <stop offset="100%" stop-color="#660A0A" />
+    </linearGradient>
+
+    <!-- Drop Shadows & Glows -->
+    <filter id="redGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+    <filter id="subtleShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.8" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="840" height="420" rx="16" fill="url(#bgGrad)" />
+  <rect width="840" height="420" rx="16" fill="none" stroke="#26262b" stroke-width="2" />
+
+  <!-- Background Isometric Grid Accents -->
+  <g opacity="0.12" stroke="#FFFFFF" stroke-width="1">
+    <path d="M 0,210 L 840,210" />
+    <path d="M 120,0 L 120,420" />
+    <path d="M 720,0 L 720,420" />
+    <line x1="60" y1="90" x2="260" y2="330" />
+    <line x1="260" y1="90" x2="60" y2="330" />
+  </g>
+
+  <!-- ISOMETRIC 3D CUBIC CLUSTER EMBLEM (Left: Center at X: 195, Y: 210) -->
+  <g transform="translate(195, 210)" filter="url(#subtleShadow)">
+    
+    <!-- Level 1 Outer Floating Diamond Frame -->
+    <polygon points="0,-125 108,-62 108,62 0,125 -108,62 -108,-62"
+             fill="none" stroke="#33333d" stroke-width="2" stroke-dasharray="6,4" />
+
+    <!-- BASE CUBE (Tier Architecture Foundation) -->
+    <!-- Top Face -->
+    <polygon points="0,-70 60,-35 0,0 -60,-35" fill="url(#cubeTop)" stroke="#444450" stroke-width="1.5" />
+    <!-- Left Face -->
+    <polygon points="-60,-35 0,0 0,70 -60,35" fill="url(#cubeLeft)" stroke="#333340" stroke-width="1.5" />
+    <!-- Right Face -->
+    <polygon points="0,0 60,-35 60,35 0,70" fill="url(#cubeRight)" stroke="#222228" stroke-width="1.5" />
+
+    <!-- FLOATING ACCENT RED CUBE (Core Engine) -->
+    <g transform="translate(0, -48)" filter="url(#redGlow)">
+      <!-- Top Face -->
+      <polygon points="0,-36 32,-18 0,0 -32,-18" fill="url(#redCubeTop)" stroke="#FF6666" stroke-width="1.2" />
+      <!-- Left Face -->
+      <polygon points="-32,-18 0,0 0,36 -32,18" fill="url(#redCubeLeft)" stroke="#DE2626" stroke-width="1.2" />
+      <!-- Right Face -->
+      <polygon points="0,0 32,-18 32,18 0,36" fill="url(#redCubeRight)" stroke="#B31B1B" stroke-width="1.2" />
+    </g>
+
+    <!-- Micro Orbiting Node Cubes -->
+    <!-- Node North -->
+    <g transform="translate(0, -96)">
+      <polygon points="0,-12 10,-6 0,0 -10,-6" fill="#FFFFFF" />
+      <polygon points="-10,-6 0,0 0,12 -10,6" fill="#CCCCCC" />
+      <polygon points="0,0 10,-6 10,6 0,12" fill="#999999" />
+    </g>
+    <!-- Node East -->
+    <g transform="translate(85, -20)">
+      <polygon points="0,-12 10,-6 0,0 -10,-6" fill="url(#redCubeTop)" />
+      <polygon points="-10,-6 0,0 0,12 -10,6" fill="url(#redCubeLeft)" />
+      <polygon points="0,0 10,-6 10,6 0,12" fill="url(#redCubeRight)" />
+    </g>
+    <!-- Node West -->
+    <g transform="translate(-85, -20)">
+      <polygon points="0,-12 10,-6 0,0 -10,-6" fill="url(#redCubeTop)" />
+      <polygon points="-10,-6 0,0 0,12 -10,6" fill="url(#redCubeLeft)" />
+      <polygon points="0,0 10,-6 10,6 0,12" fill="url(#redCubeRight)" />
+    </g>
+  </g>
+
+  <!-- BRAND TYPOGRAPHY & IDENTITY (Right: Center at X: 350 to 760) -->
+  <g transform="translate(365, 0)">
+    
+    <!-- Brand Badge Strip -->
+    <g transform="translate(0, 112)">
+      <rect x="0" y="0" width="168" height="24" rx="4" fill="#18181d" stroke="#2b2b33" stroke-width="1" />
+      <circle cx="12" cy="12" r="4" fill="#DE2626" />
+      <text x="24" y="16" fill="#A0A0B0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="10.5" font-weight="700" letter-spacing="1.5">L1–L6 ARCHITECTURE</text>
+    </g>
+
+    <!-- Main Title: AGYSKILLS -->
+    <text x="0" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Montserrat', sans-serif" font-size="64" font-weight="900" letter-spacing="4">
+      <tspan fill="#FFFFFF">AGY</tspan>
+      <tspan fill="#DE2626">SKILLS</tspan>
+    </text>
+
+    <!-- Red Accent Underline Rule -->
+    <rect x="0" y="214" width="395" height="4" rx="2" fill="url(#redAccent)" />
+
+    <!-- Subtitle / Mission Statement -->
+    <text x="0" y="248" fill="#EDEDED" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="15" font-weight="600" letter-spacing="2">
+      AUTONOMOUS AGENT ECOSYSTEM
+    </text>
+
+    <!-- Spec Tags -->
+    <g transform="translate(0, 276)">
+      <!-- Tag 1 -->
+      <rect x="0" y="0" width="112" height="26" rx="4" fill="#121216" stroke="#222228" stroke-width="1" />
+      <text x="56" y="17" fill="#888899" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">84 SKILLS</text>
+
+      <!-- Tag 2 -->
+      <rect x="122" y="0" width="126" height="26" rx="4" fill="#121216" stroke="#222228" stroke-width="1" />
+      <text x="185" y="17" fill="#888899" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">BEJSON / BEHTML</text>
+
+      <!-- Tag 3 -->
+      <rect x="258" y="0" width="137" height="26" rx="4" fill="#121216" stroke="#222228" stroke-width="1" />
+      <text x="326.5" y="17" fill="#888899" font-family="monospace" font-size="11" font-weight="600" text-anchor="middle">RELEASE 300 / 301</text>
+    </g>
+
+    <!-- Author Footprint -->
+    <text x="0" y="328" fill="#555566" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" letter-spacing="0.5">
+      Architected by Elton Boehnen · boehnenelton2024.pages.dev
+    </text>
+  </g>
+</svg>
