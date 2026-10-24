@@ -1,0 +1,219 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Project_Name": "Tech_Chronicle_Blog",
+  "Archetype_Id": "blog",
+  "Archetype_Display_Name": "Editorial Blog & Magazine",
+  "Primary_Entity_Prefixes": [
+    "blog_",
+    "post_",
+    "cat_",
+    "author_",
+    "comment_",
+    "tag_"
+  ],
+  "Total_Templates_Metric": 7,
+  "Records_Type": [
+    "PlannedTemplateRecord"
+  ],
+  "Fields": [
+    {
+      "name": "Record_Type_Parent",
+      "type": "STRING"
+    },
+    {
+      "name": "template_key",
+      "type": "STRING"
+    },
+    {
+      "name": "filename",
+      "type": "STRING"
+    },
+    {
+      "name": "semantic_role",
+      "type": "STRING"
+    },
+    {
+      "name": "bound_prefixes",
+      "type": "ARRAY"
+    },
+    {
+      "name": "target_layers",
+      "type": "ARRAY"
+    },
+    {
+      "name": "views_list",
+      "type": "ARRAY"
+    },
+    {
+      "name": "forms_list",
+      "type": "ARRAY"
+    }
+  ],
+  "Values": [
+    [
+      "PlannedTemplateRecord",
+      "home_master_index",
+      "index.html",
+      "Portal Landing Page & Latest Post Stream",
+      [
+        "post_",
+        "cat_",
+        "author_"
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        "Hero Featured Post",
+        "Category Filter Bar",
+        "Latest Posts 8-Lane Grid",
+        "Author Byline Badges"
+      ],
+      [
+        "Newsletter Subscription Input",
+        "Quick Search Input"
+      ]
+    ],
+    [
+      "PlannedTemplateRecord",
+      "post_single_view",
+      "post.html",
+      "Single Article & Long-Form Reading View",
+      [
+        "post_",
+        "author_",
+        "cat_",
+        "tag_"
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        "Hero Header & Metadata Bar",
+        "Prose Body Container",
+        "Tags List",
+        "Sequential Next/Prev Navigation"
+      ],
+      [
+        "Social Share Action Buttons"
+      ]
+    ],
+    [
+      "PlannedTemplateRecord",
+      "content_page",
+      "page.html",
+      "Static Standalone Content Page (About, Terms, Privacy)",
+      [
+        "page_",
+        "author_"
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        "Page Title Bar",
+        "Document Prose Body",
+        "Structured Spec Table"
+      ],
+      []
+    ],
+    [
+      "PlannedTemplateRecord",
+      "category_tag_feed",
+      "feed.html",
+      "Category & Tag Filtered Post Archive Feed",
+      [
+        "cat_",
+        "post_",
+        "tag_"
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        "Hierarchical Breadcrumb Bar",
+        "Active Category Banner",
+        "Sorted Post Stream",
+        "Paging Controls"
+      ],
+      [
+        "Sort Order Dropdown"
+      ]
+    ],
+    [
+      "PlannedTemplateRecord",
+      "author_profile",
+      "author.html",
+      "Author Profile & Published Works Showcase",
+      [
+        "author_",
+        "post_"
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        "Author Bio Card & Avatar",
+        "Published Articles Metric Readout",
+        "Author Post Archive List"
+      ],
+      []
+    ],
+    [
+      "PlannedTemplateRecord",
+      "contact_inquiry",
+      "contact.html",
+      "Contact & Reader Inquiry Interface",
+      [
+        "inquiry_"
+      ],
+      [
+        1,
+        2,
+        4
+      ],
+      [
+        "Contact Info Details",
+        "Response Time Telemetry Badge"
+      ],
+      [
+        "Inquiry Form (Name, Email, Subject Select, Message Textarea, Submit Action)"
+      ]
+    ],
+    [
+      "PlannedTemplateRecord",
+      "comments_discussion_feed",
+      "comments.html",
+      "Threaded Discussion & Reader Feedback Component",
+      [
+        "comment_",
+        "post_"
+      ],
+      [
+        1,
+        2,
+        3
+      ],
+      [
+        "Comment Count Readout",
+        "Threaded Reply Tree List"
+      ],
+      [
+        "Comment Submission Input Group",
+        "Reply Form Dialog Overlay (Layer 3)"
+      ]
+    ]
+  ]
+}
