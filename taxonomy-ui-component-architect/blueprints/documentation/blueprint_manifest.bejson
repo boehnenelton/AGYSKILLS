@@ -1,0 +1,39 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Archetype_Id": "archetype_documentation",
+  "Archetype_Name": "Technical Documentation & E-Book Compendium",
+  "Archetype_Description": "Taxonomy and schema blueprint for multi-module programming guides, API specifications, and formal e-books.",
+  "Canonical_Prefixes": {
+    "Category": "cat_",
+    "DocumentRecord": "doc_",
+    "SpecificationMetadata": "spec_"
+  },
+  "Bound_Templates": [
+    "scaffold_document.html",
+    "scaffold_consolidated_ebook.html",
+    "scaffold_category_feed.html",
+    "scaffold_content_page.html"
+  ],
+  "Entities": [
+    {
+      "name": "Category",
+      "primary_key": "cat_uuid",
+      "prefix": "cat_",
+      "file_path": "data/category.bejson"
+    },
+    {
+      "name": "DocumentRecord",
+      "primary_key": "doc_uuid",
+      "prefix": "doc_",
+      "file_path": "data/documentrecord.bejson"
+    },
+    {
+      "name": "SpecificationMetadata",
+      "primary_key": "spec_uuid",
+      "prefix": "spec_",
+      "file_path": "data/specificationmetadata.bejson"
+    }
+  ]
+}

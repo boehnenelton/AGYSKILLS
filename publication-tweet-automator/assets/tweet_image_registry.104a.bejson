@@ -1,0 +1,102 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "TweetImageRecord"
+  ],
+  "Fields": [
+    {
+      "name": "image_id",
+      "type": "string"
+    },
+    {
+      "name": "tweet_prompt_file",
+      "type": "string"
+    },
+    {
+      "name": "tweet_number",
+      "type": "integer"
+    },
+    {
+      "name": "canvas_template",
+      "type": "string"
+    },
+    {
+      "name": "aspect_ratio",
+      "type": "string"
+    },
+    {
+      "name": "width_px",
+      "type": "integer"
+    },
+    {
+      "name": "height_px",
+      "type": "integer"
+    },
+    {
+      "name": "seek_progress",
+      "type": "number"
+    },
+    {
+      "name": "output_filename",
+      "type": "string"
+    },
+    {
+      "name": "destination_dir",
+      "type": "string"
+    },
+    {
+      "name": "sha256_hash",
+      "type": "string"
+    },
+    {
+      "name": "created_timestamp",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "img_001",
+      "newagent_launch_and_breakthrough_thread.md",
+      1,
+      "template_widescreen_1280x720.html",
+      "16:9",
+      1200,
+      675,
+      0.5,
+      "newagent_launch_hero_1200x675.png",
+      "/data/data/com.termux/files/home/generate/prompts/tweet/images",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "2026-10-25T11:30:00Z"
+    ],
+    [
+      "img_1792928376",
+      "newagent_launch_and_breakthrough_thread.md",
+      1,
+      "template_widescreen_1280x720.html",
+      "16:9",
+      1200,
+      675,
+      0.5,
+      "newagent_launch_hero_1200x675.png",
+      "/data/data/com.termux/files/home/generate/prompts/tweet/images",
+      "571218c90bb7272b7c552ac0ad1d9a95f9c629d9bf60ee5455c686fd190e316c",
+      "2026-10-25T11:39:36.154844+00:00"
+    ],
+    [
+      "img_1792928391",
+      "newagent_brain_surgery_hotpatch_thread.md",
+      1,
+      "template_square_800x800.html",
+      "1:1",
+      800,
+      800,
+      0.35,
+      "newagent_cube_spotlight_800x800.png",
+      "/data/data/com.termux/files/home/generate/prompts/tweet/images",
+      "b2668ade935976d4648f496afc1fd02f5e20754231f7efdcd2ae8ee99b54f2e1",
+      "2026-10-25T11:39:51.133330+00:00"
+    ]
+  ]
+}

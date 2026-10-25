@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Icon — 32x32 Favicon</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    #capture-stage {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    @keyframes pulseGlow {
+      0%, 100% { fill: #DE2626; }
+      50% { fill: #FFFFFF; }
+    }
+    .anim-dot {
+      animation: pulseGlow 1.8s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="capture-stage">
+    <div class="svg-container">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <!-- Rounded Micro Background -->
+        <rect x="1" y="1" width="30" height="30" rx="7" fill="#0d0d12" stroke="#252533" stroke-width="1"/>
+
+        <!-- Crisp Micro 104 Isometric Cube Glyph -->
+        <!-- Top -->
+        <polygon points="16,6 24,11 16,16 8,11" fill="#FFFFFF" stroke="#DE2626" stroke-width="0.8"/>
+        <!-- Left -->
+        <polygon points="16,16 8,11 8,20 16,25" fill="#252530" stroke="#353545" stroke-width="0.8"/>
+        <!-- Right -->
+        <polygon points="16,16 24,11 24,20 16,25" fill="#14141c" stroke="#353545" stroke-width="0.8"/>
+        <!-- Spine -->
+        <line x1="16" y1="16" x2="16" y2="25" stroke="#DE2626" stroke-width="1"/>
+
+        <!-- Micro Center Dot -->
+        <circle cx="16" cy="16" r="1.5" class="anim-dot"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    window.isReadyToCapture = false;
+    window.pauseAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'paused');
+    };
+    window.playAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'running');
+    };
+    window.seekProgress = function(progress) {
+      const totalDurationSec = 1.8;
+      const targetTimeSec = progress * totalDurationSec;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDelay = `-${targetTimeSec}s`;
+        el.style.animationPlayState = 'paused';
+      });
+    };
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { window.isReadyToCapture = true; }, 150);
+    });
+  </script>
+</body>
+</html>

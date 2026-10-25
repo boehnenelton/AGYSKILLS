@@ -1,0 +1,22 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["PlanPromptConfig"],
+  "Fields": [
+    {"name": "setting_name", "type": "string"},
+    {"name": "setting_value", "type": "any"},
+    {"name": "description", "type": "string"}
+  ],
+  "Values": [
+    ["selected_topic_index", 1, "Numerical index of chosen topic from scout catalog"],
+    ["post_title", "Zero-SQL Architecture: Building Portable Data Stores with BEJSON 104", "Canonical publication title"],
+    ["post_category", "BEJSON", "Target CMS category name (must match live category)"],
+    ["author_credit", "boehnenelton2024", "Author display name for CMS and footer credit"],
+    ["min_lines_per_section", 120, "Mandatory minimum lines per section across all 4 sections"],
+    ["target_context_path", "/storage/emulated/0/Admin/Dev/Repos/BEJSON_CMS", "Local filesystem path or URL for Turn 0 context research"],
+    ["hero_canvas_archetype", "hero_1280x640", "Visual archetype for context-based SVG hero banner"],
+    ["peripheral_components", "Positional Storage,MFDB Master,REST Engine,Static Generator", "Comma-separated 4 peripheral subsystem nodes"],
+    ["plan_prompt_template", "Author a rigorous 5-part BEJSON CMS blog post adhering to 120 lines minimum per section, grounded in context from {{TARGET_PATH}}, with custom 1280x640 SVG hero canvas.", "Tuned builder prompt for bejson-cms-blog-writer"]
+  ]
+}

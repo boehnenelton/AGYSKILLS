@@ -1,0 +1,27 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../104a.mfdb.bejson",
+  "Records_Type": [
+    "MediaPlaylist"
+  ],
+  "Fields": [
+    { "name": "playlist_uuid", "type": "string" },
+    { "name": "playlist_slug", "type": "string" },
+    { "name": "playlist_title", "type": "string" },
+    { "name": "playlist_desc", "type": "string" },
+    { "name": "playlist_extmedia_uuids", "type": "string" },
+    { "name": "playlist_created_at", "type": "string" }
+  ],
+  "Values": [
+    [
+      "5a4f3e2d-1c0b-9a8b-7c6d-5e4f3a2b1c0d",
+      "behtml-foundations-series",
+      "BEHTML Foundations Series",
+      "Complete walk-through of the 8-lane grid layout standard.",
+      "[\"7c3a5e9f-2b4d-4f6a-8e0c-1a9b7d5c3e2f\", \"6b4c3d2e-1a0f-9e8d-7c6b-5a4f3e2d1c0b\"]",
+      "2026-10-03T10:00:00Z"
+    ]
+  ]
+}

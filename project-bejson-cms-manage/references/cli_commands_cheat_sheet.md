@@ -23,7 +23,8 @@ All commands run via the unified CLI entrypoint:
 | `factory-reset`| - | Reset DB to canonical bootstrap seeds | `cms-manage.py factory-reset` |
 | `export` | `<entity> <file>` | Export entity records to JSON or CSV | `cms-manage.py export pages pages.json` |
 | `import` | `<entity> <file>` | Import records with fresh UUID generation | `cms-manage.py import pages pages.json` |
-| `page` | `add` | Create article and resolve FK UUIDs | `cms-manage.py page add "Title" "slug" --cat "Tech"` |
+| `page` | `add` | Create article and resolve FK UUIDs | `cms-manage.py page add "Title" --category "BEJSON"` |
+| `page` | `import` | Import pre-compiled HTML page or app embed | `cms-manage.py page import --html post.html --title "Title" --category "BEJSON" --type blog` |
 | `page` | `update` | Update page title, content, or category | `cms-manage.py page update <uuid> --title "New"` |
 | `page` | `delete` | Delete page by UUID | `cms-manage.py page delete <uuid>` |
 | `page` | `list` | List all pages | `cms-manage.py page list` |

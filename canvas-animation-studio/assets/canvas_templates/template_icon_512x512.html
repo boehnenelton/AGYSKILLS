@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Icon — 512x512 Master App Icon</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, monospace;
+    }
+    #capture-stage {
+      position: relative;
+      width: 512px;
+      height: 512px;
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @keyframes pulseRing {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.85;
+      }
+      50% {
+        transform: scale(1.04);
+        opacity: 1;
+        filter: drop-shadow(0 0 16px rgba(222, 38, 38, 0.8));
+      }
+    }
+    @keyframes rotateReticle {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes floatCap {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+    @keyframes glowVertex {
+      0%, 100% { fill: #FFFFFF; filter: drop-shadow(0 0 4px #FFFFFF); }
+      50% { fill: #DE2626; filter: drop-shadow(0 0 12px #DE2626); }
+    }
+
+    .anim-pulse {
+      transform-origin: 256px 256px;
+      animation: pulseRing 4s ease-in-out infinite;
+    }
+    .anim-rotate {
+      transform-origin: 256px 256px;
+      animation: rotateReticle 12s linear infinite;
+    }
+    .anim-float {
+      animation: floatCap 4s ease-in-out infinite;
+    }
+    .anim-vertex {
+      animation: glowVertex 2.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="capture-stage">
+    <div class="svg-container">
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0a0a0f"/>
+            <stop offset="100%" stop-color="#000000"/>
+          </linearGradient>
+          <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#CCCCCC"/>
+          </linearGradient>
+          <linearGradient id="cubeLeft" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2a2a35"/>
+            <stop offset="100%" stop-color="#14141a"/>
+          </linearGradient>
+          <linearGradient id="cubeRight" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1e1e26"/>
+            <stop offset="100%" stop-color="#0d0d12"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Outer Squircle Container -->
+        <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgGrad)" stroke="#1f1f28" stroke-width="3"/>
+        <rect x="32" y="32" width="448" height="448" rx="100" fill="none" stroke="#DE2626" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.6"/>
+
+        <!-- Orbiting Reticle -->
+        <g class="anim-rotate">
+          <circle cx="256" cy="256" r="180" fill="none" stroke="#22222e" stroke-width="1.5"/>
+          <circle cx="256" cy="256" r="180" fill="none" stroke="#DE2626" stroke-width="2.5" stroke-dasharray="30 110" stroke-linecap="round"/>
+          <circle cx="436" cy="256" r="5" fill="#DE2626"/>
+          <circle cx="76" cy="256" r="5" fill="#DE2626"/>
+        </g>
+
+        <!-- Inner Target Ring -->
+        <circle cx="256" cy="256" r="144" fill="none" stroke="#1c1c24" stroke-width="1.5"/>
+        <circle cx="256" cy="256" r="144" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="4 8" opacity="0.3"/>
+
+        <!-- 104a Isometric Floating Cube Core -->
+        <g class="anim-pulse">
+          <!-- Base Cube Body -->
+          <!-- Left Face -->
+          <polygon points="256,236 176,282 176,374 256,328" fill="url(#cubeLeft)" stroke="#3a3a48" stroke-width="2"/>
+          <!-- Right Face -->
+          <polygon points="256,236 336,282 336,374 256,328" fill="url(#cubeRight)" stroke="#3a3a48" stroke-width="2"/>
+          <!-- Center Seam Accent -->
+          <line x1="256" y1="236" x2="256" y2="328" stroke="#DE2626" stroke-width="2.5"/>
+
+          <!-- 104a Floating Top Cap -->
+          <g class="anim-float">
+            <polygon points="256,180 336,226 256,272 176,226" fill="url(#cubeTop)" stroke="#DE2626" stroke-width="2"/>
+            <line x1="256" y1="180" x2="256" y2="272" stroke="#DE2626" stroke-width="1.5" opacity="0.7"/>
+            <line x1="176" y1="226" x2="336" y2="226" stroke="#DE2626" stroke-width="1.5" opacity="0.7"/>
+          </g>
+
+          <!-- Glowing Vertex Nodes -->
+          <circle cx="256" cy="236" r="4.5" class="anim-vertex"/>
+          <circle cx="176" cy="282" r="3.5" fill="#FFFFFF"/>
+          <circle cx="336" cy="282" r="3.5" fill="#FFFFFF"/>
+          <circle cx="256" cy="328" r="4.5" fill="#DE2626"/>
+        </g>
+
+        <!-- Corner Micro-Crosshairs -->
+        <path d="M 64 64 L 76 64 M 64 64 L 64 76" stroke="#DE2626" stroke-width="2" fill="none"/>
+        <path d="M 448 64 L 436 64 M 448 64 L 448 76" stroke="#DE2626" stroke-width="2" fill="none"/>
+        <path d="M 64 448 L 76 448 M 64 448 L 64 436" stroke="#DE2626" stroke-width="2" fill="none"/>
+        <path d="M 448 448 L 436 448 M 448 448 L 448 436" stroke="#DE2626" stroke-width="2" fill="none"/>
+
+        <!-- Micro Telemetry -->
+        <text x="256" y="442" fill="#555566" font-size="11" font-family="monospace" letter-spacing="3" text-anchor="middle">512px ICON STAGE</text>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    window.isReadyToCapture = false;
+    window.pauseAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'paused');
+    };
+    window.playAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'running');
+    };
+    window.seekProgress = function(progress) {
+      const totalDurationSec = 4.0;
+      const targetTimeSec = progress * totalDurationSec;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDelay = `-${targetTimeSec}s`;
+        el.style.animationPlayState = 'paused';
+      });
+    };
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { window.isReadyToCapture = true; }, 300);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Icon — 256x256 App Icon</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: monospace;
+    }
+    #capture-stage {
+      position: relative;
+      width: 256px;
+      height: 256px;
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @keyframes pulseCore {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 6px rgba(222, 38, 38, 0.4));
+      }
+      50% {
+        transform: scale(1.06);
+        filter: drop-shadow(0 0 16px rgba(222, 38, 38, 0.9));
+      }
+    }
+    @keyframes spinRays {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .anim-core {
+      transform-origin: 128px 128px;
+      animation: pulseCore 3.5s ease-in-out infinite;
+    }
+    .anim-spin {
+      transform-origin: 128px 128px;
+      animation: spinRays 10s linear infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="capture-stage">
+    <div class="svg-container">
+      <svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg256" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f0f14"/>
+            <stop offset="100%" stop-color="#000000"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Squircle Body -->
+        <rect x="12" y="12" width="232" height="232" rx="54" fill="url(#bg256)" stroke="#262633" stroke-width="2"/>
+        <rect x="18" y="18" width="220" height="220" rx="48" fill="none" stroke="#DE2626" stroke-width="1.2" stroke-dasharray="6 4" opacity="0.5"/>
+
+        <!-- Rotating Outer Ray Ring -->
+        <g class="anim-spin">
+          <circle cx="128" cy="128" r="88" fill="none" stroke="#1f1f28" stroke-width="1.5"/>
+          <line x1="128" y1="36" x2="128" y2="44" stroke="#DE2626" stroke-width="2"/>
+          <line x1="128" y1="212" x2="128" y2="220" stroke="#DE2626" stroke-width="2"/>
+          <line x1="36" y1="128" x2="44" y2="128" stroke="#DE2626" stroke-width="2"/>
+          <line x1="212" y1="128" x2="220" y2="128" stroke="#DE2626" stroke-width="2"/>
+        </g>
+
+        <!-- Hexagonal Reticle -->
+        <polygon points="128,58 188,93 188,163 128,198 68,163 68,93" fill="none" stroke="#2a2a38" stroke-width="1.5"/>
+
+        <!-- Core Isometric Cube -->
+        <g class="anim-core">
+          <!-- Top Face -->
+          <polygon points="128,88 168,111 128,134 88,111" fill="#FFFFFF" stroke="#DE2626" stroke-width="1.5"/>
+          <!-- Left Face -->
+          <polygon points="128,134 88,111 88,157 128,180" fill="#22222c" stroke="#333344" stroke-width="1.5"/>
+          <!-- Right Face -->
+          <polygon points="128,134 168,111 168,157 128,180" fill="#14141c" stroke="#333344" stroke-width="1.5"/>
+          <!-- Red Center Spine -->
+          <line x1="128" y1="134" x2="128" y2="180" stroke="#DE2626" stroke-width="2"/>
+          <!-- Center Pulse Pip -->
+          <circle cx="128" cy="134" r="3" fill="#DE2626"/>
+        </g>
+
+        <!-- Corner Ticks -->
+        <line x1="36" y1="36" x2="44" y2="36" stroke="#DE2626" stroke-width="1.5"/>
+        <line x1="36" y1="36" x2="36" y2="44" stroke="#DE2626" stroke-width="1.5"/>
+        <line x1="220" y1="36" x2="212" y2="36" stroke="#DE2626" stroke-width="1.5"/>
+        <line x1="220" y1="36" x2="220" y2="44" stroke="#DE2626" stroke-width="1.5"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    window.isReadyToCapture = false;
+    window.pauseAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'paused');
+    };
+    window.playAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'running');
+    };
+    window.seekProgress = function(progress) {
+      const totalDurationSec = 3.5;
+      const targetTimeSec = progress * totalDurationSec;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDelay = `-${targetTimeSec}s`;
+        el.style.animationPlayState = 'paused';
+      });
+    };
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { window.isReadyToCapture = true; }, 300);
+    });
+  </script>
+</body>
+</html>

@@ -98,14 +98,14 @@
       "evaluating Flask endpoints, auditing single-script web services, reviewing Python backend logic for edge-case vulnerabilities, or when an adversarial security and correctness audit is requested",
       "static AST policy auditing (use policy-bejson-auditor) or runtime browser automation (use playwright-debugger-auditor)",
       "playwright-debugger-auditor,policy-bejson-auditor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       90,
       483,
       "c9dda7093440805d366ea13a78ec7480b9e0f923f670354b66cc74d6d88b4900",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "956941a2-bcd6-5199-844f-ae58d32555ee",
@@ -119,14 +119,14 @@
       "creating agy prompt templates, structuring targeted subfolder audits with explicit user approval, generating 25-50 point feature menus or schemas, and running sandboxed CLI workflows across projects in Termux, Linux, or macOS",
       "general shell script scaffolding (use bejson-scaffold-bash)",
       "bejson-scaffold-bash",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       170,
       499,
       "8cbf5beb06068bb9cefb2ddaa92e6bbccf7060b4fe0690bb9d80d660e6909309",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "b9f7fa02-9fcd-565a-bf87-49c8bf4a4e05",
@@ -140,14 +140,14 @@
       "auditing or refactoring agy skills, prompt templates, daemons, or CLI automation pipelines",
       "Gemini Spark skills (use spark-skill-refactor) or general application source code (use bejson-codebase-refactor)",
       "bejson-codebase-refactor,spark-skill-refactor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       118,
       654,
       "1255ad56bdb4fefb0b7de51598152c8230b565f77132dc7c7517407fcfc1a1f4",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "b038ea7c-6a15-54ca-b17c-bd765e320a44",
@@ -161,14 +161,14 @@
       "planning system-wide refactoring, structuring layered codebases, untangling circular dependencies, designing clean layer boundaries, or coordinating multi-skill refactoring workflows",
       "single-file BEJSON persistence refactoring (use bejson-codebase-refactor), Antigravity CLI prompt automation (use agy-prompt-automator), or isolated schema modeling (use planning-schema-planner)",
       "agy-prompt-automator,bejson-codebase-refactor,planning-schema-planner",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       142,
       746,
-      "0d088ea5a0c693b2a6f2650322eaa727d3a75614748eaa80114c9f5a09b2aee0",
+      "ec395d27432c501600d7ef96fa6b167cd8dbedc2ba47b9f90dd8e0d2464fd208",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "95abd3a0-f427-5c8b-8038-3b96d007f928",
@@ -182,14 +182,14 @@
       "probing specified systems for performance bottlenecks, redundant logic, loop I/O churn, duplicate functions, dead code, or context bloat across multiple deliberate review passes",
       "static AST BEJSON policy compliance auditing (use policy-bejson-auditor), black-box schema structural validation (use bejson-104-validator or bejson-105-validator), skill routing topology auditing (use skill-ecosystem-cartographer), or general application code restructuring (use arch-layered-refactor)",
       "arch-layered-refactor,policy-bejson-auditor,skill-ecosystem-cartographer",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       104,
       759,
       "0b83e782f6a7683ac1bf24e37ae0306063ca41afd9a524982bad927c563792f4",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "7d1e99ac-3d3d-53a5-ba7a-888efb6381b9",
@@ -203,14 +203,14 @@
       "building UI/TUI components, CMS views, or diagrams backed by libraries_104 vertical families",
       "raw BEHTML design preference token specifications (use behtml-design-preferences), instantiating standalone HTML templates or app scaffolds (use behtml-templates), formatting standalone editorial publications (use publication-html-builder), low-level 104/104a/104db record CRUD (use bejson-104-core), 104 schema template binding (use template-104-template), or Format 105 Integrity Era operations (use bejson-105-core)",
       "behtml-design-preferences,behtml-templates,bejson-104-core,bejson-105-core,publication-html-builder,template-104-template",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
-      88,
+      87,
       963,
-      "c593d4ae7af676fd765689157881583d5579573ef47a1335c0a46e8567589626",
+      "0fc1a18535f17a3497605b78751149ed2aa0fb4c1d4962ffaea60ca43b342cbd",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "93aa2934-a1f5-504b-a95f-2e07958d1d7d",
@@ -224,14 +224,35 @@
       "establishing design rules, auditing layout geometry, configuring spatial coordinates, or styling BEHTML components",
       "instantiating concrete HTML templates or application scaffolds (use behtml-templates), rendering BEJSON 104 vertical domain tables and terminal menus (use behtml-104-builder), or formatting multi-chapter book publications (use publication-html-builder)",
       "behtml-104-builder,behtml-templates,publication-html-builder",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       116,
       868,
       "63a29b2a478d3a79ffdb88255e3f076781938276b56543a7ab630bbbb6f7fd14",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "56dac921-4020-5a9f-85a1-9a1e4596dc57",
+      "behtml-document-template",
+      4,
+      "L4_Presentation_Transport",
+      "behtml",
+      "-template",
+      "global",
+      "behtml-document-template/SKILL.md",
+      "creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (dual-pane pattern card catalog and code switcher). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use as a global scaffold for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder)",
+      "",
+      "behtml-104-builder,behtml-design-preferences,behtml-templates",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 4 verified upstream contract",
+      "Layer 4 deterministic deliverable",
+      63,
+      836,
+      "164c8e39f4ffede7b9a11c2237341fb871a97b5aa637ba5799972ba61d8bd229",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "42c45dc4-7e02-50a9-a8d0-4798242a5c1c",
@@ -252,7 +273,7 @@
       640,
       "5b50a57b940f21063f61fb3c2780bc2a9261756411262c3a9751b1326ae7d7e5",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "43b6d703-dde7-504d-ad2f-caded0e8943d",
@@ -266,14 +287,35 @@
       "generating BEHTML layouts, designing spatial UI templates, constructing 18-field BEHTMLElement datasets, or rendering spatially locked web interfaces",
       "raw format math (use behtml-format-core), structural validation (use behtml-schema-validator), or web navigation tree mapping (use ui-navigation-decomposer)",
       "behtml-format-core,behtml-schema-validator,ui-navigation-decomposer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       253,
       685,
       "f23c84bf364e28f0d2eb8ebf00c678c5978e83334cc81f49cb853c37aea2fce6",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "966c57e2-e32f-5147-81be-a41ec7f660b1",
+      "behtml-scaffold-automator",
+      3,
+      "L2_Adapters_L3_Services",
+      "behtml",
+      "-automator",
+      "global",
+      "behtml-scaffold-automator/SKILL.md",
+      "compiling BEHTML layouts into static distribution builds, injecting Tri-Color CSS variables, auditing HTML documents for zero-filler compliance before shipping, or staging web assets into distribution directories",
+      "raw 8-lane / 32px coordinate math (use behtml-format-core), structural schema validation (use behtml-schema-validator), or UI layout composition (use behtml-layout-builder)",
+      "behtml-format-core,behtml-layout-builder,behtml-schema-validator",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      119,
+      634,
+      "f4ccb8d671fef373dbf7cc2706fb695f013d1d3002eb98ecb417be2d0241a9a7",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "bd26330d-3721-5bec-b684-f135a29b3e1d",
@@ -287,14 +329,14 @@
       "auditing BEHTML documents, detecting schema drift, inspecting error codes (300-329), verifying collision boundaries, validating URL schemes, or checking cyclic parent hierarchies",
       "BEJSON validation (use bejson-104-validator), low-level format primitives (use behtml-format-core), or layout composition (use behtml-layout-builder)",
       "behtml-format-core,behtml-layout-builder,bejson-104-validator",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       167,
       558,
-      "63667d7a07377c2240e786f8e058c58e86a616f9dfd64fd1b0692a5c2e92947e",
+      "d146702ca393d9a89da701d758f2e31018f05a325766b04f1688f5ae46547542",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c34c8049-4985-5523-9af6-e61fa0628116",
@@ -308,14 +350,14 @@
       "generating production HTML templates, web documents, or dashboards from canonical examples",
       "raw BEHTML CSS token rules (use behtml-design-preferences), rendering BEJSON 104 domain tables (use behtml-104-builder), or formatting book publications (use publication-html-builder)",
       "behtml-104-builder,behtml-design-preferences,publication-html-builder",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       96,
       786,
       "0c0c8272f1c0585b56b3d2c7eeef81d8b87446e288bdadb36e4f5442a5c7ba9d",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "74a893c6-bed7-5881-bb16-dbf9d2be24c5",
@@ -336,7 +378,7 @@
       911,
       "4a0c51f48e3e92ef0168abe36d65f2eaa3cd8d20bd774806f92a4d01858638b3",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "eba5ccee-613b-5f10-8385-bc0e8b1b6180",
@@ -357,7 +399,7 @@
       801,
       "6d053076c8f2ab5a6406c7f27e5cf5449fafd5692e7dc6452a9be158bba32956",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "070dffc4-2af5-5761-bb8b-5a417d0a99b9",
@@ -371,14 +413,14 @@
       "executing Layer 2 stage-gate validation on .104.bejson, .104a.bejson, or .104db.bejson files",
       "mutating 104/104a/104db records (use bejson-104-core), recursive Nested 104 cell traversal (use bejson-104-nesting-core), validating Format 105/105a/105db E90-E95 UUID constraints (use bejson-105-validator), mutating Format 105 records (use bejson-105-core), upgrading 104 files to 105 (use bejson-105-upgrade-automator), or auditing Python/JS ASTs for policy compliance (use policy-bejson-auditor)",
       "bejson-104-core,bejson-104-nesting-core,bejson-105-core,bejson-105-upgrade-automator,bejson-105-validator,policy-bejson-auditor",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       73,
       852,
       "7f852622cad7239b55bcb6f3ccc36c2ac83152a81a8a440e4c94cd7b9663053c",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "576817ad-f921-5d22-bf05-ac851340da63",
@@ -399,7 +441,7 @@
       866,
       "133df594ca98c58d8bcf1ad9a56f759d3cbad779f19f7372730d2674600c87d5",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "66a7ff69-cc38-5813-a756-91083f954914",
@@ -413,14 +455,14 @@
       "upgrading existing 104-series files to 105-series without triggering E95 (E_105_FAIL_ON_SWITCH)",
       "CRUD on unmigrated 104 files (use bejson-104-core), CRUD on already-upgraded 105 files (use bejson-105-core), standalone 104 validation (use bejson-104-validator), standalone 105 validation (use bejson-105-validator), or recursive Nested 104 cell manipulation (use bejson-104-nesting-core)",
       "bejson-104-core,bejson-104-nesting-core,bejson-104-validator,bejson-105-core,bejson-105-validator",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       67,
       806,
       "ed7bdefea3b087509b97932bf6f4be82bfd74b2ec807b09e43480628700b09c5",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "6384b094-e949-5dc1-bd88-9017a5e3373a",
@@ -434,14 +476,119 @@
       "executing Layer 2 stage-gate verification on .105.bejson, .105a.bejson, or .105db.bejson files",
       "mutating 105/105a/105db records (use bejson-105-core), upgrading 104 files to 105 (use bejson-105-upgrade-automator), validating Foundational Era 104/104a/104db files (use bejson-104-validator), mutating 104 files (use bejson-104-core), recursive Nested 104 cells (use bejson-104-nesting-core), or MFDB v1.40 cross-file FK cascade auditing (use mfdb-105-validator)",
       "bejson-104-core,bejson-104-nesting-core,bejson-104-validator,bejson-105-core,bejson-105-upgrade-automator,mfdb-105-validator",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       72,
       828,
       "ac3b766e0cf237ebefdea6e05b9ed1554c9ff723ef535f26e2a3940e5f44d1da",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "3b5dbb95-5a3b-53b4-9ba1-0fbb8e28f193",
+      "bejson-cms-admin-scout",
+      3,
+      "L2_Adapters_L3_Services",
+      "bejson",
+      "-unknown",
+      "global",
+      "bejson-cms-admin-scout/SKILL.md",
+      "brainstorming topics from real Admin codebases or configuring blog drafting pipelines",
+      "",
+      "",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      90,
+      539,
+      "f510e9dde8cd84c44a18aa44efa7838c6d169bd1e4582b027f0835c7c0c58a0a",
+      false,
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "c67f9206-97fe-53de-a529-6e3d55ce0b0c",
+      "bejson-cms-blog-writer",
+      5,
+      "L3_Use_Cases_Cross_Layer_Blueprinting",
+      "bejson",
+      "-writer",
+      "global",
+      "bejson-cms-blog-writer/SKILL.md",
+      "",
+      "",
+      "",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 5 verified upstream contract",
+      "Layer 5 deterministic deliverable",
+      126,
+      690,
+      "30f89304e2ccf8cd5882e1ebd4b88640be4f30c72c463a1563ed388cc1ddc398",
+      false,
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "a628f685-bf76-50ed-a48e-af5a64212188",
+      "bejson-cms-canvas-illustrator",
+      3,
+      "L2_Adapters_L3_Services",
+      "bejson",
+      "-unknown",
+      "global",
+      "bejson-cms-canvas-illustrator/SKILL.md",
+      "creating featured post imagery or architecture graphics for BEJSON CMS",
+      "basic browser automation (use playwright-termux-automation) or multi-viewport visual testing (use playwright-visual-testing)",
+      "playwright-termux-automation,playwright-visual-testing",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      105,
+      670,
+      "c55d721725853db00ddce9d90dde8b1d6267778b386aa1a3baa2d89cf76a5ea2",
+      true,
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "0984911f-3626-51e3-8669-56773377bd39",
+      "bejson-cms-publish-automator",
+      3,
+      "L2_Adapters_L3_Services",
+      "bejson",
+      "-automator",
+      "global",
+      "bejson-cms-publish-automator/SKILL.md",
+      "building static assets, launching preview servers, or taking responsive QA screenshots of published BEJSON CMS sites",
+      "authoring blog post markdown (use bejson-cms-blog-writer) or generating canvas diagrams (use bejson-cms-canvas-illustrator)",
+      "bejson-cms-blog-writer,bejson-cms-canvas-illustrator",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      66,
+      460,
+      "a36d1cee84cce8c72ad4d90e2a60f37830aadf49b855cf9ed52363f4513f114d",
+      true,
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "21e870ed-5bb3-514b-8104-6f88f5a5a4df",
+      "bejson-codebase-auditor",
+      2,
+      "L1_Validation_L2_Verification",
+      "bejson",
+      "-auditor",
+      "global",
+      "bejson-codebase-auditor/SKILL.md",
+      "auditing codebases for BEJSON data mismatches, detecting schema corruption, identifying raw positional row indexing, scanning for non-atomic writes or silent exceptions, sniffing out cryptic variable names violating the Hierarchy-Group-Purpose triad, or evaluating entity taxonomies without mutating any files",
+      "modifying or refactoring code files (use bejson-codebase-refactor), isolated single-file 104 data validation (use bejson-104-validator), isolated single-file 105 data validation (use bejson-105-validator), executing Policy 10.6 test suites (use policy-bejson-auditor), or designing new taxonomy schemas from scratch (use code-taxonomy-architect)",
+      "bejson-104-validator,bejson-105-validator,bejson-codebase-refactor,code-taxonomy-architect,policy-bejson-auditor",
+      "bejson-format-core",
+      "Layer 2 verified upstream contract",
+      "Layer 2 deterministic deliverable",
+      144,
+      919,
+      "747300abb252ce611cd3c23dc2861c063de62051c00e05be2db88e8e1b60c292",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "a9d2f42f-8f7a-525c-acb1-4acc6eb67c04",
@@ -455,14 +602,35 @@
       "provided code, scripts, or repository components in Python, TypeScript, JavaScript, or Bash and asked to refactor, modernize, optimize, or migrate data structures, configuration layers, persistence models, logs, or local storage to BEJSON while maintaining functional equivalence",
       "Gemini Spark skills (use spark-skill-refactor)",
       "spark-skill-refactor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       280,
       539,
       "d4059b1e9952d6e2f65ba0f2685faa3194fbc6e319c3240644672cca4e2e284b",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "4f551fd1-1ffb-538a-a4aa-6266af23becd",
+      "bejson-diagram-component",
+      3,
+      "L2_Adapters_L3_Services",
+      "bejson",
+      "-unknown",
+      "global",
+      "bejson-diagram-component/SKILL.md",
+      "asked to generate an embeddable diagram component, portable diagram widget, or embed an interactive diagram directly into an existing webpage",
+      "system architecture flowchart compilation via CLI (use bejson-diagrammer-cli)",
+      "bejson-diagrammer-cli",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      112,
+      498,
+      "7e0e3d276ddea34bb9fd95d42d95d642a2fbc7ec41bff97f330a64ee2994dda5",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "2e1dd647-527a-5b5f-82e9-0becc6f5a1d9",
@@ -473,17 +641,17 @@
       "-unknown",
       "global",
       "bejson-diagrammer-cli/SKILL.md",
-      "asked to generate diagrams, architecture flowcharts, BEJSON MFDB diagram schemas, extend active board diagrams, compile interactive diagram canvas HTML files, or produce a portable embeddable diagram widget",
-      "general-purpose charts or data visualization unrelated to BEJSON diagram schemas",
-      "",
-      "bejson-104-core,bejson-104-validator",
+      "asked to generate diagrams, architecture flowcharts, BEJSON MFDB diagram schemas, extend active board diagrams, or compile interactive diagram canvas HTML files",
+      "embeddable 3-tab diagram widgets (use bejson-diagram-component)",
+      "bejson-diagram-component",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
-      140,
-      739,
-      "17a051b346e3e539c74599a6355b1d33d463de194da30c4fb7ac3dd72638eff1",
-      false,
-      "2026-10-24T00:50:24Z"
+      103,
+      440,
+      "fc3334b33426ada6f70943e986f4e1c171fbea9578a1fbda594bc54032fae07b",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "4fd35253-e9b9-5178-8bbb-059d45003ba6",
@@ -497,35 +665,14 @@
       "rewriting technical coding architectures, system design documents, tutorials, API specifications, and software guides by transposing standard data formats, database systems, and state architectures into equivalent, practical BEJSON (104, 104a, 104db, Nested 104, MFDB v1.31/v1.32) paradigms while maintaining the conceptual integrity, depth, and structural fidelity of the original document. Translates abstract cloud or web architectures into practical local-first systems grounded in current BEJSON runtime capabilities",
       "application code refactoring (use bejson-codebase-refactor)",
       "bejson-codebase-refactor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       227,
       607,
       "43c53adefe0b74e92e044ed7c4c1ff93e596659a32edaa752046d1abf46cc179",
       true,
-      "2026-10-24T00:50:24Z"
-    ],
-    [
-      "2182ea7f-60d6-5e16-ba68-b3c3ee3b35b3",
-      "bejson-document-chunker",
-      2,
-      "L1_Validation_L2_Verification",
-      "bejson",
-      "-chunker",
-      "global",
-      "bejson-document-chunker/SKILL.md",
-      "chunking markdown files, managing document categories and paragraph-split chunks, tagging chunks, setting chunk statuses (draft, review, final, skip), compiling documents to Markdown with table of contents, mounting/committing document projects, or performing delimiter imports",
-      "codebase archive packaging (use chunking-core) or MFDB multi-file database container mounting (use mfdb-104-chunker)",
-      "chunking-core,mfdb-104-chunker",
-      "bejson-104-core",
-      "Layer 2 verified upstream contract",
-      "Layer 2 deterministic deliverable",
-      90,
-      592,
-      "5547c8f890b627d8a10ed2f2ac64321d0da0d3e5e44afb69fed6103bd64af73e",
-      true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "9c71f873-a954-5b81-941a-b0962c5f3f3a",
@@ -539,14 +686,14 @@
       "generating enforcement tests, building Policy 10.6 test suites, validating schema registry tests, or scaffolding factory reset harnesses",
       "static AST code analysis of field map caches (use policy-bejson-auditor), single-file schema validation (use bejson-104-validator), or E90-E95 UUID integrity verification (use bejson-105-validator)",
       "bejson-104-validator,bejson-105-validator,policy-bejson-auditor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       130,
       611,
       "8ef3b844061c5911543f4c0fdab25f7221cb2d8a33b81d5dbf6e095b9452629a",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "847ddef1-0666-5f5b-ba4f-4a316d04c9c9",
@@ -558,16 +705,37 @@
       "global",
       "bejson-media-pipeline/SKILL.md",
       "designing media processing tools, batch audio/video scripts, auto-slideshow generators, visualizers, watermarkers, transcoders, or clip chunkers where files in an assets folder are processed automatically with atomic I/O",
-      "document chunking (use bejson-document-chunker)",
-      "bejson-document-chunker",
-      "bejson-104-core,bejson-104-validator",
+      "document chunking (use chunking-core)",
+      "chunking-core",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       159,
-      502,
-      "694143da1148b6917c782338645f6d8defc2f193730c7086b2232ac89b3876d5",
+      492,
+      "3b12b4b8ebb1c92fe2587fab7da5adeb15533ef9dbabce451febd1912b96aaa4",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "8d16f378-7f99-5139-96fa-84a89a0ac0c5",
+      "bejson-migration-pipeline",
+      3,
+      "L2_Adapters_L3_Services",
+      "bejson",
+      "-pipeline",
+      "global",
+      "bejson-migration-pipeline/SKILL.md",
+      "importing external tabular data into BEJSON, migrating SQLite databases to MFDB, converting CSV tables to BEJSON, or modernizing flat storage",
+      "editing existing BEJSON tables (use bejson-104-core), black-box schema validation (use bejson-104-validator), upgrading 104 to 105 files in-place (use bejson-105-upgrade-automator), or application code AST refactoring (use bejson-codebase-refactor)",
+      "bejson-104-core,bejson-104-validator,bejson-105-upgrade-automator,bejson-codebase-refactor",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      128,
+      763,
+      "89f11fa03274df1737e1968ec9340e8198fe106b0c1d1009a2d393835ced2b64",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "081bd5b6-eb84-5be0-90a1-8ecb4b2e79b0",
@@ -588,7 +756,7 @@
       629,
       "5f6513f061d61b08f15d52c5cd53b7afbc78d45b947744e629675f1080674cd2",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "fe0335c0-4f9c-5f15-b018-c8dcef0bf0f1",
@@ -602,14 +770,14 @@
       "asking to create, scaffold, or start a new bash/shell script, Termux tool, or CLI touching BEJSON documents",
       "Python (use bejson-scaffold-python) or JavaScript (use bejson-scaffold-javascript)",
       "bejson-scaffold-javascript,bejson-scaffold-python",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       70,
       435,
       "911d1dfe8ee44d79d5cac277284d40162abd36ebe834292fb3935338ce639c8d",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "91c16100-4e75-5c4f-a833-c95d9e9fb6ef",
@@ -623,14 +791,14 @@
       "asking to create, scaffold, or start a new plain JS file, browser script, or Node script touching BEJSON documents",
       "Python (use bejson-scaffold-python) or full HTML layouts (use behtml-layout-builder)",
       "behtml-layout-builder,bejson-scaffold-python",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       79,
       462,
       "a488117235fb8d9464455826ee51f2b3c4e5e6deba036bb8fe0db805da05b9d3",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "95aea66f-772d-5738-b159-f88e38035f9b",
@@ -644,14 +812,14 @@
       "asking to create, scaffold, or start a new Python script, tool, CLI, or Component app that touches BEJSON documents",
       "JavaScript (use bejson-scaffold-javascript), Bash (use bejson-scaffold-bash), or codebase refactoring (use bejson-codebase-refactor)",
       "bejson-codebase-refactor,bejson-scaffold-bash,bejson-scaffold-javascript",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       66,
       478,
       "0a81281fe95eca590a1943fc01be9ee4a1be7b11462cc35e5bfe87071700b3e2",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "706ec173-bfb6-568b-be45-8c0c65aee060",
@@ -665,14 +833,14 @@
       "verifying BEJSON files of unknown, mixed, or evolving eras, executing Layer 2 stage gates on data stores, checking POL-002 primitive-only rules, or verifying E90-E95 UUID integrity",
       "specialized Python/JS AST source policy audits (use policy-bejson-auditor), BEHTML coordinate quantization and DOM layout validation (use behtml-schema-validator), or MFDB v1.40 cross-file referential integrity (use mfdb-105-validator)",
       "behtml-schema-validator,mfdb-105-validator,policy-bejson-auditor",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       77,
       639,
       "4c7d5ca5dadb644e7d6474d09144bc85c2d9c98dd6fec60b68e8c1fbd6f331a1",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "deb8ba90-e759-52a1-aaba-49447e1e3e1d",
@@ -684,16 +852,16 @@
       "global",
       "bejson-tui-menu-builder/SKILL.md",
       "designing, auditing, or refactoring interactive Bash terminal menus, CLI daemon dashboards, or Termux portrait-mode TUIs",
-      "rendering tabular BEHTML web views (use behtml-104-builder), instantiating full BEHTML web documents (use behtml-templates), or mutating BEJSON data records on disk (use bejson-104-core)",
-      "behtml-104-builder,behtml-templates,bejson-104-core",
-      "bejson-104-core,bejson-104-validator",
+      "rendering tabular BEHTML web views (use behtml-104-builder), instantiating full BEHTML web documents (use behtml-document-template), or mutating BEJSON data records on disk (use bejson-104-core)",
+      "behtml-104-builder,behtml-document-template,bejson-104-core",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
-      159,
-      686,
-      "effd1154606a4afa4036da040bae23001a90e45e4349f5aaa0860c50f652e739",
+      229,
+      803,
+      "afd2503327f30753c9250cc3bd7ebe66b52f38851e012c320e66a91e69c7e124",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "0992e501-ff01-51fe-b62a-64fd44f99ec2",
@@ -707,14 +875,35 @@
       "writing long-form books, technical guides, manuals, or comprehensive documentation requiring multi-turn chapter execution and HTML compilation",
       "single-turn summary articles (use publication-html-builder), general task job tracking (use job-workflow-manager), or pre-planning database schemas (use planning-schema-planner)",
       "job-workflow-manager,planning-schema-planner,publication-html-builder",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       161,
       877,
       "54efa1b98c10a30bdc4418b3412be0c1cc95832c2d2bc76a4ce7cbcd2a27ceae",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "d69f4799-581f-5831-995c-01bdc1fb0ab0",
+      "canvas-animation-studio",
+      3,
+      "L2_Adapters_L3_Services",
+      "canvas",
+      "-unknown",
+      "global",
+      "canvas-animation-studio/SKILL.md",
+      "generating animated SVG assets, capturing deterministic keyframes or frame sequences, rendering 8-lane UI stages, or exporting repeating pattern textures",
+      "basic website screenshots (use playwright-termux-automation) or multi-viewport visual regression audits (use playwright-visual-testing)",
+      "playwright-termux-automation,playwright-visual-testing",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      173,
+      594,
+      "37bd42d946acd9f887e42a87e33998a1d6a0fafe9a0401254cf9c2220de9461e",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c2233e50-ced6-56cf-b3cf-92dcb9e71894",
@@ -731,11 +920,11 @@
       "none",
       "Layer 1 verified upstream contract",
       "Layer 1 deterministic deliverable",
-      195,
+      185,
       863,
-      "4a8fc6715df5b2135803bd026498ff87fa9f3df1d7bafd4a33af462fa1d5842c",
+      "60ea433d1e00135f1222d72352622e4f838bb1e96569c2ce894e03cb28b82555",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "59d75037-a740-5662-9368-be612aac2f7f",
@@ -749,14 +938,14 @@
       "building AI-powered CLI file processors, autoprompters, batch AI asset transformers, or refactoring CLI AI scripts to use zero-SDK REST endpoints",
       "non-AI media or local file converters (use cli-processing-standardizer) or non-AI general CLI utilities without REST LLM calls (use cli-standardizer)",
       "cli-processing-standardizer,cli-standardizer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       124,
       781,
       "c6608adcf38bbb9be142f0ed853c2615ceb375b1aa77d97e21871ce60d473a12",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "767a0fe1-771e-5cb1-9ee1-a1b00eb06649",
@@ -770,14 +959,14 @@
       "creating or refactoring Python CLI tools specifically for file processing, batch media conversions, asset pipelines, or document transforms",
       "general scripts, web APIs, or non-file CLI utilities",
       "",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       98,
       526,
       "7165966e1463de867eec2f807bcbeb56388c70126814134cb5863f617a49af9e",
       false,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "a7cc38a8-bc12-52be-9161-2dfa737a102e",
@@ -791,14 +980,14 @@
       "creating or modernizing non-file-processing CLI tools, utility scripts, or operational commands",
       "file-processing asset pipelines or media conversion tools (use cli-processing-standardizer)",
       "cli-processing-standardizer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       80,
       511,
-      "cc3bf574f51d2592044eb99309ce5735431a01787a6caa721a226931edf199b7",
+      "b92fcd9de30beb985f25b85e82dff71cfafe6a70bcd0601ad88c32a9cd7d38b6",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "7c8f8707-7632-52df-867f-1f7080d1bb2a",
@@ -812,14 +1001,14 @@
       "asked to document a codebase or library ecosystem as an e-book or manual, generate a documentation portal with mobile navigation drawers, structure root/language/feed.html and root/language/module/index.html layouts, or create production documentation websites with raw source delivery",
       "single-page editorial HTML documents (use publication-html-builder)",
       "publication-html-builder",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       53,
       741,
       "b7b51677294e0ceafb10ffc70ac93f3299a14c6ad2d927458c15a34644692c99",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "226be478-ccdc-5c40-a01f-dd61d7388ce4",
@@ -833,14 +1022,14 @@
       "defining field names, variable identifiers, or library module signatures for 104 or 105 projects prior to template rendering",
       "assigning primary/foreign keys and Write-Owner modules (use component-taxonomy-architect), rendering 104 or 105 file templates (use template-104-template or template-105-template), or auditing existing code ASTs (use policy-bejson-auditor)",
       "component-taxonomy-architect,policy-bejson-auditor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       72,
       681,
       "1f7275d7b0ed657dc46e9f0ada4ec129142ef0bcfb9ff8090b92f2a148b08364",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "fe08ed6d-c340-5c68-a699-af0ce6a311da",
@@ -854,14 +1043,14 @@
       "modeling relational entity graphs and write-ownership boundaries before scaffolding",
       "field-level snake_case prefix naming (use code-taxonomy-architect), turn-gated Era selection between 104 and 105 (use planning-schema-planner), or rendering 104/105 templates (use template-104-template or template-105-template)",
       "code-taxonomy-architect,planning-schema-planner",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       65,
       664,
       "47e22c56f0ef3a711e5188e26fc83bdfa2c5a16df04e82bf96da3d71a840adbf",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "83c1dd98-a6b3-54cf-82fb-cbf7620d913f",
@@ -875,14 +1064,14 @@
       "harvesting ideas, extracting concept patterns, identifying reusable architectural motifs, or turning raw brainstorming into structured pattern cards",
       "deep forensic inspection of subtle nuances and mechanical couplings inside a single locked specification (use concept-nuance-pattern-analysis), Turn 1 BEJSON 104 vs 105 schema allocation planning (use planning-schema-planner), designing snake_case identifier prefixes (use code-taxonomy-architect), or parameterizing {{VAR:-default}} slots (use prompt-placeholder-composer)",
       "code-taxonomy-architect,concept-nuance-pattern-analysis,planning-schema-planner,prompt-placeholder-composer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       78,
       839,
       "d99617e1890a8e860e640962c7a1ddec9094b5e0bcb9ab62a4b2a2b4feabcc34",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "6baa3536-8d21-585c-af6d-030f66e2cc57",
@@ -896,14 +1085,14 @@
       "inspecting the deep nuances, hidden constraints, why-it-works mechanics, or micro-pattern interactions of a concept or design specification",
       "extracting raw seed ideas or harvesting broad concept archetypes across unstructured notes (use concept-idea-pattern-extraction), designing snake_case identifier prefixes (use code-taxonomy-architect), modeling entity primary/foreign keys (use component-taxonomy-architect), or enforcing BE HTML CSS tokens (use behtml-design-preferences)",
       "behtml-design-preferences,code-taxonomy-architect,component-taxonomy-architect,concept-idea-pattern-extraction",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       83,
       803,
       "a2b4153af41fe5c0b96992de0f4093be6318e7f11ebd59489d825fc615e2a3f2",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "5fefa982-8452-5716-a31e-14b786b3cae2",
@@ -917,14 +1106,14 @@
       "resolving ambiguous terms, colloquialisms, speech-to-text mishears, or retrieving canonical definitions and policy contracts for concepts across BEHTML, BEJSON, and tooling",
       "indexing executable skill manifests and execution DAGs (use skill-ecosystem-cartographer), modeling database entity primary/foreign keys (use component-taxonomy-architect), designing variable identifier prefixes (use code-taxonomy-architect), or enforcing zero-filler templates (use template-literal-skeleton)",
       "code-taxonomy-architect,component-taxonomy-architect,skill-ecosystem-cartographer,template-literal-skeleton",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       82,
       728,
       "6bcdd1a7922b1a28dd4c80c61fd79cbffb7b071cd89596a34c3c52708ddae349",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "6f7f67e3-c268-54a2-ac60-76fadce635bc",
@@ -938,14 +1127,14 @@
       "executing multi-domain architectural mapping, decomposing project visions into typed contracts, or orchestrating Python, BEHTML, and Bash domain typers",
       "generic 3-phase autonomous goal and delivery pipelines (use domain-scoped-coordinators), single-skill DAG execution (use skill-chain-coordinator), or cataloging installed skill topologies (use skill-ecosystem-cartographer)",
       "domain-scoped-coordinators,skill-chain-coordinator,skill-ecosystem-cartographer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       134,
       603,
       "a67a40bf2d538210bb49757d2df907fe88a72df79d71e8c7b72d2774ebf87cc7",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "52414cb5-98d6-5075-b23e-071c569f58dc",
@@ -959,14 +1148,14 @@
       "executing multi-phase autonomous agent workflows, domain-specific implementation pipelines, or managing iterative rework cycles",
       "single-skill DAG execution (use skill-chain-coordinator), authoring individual skill bundles (use skill-architect), or cataloging installed skill topologies (use skill-ecosystem-cartographer)",
       "skill-architect,skill-chain-coordinator,skill-ecosystem-cartographer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       97,
       785,
       "2e2d1117a57c6041111cdc34924fefe2d4e6847f6ce479a4917c501ec853c7b5",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "6df59e9f-9428-515d-b995-af55c910922c",
@@ -980,14 +1169,14 @@
       "running session initialization maintenance, sweeping download folders, compressing unzipped project drops, enforcing archive retention, or pruning duplicate builds",
       "generic 3-phase autonomous workflow pipelines (use domain-scoped-coordinators), single-skill DAG execution (use skill-chain-coordinator), or packaging codebases into single-file BEJSON text chunks (use chunking-core)",
       "chunking-core,domain-scoped-coordinators,skill-chain-coordinator",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       83,
       670,
       "ed3dd2a7f2ea42a410a0a7c4ca84c03b217c8f39956835a9fecbcf6d3e94d2f4",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c6fa5a2d-86f0-539c-8cce-df49339fecf6",
@@ -1001,14 +1190,14 @@
       "scaffolding a new project directory, migrating legacy project tracking notes from docs/ to dev/, bootstrapping config/config.json defaults, or enforcing self-locating script path preambles",
       "session initialization download sweeps (use file-archive-coordinator), low-level 104 table CRUD (use bejson-104-core), or authoring SKILL.md bundles (use skill-architect)",
       "bejson-104-core,file-archive-coordinator,skill-architect",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       95,
       625,
       "e568260adbe52e18c540a452cca1424c571c76073d6df0d37e3870d876b47e58",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "5a3a6e3e-e263-5735-b069-b7b977a05806",
@@ -1029,7 +1218,7 @@
       948,
       "6c16004ae16e94bcf81912aa96c035bd119703cf18c8926b027974274938da06",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "02c8356c-9fb5-5edd-84bf-31fa2ebf16da",
@@ -1043,14 +1232,14 @@
       "defining function tools, executing tool-calling loops, handling parallel or chained function steps, or configuring built-in tools in Gemini Interactions API workflows",
       "basic text generation, stateful previous_interaction_id sessions without tools, or streaming lifecycle management (use gemini-interactions-core)",
       "gemini-interactions-core",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       253,
       926,
       "5c66bc6011d230d38f7060d932b56b2d270eb1ca0d6e128f8edbf363dd386584",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "14f88200-9069-5708-b4c9-3e50ce371b06",
@@ -1064,14 +1253,14 @@
       "finalizing coding tasks, conducting pre-delivery reviews, or wrapping up development sessions",
       "AST field-map cache verification (use policy-bejson-auditor) or web browser testing (use playwright-debugger-auditor)",
       "playwright-debugger-auditor,policy-bejson-auditor",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       48,
       482,
       "2797c990e95b7eb604de240875f1e9b3a83e60b110ef444225ef0a8e4ecb06cf",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "9d9f8029-1ad7-551f-af62-50c4d2ea8597",
@@ -1085,14 +1274,14 @@
       "planning blog posts, scanning project trees for writing topics, brainstorming technical articles, or categorizing development narratives by complexity",
       "writing multi-part drafts and combining final publication text (use publication-blog-post-writer), extracting raw micro-patterns from notes (use concept-idea-pattern-extraction), or formatting HTML documents (use publication-html-builder)",
       "concept-idea-pattern-extraction,publication-blog-post-writer,publication-html-builder",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       103,
       645,
-      "e8ee7a696d31a6f2a2eaea3a55318884dd5e6e4a8493dfebdd45efe781cd6faa",
+      "e89366a5d4a4f820e70c87593037d867178a52dd1f29d4178f9e89a3ef2c1d00",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c7439098-3cd2-5c5e-9920-a0af26af4186",
@@ -1106,14 +1295,14 @@
       "brainstorming product feature menus, authoring comprehensive CLI command trees, or structuring feature roadmaps",
       "interactive interview Q&A (use ideation-interview-composer). Given a vague concept or description of a tool, app, or script, generates an exhaustive numbered list of every possible feature, UI option, and configuration. Output a categorized, sequentially numbered 25-50 point feature menu for user selection. Trigger on feature brainstorm, plan a tool, compose features for, what features could X have. Do NOT use for high-level macro concept expansion (use ideation-macro-composer)",
       "ideation-interview-composer,ideation-macro-composer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       135,
       682,
       "95540c98602571f8d846c0d28573c6ab8f42f624f2e43e5cff2e5be9457d96a1",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "d26322ab-7f4d-5fda-98f6-5749d56e7e21",
@@ -1127,14 +1316,14 @@
       "the user asks to plan, spec, or iteratively interview for a project, build a tool or doc with an interactive questionnaire, or generate a tailored builder prompt from numbered feature choices",
       "standalone 25-50 point feature cataloging without interactive interview Q&A (use ideation-feature-composer) or high-level macro system ideation (use ideation-macro-composer)",
       "ideation-feature-composer,ideation-macro-composer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       141,
       739,
       "092fc08748563902f596d67846fe2055c60dda4df42630ca151d4e5e5ec03352",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "f9675994-a859-5f09-b8ec-4c12a3f9ca78",
@@ -1146,16 +1335,16 @@
       "global",
       "ideation-macro-composer/SKILL.md",
       "starting from an abstract vision and needing deep speculative expansion before feature cataloging",
-      "granular numbered feature lists (use ideation-feature-composer) or technical database schemas (use planning-schema-planner)",
-      "ideation-feature-composer,planning-schema-planner",
-      "bejson-104-core,bejson-104-validator",
+      "granular numbered feature lists (use ideation-feature-composer) or technical database schemas (use mfdb-python/javascript/typescript-planner)",
+      "ideation-feature-composer",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
-      179,
-      401,
-      "1e320a5daf76cebba97ed1c102d004df4f340bd316624372dbb30b05b0c8e5b0",
+      185,
+      419,
+      "487e99253f21bf90e90cc39c810ea8b9dd8f5b028e279b090fed4855f8321215",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c2b4fa4e-73a3-5978-a5b2-cbd9732e3cf2",
@@ -1169,14 +1358,14 @@
       "creating jobs or templates, instantiating templates into fresh job schemas, tracking job states, running jobs one task at a time, injecting contextualized plans or last-task outputs, or auditing task completion",
       "general shell script scaffolding (use bejson-scaffold-bash) or full codebase layered refactoring (use arch-layered-refactor)",
       "arch-layered-refactor,bejson-scaffold-bash",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       183,
       524,
-      "daf40165f0a856a3ceeded1b55d3150de376823d3f0d6d313a1b1a2fcae1b8bb",
+      "e95ec49ab4905a26e0a5f4c34a48b3da057ee4d3197f6a87edcd011a869cdff3",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "b053e44c-de2f-5d15-8214-70b9ab095fa8",
@@ -1188,16 +1377,16 @@
       "global",
       "large-website-architect/SKILL.md",
       "building or scaffolding multi-page websites, portals, video feeds, image galleries, video players, documentation hubs, blog posts, project showcases, or e-book publications",
-      "single-page editorial articles (use publication-html-builder) or raw BEHTML format coordinate math (use behtml-format-core)",
-      "behtml-format-core,publication-html-builder",
-      "bejson-104-core,bejson-104-validator",
+      "",
+      "",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       76,
-      624,
-      "9167c15e697e8868d07a36e2b2e7053ecfc5e82a47c6881beecc67fccc3476f0",
-      true,
-      "2026-10-24T00:50:24Z"
+      484,
+      "f4c691451abbcd49e917fae31ee53f4fd138575cad919400fd2dcbe1aa394280",
+      false,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c99fe476-66c7-5252-9169-5cd9ad32ac7b",
@@ -1211,14 +1400,14 @@
       "collapsing an MFDB directory or codebase into a portable .mfdb132.bejson bundle or mounting a chunked container",
       "standard multi-file 104a.mfdb.bejson manifest CRUD (use mfdb-104-core), Format 105 MFDB v1.40 FK referential integrity validation (use mfdb-105-validator), or single-file 104 table edits (use bejson-104-core)",
       "bejson-104-core,mfdb-104-core,mfdb-105-validator",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
-      92,
+      67,
       624,
-      "38181712cf215d32c039f269129527c12a7af47e21f667ce3df986b8abadd0d6",
+      "1322682f443de4e270641cb9d641ad36af38120046614b5c5295714c78dc6d4b",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "59235863-08af-5c07-aec7-ec21396c7f70",
@@ -1239,7 +1428,28 @@
       686,
       "9a9bfec5d6f2cc1d8774bca5e0b18dd70cc2f45ea1b0fe76f93594b33015e303",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "e2fdb0e7-5742-56e5-9f21-55b3ba509048",
+      "mfdb-105-upgrade-coordinator",
+      6,
+      "L5_Composition_Root",
+      "mfdb",
+      "-coordinator",
+      "global",
+      "mfdb-105-upgrade-coordinator/SKILL.md",
+      "migrating complete multi-file MFDB databases from v1.31 to v1.40",
+      "single-file 104 document upgrades (use bejson-105-upgrade-automator), Foundational Era MFDB v1.31 manifest CRUD (use mfdb-104-core), packing or mounting single-file MFDB-132 containers (use mfdb-104-chunker), or standalone MFDB validation without upgrading (use mfdb-105-validator)",
+      "bejson-105-upgrade-automator,mfdb-104-chunker,mfdb-104-core,mfdb-105-validator",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 6 verified upstream contract",
+      "Layer 6 deterministic deliverable",
+      84,
+      739,
+      "43b254df645f72f78bef48108a397bde2bab8e306a70b14f017485f733a95329",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "26842621-7257-529b-be52-e3484a578a40",
@@ -1253,14 +1463,14 @@
       "auditing MFDB v1.40 databases containing Format 105 entities or cross-table foreign keys",
       "Foundational Era MFDB v1.31 manifest CRUD (use mfdb-104-core), packing or mounting MFDB-132 .mfdb132.bejson chunk containers (use mfdb-104-chunker), or single-file 105 validation without MFDB manifests (use bejson-105-validator)",
       "bejson-105-validator,mfdb-104-chunker,mfdb-104-core",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
-      81,
+      65,
       676,
-      "b35978dffd92fd39a766a0b906d5e03d1db70944cc0ba2169029af765b2f9f90",
+      "66e027636ace5afc37d8e4016b9260b0e41eb25fe025012bef5fb0a0458424c4",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "ba554a1f-3519-5474-ade3-ed119954cf21",
@@ -1274,14 +1484,14 @@
       "planning new BEJSON databases, deciding between 104, 104a, 104db, and 105 variants, or scheduling 104-to-105 migrations",
       "executing multi-skill runtime DAGs (use skill-chain-coordinator), rendering 104 templates (use template-104-template), rendering 105 templates (use template-105-template), or running atomic 104-to-105 upgrades (use bejson-105-upgrade-automator)",
       "bejson-105-upgrade-automator,skill-chain-coordinator,template-104-template,template-105-template",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       65,
       678,
       "029423795ef5d4024cf4b0160d741f1bd014112cfeb68f16f402da7aaa93c3e3",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "7ac51383-c4e4-5836-a3b4-e3037c2f1703",
@@ -1295,14 +1505,14 @@
       "investigating web game load issues, verifying canvas rendering, auditing client-side crashes, or debugging files dropped into a target folder",
       "raw Chromium process lifecycle management (use playwright-termux-automation), anti-bot evasion and mouse physics (use playwright-stealth-agent), static HTML parsing without JavaScript (use requests or BeautifulSoup), or general BEJSON AST schema auditing (use policy-bejson-auditor)",
       "playwright-stealth-agent,playwright-termux-automation,policy-bejson-auditor",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
-      117,
+      118,
       916,
-      "a817972e2abd6901743367df636b4e6c04aed76ec49ae0bfb6fa1eda8471510b",
+      "15187d77fb46823992f07249c62db81df9decc1c0fae517d9da5bb8e66828211",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "fcaff6e3-0ce3-5b82-a573-93f2a7040745",
@@ -1316,14 +1526,14 @@
       "automating interactions on bot-protected pages, testing WAF challenge flows (Cloudflare/DataDome), or simulating realistic human navigation",
       "basic unblocked page scraping (use playwright-termux-automation) or canvas pixel error auditing (use playwright-debugger-auditor)",
       "playwright-debugger-auditor,playwright-termux-automation",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       27,
       713,
       "2cc2633d36e287410604e4fb5a7f00487072f905e8256fcb0ced8ce0004fa801",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "5d76d736-926e-533a-b2d3-0840055c8f9f",
@@ -1335,16 +1545,16 @@
       "global",
       "playwright-termux-automation/SKILL.md",
       "executing headless or headful browser sessions in Termux, capturing page screenshots, rendering dynamic SPAs, evaluating in-browser JavaScript, handling HTTP authentication, and managing browser process lifecycles",
-      "standard non-browser HTTP requests (use curl, requests, or httpx) or standard Termux URL opening in the external Android Chrome app (use the termux-open command)",
-      "",
-      "bejson-104-core,bejson-104-validator",
+      "standard non-browser HTTP requests (use curl, requests, or httpx) or standard Termux URL opening in the external Android Chrome app (use termux-open)",
+      "termux-open",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       165,
-      584,
-      "0d5afcf9003d0ab5eb9d1f23d3f1712f915bed64d5122830fb0f745b9e1ea0bf",
-      false,
-      "2026-10-24T00:50:24Z"
+      572,
+      "7225e1595816672ce03b911fd171ffeb5d3fa6bd9b53ded2fe794115310f1d28",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "02a19861-c0f4-5b1a-be83-22cfb5d80ac8",
@@ -1358,14 +1568,14 @@
       "validating visual regressions, inspecting mobile/tablet/desktop responsive layouts (360px, 768px, 1280px), verifying color token adherence, or generating baseline visual regression reports",
       "low-level DOM error diagnostics and game engine load debugging (use playwright-debugger-auditor), anti-bot evasion and mouse physics (use playwright-stealth-agent), raw Chromium process lifecycle management (use playwright-termux-automation), or full end-to-end user scenario testing (use playwright-debugger-auditor)",
       "playwright-debugger-auditor,playwright-stealth-agent,playwright-termux-automation",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       74,
       816,
-      "cc9e1744e179a1d9adb797c85f761e2c02ee843710f1fe25aaae2788c106e4eb",
+      "e163d88345a949a66305ca6a08b88044d10cb20e3bcbc1b6b7cf808c32453268",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "9dfb7531-3d00-5afa-a050-fe9c22af79ef",
@@ -1379,14 +1589,14 @@
       "executing a Layer 2 verification gate after scaffolding or modifying any BEJSON code module",
       "standalone 104/104a/104db data file validation (use bejson-104-validator), standalone 105/105a/105db data file validation (use bejson-105-validator), or scaffolding templates (use template-104-template)",
       "bejson-104-validator,bejson-105-validator,template-104-template",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       64,
       767,
       "489cb90c17b5de5a995984279f1ba504bf40f840a217ad300adf74960d30007f",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "3fb6058b-546a-50c3-88c7-dbb3ed5177d9",
@@ -1400,14 +1610,35 @@
       "auditing long policies, hunting contradictions or ambiguities, reviewing specifications, resolving competing rules, or establishing exception registries",
       "BEJSON validation (use bejson-104-validator), BEHTML validation (use behtml-schema-validator), multi-layer code refactoring (use arch-layered-refactor), prompt placeholder templating (use prompt-placeholder-composer), or authoring skills (use skill-architect)",
       "arch-layered-refactor,behtml-schema-validator,bejson-104-validator,prompt-placeholder-composer,skill-architect",
-      "bejson-104-core",
+      "bejson-format-core",
       "Layer 2 verified upstream contract",
       "Layer 2 deterministic deliverable",
       179,
       761,
-      "e491f87e494b1b8d23cb5b13392f5ea939e32552ddcc4cf8c6ad5c9b0fe095b2",
+      "4594f83ffab82f26ffdc7dc2ba4e2923f589ebcfe7bbaec4c3b53040fbb76c18",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "250d771a-dfa4-5d30-9576-3b053752cc68",
+      "policy-secrets-leak-auditor",
+      2,
+      "L1_Validation_L2_Verification",
+      "policy",
+      "-auditor",
+      "global",
+      "policy-secrets-leak-auditor/SKILL.md",
+      "auditing repositories for exposed secrets, verifying zero-leakage credential compliance in BEJSON key caches, inspecting session logs prior to distribution, or validating pre-commit security gates",
+      "static AST BEJSON field-map validation (use policy-bejson-auditor), policy conflict analysis (use policy-conflict-auditor), or single-file Flask endpoint security reviews (use adversarial-code-reviewer)",
+      "adversarial-code-reviewer,policy-bejson-auditor,policy-conflict-auditor",
+      "bejson-format-core",
+      "Layer 2 verified upstream contract",
+      "Layer 2 deterministic deliverable",
+      107,
+      683,
+      "999ec35b2f50488086b8fed8b76879de84bdd7345baee15442e261802487b1ce",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "d361cc98-9a55-52a1-8f5a-1f1bea02dadd",
@@ -1418,17 +1649,17 @@
       "-grounding",
       "global",
       "project-bejson-cms-grounding/SKILL.md",
-      "analyzing BEJSON CMS architecture, navigating src/web microservices, inspecting 104a.mfdb.bejson schemas, or auditing static publishing pipelines",
-      "active cms-manage.py CLI execution workflows (use project-bejson-cms-manage), raw single-table BEJSON CRUD (use bejson-104-core), general multi-file database manifest validation (use mfdb-104-core), or general skill scaffolding (use skill-architect)",
+      "analyzing CMS architecture, navigating src/web microservices and Flask blueprints, inspecting 104a.mfdb.bejson manifests, auditing static publishing pipelines, or understanding library dependencies across NewAgent/lib and tools_lib/na-cms",
+      "active CLI management commands (use project-bejson-cms-manage), raw standalone BEJSON table mutations (use bejson-104-core), general multi-file database manifest validation (use mfdb-104-core), or general skill scaffolding (use skill-architect)",
       "bejson-104-core,mfdb-104-core,project-bejson-cms-manage,skill-architect",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
-      113,
-      570,
-      "badc17b1b278c9b6434f25cf4629b1749964483017977fe16921c1f60056e2bd",
+      136,
+      715,
+      "d1c41aac763ae864f3fb6d56c0694de50544dfcb42c5252fefd92590f7339a2b",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "56056a87-a690-5fc3-a330-19771af087de",
@@ -1439,17 +1670,17 @@
       "-manage",
       "global",
       "project-bejson-cms-manage/SKILL.md",
-      "executing cms-manage commands, running CMS doctor audits, managing pages, categories, or authors, performing database snapshot chunking, or optimizing assets",
-      "architectural navigation or schema grounding (use project-bejson-cms-grounding), low-level raw BEJSON file mutations (use bejson-104-core), or general skill scaffolding (use skill-architect)",
+      "executing cms-manage or newagent-manage commands, authoring two-part pages (manifest + 104db content), drafting and promoting skeleton templates, running headless static site builds, converting media assets to WebP, linking canvas SVG featured banners, or staging database snapshots",
+      "general architectural navigation without CLI actions (use project-bejson-cms-grounding), raw standalone BEJSON table mutations (use bejson-104-core), or general skill scaffolding (use skill-architect)",
       "bejson-104-core,project-bejson-cms-grounding,skill-architect",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
-      104,
-      585,
-      "6adcc271bb722856271721ba667f5c13cd5882bee0db6dbb9603abedeab3800a",
+      198,
+      815,
+      "00895d053823b87f4b135054cb7386f244c1413315d0998f0526cdca78052701",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "1b8fa199-bb1e-5f66-b307-33c22c56097f",
@@ -1463,14 +1694,14 @@
       "packaging release deliverables, preparing ZIP payloads, bumping package versions, or registering releases in projects_db.json",
       "session initialization download sweeps (use file-archive-coordinator), packaging directories into single-file BEJSON text containers (use chunking-core), or syncing git commit hashes and tags (use file-archive-coordinator)",
       "chunking-core,file-archive-coordinator",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       144,
       660,
-      "e774da0698ec4302bd8ad81b89098a7dafd2b9bf8056cee493e809125356b6bf",
+      "6f316de1ddd42501b691d0f8c9676c103a13b0a6d1de64231f68d4bb5cf5296f",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "dfbc8684-2560-5527-9410-f21c2b8ea0dd",
@@ -1484,14 +1715,14 @@
       "parameterizing reusable templates or prompt presets for 104 or 105 workflows",
       "binding 104 dialect schemas (use template-104-template), binding 105 UUID-fingerprinted schemas (use template-105-template), or defining entity relational graphs (use component-taxonomy-architect)",
       "component-taxonomy-architect,template-104-template,template-105-template",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       63,
       575,
       "9909237e41873b670dc7a93180f8a9576270101a9485fd8f7bc3e00fc4eabc2a",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "08f5a41a-017c-54a0-b41e-6f48c9753cc3",
@@ -1505,14 +1736,14 @@
       "writing multi-part blog posts, drafting comprehensive technical articles, expanding planned article sections, or compiling modular publications",
       "initial topic discovery or scanning directories for ideas (use ideation-blog-post-planner), extracting raw concepts from notes (use concept-idea-pattern-extraction), or formatting raw BEHTML CSS tokens (use behtml-design-preferences)",
       "behtml-design-preferences,concept-idea-pattern-extraction,ideation-blog-post-planner",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       97,
       623,
       "62a73f8f4fc6c172f2427de8d6d11ae975053f4f18c2a03d1e438a3bd0415b94",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "702a985c-6abb-5440-b196-da0c64245034",
@@ -1526,14 +1757,56 @@
       "formatting standalone HTML publications, editorial technical reports, or compiling structured prose and telemetry into production HTML documents",
       "raw BE HTML CSS design preference token rules (use behtml-design-preferences), scaffolding multi-archetype templates or web apps (use behtml-templates), or rendering BEJSON 104 vertical domain tables and terminal menus (use behtml-104-builder)",
       "behtml-104-builder,behtml-design-preferences,behtml-templates",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
-      273,
+      272,
       768,
-      "63a4cc4449969d1e5fc295e52f7fdf2f9d330f523e154f69036041214c8b307c",
+      "fc19537d0a07631e33f62e2b0972eed93e947da0993885c355197b73cb453246",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "cda22659-470f-5237-b9d5-a0620e595b2e",
+      "publication-tweet-automator",
+      3,
+      "L2_Adapters_L3_Services",
+      "publication",
+      "-automator",
+      "global",
+      "publication-tweet-automator/SKILL.md",
+      "generating Twitter-optimized images for promotional tweets, creating visual thread hero cards, seeking deterministic SVG canvas keyframes for social media, or registering social media captures into BEJSON manifests",
+      "raw standalone browser automation (use playwright-termux-automation), multi-viewport responsive design audits (use playwright-visual-testing), or compiling long-form technical e-books (use publication-html-builder)",
+      "playwright-termux-automation,playwright-visual-testing,publication-html-builder",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      133,
+      780,
+      "ea6325b792e9d8c78871473e96ea943444fbed30364042b34c38a5d895f6e87a",
+      true,
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "160cef58-bf3e-5af2-b0dd-4b364ea326cf",
+      "publication-tweet-composer",
+      5,
+      "L3_Use_Cases_Cross_Layer_Blueprinting",
+      "publication",
+      "-composer",
+      "global",
+      "publication-tweet-composer/SKILL.md",
+      "drafting viral launch threads for software repositories, auditing tweet drafts for character overflow, mapping tweets to Twitter-optimized canvas media cards, or generating copy-pasteable social media release packs",
+      "raw SVG canvas image rendering (use publication-tweet-automator), multi-page technical manuals (use code-manual-builder), or long-form technical blog posts (use publication-blog-post-writer)",
+      "code-manual-builder,publication-blog-post-writer,publication-tweet-automator",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 5 verified upstream contract",
+      "Layer 5 deterministic deliverable",
+      134,
+      684,
+      "f3b62b8bb80aa61dd0b78ec71a6b0ab060e68180e4fe22481ca02a4e271a46c5",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "1e66a479-9c5b-57ac-bf3b-a9b36e1da11a",
@@ -1547,14 +1820,14 @@
       "writing, refactoring, or visually enhancing README.md files",
       "raw non-documentation backend code changes or unscaled multi-megabyte image dumping",
       "",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       173,
       869,
       "85d8a866b7ca654cb929b8f8a934d93614518b47f80762afdc4729ea78dc0fcb",
       false,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "e6ab0983-a0ac-57a2-aae1-e7fcc2873dbb",
@@ -1568,14 +1841,14 @@
       "authoring new SKILL.md bundles, defining skill directory topologies, scaffolding layer-specific reference shards or black-box validator scripts, or auditing skill manifests for routing collisions",
       "executing multi-skill DAG workflows (use skill-chain-coordinator), mapping or cataloging installed ecosystem routing topologies (use skill-ecosystem-cartographer), composing multi-skill recipe blueprints (use skill-chain-recipe-composer), or decomposing monolithic application source code (use arch-layered-refactor)",
       "arch-layered-refactor,skill-chain-coordinator,skill-chain-recipe-composer,skill-ecosystem-cartographer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       175,
       832,
-      "8dd7af59151f9ecbcd92fda5f4b300d0901131dde5936d779d58f2c817ad9ea1",
+      "5689dfeba274503b64851f861d6b02157508e917d9f734e09da2c2d027ecde3f",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "f067b67a-f17d-589d-bd2b-1601fc63f7b2",
@@ -1589,14 +1862,14 @@
       "executing multi-stage skill pipelines, coordinating cross-layer schema-to-code-to-UI workflows, or running verified Recipe Blueprints",
       "scaffolding individual skill manifests (use skill-architect), cataloging installed skill registries or auditing trigger collisions (use skill-ecosystem-cartographer), authoring static recipe markdown blueprints without execution (use skill-chain-recipe-composer), scheduling N=K+1 conversational turn delays (use planning-schema-planner), or running sequential JobMaker task files (use job-workflow-manager)",
       "job-workflow-manager,planning-schema-planner,skill-architect,skill-chain-recipe-composer,skill-ecosystem-cartographer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       56,
       839,
-      "0582d49d1f51726ceecc4113b83d6f6833589fa0681e31cfc7764b5ed980ae95",
+      "0697b9ad9e6f5ecd80fe74f60618ef884722da49370c35eaa7ff22414825b26e",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "133b5010-6809-59dc-90f2-af356b0b98ad",
@@ -1610,14 +1883,14 @@
       "designing multi-skill workflows, creating skill chain recipes, ideating missing pipeline skills, or structuring end-to-end process blueprints",
       "executing recipes (use skill-chain-coordinator), multi-turn pre-planning delays (use planning-schema-planner), or authoring raw skill files (use skill-creator or skill-architect)",
       "planning-schema-planner,skill-chain-coordinator",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       189,
       961,
-      "b11ded817bf175b4fb4f226eb6da0ebd293a854c781c9265bc7bcac7664e623a",
+      "335f99e4a06ca05f9b48101c548f4e0b957caa06ac3bd6e2978e7f46f1ad828d",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "99d8e20b-0b6d-53ed-8b59-a9a16f6a4068",
@@ -1631,14 +1904,14 @@
       "indexing installed skills, generating ecosystem routing maps, verifying mutual negative constraint symmetry, or detecting trigger overlaps across L1-L6 skills",
       "scaffolding or authoring new skill files (use skill-architect), executing runtime multi-skill DAG workflows (use skill-chain-coordinator), composing pipeline recipe markdowns (use skill-chain-recipe-composer), indexing ecosystem terminology and concept definitions (use definitions-cartographer), or auditing general non-skill policy documents (use policy-conflict-auditor)",
       "definitions-cartographer,policy-conflict-auditor,skill-architect,skill-chain-coordinator,skill-chain-recipe-composer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
       58,
       852,
-      "225645976df1d04bed19a28dc9f54d89b620a2931439701d909e03cbfd96f199",
+      "dbfb33b0840c2a8ddd3f98583228bd5eaf4e6f0bf8e30e636b6f3fd107be4d2e",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "fc0f06ac-5c20-5454-ab82-ee1adeef4258",
@@ -1650,16 +1923,16 @@
       "global",
       "skills-backup-manager/SKILL.md",
       "the user asks to back up skills, archive skills, export skills to Drive, sync modified skills to the skill backup directory, or verify skill backup integrity",
-      "general project release packaging (use project-delivery-packager) or session initialization download sweeps (use file-archive-coordinator)",
-      "file-archive-coordinator,project-delivery-packager",
-      "bejson-104-core,bejson-104-validator",
+      "",
+      "",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       42,
-      488,
-      "89a0e104643646f3d23c65db8c9eca70ebdca9afa184aa9faa77d991b1913988",
-      true,
-      "2026-10-24T00:50:24Z"
+      333,
+      "7cbfcd571e6cf871f43fa10ce46664d2daa355cde200c15388f002e392f6c76f",
+      false,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "c66e3104-a5ee-5d2e-9834-5d3bf7da0733",
@@ -1673,14 +1946,35 @@
       "inspecting or refactoring SKILL.md files for context bloat, trigger overlap, asymmetric negative guardrails (Codes 430-433), phonetic alias drift, placeholder compliance, and BEJSON 104a data contracts",
       "designing new skills from scratch (use skill-architect), indexing global skill catalogs (use skill-ecosystem-cartographer), resolving concept definitions (use definitions-cartographer), auditing general policies (use policy-conflict-auditor), Antigravity CLI daemons (use agy-skill-refactor), or application code (use bejson-codebase-refactor)",
       "agy-skill-refactor,bejson-codebase-refactor,definitions-cartographer,policy-conflict-auditor,skill-architect,skill-ecosystem-cartographer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       152,
       829,
-      "db1aa9a6441252c3606ee8e4587f8c3c1ff9e4de8537d0638f7d4fb6ae1d7d71",
+      "b56802b6535351dd752f9fe4fa7a17dbc6f8d678080a1bdf3a6eab4afe040ca8",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "7b01431a-0508-50e0-a1b5-709b899e305e",
+      "taxonomy-template-taxonomy",
+      3,
+      "L2_Adapters_L3_Services",
+      "taxonomy",
+      "-unknown",
+      "global",
+      "taxonomy-template-taxonomy/SKILL.md",
+      "taking a UI template, component map, or interface hierarchy and designing an optimized backend taxonomy, data model, or API payload contract for it across 104 and 105 formats",
+      "raw UI component mapping (use web-ui-component-mapper), materializing templates from taxonomies (use template-taxonomy-template), or spatial coordinate quantization (use behtml-design-preferences)",
+      "behtml-design-preferences,template-taxonomy-template,web-ui-component-mapper",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      92,
+      1011,
+      "0950f37b392152b0a336a3235c136c8778af5d9e0b01021da6848a3815d6229a",
+      true,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "cc542ce4-d612-59ec-a87d-b24e3cfb69b3",
@@ -1694,14 +1988,14 @@
       "taking a database schema, data taxonomy, or BEJSON specification and designing the user interface, admin dashboard, or component map to manage it",
       "analyzing existing UI code into taxonomies (use component-taxonomy-architect), raw UI mapping without schemas (use web-ui-component-mapper), or spatial coordinate quantization (use behtml-design-preferences)",
       "behtml-design-preferences,component-taxonomy-architect,web-ui-component-mapper",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       94,
       928,
       "248bc8f0e2252432532397edbfc0a373ccc930b231fcce0ad65b09979af3e400",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "5adbcce6-7a41-5429-a25b-15f5cc1275d8",
@@ -1715,14 +2009,14 @@
       "scaffolding new Release 300 .104.bejson entity stores, .104a.bejson ScriptConfig/tracker files, .104db.bejson databases, or 104 owning writers",
       "Integrity Era Format 105, 105a, or 105db templates requiring field_uuid, record_uuid, and by_name_row offset-aware writers (use template-105-template), generating bare-bones zero-filler template skeletons across arbitrary non-BEJSON formats (use template-literal-skeleton), defining initial entity prefixes (use code-taxonomy-architect), or executing runtime CRUD on existing 104 files (use bejson-104-core)",
       "bejson-104-core,code-taxonomy-architect,template-105-template,template-literal-skeleton",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       65,
       893,
       "785a8e3178034038fb3864a90d2a3f3de14a8d662a1a7826d6b31ebab3ec3f07",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "bd8c986a-6ae7-5673-a7b9-0e434ddfabdc",
@@ -1736,14 +2030,14 @@
       "scaffolding new Format 105, 105a, or 105db stores and 105 owning writers",
       "Foundational Era 104, 104a, or 104db templates without field_uuid and record_uuid (use template-104-template), generating bare-bones zero-filler template skeletons across arbitrary non-BEJSON formats (use template-literal-skeleton), migrating existing 104 files to 105 (use bejson-105-upgrade-automator), or executing runtime CRUD on existing 105 files (use bejson-105-core)",
       "bejson-105-core,bejson-105-upgrade-automator,template-104-template,template-literal-skeleton",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       65,
       868,
       "a6a3fe0339bbbbb49a1c9abda0a8c04fc5908c93c67bf5b0de3573ab6f7758da",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "468b93d5-0c2d-5221-b994-c51226e2b08c",
@@ -1757,14 +2051,14 @@
       "scaffolding empty web app layouts, building structural component containers with literal spatial labels, or generating starter templates",
       "populating production content, mapping existing web navigation (use ui-navigation-decomposer), or validating BEJSON 104 datasets (use bejson-104-validator)",
       "bejson-104-validator,ui-navigation-decomposer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
       118,
       738,
-      "4ed4779083e9b3591cd31eda9aa6be32912a88386b0fb3cf43a152076026db68",
+      "6a655445956a2d7bd29223b13124ee588034a6587de9a023d8ac3ba25a04daae",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "d30f839f-f83a-5057-a92a-466cf372a225",
@@ -1778,35 +2072,56 @@
       "",
       "scaffolding Release 300 Foundational Era BEJSON 104 data stores (use template-104-template), Integrity Era Format 105 UUID data stores (use template-105-template), populating real production content, or executing runtime logic",
       "template-104-template,template-105-template",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
       170,
       658,
       "2e9f757204023bde669bac44cac3eb4670c74a8c5c73b20b825e09234ab33abe",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
-      "65f83f4c-9749-56ed-9ae8-d8661e369b21",
-      "ui-component-taxonomy-architect",
+      "10da186d-b65f-5a49-89a8-eefc6f87889f",
+      "template-tax-composer",
       5,
       "L3_Use_Cases_Cross_Layer_Blueprinting",
-      "ui",
-      "-architect",
+      "template",
+      "-composer",
       "global",
-      "ui-component-taxonomy-architect/SKILL.md",
-      "taking a UI component map or interface hierarchy and designing an optimized backend taxonomy, data model, or API payload contract for it across 104 and 105 formats",
-      "raw UI component mapping (use web-ui-component-mapper), general code identifier auditing without UI trees (use code-taxonomy-architect), or spatial coordinate quantization (use behtml-design-preferences)",
-      "behtml-design-preferences,code-taxonomy-architect,web-ui-component-mapper",
-      "bejson-104-core,bejson-104-validator",
+      "template-tax-composer/SKILL.md",
+      "planning required template suites for a project archetype, composing taxonomy-aware site architectures, or generating schema-to-UI component tree maps",
+      "raw backend schema modeling (use component-taxonomy-architect), single-component bare-bones wireframing (use template-architect), sitemap DOM tracing (use ui-navigation-decomposer), or building single-page editorial articles (use publication-html-builder)",
+      "component-taxonomy-architect,publication-html-builder,template-architect,ui-navigation-decomposer",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 5 verified upstream contract",
       "Layer 5 deterministic deliverable",
-      87,
-      963,
-      "15955614aa93454be8f31a497d7456e792838a8bdbf0a640c7561567802932a3",
-      true,
-      "2026-10-24T00:50:24Z"
+      95,
+      1077,
+      "0debdb11ca5e5fb83b2a8383abe88e4f26116f2fc670a70d5eb2d494e0663dc1",
+      false,
+      "2026-10-25T12:38:23Z"
+    ],
+    [
+      "92f4c3c7-c256-50f1-b79e-4dd96a00c57a",
+      "template-taxonomy-template",
+      4,
+      "L4_Presentation_Transport",
+      "template",
+      "-template",
+      "global",
+      "template-taxonomy-template/SKILL.md",
+      "scaffolding concrete BEHTML template files directly married to backend data taxonomies, generating zero-filler views and forms with 100% field coverage, or materializing template suites planned by template-tax-composer",
+      "planning site-wide multi-template architectures (use template-tax-composer), deriving backend taxonomies from UI trees (use taxonomy-template-taxonomy), or low-level coordinate math (use behtml-format-core)",
+      "behtml-format-core,taxonomy-template-taxonomy,template-tax-composer",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 4 verified upstream contract",
+      "Layer 4 deterministic deliverable",
+      96,
+      1079,
+      "6032e775c50fb91f73c594dd60ca05b9ed154feb1b0cbcaea6a471f224dd5883",
+      false,
+      "2026-10-25T12:38:23Z"
     ],
     [
       "2f1d74e6-7756-55ee-9a28-2f495d9d23af",
@@ -1820,14 +2135,14 @@
       "asking for site maps, navigation trees, UI decomposition, routing architecture, app menus, sidebar hierarchy, or breadcrumbs before generating spatial templates",
       "generating HTML component grids (use behtml-layout-builder)",
       "behtml-layout-builder",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       181,
       461,
       "f3f0848f3f46b00fe206588a81623e963c2802a09060ad9fd8ed0b4e15c35561",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ],
     [
       "b27de8e6-975c-5ecc-917f-1d0579c11d9e",
@@ -1841,14 +2156,14 @@
       "analyzing existing web apps, mapping UI component trees, auditing interface surfaces for feature parity, generating hierarchical ASCII component blueprints, or preparing frontend structural specs",
       "tracing URL routing paths or sitemaps (use ui-navigation-decomposer), quantizing elements into 8-lane Ry=32px grids (use behtml-design-preferences), scaffolding zero-filler template code (use template-literal-skeleton), or modeling database schemas and table columns (use component-taxonomy-architect)",
       "behtml-design-preferences,component-taxonomy-architect,template-literal-skeleton,ui-navigation-decomposer",
-      "bejson-104-core,bejson-104-validator",
+      "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
       120,
       755,
       "d1936762b504615bcbbdd8c2fae4e5e6339d76589ffb4fdf687c07f3748b3f06",
       true,
-      "2026-10-24T00:50:24Z"
+      "2026-10-25T12:38:23Z"
     ]
   ]
 }

@@ -182,8 +182,8 @@
     ],
     [
       "NewAgent",
-      "/storage/emulated/0/Admin/Dev/Python/Development/NewAgent",
-      "2026-10-21T10:20:30Z"
+      "/storage/emulated/0/Admin/Dev/Repos/NewAgent",
+      "2026-10-25T10:21:21Z"
     ],
     [
       "Persistent_Cognition",
@@ -254,6 +254,11 @@
       "Tax_Scaffolds",
       "/storage/emulated/0/Admin/Libraries/Prototyping/Tax_Scaffolds",
       "2026-10-25T01:36:41Z"
+    ],
+    [
+      "skills",
+      "/data/data/com.termux/files/home/.gemini/config/skills",
+      "2026-10-25T12:23:51Z"
     ]
   ]
 }

@@ -1,0 +1,32 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../104a.mfdb.bejson",
+  "Records_Type": [
+    "Category"
+  ],
+  "Fields": [
+    { "name": "cat_uuid", "type": "string" },
+    { "name": "cat_name", "type": "string" },
+    { "name": "cat_slug", "type": "string" },
+    { "name": "cat_order", "type": "integer" },
+    { "name": "cat_active", "type": "boolean" }
+  ],
+  "Values": [
+    [
+      "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "Engineering",
+      "engineering",
+      1,
+      true
+    ],
+    [
+      "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
+      "Design Systems",
+      "design-systems",
+      2,
+      true
+    ]
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Archetype_Id": "archetype_portfolio",
+  "Archetype_Name": "Creative Portfolio & Digital Showcase",
+  "Archetype_Description": "Taxonomy and schema blueprint for design portfolios, technical showcases, case studies, and image galleries.",
+  "Canonical_Prefixes": {
+    "Category": "cat_",
+    "ProjectShowcase": "project_",
+    "MediaAsset": "asset_"
+  },
+  "Bound_Templates": [
+    "scaffold_project_showcase.html",
+    "scaffold_image_feed.html",
+    "scaffold_image_lightbox.html"
+  ],
+  "Entities": [
+    {
+      "name": "Category",
+      "primary_key": "cat_uuid",
+      "prefix": "cat_",
+      "file_path": "data/category.bejson"
+    },
+    {
+      "name": "ProjectShowcase",
+      "primary_key": "project_uuid",
+      "prefix": "project_",
+      "file_path": "data/projectshowcase.bejson"
+    },
+    {
+      "name": "MediaAsset",
+      "primary_key": "asset_uuid",
+      "prefix": "asset_",
+      "file_path": "data/mediaasset.bejson"
+    }
+  ]
+}

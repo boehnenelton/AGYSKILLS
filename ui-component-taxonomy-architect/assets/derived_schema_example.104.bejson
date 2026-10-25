@@ -1,0 +1,47 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "Content"
+  ],
+  "Fields": [
+    {
+      "name": "cont_uuid",
+      "type": "string"
+    },
+    {
+      "name": "cont_title",
+      "type": "string"
+    },
+    {
+      "name": "cont_status",
+      "type": "string"
+    },
+    {
+      "name": "cont_classification_id_fk",
+      "type": "string"
+    },
+    {
+      "name": "cont_attribution_id_fk",
+      "type": "string"
+    },
+    {
+      "name": "cont_content_body",
+      "type": "string"
+    },
+    {
+      "name": "cont_asset_id_fk",
+      "type": "string"
+    },
+    {
+      "name": "cont_is_active",
+      "type": "boolean"
+    },
+    {
+      "name": "cont_created_at",
+      "type": "string"
+    }
+  ],
+  "Values": []
+}

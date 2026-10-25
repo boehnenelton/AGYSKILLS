@@ -1,0 +1,76 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "MigrationRecord"
+  ],
+  "Fields": [
+    {
+      "name": "migration_id",
+      "type": "string"
+    },
+    {
+      "name": "source_format",
+      "type": "string"
+    },
+    {
+      "name": "source_path",
+      "type": "string"
+    },
+    {
+      "name": "target_format",
+      "type": "string"
+    },
+    {
+      "name": "target_path",
+      "type": "string"
+    },
+    {
+      "name": "rows_migrated",
+      "type": "integer"
+    },
+    {
+      "name": "columns_count",
+      "type": "integer"
+    },
+    {
+      "name": "status",
+      "type": "string"
+    },
+    {
+      "name": "sha256_hash",
+      "type": "string"
+    },
+    {
+      "name": "migration_timestamp",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "mig_001",
+      "sqlite",
+      "storage/legacy.db:users",
+      "104a",
+      "storage/mfdb/users.104a.bejson",
+      120,
+      6,
+      "SUCCESS",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "2026-10-25T12:00:00Z"
+    ],
+    [
+      "mig_1792929837",
+      "csv",
+      "/data/data/com.termux/files/home/.gemini/tmp_migration_test/users.csv",
+      "104a",
+      "/data/data/com.termux/files/home/.gemini/tmp_migration_test/users.104a.bejson",
+      3,
+      5,
+      "SUCCESS",
+      "70c60ee85f7536d4b38702b0cee933592b4423e392b279d1d4e08e3606f811a4",
+      "2026-10-25T12:03:57.302538+00:00"
+    ]
+  ]
+}

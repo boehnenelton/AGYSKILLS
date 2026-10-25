@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BEJSON 104 Icon — Standard Monolith Cube</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: monospace;
+    }
+    #capture-stage {
+      position: relative;
+      width: 512px;
+      height: 512px;
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svg-container { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    svg { width: 100%; height: 100%; display: block; }
+
+    @keyframes pulseCore {
+      0%, 100% {
+        transform: scale(1);
+        filter: drop-shadow(0 0 10px rgba(222, 38, 38, 0.4));
+      }
+      50% {
+        transform: scale(1.05);
+        filter: drop-shadow(0 0 24px rgba(222, 38, 38, 0.9));
+      }
+    }
+    @keyframes orbitReticle {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes counterSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+    @keyframes vertexPulse {
+      0%, 100% { fill: #FFFFFF; r: 4px; }
+      50% { fill: #DE2626; r: 6px; filter: drop-shadow(0 0 6px #DE2626); }
+    }
+
+    .anim-core { transform-origin: 256px 256px; animation: pulseCore 4s ease-in-out infinite; }
+    .anim-orbit { transform-origin: 256px 256px; animation: orbitReticle 12s linear infinite; }
+    .anim-counter { transform-origin: 256px 256px; animation: counterSpin 16s linear infinite; }
+    .anim-vertex { animation: vertexPulse 2s ease-in-out infinite; }
+  </style>
+</head>
+<body>
+  <div id="capture-stage">
+    <div class="svg-container">
+      <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0c0c12"/>
+            <stop offset="100%" stop-color="#020204"/>
+          </linearGradient>
+          <linearGradient id="topFace" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#CCCCCC"/>
+          </linearGradient>
+          <linearGradient id="leftFace" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#2c2c3a"/>
+            <stop offset="100%" stop-color="#14141c"/>
+          </linearGradient>
+          <linearGradient id="rightFace" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#1e1e28"/>
+            <stop offset="100%" stop-color="#0d0d14"/>
+          </linearGradient>
+        </defs>
+
+        <!-- Squircle Base Frame -->
+        <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#bgGrad)" stroke="#222230" stroke-width="3"/>
+        <rect x="32" y="32" width="448" height="448" rx="100" fill="none" stroke="#DE2626" stroke-width="1.5" stroke-dasharray="10 8" opacity="0.6"/>
+
+        <!-- Counter-rotating Outer Telemetry Ring -->
+        <g class="anim-counter">
+          <circle cx="256" cy="256" r="192" fill="none" stroke="#181822" stroke-width="1.5"/>
+          <circle cx="256" cy="256" r="192" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-dasharray="12 180" opacity="0.4"/>
+        </g>
+
+        <!-- Orbiting Reticle -->
+        <g class="anim-orbit">
+          <circle cx="256" cy="256" r="160" fill="none" stroke="#252535" stroke-width="1.5"/>
+          <circle cx="256" cy="256" r="160" fill="none" stroke="#DE2626" stroke-width="3" stroke-dasharray="40 120" stroke-linecap="round"/>
+          <circle cx="416" cy="256" r="5" fill="#DE2626" filter="drop-shadow(0 0 4px #DE2626)"/>
+          <circle cx="96" cy="256" r="5" fill="#DE2626" filter="drop-shadow(0 0 4px #DE2626)"/>
+        </g>
+
+        <!-- Inner Target Reticle -->
+        <circle cx="256" cy="256" r="128" fill="none" stroke="#1f1f2c" stroke-width="1.5"/>
+        <line x1="256" y1="96" x2="256" y2="112" stroke="#DE2626" stroke-width="2"/>
+        <line x1="256" y1="400" x2="256" y2="416" stroke="#DE2626" stroke-width="2"/>
+        <line x1="96" y1="256" x2="112" y2="256" stroke="#DE2626" stroke-width="2"/>
+        <line x1="400" y1="256" x2="416" y2="256" stroke="#DE2626" stroke-width="2"/>
+
+        <!-- 104 Standard Monolith Cube Core -->
+        <g class="anim-core">
+          <!-- Top Face -->
+          <polygon points="256,156 346,208 256,260 166,208" fill="url(#topFace)" stroke="#DE2626" stroke-width="2"/>
+          <!-- Left Face -->
+          <polygon points="256,260 166,208 166,312 256,364" fill="url(#leftFace)" stroke="#3a3a4e" stroke-width="2"/>
+          <!-- Right Face -->
+          <polygon points="256,260 346,208 346,312 256,364" fill="url(#rightFace)" stroke="#3a3a4e" stroke-width="2"/>
+
+          <!-- Accent Center Seam -->
+          <line x1="256" y1="260" x2="256" y2="364" stroke="#DE2626" stroke-width="3"/>
+
+          <!-- Vertex Indicator Nodes -->
+          <circle cx="256" cy="156" class="anim-vertex"/>
+          <circle cx="346" cy="208" class="anim-vertex"/>
+          <circle cx="166" cy="208" class="anim-vertex"/>
+          <circle cx="256" cy="260" class="anim-vertex"/>
+          <circle cx="166" cy="312" class="anim-vertex"/>
+          <circle cx="346" cy="312" class="anim-vertex"/>
+          <circle cx="256" cy="364" class="anim-vertex"/>
+        </g>
+
+        <!-- Monogram & Telemetry Labels -->
+        <text x="256" y="440" fill="#DE2626" font-size="14" font-family="monospace" font-weight="700" letter-spacing="4" text-anchor="middle">BEJSON 104</text>
+        <text x="256" y="458" fill="#555566" font-size="10" font-family="monospace" letter-spacing="2" text-anchor="middle">STANDARD CUBE</text>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    window.isReadyToCapture = false;
+    window.pauseAnimation = function() { document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'paused'); };
+    window.playAnimation = function() { document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'running'); };
+    window.seekProgress = function(progress) {
+      const dur = 4.0;
+      const t = progress * dur;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDelay = `-${t}s`;
+        el.style.animationPlayState = 'paused';
+      });
+    };
+    window.addEventListener('DOMContentLoaded', () => { setTimeout(() => { window.isReadyToCapture = true; }, 300); });
+  </script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Title</title>
+  <style>
+    :root {
+      --R-px: 32;
+      --R: calc(var(--R-px) * 1px);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      color: #000000;
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      padding: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      overflow: hidden; /* Prevents scroll when overlay is active */
+    }
+
+    /* --- LAYER 1: BASE GRID --- */
+    .qr-grid {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      z-index: 100;
+    }
+
+    .qr-grid__wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #000000;
+    }
+
+    .qr-grid__row {
+      width: 100%;
+      display: flex;
+      border-bottom: 2px solid #000000;
+    }
+
+    .qr-grid__row:last-child {
+      border-bottom: none;
+    }
+
+    .qr-grid__row--1r { flex: 1; }
+    .qr-grid__row--2r { flex: 2; }
+    .qr-grid__row--3r { flex: 3; }
+
+    .qr-grid__cell {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 2px solid #DE2626;
+      font-weight: bold;
+    }
+
+    .qr-grid__cell:last-child {
+      border-right: none;
+    }
+
+    /* Trigger Cell Modifier */
+    .qr-grid__cell--bg-red {
+      background-color: red;
+      color: white;
+      cursor: pointer;
+      transition: filter 0.2s ease;
+    }
+    
+    .qr-grid__cell--bg-red:hover {
+      filter: brightness(0.8);
+    }
+
+    .qr-grid__cell--w-12-5 { width: 12.5%; }
+    .qr-grid__cell--w-25   { width: 25.0%; }
+    .qr-grid__cell--w-37-5 { width: 37.5%; }
+    .qr-grid__cell--w-50   { width: 50.0%; }
+    .qr-grid__cell--w-62-5 { width: 62.5%; }
+    .qr-grid__cell--w-75   { width: 75.0%; }
+    .qr-grid__cell--w-100  { width: 100.0%; }
+
+    /* --- LAYER 2: OVERLAY & SIDEBAR --- */
+    .layer-two {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 200;
+      pointer-events: none; /* Allows clicks to pass through to Layer 1 when hidden */
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .layer-two--active {
+      pointer-events: auto; /* Re-enables pointer events when active */
+    }
+
+    .layer-two__backdrop {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 201;
+    }
+
+    .layer-two--active .layer-two__backdrop {
+      opacity: 1;
+    }
+
+    .layer-two__sidebar {
+      position: relative;
+      width: 320px;
+      height: 100%;
+      background-color: #FFFFFF;
+      border-left: 2px solid #000000;
+      z-index: 202;
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      padding: calc(var(--R) * 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .layer-two--active .layer-two__sidebar {
+      transform: translateX(0);
+    }
+
+    .layer-two__close-btn {
+      margin-top: auto;
+      padding: 12px;
+      background-color: #000000;
+      color: #FFFFFF;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  
+  <div class="qr-grid">
+    <div class="qr-grid__wrapper">
+
+      <div class="qr-grid__row qr-grid__row--1r">
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x1, y1</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x2, y1</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x3, y1</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x4, y1</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x5, y1</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x6, y1</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x7, y1</div>
+        
+        <div class="qr-grid__cell qr-grid__cell--w-12-5 qr-grid__cell--bg-red" onclick="toggleLayerTwo()">x8, y1</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--2r">
+        <div class="qr-grid__cell qr-grid__cell--w-100">x1-x8, y2-y3</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--1r">
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x1, y4</div>
+        <div class="qr-grid__cell qr-grid__cell--w-62-5">x2-x6, y4</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x7, y4</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x8, y4</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--1r">
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x1, y5</div>
+        <div class="qr-grid__cell qr-grid__cell--w-37-5">x2-x4, y5</div>
+        <div class="qr-grid__cell qr-grid__cell--w-12-5">x5, y5</div>
+        <div class="qr-grid__cell qr-grid__cell--w-37-5">x6-x8, y5</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--2r">
+        <div class="qr-grid__cell qr-grid__cell--w-100">x1-x8, y6-y7</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--3r">
+        <div class="qr-grid__cell qr-grid__cell--w-50">x1-x4, y8-y10</div>
+        <div class="qr-grid__cell qr-grid__cell--w-50">x5-x8, y8-y10</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--2r">
+        <div class="qr-grid__cell qr-grid__cell--w-100">x1-x8, y11-y12</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--3r">
+        <div class="qr-grid__cell qr-grid__cell--w-100">x1-x8, y13-y15</div>
+      </div>
+
+      <div class="qr-grid__row qr-grid__row--2r">
+        <div class="qr-grid__cell qr-grid__cell--w-100">x1-x8, y16-y17</div>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <div id="layerTwo" class="layer-two">
+    <div class="layer-two__backdrop" onclick="toggleLayerTwo()"></div>
+    <div class="layer-two__sidebar">
+      <h2>Title</h2>
+      <p>Body</p>
+      
+      <button class="layer-two__close-btn" onclick="toggleLayerTwo()">Close</button>
+    </div>
+  </div>
+
+  <script>
+    function toggleLayerTwo() {
+      const layerTwo = document.getElementById('layerTwo');
+      layerTwo.classList.toggle('layer-two--active');
+    }
+  </script>
+
+</body>
+</html>

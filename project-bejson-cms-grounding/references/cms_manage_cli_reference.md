@@ -71,13 +71,15 @@ python3 src/cms-manage.py factory-reset
 ## 4. Entity Lifecycle Commands
 
 ### Pages (`page`)
-- `page add <title> <slug> --author <author> --cat <category> --content <file_or_text>`
-  Automatically resolves `page_cat_uuid` and `page_author_uuid` via `_resolve_page_fk_uuids()`.
-- `page update <uuid> [--title <title>] [--content <text>] [--cat <category>]`
+- `page add <title> [--category <cat>] [--author <author>] [--type <type>] [--body <html_or_text>]`
+  Creates a two-part page record (manifest row in `pagerecord.bejson` + content document in `pages_db/<uuid>.json`).
+- `page import --html <path> [--title <title>] [--category <cat>] [--author <author>] [--type <type>] [--featured-img <img_name>]`
+  Imports pre-compiled semantic HTML directly into `pages_db/<uuid>.json` and registers the PageRecord manifest row.
+- `page import --app <app_uuid> [--title <title>]`
+  Wires a registered standalone app iframe embed into a dedicated page route.
+- `page update <uuid> <title> [--category <cat>] [--author <author>] [--body <text>] [--featured-video <video>]`
 - `page delete <uuid>`
 - `page list`
-- `page import <file> [--format json|csv]`
-  Imports records with automatic fresh UUID allocation to prevent identifier collisions.
 
 ### Categories (`category`)
 - `category add <name> <slug> [--desc <desc>] [--type <type>]`

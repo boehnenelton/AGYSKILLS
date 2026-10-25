@@ -1,0 +1,38 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Archetype_Id": "archetype_editorial",
+  "Archetype_Name": "Editorial Multi-Author Publication",
+  "Archetype_Description": "Taxonomy and schema blueprint for multi-category journalism, editorial blogs, and periodic articles.",
+  "Canonical_Prefixes": {
+    "Category": "cat_",
+    "AuthorProfile": "author_",
+    "PageRecord": "page_"
+  },
+  "Bound_Templates": [
+    "scaffold_master_index.html",
+    "scaffold_feed.html",
+    "scaffold_blog_post.html"
+  ],
+  "Entities": [
+    {
+      "name": "Category",
+      "primary_key": "cat_uuid",
+      "prefix": "cat_",
+      "file_path": "data/category.bejson"
+    },
+    {
+      "name": "AuthorProfile",
+      "primary_key": "author_uuid",
+      "prefix": "author_",
+      "file_path": "data/authorprofile.bejson"
+    },
+    {
+      "name": "PageRecord",
+      "primary_key": "page_uuid",
+      "prefix": "page_",
+      "file_path": "data/pagerecord.bejson"
+    }
+  ]
+}

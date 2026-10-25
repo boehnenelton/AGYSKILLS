@@ -1,0 +1,33 @@
+APPLICATION ENTRY POINT (App_Admin.py)
+|
++-- [SECTION] DefinitionRecord Management
+|   +-- [CARD] DefinitionRecord Directory Panel
+|   |   +-- [TOOLBAR] DefinitionRecord Action Bar
+|   |   |   +-- Create DefinitionRecord Action Button
+|   |   |   +-- Search Filter Input Box
+|   |   +-- Data Table: DefinitionRecord Collection
+|   |       +-- Column: Term Uuid Display
+|   |       +-- Column: Canonical Term Display
+|   |       +-- Column: Domain Category Display
+|   |       +-- Column: Inline Definition Display
+|   |       +-- Column: Synonyms Aliases Csv Display
+|   |       +-- Column: Canonical Reference Pointer Display
+|   |       +-- Column: Policy Binding Display
+|   |       +-- Column: Inline Actions Group (Edit DefinitionRecord Button, Delete Action Button)
+|   |
+|   +-- [SECTION] DefinitionRecord Editor Form
+|   |   +-- Input Group: Metadata Controls
+|   |   |   +-- Term Uuid Identifier Badge (Read-only)
+|   |   |   +-- Canonical Term Input Box
+|   |   |   +-- Domain Category Input Box
+|   |   |   +-- Inline Definition Input Box
+|   |   |   +-- Synonyms Aliases Csv Input Box
+|   |   |   +-- Canonical Reference Pointer Input Box
+|   |   |   +-- Policy Binding Input Box
+|   |   +-- Input Group: Content Canvas
+|   |   |   +-- [TOOLBAR] Formatting Action Bar (Heading Buttons, Bold Button, Link Button)
+|   |   |   +-- Technical Contract Summary Textarea Editor
+|   |   +-- Action Footer (Save Changes Confirm Button, Cancel Button)
+|   |
+|   +-- [SECTION] Operations & Overlays
+|       +-- Confirmation Dialog (Warning Banner, Text Confirmation Input Box, Execute Action Button)

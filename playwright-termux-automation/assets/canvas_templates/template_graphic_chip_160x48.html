@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Canvas Graphic — 160x48 Micro Chip Tag</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #000000;
+      color: #FFFFFF;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      font-family: monospace;
+    }
+    #capture-stage {
+      position: relative;
+      width: 160px;
+      height: 48px;
+      background: #000000;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { fill: #DE2626; filter: drop-shadow(0 0 2px #DE2626); }
+      50% { fill: #FFFFFF; filter: drop-shadow(0 0 8px #DE2626); }
+    }
+    .anim-pip {
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="capture-stage">
+    <div class="svg-container">
+      <svg viewBox="0 0 160 48" xmlns="http://www.w3.org/2000/svg">
+        <!-- Pill Background -->
+        <rect x="4" y="4" width="152" height="40" rx="20" fill="#0c0c12" stroke="#222230" stroke-width="1.5"/>
+        <rect x="7" y="7" width="146" height="34" rx="17" fill="none" stroke="#DE2626" stroke-width="0.8" opacity="0.4"/>
+
+        <!-- Status Glowing Pip -->
+        <circle cx="22" cy="24" r="5" fill="#1f1418" stroke="#DE2626" stroke-width="1.5"/>
+        <circle cx="22" cy="24" r="2.5" class="anim-pip"/>
+
+        <!-- Text Label -->
+        <text x="36" y="28" fill="#FFFFFF" font-size="11" font-family="monospace" font-weight="700" letter-spacing="1">L5 · UI_AUDIT</text>
+
+        <!-- Right Circuit Micro Trace -->
+        <path d="M 134 24 L 144 24 L 148 20" fill="none" stroke="#DE2626" stroke-width="1.2" stroke-linecap="round"/>
+        <circle cx="148" cy="20" r="1.5" fill="#DE2626"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    window.isReadyToCapture = false;
+    window.pauseAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'paused');
+    };
+    window.playAnimation = function() {
+      document.querySelectorAll('*').forEach(el => el.style.animationPlayState = 'running');
+    };
+    window.seekProgress = function(progress) {
+      const totalDurationSec = 2.0;
+      const targetTimeSec = progress * totalDurationSec;
+      document.querySelectorAll('*').forEach(el => {
+        el.style.animationDelay = `-${targetTimeSec}s`;
+        el.style.animationPlayState = 'paused';
+      });
+    };
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { window.isReadyToCapture = true; }, 150);
+    });
+  </script>
+</body>
+</html>

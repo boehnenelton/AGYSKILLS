@@ -1,0 +1,76 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "BEHTMLBuildRecord"
+  ],
+  "Fields": [
+    {
+      "name": "build_id",
+      "type": "string"
+    },
+    {
+      "name": "project_name",
+      "type": "string"
+    },
+    {
+      "name": "source_html_path",
+      "type": "string"
+    },
+    {
+      "name": "dist_html_path",
+      "type": "string"
+    },
+    {
+      "name": "total_elements",
+      "type": "integer"
+    },
+    {
+      "name": "grid_system",
+      "type": "string"
+    },
+    {
+      "name": "tri_color_compliant",
+      "type": "boolean"
+    },
+    {
+      "name": "validation_status",
+      "type": "string"
+    },
+    {
+      "name": "sha256_hash",
+      "type": "string"
+    },
+    {
+      "name": "build_timestamp",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "bld_001",
+      "BEHTML_Portal",
+      "src/index.html",
+      "dist/index.html",
+      24,
+      "8-lane-Ry32",
+      true,
+      "PASSED",
+      "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "2026-10-25T11:30:00Z"
+    ],
+    [
+      "bld_1792929477",
+      "Test_Portal",
+      "/data/data/com.termux/files/home/.gemini/tmp_behtml_test/test_page.html",
+      "/data/data/com.termux/files/home/.gemini/tmp_behtml_test/dist/test_page.html",
+      9,
+      "8-lane-Ry32",
+      true,
+      "PASSED",
+      "e5a422c0780dc6a54d4aedc21237227cb2a9771a7f971aeb874201c8cbe708e3",
+      "2026-10-25T11:57:57.761919+00:00"
+    ]
+  ]
+}

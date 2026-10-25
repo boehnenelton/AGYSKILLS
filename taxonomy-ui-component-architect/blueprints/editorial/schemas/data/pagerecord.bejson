@@ -1,0 +1,47 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../104a.mfdb.bejson",
+  "Records_Type": [
+    "PageRecord"
+  ],
+  "Fields": [
+    { "name": "page_uuid", "type": "string" },
+    { "name": "page_slug", "type": "string" },
+    { "name": "page_title", "type": "string" },
+    { "name": "page_cat_name", "type": "string" },
+    { "name": "page_cat_uuid_fk", "type": "string" },
+    { "name": "page_author_name", "type": "string" },
+    { "name": "page_author_uuid_fk", "type": "string" },
+    { "name": "page_type", "type": "string" },
+    { "name": "page_created_at", "type": "string" },
+    { "name": "page_body_html", "type": "string" }
+  ],
+  "Values": [
+    [
+      "e5f6a7b8-c9d0-1e2f-3a4b-5c6d7e8f9a0b",
+      "designing-for-the-8-lane-grid",
+      "Designing for the 8-Lane Grid Standard",
+      "Design Systems",
+      "b2c3d4e5-f6a7-8b9c-0d1e-2f3a4b5c6d7e",
+      "Elton Boehnen",
+      "c3d4e5f6-a7b8-9c0d-1e2f-3a4b5c6d7e8f",
+      "blog",
+      "2026-10-01T09:00:00Z",
+      "<h2>Introduction</h2><p>Why spatial quantization replaces unpredictable CSS floating box models.</p>"
+    ],
+    [
+      "f6a7b8c9-d0e1-2f3a-4b5c-6d7e8f9a0b1c",
+      "resilient-atomic-file-io",
+      "Resilient Atomic File I/O Under Mobile Constraints",
+      "Engineering",
+      "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+      "System Architect",
+      "d4e5f6a7-b8c9-0d1e-2f3a-4b5c6d7e8f9a",
+      "blog",
+      "2026-10-02T11:30:00Z",
+      "<h2>Overview</h2><p>Eliminating process crash data loss through atomic temporary file swaps.</p>"
+    ]
+  ]
+}
