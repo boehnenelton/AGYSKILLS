@@ -132,8 +132,8 @@
     ],
     [
       "CLI_AI",
-      "/storage/emulated/0/Admin/Dev/Python/Development/CLI_AI",
-      "2026-10-21T10:20:18Z"
+      "/data/data/com.termux/files/home/.temp_chunk/CLI_AI",
+      "2026-10-28T16:20:46Z"
     ],
     [
       "CLI_Chunker_Standalone",
@@ -259,6 +259,21 @@
       "skills",
       "/data/data/com.termux/files/home/.gemini/config/skills",
       "2026-10-25T12:23:51Z"
+    ],
+    [
+      "prochunk",
+      "/storage/emulated/0/Download/prochunk",
+      "2026-10-26T04:06:26Z"
+    ],
+    [
+      "Image-ProHasher",
+      "/storage/emulated/0/Download/Image-ProHasher",
+      "2026-10-26T04:06:30Z"
+    ],
+    [
+      "rspt_jobs",
+      "/storage/emulated/0/Admin/Core/Legacy_Archives/! Transfer2/rspt jobs",
+      "2026-10-26T04:07:41Z"
     ]
   ]
 }

@@ -58,22 +58,6 @@ agy --sandbox -p "Execute mfdb-105-validator verification gate and return determ
 
 ---
 
----
-
-## 4. CLI Tool Reference (`scripts/validate_master_keymap_105.py`)
-
-The skill provides the executable validator script `scripts/validate_master_keymap_105.py`:
-
-```bash
-# Validate an MFDB v1.40 database root or manifest file
-python3 scripts/validate_master_keymap_105.py /path/to/mfdb_dir
-
-# Validate with explicit manifest path
-python3 scripts/validate_master_keymap_105.py --manifest /path/to/105a.mfdb.bejson
-```
-
----
-
 ## When NOT to Use
 
 Do NOT use `mfdb-105-validator` for out-of-scope tasks. Route immediately to the designated sibling skill:

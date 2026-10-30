@@ -31,7 +31,9 @@ description: >-
 ## 1. Architectural Invariants & Policy Grounding
 
 - **Policy §1.1 & §3.1 Grounding**: All project packages must adhere to solid numeric versioning and mapping rules (`(PROJECT_NAME)-(VERSION)-(PKGVERSION)`).
-- **Canonical Environment Paths**: Storage paths are resolved dynamically from `/storage/emulated/0/.env/user/paths.json` (`PROJECTS_ARCHIVE_ROOT` and `INTERNAL_STORAGE`). Never hardcode directory paths in runtime business logic.
+- **Canonical Environment Stores**: Storage paths are resolved dynamically from `/storage/emulated/0/.env/user/definitions.json` (`PROJECTS_ARCHIVE_ROOT` and `INTERNAL_STORAGE`). Never hardcode directory paths in runtime business logic.
+- **Type Subfolder Partitioning**: Project archives are partitioned strictly by `Type` subfolders (`$PROJECTS_ARCHIVE_ROOT/<type>/<project_name>/`) matching the Canonical Project Type Ledger (`project_type_ledger.104a.bejson`).
+- **Chunker Handoff**: For verified BEJSON 104a snapshotting, atomic scoop-and-wipe, and multi-version registry tracking, hand off to `project-chunker-archiver`.
 - **Embedded Tooling**: Operations are driven by the deterministic Python tool [`scripts/project_archive_janitor.py`](./scripts/project_archive_janitor.py).
 - **CLI Launcher**: Globally runnable via [`~/.local/bin/project-archive-janitor`](file:///data/data/com.termux/files/home/.local/bin/project-archive-janitor).
 
@@ -44,7 +46,7 @@ description: >-
    ```regex
    ^(?P<project_name>[A-Za-z0-9_]+)-V(?P<version>[0-9_]+)-PKG(?P<pkg_version>[0-9_]+)(?:-(?P<build>[0-9_]+))?(?P<archive_ext>\.zip)?$
    ```
-2. Group discovered packages by canonical project name.
+2. Group discovered packages by canonical project name and resolve project `Type` from manifest or type signatures.
 
 ### Step 2: Loose Directory Compression
 1. For any loose directory matching the package pattern, compile into a `.zip` archive using `zipfile.ZipFile(..., zipfile.ZIP_DEFLATED)`.
@@ -57,11 +59,11 @@ description: >-
 
 ### Step 4: Archive Relocation & Deduplication
 1. For each older version:
-   - Check if an identical file exists in `/storage/emulated/0/Admin/Core/Projects_Archive/<ProjectName>/`.
+   - Check if an identical file exists in `$PROJECTS_ARCHIVE_ROOT/<type>/<project_name>/`.
    - Compute SHA-256 checksums:
      - If checksum matches: safely prune the duplicate from Download.
      - If filename collides but checksum differs: append microsecond disambiguation timestamp.
-     - If unique: atomically move the file into the project's archive folder.
+     - If unique: atomically move the file into the project's type-partitioned archive folder (`$PROJECTS_ARCHIVE_ROOT/<type>/<project_name>/`).
 
 ---
 

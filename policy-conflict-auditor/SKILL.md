@@ -23,7 +23,7 @@ Translates complex, ambiguous, or overlapping technical policies and operational
 
 ## When NOT to Use
 
-- Validating BEJSON data structures or files (use `bejson-104-validator`).
+- Validating BEJSON data structures or files (use `bejson-schema-validator`).
 - Validating spatial BEHTML layouts, grids, or DOM coordinates (use `behtml-schema-validator`).
 - Decomposing monolithic codebases into 6-tier architectures (use `arch-layered-refactor`).
 - Composing dynamic prompt templates with placeholder variables (use `prompt-placeholder-composer`).

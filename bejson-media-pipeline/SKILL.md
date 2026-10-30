@@ -1,7 +1,7 @@
 ---
 name: bejson-media-pipeline
 description: >-
-  Build, architect, and maintain automated FFmpeg media automation toolkits, dropzone-based processing pipelines, and standalone audio/video tools backed by BEJSON (104/104a) and MFDB v1.31 persistence layers. Use when designing media processing tools, batch audio/video scripts, auto-slideshow generators, visualizers, watermarkers, transcoders, or clip chunkers where files in an assets folder are processed automatically with atomic I/O. Do NOT use for document chunking (use bejson-document-chunker).
+  Build, architect, and maintain automated FFmpeg media automation toolkits, dropzone-based processing pipelines, and standalone audio/video tools backed by BEJSON (104/104a) and MFDB v1.31 persistence layers. Use when designing media processing tools, batch audio/video scripts, auto-slideshow generators, visualizers, watermarkers, transcoders, or clip chunkers where files in an assets folder are processed automatically with atomic I/O. Do NOT use for document chunking (use chunking-core).
 ---
 # BEJSON Media Tools
 

@@ -105,7 +105,7 @@
       483,
       "c9dda7093440805d366ea13a78ec7480b9e0f923f670354b66cc74d6d88b4900",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "956941a2-bcd6-5199-844f-ae58d32555ee",
@@ -126,7 +126,7 @@
       499,
       "8cbf5beb06068bb9cefb2ddaa92e6bbccf7060b4fe0690bb9d80d660e6909309",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "b9f7fa02-9fcd-565a-bf87-49c8bf4a4e05",
@@ -147,7 +147,7 @@
       654,
       "1255ad56bdb4fefb0b7de51598152c8230b565f77132dc7c7517407fcfc1a1f4",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "b038ea7c-6a15-54ca-b17c-bd765e320a44",
@@ -168,7 +168,7 @@
       746,
       "ec395d27432c501600d7ef96fa6b167cd8dbedc2ba47b9f90dd8e0d2464fd208",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "95abd3a0-f427-5c8b-8038-3b96d007f928",
@@ -189,7 +189,7 @@
       759,
       "0b83e782f6a7683ac1bf24e37ae0306063ca41afd9a524982bad927c563792f4",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "7d1e99ac-3d3d-53a5-ba7a-888efb6381b9",
@@ -210,7 +210,7 @@
       963,
       "0fc1a18535f17a3497605b78751149ed2aa0fb4c1d4962ffaea60ca43b342cbd",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "93aa2934-a1f5-504b-a95f-2e07958d1d7d",
@@ -231,7 +231,7 @@
       868,
       "63a29b2a478d3a79ffdb88255e3f076781938276b56543a7ab630bbbb6f7fd14",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "56dac921-4020-5a9f-85a1-9a1e4596dc57",
@@ -242,17 +242,17 @@
       "-template",
       "global",
       "behtml-document-template/SKILL.md",
-      "creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (dual-pane pattern card catalog and code switcher). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use as a global scaffold for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder)",
+      "creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (clean empty scaffold for standardization records with preset headers, 1-tab multi-file switcher, and word-wrapped blank input box). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use as a global scaffold for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder)",
       "",
       "behtml-104-builder,behtml-design-preferences,behtml-templates",
       "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
-      63,
-      836,
-      "164c8e39f4ffede7b9a11c2237341fb871a97b5aa637ba5799972ba61d8bd229",
+      64,
+      917,
+      "f199cab4f45caf3d19fb74e37eb118e73d25038f0d649bb63297f99609dce8c8",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "42c45dc4-7e02-50a9-a8d0-4798242a5c1c",
@@ -273,7 +273,7 @@
       640,
       "5b50a57b940f21063f61fb3c2780bc2a9261756411262c3a9751b1326ae7d7e5",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "43b6d703-dde7-504d-ad2f-caded0e8943d",
@@ -294,7 +294,7 @@
       685,
       "f23c84bf364e28f0d2eb8ebf00c678c5978e83334cc81f49cb853c37aea2fce6",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "966c57e2-e32f-5147-81be-a41ec7f660b1",
@@ -315,7 +315,7 @@
       634,
       "f4ccb8d671fef373dbf7cc2706fb695f013d1d3002eb98ecb417be2d0241a9a7",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "bd26330d-3721-5bec-b684-f135a29b3e1d",
@@ -336,7 +336,7 @@
       558,
       "d146702ca393d9a89da701d758f2e31018f05a325766b04f1688f5ae46547542",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c34c8049-4985-5523-9af6-e61fa0628116",
@@ -355,9 +355,9 @@
       "Layer 3 deterministic deliverable",
       96,
       786,
-      "0c0c8272f1c0585b56b3d2c7eeef81d8b87446e288bdadb36e4f5442a5c7ba9d",
+      "e6918e777035cf2eb8002c9cf805023358d0a5e8139e0e266aa2d575ad767139",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "74a893c6-bed7-5881-bb16-dbf9d2be24c5",
@@ -378,7 +378,7 @@
       911,
       "4a0c51f48e3e92ef0168abe36d65f2eaa3cd8d20bd774806f92a4d01858638b3",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "eba5ccee-613b-5f10-8385-bc0e8b1b6180",
@@ -399,7 +399,7 @@
       801,
       "6d053076c8f2ab5a6406c7f27e5cf5449fafd5692e7dc6452a9be158bba32956",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "070dffc4-2af5-5761-bb8b-5a417d0a99b9",
@@ -420,7 +420,7 @@
       852,
       "7f852622cad7239b55bcb6f3ccc36c2ac83152a81a8a440e4c94cd7b9663053c",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "576817ad-f921-5d22-bf05-ac851340da63",
@@ -441,7 +441,7 @@
       866,
       "133df594ca98c58d8bcf1ad9a56f759d3cbad779f19f7372730d2674600c87d5",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "66a7ff69-cc38-5813-a756-91083f954914",
@@ -462,7 +462,7 @@
       806,
       "ed7bdefea3b087509b97932bf6f4be82bfd74b2ec807b09e43480628700b09c5",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "6384b094-e949-5dc1-bd88-9017a5e3373a",
@@ -483,7 +483,7 @@
       828,
       "ac3b766e0cf237ebefdea6e05b9ed1554c9ff723ef535f26e2a3940e5f44d1da",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "3b5dbb95-5a3b-53b4-9ba1-0fbb8e28f193",
@@ -504,7 +504,7 @@
       539,
       "f510e9dde8cd84c44a18aa44efa7838c6d169bd1e4582b027f0835c7c0c58a0a",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c67f9206-97fe-53de-a529-6e3d55ce0b0c",
@@ -525,7 +525,7 @@
       690,
       "30f89304e2ccf8cd5882e1ebd4b88640be4f30c72c463a1563ed388cc1ddc398",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "a628f685-bf76-50ed-a48e-af5a64212188",
@@ -546,7 +546,7 @@
       670,
       "c55d721725853db00ddce9d90dde8b1d6267778b386aa1a3baa2d89cf76a5ea2",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "0984911f-3626-51e3-8669-56773377bd39",
@@ -567,7 +567,7 @@
       460,
       "a36d1cee84cce8c72ad4d90e2a60f37830aadf49b855cf9ed52363f4513f114d",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "21e870ed-5bb3-514b-8104-6f88f5a5a4df",
@@ -588,7 +588,7 @@
       919,
       "747300abb252ce611cd3c23dc2861c063de62051c00e05be2db88e8e1b60c292",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "a9d2f42f-8f7a-525c-acb1-4acc6eb67c04",
@@ -609,7 +609,7 @@
       539,
       "d4059b1e9952d6e2f65ba0f2685faa3194fbc6e319c3240644672cca4e2e284b",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "4f551fd1-1ffb-538a-a4aa-6266af23becd",
@@ -630,7 +630,7 @@
       498,
       "7e0e3d276ddea34bb9fd95d42d95d642a2fbc7ec41bff97f330a64ee2994dda5",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "2e1dd647-527a-5b5f-82e9-0becc6f5a1d9",
@@ -651,7 +651,7 @@
       440,
       "fc3334b33426ada6f70943e986f4e1c171fbea9578a1fbda594bc54032fae07b",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "4fd35253-e9b9-5178-8bbb-059d45003ba6",
@@ -672,7 +672,28 @@
       607,
       "43c53adefe0b74e92e044ed7c4c1ff93e596659a32edaa752046d1abf46cc179",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
+    ],
+    [
+      "2182ea7f-60d6-5e16-ba68-b3c3ee3b35b3",
+      "bejson-document-chunker",
+      2,
+      "L1_Validation_L2_Verification",
+      "bejson",
+      "-chunker",
+      "global",
+      "bejson-document-chunker/SKILL.md",
+      "chunking markdown files, managing document categories and paragraph-split chunks, tagging chunks, setting chunk statuses (draft, review, final, skip), compiling documents to Markdown with table of contents, mounting/committing document projects, or performing delimiter imports",
+      "codebase archive packaging (use chunking-core) or MFDB multi-file database container mounting (use mfdb-104-chunker)",
+      "chunking-core,mfdb-104-chunker",
+      "bejson-format-core",
+      "Layer 2 verified upstream contract",
+      "Layer 2 deterministic deliverable",
+      90,
+      592,
+      "5547c8f890b627d8a10ed2f2ac64321d0da0d3e5e44afb69fed6103bd64af73e",
+      true,
+      "2026-10-30T05:49:03Z"
     ],
     [
       "9c71f873-a954-5b81-941a-b0962c5f3f3a",
@@ -693,7 +714,7 @@
       611,
       "8ef3b844061c5911543f4c0fdab25f7221cb2d8a33b81d5dbf6e095b9452629a",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "847ddef1-0666-5f5b-ba4f-4a316d04c9c9",
@@ -714,7 +735,7 @@
       492,
       "3b12b4b8ebb1c92fe2587fab7da5adeb15533ef9dbabce451febd1912b96aaa4",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "8d16f378-7f99-5139-96fa-84a89a0ac0c5",
@@ -735,7 +756,7 @@
       763,
       "89f11fa03274df1737e1968ec9340e8198fe106b0c1d1009a2d393835ced2b64",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "081bd5b6-eb84-5be0-90a1-8ecb4b2e79b0",
@@ -756,7 +777,7 @@
       629,
       "5f6513f061d61b08f15d52c5cd53b7afbc78d45b947744e629675f1080674cd2",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "fe0335c0-4f9c-5f15-b018-c8dcef0bf0f1",
@@ -777,7 +798,7 @@
       435,
       "911d1dfe8ee44d79d5cac277284d40162abd36ebe834292fb3935338ce639c8d",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "91c16100-4e75-5c4f-a833-c95d9e9fb6ef",
@@ -798,7 +819,7 @@
       462,
       "a488117235fb8d9464455826ee51f2b3c4e5e6deba036bb8fe0db805da05b9d3",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "95aea66f-772d-5738-b159-f88e38035f9b",
@@ -819,7 +840,7 @@
       478,
       "0a81281fe95eca590a1943fc01be9ee4a1be7b11462cc35e5bfe87071700b3e2",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "706ec173-bfb6-568b-be45-8c0c65aee060",
@@ -840,7 +861,7 @@
       639,
       "4c7d5ca5dadb644e7d6474d09144bc85c2d9c98dd6fec60b68e8c1fbd6f331a1",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "deb8ba90-e759-52a1-aaba-49447e1e3e1d",
@@ -857,11 +878,11 @@
       "bejson-format-core,bejson-schema-validator",
       "Layer 4 verified upstream contract",
       "Layer 4 deterministic deliverable",
-      229,
+      231,
       803,
-      "afd2503327f30753c9250cc3bd7ebe66b52f38851e012c320e66a91e69c7e124",
+      "9e748d2c059df46600acf6b164282aeff4ea57153fa9e10258966189b81a2de7",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "0992e501-ff01-51fe-b62a-64fd44f99ec2",
@@ -882,7 +903,7 @@
       877,
       "54efa1b98c10a30bdc4418b3412be0c1cc95832c2d2bc76a4ce7cbcd2a27ceae",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "d69f4799-581f-5831-995c-01bdc1fb0ab0",
@@ -893,17 +914,17 @@
       "-unknown",
       "global",
       "canvas-animation-studio/SKILL.md",
-      "generating animated SVG assets, capturing deterministic keyframes or frame sequences, rendering 8-lane UI stages, or exporting repeating pattern textures",
+      "generating animated SVG assets, capturing deterministic keyframes or frame sequences, rendering dynamic blank slates, or exporting video/GIF recordings",
       "basic website screenshots (use playwright-termux-automation) or multi-viewport visual regression audits (use playwright-visual-testing)",
       "playwright-termux-automation,playwright-visual-testing",
       "bejson-format-core,bejson-schema-validator",
       "Layer 3 verified upstream contract",
       "Layer 3 deterministic deliverable",
-      173,
-      594,
-      "37bd42d946acd9f887e42a87e33998a1d6a0fafe9a0401254cf9c2220de9461e",
+      209,
+      715,
+      "71b2fdd87c8aadcbb9e1b06111db639caf06dea0cb93405f61b303cf3d8b80df",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c2233e50-ced6-56cf-b3cf-92dcb9e71894",
@@ -924,7 +945,7 @@
       863,
       "60ea433d1e00135f1222d72352622e4f838bb1e96569c2ce894e03cb28b82555",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "59d75037-a740-5662-9368-be612aac2f7f",
@@ -945,7 +966,7 @@
       781,
       "c6608adcf38bbb9be142f0ed853c2615ceb375b1aa77d97e21871ce60d473a12",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "767a0fe1-771e-5cb1-9ee1-a1b00eb06649",
@@ -966,7 +987,7 @@
       526,
       "7165966e1463de867eec2f807bcbeb56388c70126814134cb5863f617a49af9e",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "a7cc38a8-bc12-52be-9161-2dfa737a102e",
@@ -987,7 +1008,7 @@
       511,
       "b92fcd9de30beb985f25b85e82dff71cfafe6a70bcd0601ad88c32a9cd7d38b6",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "7c8f8707-7632-52df-867f-1f7080d1bb2a",
@@ -1008,7 +1029,7 @@
       741,
       "b7b51677294e0ceafb10ffc70ac93f3299a14c6ad2d927458c15a34644692c99",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "226be478-ccdc-5c40-a01f-dd61d7388ce4",
@@ -1029,7 +1050,7 @@
       681,
       "1f7275d7b0ed657dc46e9f0ada4ec129142ef0bcfb9ff8090b92f2a148b08364",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "fe08ed6d-c340-5c68-a699-af0ce6a311da",
@@ -1050,7 +1071,7 @@
       664,
       "47e22c56f0ef3a711e5188e26fc83bdfa2c5a16df04e82bf96da3d71a840adbf",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "83c1dd98-a6b3-54cf-82fb-cbf7620d913f",
@@ -1071,7 +1092,7 @@
       839,
       "d99617e1890a8e860e640962c7a1ddec9094b5e0bcb9ab62a4b2a2b4feabcc34",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "6baa3536-8d21-585c-af6d-030f66e2cc57",
@@ -1092,7 +1113,7 @@
       803,
       "a2b4153af41fe5c0b96992de0f4093be6318e7f11ebd59489d825fc615e2a3f2",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "5fefa982-8452-5716-a31e-14b786b3cae2",
@@ -1113,7 +1134,7 @@
       728,
       "6bcdd1a7922b1a28dd4c80c61fd79cbffb7b071cd89596a34c3c52708ddae349",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "6f7f67e3-c268-54a2-ac60-76fadce635bc",
@@ -1134,7 +1155,7 @@
       603,
       "a67a40bf2d538210bb49757d2df907fe88a72df79d71e8c7b72d2774ebf87cc7",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "52414cb5-98d6-5075-b23e-071c569f58dc",
@@ -1155,7 +1176,7 @@
       785,
       "2e2d1117a57c6041111cdc34924fefe2d4e6847f6ce479a4917c501ec853c7b5",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "6df59e9f-9428-515d-b995-af55c910922c",
@@ -1172,11 +1193,11 @@
       "bejson-format-core,bejson-schema-validator",
       "Layer 6 verified upstream contract",
       "Layer 6 deterministic deliverable",
-      83,
+      85,
       670,
-      "ed3dd2a7f2ea42a410a0a7c4ca84c03b217c8f39956835a9fecbcf6d3e94d2f4",
+      "6ff151590b3af36f999e840e262d227a0be7a39ae5bb7ef91dd07d6ad51bb020",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c6fa5a2d-86f0-539c-8cce-df49339fecf6",
@@ -1197,7 +1218,7 @@
       625,
       "e568260adbe52e18c540a452cca1424c571c76073d6df0d37e3870d876b47e58",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "5a3a6e3e-e263-5735-b069-b7b977a05806",
@@ -1218,7 +1239,7 @@
       948,
       "6c16004ae16e94bcf81912aa96c035bd119703cf18c8926b027974274938da06",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "02c8356c-9fb5-5edd-84bf-31fa2ebf16da",
@@ -1239,7 +1260,7 @@
       926,
       "5c66bc6011d230d38f7060d932b56b2d270eb1ca0d6e128f8edbf363dd386584",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "14f88200-9069-5708-b4c9-3e50ce371b06",
@@ -1260,7 +1281,7 @@
       482,
       "2797c990e95b7eb604de240875f1e9b3a83e60b110ef444225ef0a8e4ecb06cf",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "9d9f8029-1ad7-551f-af62-50c4d2ea8597",
@@ -1281,7 +1302,7 @@
       645,
       "e89366a5d4a4f820e70c87593037d867178a52dd1f29d4178f9e89a3ef2c1d00",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c7439098-3cd2-5c5e-9920-a0af26af4186",
@@ -1302,7 +1323,7 @@
       682,
       "95540c98602571f8d846c0d28573c6ab8f42f624f2e43e5cff2e5be9457d96a1",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "d26322ab-7f4d-5fda-98f6-5749d56e7e21",
@@ -1323,7 +1344,7 @@
       739,
       "092fc08748563902f596d67846fe2055c60dda4df42630ca151d4e5e5ec03352",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "f9675994-a859-5f09-b8ec-4c12a3f9ca78",
@@ -1344,7 +1365,7 @@
       419,
       "487e99253f21bf90e90cc39c810ea8b9dd8f5b028e279b090fed4855f8321215",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c2b4fa4e-73a3-5978-a5b2-cbd9732e3cf2",
@@ -1365,7 +1386,7 @@
       524,
       "e95ec49ab4905a26e0a5f4c34a48b3da057ee4d3197f6a87edcd011a869cdff3",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "b053e44c-de2f-5d15-8214-70b9ab095fa8",
@@ -1386,7 +1407,7 @@
       484,
       "f4c691451abbcd49e917fae31ee53f4fd138575cad919400fd2dcbe1aa394280",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c99fe476-66c7-5252-9169-5cd9ad32ac7b",
@@ -1407,7 +1428,7 @@
       624,
       "1322682f443de4e270641cb9d641ad36af38120046614b5c5295714c78dc6d4b",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "59235863-08af-5c07-aec7-ec21396c7f70",
@@ -1428,7 +1449,7 @@
       686,
       "9a9bfec5d6f2cc1d8774bca5e0b18dd70cc2f45ea1b0fe76f93594b33015e303",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "e2fdb0e7-5742-56e5-9f21-55b3ba509048",
@@ -1449,7 +1470,7 @@
       739,
       "43b254df645f72f78bef48108a397bde2bab8e306a70b14f017485f733a95329",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "26842621-7257-529b-be52-e3484a578a40",
@@ -1470,7 +1491,7 @@
       676,
       "66e027636ace5afc37d8e4016b9260b0e41eb25fe025012bef5fb0a0458424c4",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "ba554a1f-3519-5474-ade3-ed119954cf21",
@@ -1491,7 +1512,7 @@
       678,
       "029423795ef5d4024cf4b0160d741f1bd014112cfeb68f16f402da7aaa93c3e3",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "7ac51383-c4e4-5836-a3b4-e3037c2f1703",
@@ -1512,7 +1533,7 @@
       916,
       "15187d77fb46823992f07249c62db81df9decc1c0fae517d9da5bb8e66828211",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "fcaff6e3-0ce3-5b82-a573-93f2a7040745",
@@ -1533,7 +1554,7 @@
       713,
       "2cc2633d36e287410604e4fb5a7f00487072f905e8256fcb0ced8ce0004fa801",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "5d76d736-926e-533a-b2d3-0840055c8f9f",
@@ -1554,7 +1575,7 @@
       572,
       "7225e1595816672ce03b911fd171ffeb5d3fa6bd9b53ded2fe794115310f1d28",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "02a19861-c0f4-5b1a-be83-22cfb5d80ac8",
@@ -1575,7 +1596,7 @@
       816,
       "e163d88345a949a66305ca6a08b88044d10cb20e3bcbc1b6b7cf808c32453268",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "9dfb7531-3d00-5afa-a050-fe9c22af79ef",
@@ -1596,7 +1617,7 @@
       767,
       "489cb90c17b5de5a995984279f1ba504bf40f840a217ad300adf74960d30007f",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "3fb6058b-546a-50c3-88c7-dbb3ed5177d9",
@@ -1617,7 +1638,7 @@
       761,
       "4594f83ffab82f26ffdc7dc2ba4e2923f589ebcfe7bbaec4c3b53040fbb76c18",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "250d771a-dfa4-5d30-9576-3b053752cc68",
@@ -1638,7 +1659,7 @@
       683,
       "999ec35b2f50488086b8fed8b76879de84bdd7345baee15442e261802487b1ce",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "d361cc98-9a55-52a1-8f5a-1f1bea02dadd",
@@ -1659,7 +1680,7 @@
       715,
       "d1c41aac763ae864f3fb6d56c0694de50544dfcb42c5252fefd92590f7339a2b",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "56056a87-a690-5fc3-a330-19771af087de",
@@ -1680,7 +1701,28 @@
       815,
       "00895d053823b87f4b135054cb7386f244c1413315d0998f0526cdca78052701",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
+    ],
+    [
+      "6caa47eb-98d4-5820-8019-2519cc515b57",
+      "project-chunker-archiver",
+      3,
+      "L2_Adapters_L3_Services",
+      "project",
+      "-unknown",
+      "global",
+      "project-chunker-archiver/SKILL.md",
+      "archiving projects, chunking codebases into portable BEJSON snapshots, scooping verified directories, defining version/pkg overrides, or restoring project releases from snapshots",
+      "raw single-file table CRUD (use bejson-104-core) or MFDB manifest editing (use mfdb-104-core)",
+      "bejson-104-core,mfdb-104-core",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 3 verified upstream contract",
+      "Layer 3 deterministic deliverable",
+      125,
+      764,
+      "f4684f69dfbc65586d9377cb564fe66df219c3145863170503771a022e9d520f",
+      true,
+      "2026-10-30T05:49:03Z"
     ],
     [
       "1b8fa199-bb1e-5f66-b307-33c22c56097f",
@@ -1701,7 +1743,7 @@
       660,
       "6f316de1ddd42501b691d0f8c9676c103a13b0a6d1de64231f68d4bb5cf5296f",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "dfbc8684-2560-5527-9410-f21c2b8ea0dd",
@@ -1722,7 +1764,7 @@
       575,
       "9909237e41873b670dc7a93180f8a9576270101a9485fd8f7bc3e00fc4eabc2a",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "08f5a41a-017c-54a0-b41e-6f48c9753cc3",
@@ -1743,7 +1785,7 @@
       623,
       "62a73f8f4fc6c172f2427de8d6d11ae975053f4f18c2a03d1e438a3bd0415b94",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "702a985c-6abb-5440-b196-da0c64245034",
@@ -1764,7 +1806,7 @@
       768,
       "fc19537d0a07631e33f62e2b0972eed93e947da0993885c355197b73cb453246",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "cda22659-470f-5237-b9d5-a0620e595b2e",
@@ -1785,7 +1827,7 @@
       780,
       "ea6325b792e9d8c78871473e96ea943444fbed30364042b34c38a5d895f6e87a",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "160cef58-bf3e-5af2-b0dd-4b364ea326cf",
@@ -1806,7 +1848,7 @@
       684,
       "f3b62b8bb80aa61dd0b78ec71a6b0ab060e68180e4fe22481ca02a4e271a46c5",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "1e66a479-9c5b-57ac-bf3b-a9b36e1da11a",
@@ -1827,7 +1869,7 @@
       869,
       "85d8a866b7ca654cb929b8f8a934d93614518b47f80762afdc4729ea78dc0fcb",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "e6ab0983-a0ac-57a2-aae1-e7fcc2873dbb",
@@ -1848,7 +1890,7 @@
       832,
       "5689dfeba274503b64851f861d6b02157508e917d9f734e09da2c2d027ecde3f",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "f067b67a-f17d-589d-bd2b-1601fc63f7b2",
@@ -1869,7 +1911,7 @@
       839,
       "0697b9ad9e6f5ecd80fe74f60618ef884722da49370c35eaa7ff22414825b26e",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "133b5010-6809-59dc-90f2-af356b0b98ad",
@@ -1890,7 +1932,7 @@
       961,
       "335f99e4a06ca05f9b48101c548f4e0b957caa06ac3bd6e2978e7f46f1ad828d",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "99d8e20b-0b6d-53ed-8b59-a9a16f6a4068",
@@ -1911,7 +1953,7 @@
       852,
       "dbfb33b0840c2a8ddd3f98583228bd5eaf4e6f0bf8e30e636b6f3fd107be4d2e",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "fc0f06ac-5c20-5454-ab82-ee1adeef4258",
@@ -1932,7 +1974,7 @@
       333,
       "7cbfcd571e6cf871f43fa10ce46664d2daa355cde200c15388f002e392f6c76f",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "c66e3104-a5ee-5d2e-9834-5d3bf7da0733",
@@ -1953,7 +1995,7 @@
       829,
       "b56802b6535351dd752f9fe4fa7a17dbc6f8d678080a1bdf3a6eab4afe040ca8",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "7b01431a-0508-50e0-a1b5-709b899e305e",
@@ -1974,7 +2016,7 @@
       1011,
       "0950f37b392152b0a336a3235c136c8778af5d9e0b01021da6848a3815d6229a",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "cc542ce4-d612-59ec-a87d-b24e3cfb69b3",
@@ -1995,7 +2037,7 @@
       928,
       "248bc8f0e2252432532397edbfc0a373ccc930b231fcce0ad65b09979af3e400",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "5adbcce6-7a41-5429-a25b-15f5cc1275d8",
@@ -2016,7 +2058,7 @@
       893,
       "785a8e3178034038fb3864a90d2a3f3de14a8d662a1a7826d6b31ebab3ec3f07",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "bd8c986a-6ae7-5673-a7b9-0e434ddfabdc",
@@ -2037,7 +2079,7 @@
       868,
       "a6a3fe0339bbbbb49a1c9abda0a8c04fc5908c93c67bf5b0de3573ab6f7758da",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "468b93d5-0c2d-5221-b994-c51226e2b08c",
@@ -2058,7 +2100,7 @@
       738,
       "6a655445956a2d7bd29223b13124ee588034a6587de9a023d8ac3ba25a04daae",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "d30f839f-f83a-5057-a92a-466cf372a225",
@@ -2079,7 +2121,7 @@
       658,
       "2e9f757204023bde669bac44cac3eb4670c74a8c5c73b20b825e09234ab33abe",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "10da186d-b65f-5a49-89a8-eefc6f87889f",
@@ -2100,7 +2142,7 @@
       1077,
       "0debdb11ca5e5fb83b2a8383abe88e4f26116f2fc670a70d5eb2d494e0663dc1",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "92f4c3c7-c256-50f1-b79e-4dd96a00c57a",
@@ -2121,7 +2163,28 @@
       1079,
       "6032e775c50fb91f73c594dd60ca05b9ed154feb1b0cbcaea6a471f224dd5883",
       false,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
+    ],
+    [
+      "65f83f4c-9749-56ed-9ae8-d8661e369b21",
+      "ui-component-taxonomy-architect",
+      5,
+      "L3_Use_Cases_Cross_Layer_Blueprinting",
+      "ui",
+      "-architect",
+      "global",
+      "ui-component-taxonomy-architect/SKILL.md",
+      "taking a UI component map or interface hierarchy and designing an optimized backend taxonomy, data model, or API payload contract for it across 104 and 105 formats",
+      "raw UI component mapping (use web-ui-component-mapper), general code identifier auditing without UI trees (use code-taxonomy-architect), or spatial coordinate quantization (use behtml-design-preferences)",
+      "behtml-design-preferences,code-taxonomy-architect,web-ui-component-mapper",
+      "bejson-format-core,bejson-schema-validator",
+      "Layer 5 verified upstream contract",
+      "Layer 5 deterministic deliverable",
+      87,
+      963,
+      "15955614aa93454be8f31a497d7456e792838a8bdbf0a640c7561567802932a3",
+      true,
+      "2026-10-30T05:49:03Z"
     ],
     [
       "2f1d74e6-7756-55ee-9a28-2f495d9d23af",
@@ -2142,7 +2205,7 @@
       461,
       "f3f0848f3f46b00fe206588a81623e963c2802a09060ad9fd8ed0b4e15c35561",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ],
     [
       "b27de8e6-975c-5ecc-917f-1d0579c11d9e",
@@ -2163,7 +2226,7 @@
       755,
       "d1936762b504615bcbbdd8c2fae4e5e6339d76589ffb4fdf687c07f3748b3f06",
       true,
-      "2026-10-25T12:38:23Z"
+      "2026-10-30T05:49:03Z"
     ]
   ]
 }

@@ -1,7 +1,7 @@
 ---
 name: user:skills-backup-manager
-description: >-
-  Audit, package, and back up user-created skills to the dedicated Google Drive skill ecosystem folders whenever skills are added, modified, or on a scheduled cadence. Use when the user asks to back up skills, archive skills, export skills to Drive, sync modified skills to the skill backup directory, or verify skill backup integrity. Do NOT use for general project release packaging (use project-delivery-packager) or session initialization download sweeps (use file-archive-coordinator).
+description: Audit, package, and back up user-created skills to the dedicated Google Drive skill ecosystem folders whenever skills are added, modified, or on a scheduled cadence. Use when the user asks to back up skills, archive skills, export skills to Drive, sync modified skills to the skill backup directory, or verify skill backup integrity.
+allowed-tools: drive Do NOT use for general project release packaging (use project-delivery-packager) or session initialization download sweeps (use file-archive-coordinator).
 ---
 # skills-backup-manager
 

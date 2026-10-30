@@ -13,7 +13,6 @@ description: >-
 - **Canonical Library Root**: `/storage/emulated/0/Admin/Core/libraries/libraries_104`
 - **Target Formats**: `BEHTML (104/104a), CMS/ExpCMS MFDB, Diagrams, Bookmaker, Terminal_Menus`
 - **Design Framework Binding**: `behtml-design-preferences`
-- **Design Specification**: `behtml-design-preferences/references/behtml_design_preferences_spec.md` (single master copy; per-skill copies removed)
 - **Template Library Binding**: `behtml-templates`
 - **Date Created**: `2026-10-17` (Updated `2026-10-19`)
 - **RELATIONAL_ID**: `a84f2c19-5e3b-4d70-9c15-2b7e6a9d0f42`

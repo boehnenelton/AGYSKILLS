@@ -21,7 +21,7 @@ Do NOT use this skill for:
 
 - File-processing pipelines, batch media converters, image resizers, audio splitters, or slideshow tools that rely on auto-detecting files in an `assets/` folder and writing to `out/` (use `cli-processing-standardizer`).
 - Web applications, Flask/FastAPI REST APIs, or background daemon services.
-- Multi-file database architectural planning without CLI tool implementation (use `planning-schema-planner`).
+- Multi-file database architectural planning without CLI tool implementation (use `mfdb-python-planner`).
 
 ## Core Standardization Principles
 

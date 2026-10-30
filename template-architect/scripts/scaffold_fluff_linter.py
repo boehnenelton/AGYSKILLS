@@ -1,19 +1,13 @@
 #!/usr/bin/env python3
 """
 Scaffold Fluff & Zero-Filler Linter
-Audits template code files (HTML, BEHTML, JSON, Python, Bash) for compliance with
-Zero Filler Content, Strictly Functional Placeholders, and Invisible Architecture rules.
-
-Creator: Elton Boehnen
-Release Version: 300
-Policy Binding: Policy §7.3 Negative Constraints & §12.4
+Audits template code files (HTML, BEHTML, JSON) for compliance with Zero Filler Content,
+Strictly Functional Placeholders, and Invisible Architecture rules.
 """
 
 import sys
 import re
 from pathlib import Path
-
-VERSION = "1.0.0"
 
 BANNED_FILLER_PATTERNS = [
     r"\blorem\b",
@@ -44,72 +38,77 @@ BANNED_IMAGE_HOSTS = [
 ]
 
 
-def audit_template_file(file_path: Path) -> list:
+def audit_template(file_path: Path) -> list:
     findings = []
     try:
         content = file_path.read_text(encoding="utf-8", errors="ignore")
-    except Exception as exc:
-        return [f"Unable to read {file_path}: {exc}"]
+    except Exception as e:
+        return [f"Unable to read {file_path}: {e}"]
 
     # 1. Check for lorem ipsum and generic copy filler
     for pattern in BANNED_FILLER_PATTERNS:
         matches = re.findall(pattern, content, re.IGNORECASE)
         if matches:
-            findings.append(f"Contains banned copy filler matching '{pattern}': count={len(matches)}")
+            findings.append(f"Found forbidden filler pattern: '{matches[0]}'")
 
-    # 2. Check for framework telemetry leakage
+    # 2. Check for visible framework commentary
     for pattern in BANNED_FRAMEWORK_PATTERNS:
         matches = re.findall(pattern, content, re.IGNORECASE)
         if matches:
-            findings.append(f"Contains banned framework telemetry leak matching '{pattern}': count={len(matches)}")
+            findings.append(f"Found visible framework commentary: '{matches[0]}'")
 
-    # 3. Check for external mock image services
-    for host in BANNED_IMAGE_HOSTS:
-        matches = re.findall(host, content, re.IGNORECASE)
+    # 3. Check for fake placeholder image hosts
+    for pattern in BANNED_IMAGE_HOSTS:
+        matches = re.findall(pattern, content, re.IGNORECASE)
         if matches:
-            findings.append(f"References banned external placeholder image host '{host}': count={len(matches)}")
+            findings.append(f"Found forbidden placeholder image source: '{matches[0]}'")
+
+    # 4. Check for over-length paragraph placeholders (HTML content or BEJSON strings)
+    # Strip <style>, <script>, and template about blocks first
+    body_content = re.sub(r"<style[^>]*>.*?</style>", "", content, flags=re.DOTALL | re.IGNORECASE)
+    body_content = re.sub(r"<script[^>]*>.*?</script>", "", body_content, flags=re.DOTALL | re.IGNORECASE)
+    body_content = re.sub(r"<section id=[\"']about[\"'][^>]*>.*?</section>", "", body_content, flags=re.DOTALL | re.IGNORECASE)
+    html_text_blocks = re.findall(r">([^<]+)<", body_content)
+    for block in html_text_blocks:
+        clean = block.strip()
+        if not clean or clean.startswith("{") or clean.startswith("/*") or clean.startswith("var "):
+            continue
+        # Check if block looks like an instructional paragraph (> 80 chars)
+        if len(clean) > 80 and not clean.startswith("data:"):
+            findings.append(f"Overly verbose placeholder text ({len(clean)} chars): '{clean[:40]}...'")
 
     return findings
 
 
 def main():
-    target_path = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(".")
+    if len(sys.argv) < 2:
+        print("Usage: python3 scaffold_fluff_linter.py <template-file-or-dir>")
+        sys.exit(1)
 
-    if not target_path.exists():
-        print(f"Error: Target path does not exist: {target_path}", file=sys.stderr)
-        return 2
+    target = Path(sys.argv[1])
+    if not target.exists():
+        print(f"Path does not exist: {target}", file=sys.stderr)
+        sys.exit(1)
 
-    files_to_audit = []
-    if target_path.is_file():
-        files_to_audit.append(target_path)
-    else:
-        for ext in ["*.html", "*.htm", "*.json", "*.py", "*.sh", "*.md"]:
-            files_to_audit.extend(target_path.rglob(ext))
+    files = [target] if target.is_file() else list(target.glob("**/*.*"))
+    target_files = [f for f in files if f.suffix.lower() in (".html", ".htm", ".json", ".bejson", ".txt")]
 
-    total_violations = 0
-    audited_count = 0
+    total_errors = 0
+    print(f"Auditing {len(target_files)} template files under {target.resolve()}...")
 
-    print(f"Auditing {len(files_to_audit)} files for Zero Filler and Invisible Architecture...")
+    for f in target_files:
+        errors = audit_template(f)
+        if errors:
+            print(f"\nFAIL: {f.name} ({len(errors)} violations):")
+            for e in errors:
+                print(f"  - {e}")
+            total_errors += len(errors)
 
-    for fpath in files_to_audit:
-        # Skip pycache, git, backups
-        if any(part in fpath.parts for part in [".git", "__pycache__", ".pytest_cache", "node_modules"]):
-            continue
-
-        audited_count += 1
-        violations = audit_template_file(fpath)
-        if violations:
-            total_violations += len(violations)
-            print(f"\n[FAIL] {fpath}")
-            for v in violations:
-                print(f"  - {v}")
-
-    print(f"\nAudit complete: {audited_count} files checked.")
-    if total_violations > 0:
-        print(f"FAILED: {total_violations} filler/telemetry violations detected.")
+    if total_errors > 0:
+        print(f"\nAudit failed with {total_errors} total filler/framework violations.")
         return 1
 
-    print("PASS: Zero filler or telemetry violations detected.")
+    print("\nPASS: All templates conform to Zero Filler Content and Invisible Architecture standards.")
     return 0
 
 

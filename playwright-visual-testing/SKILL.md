@@ -44,7 +44,7 @@ description: >-
 - Debugging why an app or game fails to load, canvas context errors, or 404 assets (use `playwright-debugger-auditor`).
 - Injecting humanized Bézier mouse movements or evading anti-bot WAFs (use `playwright-stealth-agent`).
 - Managing Termux Chromium process reaping and low-memory limits (use `playwright-termux-automation`).
-- Running multi-step autonomous user login and transaction journeys (use `playwright-debugger-auditor`).
+- Running multi-step autonomous user login and transaction journeys (use `playwright-e2e-orchestrator`).
 
 ---
 

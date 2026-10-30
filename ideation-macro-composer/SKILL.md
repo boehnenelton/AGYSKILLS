@@ -1,7 +1,12 @@
 ---
 name: ideation-macro-composer
 description: >-
-  Compose massive, multi-dimensional conceptual frameworks, macro systems, and expansive domain architectures from small, abstract, or vague seed concepts. Use when starting from an abstract vision and needing deep speculative expansion before feature cataloging. Do NOT use for granular numbered feature lists (use ideation-feature-composer) or technical database schemas (use planning-schema-planner).
+  Compose massive, multi-dimensional conceptual frameworks, macro systems, and expansive domain architectures from small, abstract, or vague seed concepts. Use when starting from an abstract vision and needing deep speculative expansion before feature cataloging. Do NOT use for granular numbered feature lists (use ideation-feature-composer) or technical database schemas (use mfdb-python/javascript/typescript-planner).
+---
+---
+name: ideation-feature-composer
+description: "Given a vague concept or one-line description of a tool/app/script (e.g. \"file indexer\", \"task manager\", \"log viewer\", \"image resizer\"), generate an exhaustive markdown checkbox list of every possible feature, UI option, and configuration that type of tool could have. Think broadly: research real-world examples, common patterns, power-user features, edge cases, and advanced capabilities. Output a massive, categorized, checkbox-formatted feature menu the user can check off and hand back. Trigger on: \"what features could X have\", \"give me a feature list for\", \"I want to build a [tool]\", \"what should a [app/script] do\", \"feature brainstorm\", \"plan a [tool]\", or any vague tool concept the user wants to spec out before building. Always go wide  -  err on the side of too many features, not too few."
+
 ---
 
 # Composer

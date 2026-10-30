@@ -22,7 +22,7 @@ description: >-
 
 ## When to Use
 
-- Executing end-to-end multi-skill pipelines spanning Layers 1 through 5 (e.g., `code-taxonomy-architect` -> `bejson-104-core` -> `bejson-104-validator` -> `bejson-scaffold-python`).
+- Executing end-to-end multi-skill pipelines spanning Layers 1 through 5 (e.g., `code-taxonomy-architect` -> `bejson-format-core` -> `bejson-schema-validator` -> `bejson-scaffold-python`).
 - Managing subagent handoffs (`invoke_subagent` / `send_message`) across read-only planning waves (`--mode=plan`) and sandboxed mutation waves (`--mode=accept-edits`).
 - Enforcing Stage Gate validation checks between upstream artifact producers and downstream consumers.
 - Resuming interrupted multi-stage pipelines from the last `VERIFIED` checkpoint in `data/dag_pipeline_ledger.104a.bejson`.
@@ -32,7 +32,7 @@ description: >-
 - Do NOT use for authoring, scaffolding, or linting a single `SKILL.md` bundle (use `skill-architect`).
 - Do NOT use for scanning skill directories or building pairwise trigger collision matrices (use `skill-ecosystem-cartographer`).
 - Do NOT use for drafting a Markdown Recipe Blueprint prior to execution approval (use `skill-chain-recipe-composer`).
-- Do NOT use for enforcing $N = K + 1$ multi-turn conversational pre-planning withholding before schemas/wireframes are approved (use `planning-schema-planner`).
+- Do NOT use for enforcing $N = K + 1$ multi-turn conversational pre-planning withholding before schemas/wireframes are approved (use `planning-coordinator`).
 - Do NOT use for running sequential JobMaker task files (use `job-workflow-manager`).
 
 ---
@@ -52,7 +52,7 @@ description: >-
 
 ### Step 1: Verify Catalog & Pre-Planning Readiness
 1. Load `data/skill_registry_catalog.104a.bejson` via `field_map` and verify that every stage skill has `skill_linter_verified_flag == true`.
-2. If the requested workflow requires $K \ge 1$ unfrozen conversational pre-planning turns (`planning-schema`, `planning-template`), hand off to `planning-schema-planner` first.
+2. If the requested workflow requires $K \ge 1$ unfrozen conversational pre-planning turns (`planning-schema`, `planning-template`), hand off to `planning-coordinator` first.
 
 ### Step 2: Execute Topological DAG Pipeline & Stage Gates
 Invoke `scripts/coordinator_dag_runner.py` to validate acyclicity (`Code 435`), execute each stage's gate validator command, compute SHA-256 handoff digests, and persist state transitions (`PENDING` -> `PREFLIGHT_CHECK` -> `DISPATCHED` -> `GATE_VALIDATING` -> `VERIFIED`) to `data/dag_pipeline_ledger.104a.bejson`:

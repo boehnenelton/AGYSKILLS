@@ -68,12 +68,12 @@ To prevent tools and skills from colliding or overwriting each other's progress,
 |---|---|---|
 | **Root Orchestration** | `arch-layered-refactor` | Audits system, defines layers, freezes contracts, plans migration sequence. |
 | **Feature Cataloging** | `ideation-feature-composer` / `ideation-macro-composer` | Exhaustively inventories features and operational specs before refactoring begins. |
-| **System Architecture** | `planning-schema-planner`<br>`component-taxonomy-architect` | Pre-plans database manifests, canonical prefix registries, synthetic UUID standards, and blueprints. |
-| **Layer 0 & 1 (Data/Schemas)** | `bejson-104-core`<br>`bejson-105-core`<br>`mfdb-104-core` | Authors foundational BEJSON schemas, positional field orders, and manifest headers. |
+| **System Architecture** | `mfdb-python-planner`<br>`mfdb-javascript-planner`<br>`mfdb-typescript-planner` | Pre-plans database manifests, canonical prefix registries, synthetic UUID standards, and blueprints. |
+| **Layer 0 & 1 (Data/Schemas)** | `bejson-format-core`<br>`bejson-mfdb-core-core`<br>`bejson-nesting-core` | Authors foundational BEJSON schemas, positional field orders, and manifest headers. |
 | **Layer 2 (Persistence Refactor)** | `bejson-codebase-refactor` | Refactors legacy data structures (SQLite, raw JSON, CSV) into BEJSON with atomic I/O and field map caching. |
 | **Layer 3 & 4 (Scaffolding)** | `bejson-scaffold-python`<br>`bejson-scaffold-javascript`<br>`bejson-scaffold-bash` | Generates self-contained scripts, service modules, CLI tools, and background workers with embedded primitives. |
-| **Layer 4 (UI & Navigation)** | `ui-navigation-decomposer`<br>`behtml-layout-builder` | Maps UI navigation hierarchy and constructs deterministic spatial BEHTML grids and templates. |
-| **Cross-Layer Validation** | `bejson-104-validator` / `bejson-105-validator` | Verifies structural integrity, manifest-entity paths, and schema parity across all boundaries. |
+| **Layer 4 (UI & Navigation)** | `ui-navigation-decomposer`<br>`behtml-spatial-builder` | Maps UI navigation hierarchy and constructs deterministic spatial BEHTML grids and templates. |
+| **Cross-Layer Validation** | `bejson-schema-validator` | Verifies structural integrity, manifest-entity paths, and schema parity across all boundaries. |
 
 ### Symbiotic Non-Interference Protocol
 
@@ -106,7 +106,7 @@ Follow this 6-stage workflow for every refactoring initiative:
 
 1. Extract shared constants, status codes, and error classes into `src/lib/substrate/` (Layer 0).
 2. Author BEJSON schemas (104, 104a, 104db) and entity models in `src/domain/` (Layer 1).
-3. Validate schemas using `bejson-104-validator` or `bejson-105-validator` to guarantee positional integrity and field typing.
+3. Validate schemas using `bejson-schema-validator` to guarantee positional integrity and field typing.
 4. Freeze Layers 0 and 1. Do not proceed until these contracts are verified.
 
 ### Stage 4: Layer 2 Persistence Modernization
@@ -131,7 +131,7 @@ Follow this 6-stage workflow for every refactoring initiative:
 
 1. Refactor entry points, routes, and controllers in `src/web/` or `src/cli/` (Layer 4):
    - Controllers should only parse incoming parameters, validate types, call Layer 3 services, and map results to HTTP/JSON/CLI outputs.
-   - For web frontends, delegate template construction to `behtml-layout-builder` and navigation mapping to `ui-navigation-decomposer`.
+   - For web frontends, delegate template construction to `behtml-spatial-builder` and navigation mapping to `ui-navigation-decomposer`.
 2. Wire all dependencies in the Composition Root (Layer 5, e.g. `app_admin.py` or `main.py`):
    - Load configuration (`ScriptConfig` in BEJSON 104a).
    - Instantiate repositories, pass them into application services, and register services into controllers.

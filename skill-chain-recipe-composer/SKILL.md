@@ -22,7 +22,7 @@ A systematic architectural engine for conceptualizing, designing, and structurin
 ## When NOT to Use
 
 - Executing an established recipe or orchestrating active runtime handoffs (use `skill-chain-coordinator`).
-- Managing multi-turn conversational pre-planning turn delays (use `planning-schema-planner`).
+- Managing multi-turn conversational pre-planning turn delays (use `planning-coordinator`).
 - Authoring, linting, or saving the actual executable `SKILL.md` code files for new skills (use `skill-creator` or `skill-architect`).
 - Decomposing monolithic codebases across class hierarchies (use `arch-layered-refactor`).
 - Executing single tasks sequentially in JobMaker BEJSON registries (use `job-workflow-manager`).

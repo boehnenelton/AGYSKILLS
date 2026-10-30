@@ -36,14 +36,19 @@ description: >-
 
 ---
 
-## 2. Tool Roster & Execution References
+## 2. Embedded CLI Tool Reference (`Simple_Chunker_CLI.py`)
 
-`chunking-core` provides three complementary chunking tools:
-1. **`Simple_Chunker_CLI.py`** (`scripts/Simple_Chunker_CLI.py`): Zero-tracker, lightweight text-first chunker defaulting to `/storage/emulated/0/Admin/Resources/Chunks`.
-2. **`CLI_Chunker.py`** (`scripts/CLI_Chunker.py`): Standalone build supporting dual schemas (`104` flat and `104db` relational) with registered history and direct-to-ZIP unchunking.
-3. **`Project_Chunker`** (`/storage/emulated/0/Admin/Dev/Python/Development/Project_Chunker/CLI/project_chunker.py`): Flagship hybrid project chunker and tracker backed by the 3-pillar architecture (Tracker DB, Master Registry, and Per-Project Snapshots).
+The embedded tool can be executed from its skill path or staged tool location:
 
-### 2.1 Simple_Chunker_CLI Command Matrix
+```bash
+# Via embedded skill script:
+python3 ~/.gemini/config/skills/chunking-core/scripts/Simple_Chunker_CLI.py [OPTIONS]
+
+# Via staged tool location:
+python3 /storage/emulated/0/Admin/Dev/Tools/Chunker_CLI/Simple_Chunker_CLI.py [OPTIONS]
+```
+
+### CLI Command Matrix
 
 | Task | Command Syntax |
 |---|---|
@@ -55,20 +60,6 @@ description: >-
 | **Unchunk to Directory** | `python3 scripts/Simple_Chunker_CLI.py --unchunk <chunk_file.bejson.txt> --dest <restore_dir>` |
 | **Unchunk Direct to ZIP** | `python3 scripts/Simple_Chunker_CLI.py --unchunk <chunk_file.bejson.txt> --dest <restore_dir> --zip` |
 | **List History & Registry** | `python3 scripts/Simple_Chunker_CLI.py --list-chunk-index`<br>`python3 scripts/Simple_Chunker_CLI.py --list-unchunk-index` |
-
-### 2.2 Project_Chunker (Advanced Tracking & Archival)
-
-Located at `/storage/emulated/0/Admin/Dev/Python/Development/Project_Chunker/`:
-```bash
-# Track and snapshot a project
-python3 /storage/emulated/0/Admin/Dev/Python/Development/Project_Chunker/CLI/project_chunker.py /path/to/project --track --chunk
-
-# Verified scoop (snapshot + delete source files)
-python3 /storage/emulated/0/Admin/Dev/Python/Development/Project_Chunker/CLI/project_chunker.py /path/to/project --track --scoop
-
-# Restore from snapshot UUID
-python3 /storage/emulated/0/Admin/Dev/Python/Development/Project_Chunker/CLI/project_chunker.py --restore <UUID> --dest /path/to/restore
-```
 
 ---
 
@@ -169,7 +160,6 @@ Generated archives adhere to the BEJSON 104a Chunked schema:
 
 ### Do NOT Use This Skill When:
 - Packaging Multi-File Databases (MFDB) into `.mfdb132.bejson` chunk containers (use `mfdb-104-chunker`).
-- Structured document project management, paragraph splitting, or Markdown compiling (use `bejson-document-chunker`).
 - Modifying individual cells or querying relational tables in `.104.bejson` stores (use `bejson-104-core`).
 - Upgrading 104 files to Format 105 UUID structures (use `bejson-105-upgrade-automator`).
 

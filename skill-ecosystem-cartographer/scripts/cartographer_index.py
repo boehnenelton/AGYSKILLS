@@ -228,9 +228,9 @@ def parse_skill_md(skill_md_path: Path, root_dir: Path) -> Dict[str, Any]:
         "skill_positive_triggers_csv": pos_triggers,
         "skill_negative_triggers_csv": neg_triggers,
         "skill_blocked_siblings_csv": ",".join(blocked_siblings),
-        "skill_allowed_downward_deps_csv": "bejson-104-core,bejson-104-validator"
+        "skill_allowed_downward_deps_csv": "bejson-format-core,bejson-schema-validator"
         if layer_num > 2
-        else ("bejson-104-core" if layer_num == 2 else "none"),
+        else ("bejson-format-core" if layer_num == 2 else "none"),
         "skill_input_contract_spec": f"Layer {layer_num} verified upstream contract",
         "skill_output_artifact_spec": f"Layer {layer_num} deterministic deliverable",
         "skill_body_line_count_metric": body_line_count,

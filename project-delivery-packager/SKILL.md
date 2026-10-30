@@ -30,7 +30,7 @@ description: >-
 
 - Do NOT use for sweeping and organizing incoming downloads during session initialization (use `file-archive-coordinator`).
 - Do NOT use for packaging codebases into single-file flat BEJSON text containers (`.104a.bejson.txt`) (use `chunking-core`).
-- Do NOT use for synchronizing Git branch names, commit hashes, or Git release tags (use git CLI or GitHub CLI).
+- Do NOT use for synchronizing Git branch names, commit hashes, or Git release tags (use `git-release-automator`).
 - Do NOT use for scaffolding directory structures or migrating tracking notes (use `file-subfolder-automator`).
 
 ---

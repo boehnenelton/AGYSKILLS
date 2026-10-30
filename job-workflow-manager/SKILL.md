@@ -26,9 +26,9 @@ Provides the complete lifecycle for jobs and templates: authoring job schemas in
 ## When NOT to Use
 
 - General shell script scaffolding (use `bejson-scaffold-bash`).
-- High-level code architecture pre-planning (use `planning-schema-planner` or `component-taxonomy-architect`).
+- High-level code architecture pre-planning (use `mfdb-python-planner`, `mfdb-javascript-planner`, or `mfdb-typescript-planner`).
 - System-wide multi-layer codebase refactoring (use `arch-layered-refactor`).
-- Validating raw BEJSON files against base formats (use `bejson-104-validator`).
+- Validating raw BEJSON files against base formats (use `bejson-schema-validator`).
 - Generating 25-50 point feature menus from vague concepts (use `ideation-feature-composer`).
 
 ## Core Specifications & Schema Standards

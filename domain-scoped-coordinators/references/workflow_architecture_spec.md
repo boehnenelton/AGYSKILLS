@@ -154,7 +154,7 @@ stateDiagram-v2
 | `behtml` | `behtml_coordinator` | BEHTML layouts, 8-lane / 16-sublane grids, Tri-Color | `behtml-design-preferences`, `verify_behtml_preferences.py` |
 | `taxonomy` | `taxonomy_coordinator` | Entity prefixes, schemas, UI component trees, variables | `code-taxonomy-architect`, `component-taxonomy-architect`, `verify_variable_naming.py` |
 | `skills` | `skills_coordinator` | Multi-tier Antigravity CLI skills (L1-L6), SKILL.md | `skill-architect`, `skill_architect_linter.py`, `skill-ecosystem-cartographer` |
-| `publication` | `publication_coordinator` | Multi-chapter books, technical docs, HTML specs | `publication-html-builder`, `behtml-templates` |
+| `publication` | `publication_coordinator` | Multi-chapter books, technical docs, HTML specs | `publication-html-builder`, `behtml-document-template` |
 | `general` | `domain_coordinator` | Fallback coordinator for generic script and tool tasks | `domain_validator`, Python `compileall`, pytest |
 
 ---

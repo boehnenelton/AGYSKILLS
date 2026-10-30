@@ -31,7 +31,7 @@ description: >-
 
 - Do NOT use for designing, scaffolding, or linting an individual `SKILL.md` file (use `skill-architect`).
 - Do NOT use for executing multi-skill DAG pipelines, spawning stage subagents, or enforcing runtime stage gates (use `skill-chain-coordinator`).
-- Do NOT use for scheduling $N = K + 1$ multi-turn conversational pre-planning delays (use `planning-schema-planner`).
+- Do NOT use for scheduling $N = K + 1$ multi-turn conversational pre-planning delays (use `planning-coordinator`).
 - Do NOT use for extracting atomic rules from general prose policy documents outside skill registries (use `policy-conflict-auditor`).
 
 ---
@@ -41,7 +41,7 @@ description: >-
 - **Assigned Skill Tier**: Layer 6 (`L6: Root Orchestration & Meta-Governance`)
 - **Codebase Layer Mapping**: `L5_Composition_Root`
 - **Exclusive Write-Owner Of**: `data/skill_registry_catalog.104a.bejson` (`SkillCatalogEntry` entity) and `reports/audits/topology_collision_matrix.md`
-- **Allowed Downward Dependencies**: `bejson-104-core` (L1), `bejson-104-validator` (L2), `policy-conflict-auditor` (L2)
+- **Allowed Downward Dependencies**: `bejson-format-core` (L1), `bejson-schema-validator` (L2), `policy-conflict-auditor` (L2)
 - **Sandbox Policy**: All `agy` CLI invocations MUST include `--sandbox`.
 - **BEJSON Access Policy**: All `.bejson` reads and mutations MUST resolve column indices dynamically via `field_map`.
 

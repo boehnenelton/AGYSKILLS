@@ -80,7 +80,7 @@ options:
 
 2. **Global Launcher Command**:
    ```bash
-   ideation-blog-post-planner --target-dir "/path/to/code" --count 5
+   blog-post-ideas --target-dir "/path/to/code" --count 5
    ```
 
 ---

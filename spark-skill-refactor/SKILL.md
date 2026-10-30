@@ -1,6 +1,7 @@
 ---
 name: spark-skill-refactor
 description: Audit, refactor, optimize, and harmonize existing Gemini Spark skills individually or in symbiotic clusters to enforce 6-tier layer boundaries, progressive disclosure (<500 lines), Jaccard trigger collision thresholds, and the 4-pillar deliverable taxonomy. Use when inspecting or refactoring SKILL.md files for context bloat, trigger overlap, asymmetric negative guardrails (Codes 430-433), phonetic alias drift, placeholder compliance, and BEJSON 104a data contracts. Do NOT use for designing new skills from scratch (use skill-architect), indexing global skill catalogs (use skill-ecosystem-cartographer), resolving concept definitions (use definitions-cartographer), auditing general policies (use policy-conflict-auditor), Antigravity CLI daemons (use agy-skill-refactor), or application code (use bejson-codebase-refactor).
+allowed-tools: vm_shell drive
 ---
 # Spark Skill Refactor
 
@@ -38,7 +39,7 @@ Audits and transforms existing Gemini Spark skills individually or across interc
    - **Stage 3 (Execution)**: Offload deep schemas and matrices to `references/<topic>.md` and deterministic validators to `scripts/<tool>.py`.
 3. **Mathematical Anti-Collision Protocol (Cartographer Alignment)**:
 
-   - Every skill description must contain three explicit segments: Capability Statement, Positive Triggers (`Use when...`), and Mutual Negative Guardrails (`Do NOT use for X (use skill-architect)`).
+   - Every skill description must contain three explicit segments: Capability Statement, Positive Triggers (`Use when...`), and Mutual Negative Guardrails (`Do NOT use for X (use Y)`).
    - Sibling skills with pairwise Jaccard positive trigger similarity $J(T^+(S_i), T^+(S_j)) \ge 0.25$ must declare reciprocal negative exclusions so effective activation regions remain disjoint: $A(S_i) \cap A(S_j) = \emptyset$.
 4. **Four-Pillar Deliverable Taxonomy Enforcement**:
 

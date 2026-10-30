@@ -54,7 +54,7 @@ def initialize_logging_subsystem(configured_log_level_name: str = "INFO") -> Non
 
 def resolve_canonical_environment_paths() -> Dict[str, Path]:
     """
-    Resolve paths from canonical paths.json or apply standard system defaults.
+    Resolve paths from canonical definitions.json (or fallback paths.json) or apply standard system defaults.
     Never hardcode storage paths in runtime business logic.
     """
     system_paths_map: Dict[str, Path] = {
@@ -62,10 +62,13 @@ def resolve_canonical_environment_paths() -> Dict[str, Path]:
         "PROJECTS_ARCHIVE_ROOT": Path("/storage/emulated/0/Admin/Core/Projects_Archive"),
     }
 
+    env_definitions_path: Path = Path("/storage/emulated/0/.env/user/definitions.json")
     user_paths_config_path: Path = Path("/storage/emulated/0/.env/user/paths.json")
-    if user_paths_config_path.is_file():
+    target_config_path = env_definitions_path if env_definitions_path.is_file() else user_paths_config_path
+
+    if target_config_path.is_file():
         try:
-            with open(user_paths_config_path, "r", encoding="utf-8") as paths_file_handle:
+            with open(target_config_path, "r", encoding="utf-8") as paths_file_handle:
                 parsed_bejson_document: Dict[str, Any] = json.load(paths_file_handle)
 
             field_definitions_list: List[Dict[str, str]] = parsed_bejson_document.get("Fields", [])
@@ -85,7 +88,8 @@ def resolve_canonical_environment_paths() -> Dict[str, Path]:
                     system_paths_map["DOWNLOAD_ROOT"] = Path(variable_value_string) / "Download"
         except Exception as paths_resolution_exception:
             LOGGER_INSTANCE.warning(
-                "Unable to parse paths.json (%s). Using fallback paths.",
+                "Unable to parse %s (%s). Using fallback paths.",
+                target_config_path.name,
                 str(paths_resolution_exception),
             )
 
@@ -121,8 +125,8 @@ class ParsedPackageRecord:
 
 
 def parse_version_string_to_tuple(raw_version_token: str) -> Tuple[int, ...]:
-    """Convert version string e.g. '1_0_1' or '2134' into integer tuple for comparison."""
-    token_components: List[str] = raw_version_token.split("_")
+    """Convert version string e.g. '1_0_1', '2.0.0', or '2134' into integer tuple for comparison."""
+    token_components: List[str] = re.split(r"[_.]", raw_version_token)
     parsed_integers_list: List[int] = []
     for individual_component in token_components:
         cleaned_digits: str = "".join(filter(str.isdigit, individual_component))
@@ -138,13 +142,13 @@ def evaluate_package_filename_match(
 ) -> Optional[ParsedPackageRecord]:
     """
     Regex parsing for Policy §3.1 package format: (PROJECT_NAME)-(VERSION)-(PKGVERSION)
-    Accepts trailing build offsets (e.g. Autobase64-V8-PKG100-1.zip).
+    Accepts dotted versions, hyphens in project names, and trailing build offsets.
     """
     target_entry_name: str = candidate_filesystem_path.name
     package_naming_regex_pattern: str = (
-        r"^(?P<project_name>[A-Za-z0-9_]+)"
-        r"-V(?P<version>[0-9_]+)"
-        r"-PKG(?P<pkg_version>[0-9_]+)"
+        r"^(?P<project_name>[A-Za-z0-9_.-]+?)"
+        r"-V(?P<version>[0-9_.]+)"
+        r"-PKG(?P<pkg_version>[0-9_.]+)"
         r"(?:-(?P<build>[0-9_]+))?"
         r"(?P<archive_ext>\.zip)?$"
     )
@@ -208,6 +212,60 @@ def compress_directory_to_zip(source_directory_path: Path) -> Path:
     return destination_zip_path
 
 
+def load_archive_registry_cache(projects_archive_root_directory: Path) -> Dict[str, str]:
+    """Load canonical project type mappings from archive_registry.104a.bejson using Field Map Cache."""
+    registry_file_path = projects_archive_root_directory / "archive_registry.104a.bejson"
+    type_map: Dict[str, str] = {}
+    if not registry_file_path.is_file():
+        return type_map
+    try:
+        with open(registry_file_path, "r", encoding="utf-8") as file_handle:
+            bejson_doc = json.load(file_handle)
+        fields = bejson_doc.get("Fields", [])
+        field_map = {f.get("name"): i for i, f in enumerate(fields)}
+        name_idx = field_map.get("Project_Name")
+        type_idx = field_map.get("Type")
+        if name_idx is not None and type_idx is not None:
+            for row in bejson_doc.get("Values", []):
+                p_name = str(row[name_idx]).strip().lower()
+                p_type = str(row[type_idx]).strip().lower()
+                if p_name and p_type:
+                    type_map[p_name] = p_type
+    except Exception as exc:
+        LOGGER_INSTANCE.warning("Error loading archive registry: %s", str(exc))
+    return type_map
+
+
+def resolve_project_type(
+    project_display_name: str,
+    projects_archive_root_directory: Path,
+    registry_cache: Dict[str, str],
+) -> str:
+    """Resolve canonical project type according to Project Type Ledger and pre-existing subfolders."""
+    canonical_key = project_display_name.lower()
+    if canonical_key in registry_cache:
+        return registry_cache[canonical_key]
+
+    known_types = ("python", "bash", "library", "react", "skill", "website", "app")
+    for type_candidate in known_types:
+        if (projects_archive_root_directory / type_candidate / project_display_name).is_dir():
+            return type_candidate
+
+    if canonical_key.startswith("lib_") or "librar" in canonical_key or "scaffold" in canonical_key:
+        return "library"
+    if "skill" in canonical_key or canonical_key.startswith("agy"):
+        return "skill"
+    if canonical_key.startswith("bash") or canonical_key == "autobase64":
+        return "bash"
+    if "react" in canonical_key:
+        return "react"
+    if "engine_js" in canonical_key:
+        return "app"
+    if "html" in canonical_key:
+        return "website"
+    return "python"
+
+
 def execute_session_initialization_sweep(
     download_root_directory: Path,
     projects_archive_root_directory: Path,
@@ -218,7 +276,7 @@ def execute_session_initialization_sweep(
     1. Scan Download directory for project package patterns.
     2. Group packages by project name.
     3. Compress any loose folders to ZIP.
-    4. Retain latest version in Download; move older releases to Projects_Archive/<ProjectName>/.
+    4. Retain latest version in Download; move older releases to Projects_Archive/<Type>/<ProjectName>/.
     5. Prune duplicate identical releases in Projects_Archive.
     """
     sweep_summary_statistics: Dict[str, int] = {
@@ -236,6 +294,7 @@ def execute_session_initialization_sweep(
         return sweep_summary_statistics
 
     projects_archive_root_directory.mkdir(parents=True, exist_ok=True)
+    registry_type_cache = load_archive_registry_cache(projects_archive_root_directory)
 
     # 1. Discover all matching packages and directories
     discovered_records_map: Dict[str, List[ParsedPackageRecord]] = {}
@@ -290,8 +349,13 @@ def execute_session_initialization_sweep(
         older_package_records_list: List[ParsedPackageRecord] = normalized_records_list[:-1]
 
         project_display_name = latest_package_record.project_display_name
+        project_type = resolve_project_type(
+            project_display_name,
+            projects_archive_root_directory,
+            registry_type_cache,
+        )
         target_project_archive_dir: Path = (
-            projects_archive_root_directory / project_display_name
+            projects_archive_root_directory / project_type / project_display_name
         )
 
         LOGGER_INSTANCE.info(

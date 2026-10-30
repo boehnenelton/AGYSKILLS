@@ -8,7 +8,7 @@ The authoritative Anti-Drift Auditor and structural validator for BEHTML documen
 
 ## Summary
 
-Audits and validates BEHTML documents, element trees, and project entities against Elton Boehnen's deterministic spatial laws. Enforces exact error codes (300-329), identical error messaging across runtimes, 8-lane horizontal boundaries, Ry=32px vertical quantization, collision freedom across scoped z-layers, acyclic container hierarchies, zero-filler placeholder compliance, and sanitized identifier patterns via the bundled executable tool [`scripts/behtml_validate.py`](./scripts/behtml_validate.py).
+Audits and validates BEHTML documents, element trees, and project entities against Elton Boehnen's deterministic spatial laws. Enforces exact error codes (300-329), identical error messaging across runtimes, 8-lane horizontal boundaries, Ry=32px vertical quantization, collision freedom across scoped z-layers, acyclic container hierarchies, zero-filler placeholder compliance, and sanitized identifier patterns.
 
 ## When to Use
 
@@ -23,7 +23,7 @@ Audits and validates BEHTML documents, element trees, and project entities again
 
 ## When NOT to Use
 
-- Validating general BEJSON 104/104a tabular records outside BEHTML (use `bejson-104-validator`).
+- Validating general BEJSON 104/104a tabular records outside BEHTML (use `bejson-schema-validator`).
 - Calculating coordinate math, dimensions, or padding laws (use `behtml-format-core`).
 - Assembling or composing UI layouts, dashboards, and templates (use `behtml-layout-builder`).
 - Tracing navigation sitemaps or decomposing web routes (use `ui-navigation-decomposer`).

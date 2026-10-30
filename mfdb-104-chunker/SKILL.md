@@ -60,31 +60,6 @@ agy --sandbox -p "Execute mfdb-104-chunker verification gate and return determin
 
 ---
 
----
-
-## 4. CLI Tool Reference (`scripts/mfdb_chunker_cli.py`)
-
-The skill provides the executable script `scripts/mfdb_chunker_cli.py` supporting both Foundational Era 104 (`.mfdb132.bejson`) and Integrity Era 105 (`.mfdb140.bejson`) packaging with sticky mounting:
-
-```bash
-# Package an MFDB directory into a container
-python3 scripts/mfdb_chunker_cli.py --package /path/to/mfdb_dir --era 104
-
-# Sticky-mount container into workspace directory
-python3 scripts/mfdb_chunker_cli.py --mount /path/to/database.mfdb132.bejson --workspace /path/to/workspace
-
-# Pre-write validate and commit changes back to container
-python3 scripts/mfdb_chunker_cli.py --commit /path/to/workspace
-
-# Unmount workspace and remove .mfdb132_lock
-python3 scripts/mfdb_chunker_cli.py --unmount /path/to/workspace
-
-# Validate container file or directory
-python3 scripts/mfdb_chunker_cli.py --validate /path/to/database.mfdb132.bejson
-```
-
----
-
 ## When NOT to Use
 
 Do NOT use `mfdb-104-chunker` for out-of-scope tasks. Route immediately to the designated sibling skill:

@@ -11,7 +11,6 @@ description: >-
 - **Architectural Layer**: `Layer 4 (L4_Presentation_Transport)`
 - **Era & Library Binding**: `104 (Foundational Era - Editorial HTML Document Builder, Release 300)`
 - **Canonical Document Template**: `assets/Template_HTML_Document.html`
-- **Design Specification**: `behtml-design-preferences/references/behtml_design_preferences_spec.md` (single master copy; per-skill copies removed)
 - **Date Created**: `2026-10-18`
 - **RELATIONAL_ID**: `7b4e1a90-3f8c-4d21-9e54-1c6a8b2d0f39`
 - **Author Credit**: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
@@ -271,7 +270,7 @@ agy --sandbox -p "Execute publication-html-builder verification gate and return 
 ## When NOT to Use
 
 - **Inspecting or defining base BE HTML CSS design preferences and spatial measurement laws**: Redirect immediately to `behtml-design-preferences`.
-- **Scaffolding parameterized BEHTML document templates**: Redirect immediately to `behtml-templates`.
+- **Scaffolding parameterized BEHTML document templates**: Redirect immediately to `behtml-document-template`.
 - **Rendering BEJSON 104 vertical domain tables, diagrams, or Lib_SH terminal menus**: Redirect immediately to `behtml-104-builder`.
 
 ---

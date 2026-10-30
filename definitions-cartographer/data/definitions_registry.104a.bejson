@@ -349,7 +349,7 @@
       "Deterministic table-of-contents generator scanning h2 and h3 heading tags and injecting URL-safe anchor slugs.",
       "Suppresses the TOC container completely if fewer than two headings exist (N < 2), preserving pre-authored anchor slugs.",
       "auto-toc,table of contents protocol,heading scan,toc suppression",
-      "large-website-architect/references/site_scaffold_architecture.md",
+      "behtml-document-template/references/document_template_spec.md",
       "Architecture Standard"
     ],
     [

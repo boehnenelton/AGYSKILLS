@@ -48,7 +48,8 @@ description: >-
 - Low-level Chromium process reaping, Bionic environment patching, or managing Termux memory budgets (use `playwright-termux-automation`).
 - Evading anti-bot WAFs, injecting Bézier mouse trajectories, or applying Canvas/Audio noise (use `playwright-stealth-agent`).
 - Scraping static HTML websites where JavaScript execution is not required (use `curl`, `httpx`, or `BeautifulSoup`).
-- Executing long-form multi-step user journey scenarios or test automation suites (use `playwright-debugger-auditor` test suites).
+- Auditing Python or JavaScript source code ASTs for BEJSON policy compliance (use `policy-bejson-auditor`).
+- Executing long-form multi-step user journey scenarios or test automation suites (use `playwright-e2e-orchestrator`).
 
 ---
 

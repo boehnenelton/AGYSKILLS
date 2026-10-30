@@ -31,7 +31,7 @@ description: >-
 
 - Executing dependency-ordered multi-skill DAG pipelines or managing runtime stage gates (use `skill-chain-coordinator`).
 - Indexing installed skills, building pairwise trigger collision matrices, or querying the global skill topology catalog (use `skill-ecosystem-cartographer`).
-- Scheduling multi-turn conversational pre-planning delays across $N = K + 1$ turns (use `planning-schema-planner`).
+- Scheduling multi-turn conversational pre-planning delays across $N = K + 1$ turns (use `planning-coordinator`).
 - Refactoring existing application persistence layers from SQLite/CSV to BEJSON (use `bejson-codebase-refactor`).
 - Decomposing monolithic application codebases into `L0-L5` class hierarchies (use `arch-layered-refactor`).
 

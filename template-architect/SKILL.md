@@ -2,6 +2,7 @@
 name: template-architect
 description: >-
   Architect, scaffold, and optimize bare-bones structural application templates and UI wireframes across BEHTML, HTML/CSS, Python, and web frameworks adhering to the 6-tier layered architecture. Enforces Zero Filler Content, Strictly Functional Placeholders, Invisible Architecture, and the Blank Canvas Rule. Embeds Elton Boehnen's canonical Release_Version 300 templates (Python Core/Validator and HTML Core/Validator). Use when scaffolding empty web app layouts, building structural component containers with literal spatial labels, or generating starter templates. Do NOT use for populating production content, mapping existing web navigation (use ui-navigation-decomposer), or validating BEJSON 104 datasets (use bejson-104-validator).
+allowed-tools: vm_shell drive
 ---
 # Template Architect
 
@@ -23,7 +24,7 @@ Acts as the foundational template generator and layout scaffold architect across
 
 - Populating templates with real domain content, copy, or business logic (handled by domain services).
 - Tracing and extracting navigation sitemaps from existing websites (use `ui-navigation-decomposer`).
-- Validating raw BEJSON 104/104a tabular records (use `bejson-104-validator`).
+- Validating raw BEJSON 104/104a tabular records (use `bejson-schema-validator`).
 - Generating 25-50 point feature brainstorm lists (use `ideation-feature-composer`).
 - Refactoring application persistence models or server logic (use `bejson-codebase-refactor`).
 
@@ -32,10 +33,10 @@ Acts as the foundational template generator and layout scaffold architect across
 `template-architect` bridges presentation, scaffolding, and substrate contracts across the 6-tier hierarchy:
 
 - **Layer 1 (Core Substrate Integration)**: Embeds Release_Version 300 Core error codes (1-29) and primitives (`bejson_core_load_file`, `bejson_core_atomic_write`, `bejson_core_get_field_map`) in executable templates (`assets/BEJSON_Template_PY_Full-v1.py`, `assets/BEJSON_Template_HTML_Full-v1.html`).
-- **Layer 2 (Domain Engine / Validator Integration)**: Directly embeds or targets `bejson-104-validator` routines (`validate_bejson`, `bejson_validator_validate_string`, `bejson_validator_get_report`) in validator templates.
+- **Layer 2 (Domain Engine / Validator Integration)**: Directly embeds or targets `bejson-schema-validator` routines (`validate_bejson`, `bejson_validator_validate_string`, `bejson_validator_get_report`) in validator templates.
 - **Layer 3 (Automation & Scaffolding Synergy)**: Complements language scaffolders (`bejson-scaffold-python`, `bejson-scaffold-javascript`, `bejson-scaffold-bash`) by providing standardized layout shells that background scripts and web servers render.
-- **Layer 4 (UI & Presentation Root)**: Sits as the structural layout authority alongside `behtml-layout-builder` (which handles mathematical 8-lane BEHTMLElement serialization) and `ui-navigation-decomposer` (which maps sitemaps).
-- **Layer 5 (Architecture Pre-Planning Handoff)**: Consumed by `planning-schema-planner` when architecting frontend views, admin dashboards, and publisher skeletons.
+- **Layer 4 (UI & Presentation Root)**: Sits as the structural layout authority alongside `behtml-spatial-builder` (which handles mathematical 8-lane BEHTMLElement serialization) and `ui-navigation-decomposer` (which maps sitemaps).
+- **Layer 5 (Architecture Pre-Planning Handoff)**: Consumed by `mfdb-*-planner` when architecting frontend views, admin dashboards, and publisher skeletons.
 
 ## The 5 Core Invariant Laws of Template Scaffolding
 

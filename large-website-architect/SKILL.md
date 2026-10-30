@@ -1,7 +1,7 @@
 ---
 name: large-website-architect
-description: >-
-  Architect, design, and scaffold production-ready large multi-page websites, documentation portals, taxonomy feeds, media galleries, and e-books using clean BEHTML structural skeletons adhering strictly to 8-lane spatial grids, Ry=32px row quantization, BECSS Tri-Color standards, and zero-filler laws. Use when building or scaffolding multi-page websites, portals, video feeds, image galleries, video players, documentation hubs, blog posts, project showcases, or e-book publications. Do NOT use for single-page editorial articles (use publication-html-builder) or raw BEHTML format coordinate math (use behtml-format-core).
+description: Architect, design, and scaffold production-ready large multi-page websites, documentation portals, taxonomy feeds, media galleries, and e-books using clean BEHTML structural skeletons adhering strictly to 8-lane spatial grids, Ry=32px row quantization, BECSS Tri-Color standards, and zero-filler laws. Use when building or scaffolding multi-page websites, portals, video feeds, image galleries, video players, documentation hubs, blog posts, project showcases, or e-book publications.
+allowed-tools: execute_bash drive Do NOT use for single-page editorial articles (use publication-html-builder) or raw BEHTML format coordinate math (use behtml-format-core).
 ---
 # Large Website Architect
 
@@ -23,7 +23,7 @@ Provides standardized, zero-fluff BEHTML structural skeletons for building large
 ## When NOT to Use
 
 - Scaffolding single-component bare-bones wireframes or isolated dialogs (use template-architect).
-- Validating low-level BEJSON tabular records (use bejson-104-validator).
+- Validating low-level BEJSON tabular records (use bejson-schema-validator).
 - Populating production content copy (handled by domain authoring workflows).
 
 ## Bundled Canonical Templates

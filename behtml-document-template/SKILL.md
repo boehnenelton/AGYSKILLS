@@ -1,12 +1,12 @@
 ---
 name: behtml-document-template
 description: >-
-  Use when creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (dual-pane pattern card catalog and code switcher). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use as a global scaffold for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder).
+  Use when creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (clean empty scaffold for standardization records with preset headers, 1-tab multi-file switcher, and word-wrapped blank input box). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use as a global scaffold for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder).
 ---
 
 # Skill: `behtml-document-template` (Layer 4 - Canonical BEHTML Web Document Templates)
 
-- **Version**: `102`
+- **Version**: `103`
 - **Release_Version**: `300`
 - **Architectural Layer**: `Layer 4 (L4_Presentation_Transport)`
 - **Era & Library Binding**: `104 (Foundational Era - Canonical Web Document Templating, Release 300)`
@@ -15,8 +15,8 @@ description: >-
 - **Canonical Document Assets**:
   - `assets/Template_HTML_Document.html` (Web Document with 150x150px Widget Shelf)
   - `assets/Template_Document_Widgetless.html` (Web Document Widgetless Variant)
-  - `assets/Template_Declaration_of_Standardization.html` (Declaration of Standardization)
-- **Date Created**: `2026-10-18` (Updated `2026-10-19`)
+  - `assets/Template_Declaration_of_Standardization.html` (Declaration of Standardization Record)
+- **Date Created**: `2026-10-18` (Updated `2026-10-27`)
 - **RELATIONAL_ID**: `9c4e1a82-7b3d-4f60-8a15-2d5c9b0e4f73`
 - **Author Credit**: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
 
@@ -51,9 +51,10 @@ description: >-
 - **Use Case**: Long-form architectural specifications, research publications, and technical documentation where a bottom widget shelf would obstruct continuous vertical reading.
 
 ### 2.3 Variant C: Declaration of Standardization (`assets/Template_Declaration_of_Standardization.html`)
-- **Geometry**: Dual-pane split canvas.
-- **Components**: Concept idea and nuance pattern cards (`.pattern-card`), interactive multi-file code editor tab strip (`.std-tab-strip`), live line count indicators, and clipboard export tools.
-- **Use Case**: Formal system declarations, architectural contracts, and policy enforcement audits.
+- **Geometry**: 16-sublane full-height canvas (no bottom widget shelf obstruction).
+- **Preset Headers**: Clean preset headers for `Declaration of Standardization` (with metadata bar), `Standardization Category`, and `Other Details`. Zero fake demonstration prose, zero fake pattern cards, zero fake registry tables.
+- **Embedded Standardization Record**: 1-tab file switcher by default with blank, word-wrapped input box (`.std-template-input-box`), dynamic line counter, dynamic file tab addition (`+`), and clipboard export.
+- **Use Case**: Formal system declarations, standardization records, architectural contracts, and policy enforcement records.
 
 ---
 

@@ -1,11 +1,11 @@
 ---
 name: bejson-diagrammer-cli
-description: Generate, extend, validate, and inject systems architecture and workflow diagrams using the BEJSON Diagrammer CLI and prompt ledger instructions, in two output modes: (1) standalone read-only interactive SVG canvas HTML pages, and (2) self-contained embeddable 3-tab diagram components (Diagram, Description & Schema, About crediting Elton Boehnen) for injection into any host webpage, documentation article, or CMS template. Use when asked to generate diagrams, architecture flowcharts, BEJSON MFDB diagram schemas, extend active board diagrams, compile interactive diagram canvas HTML files, or produce a portable embeddable diagram widget. Do NOT use for general-purpose charts or data visualization unrelated to BEJSON diagram schemas.
+description: Generate, extend, validate, and inject systems architecture and workflow diagrams into interactive HTML canvas templates using the BEJSON Diagrammer CLI tool and prompt ledger instructions. Use when asked to generate diagrams, architecture flowcharts, BEJSON MFDB diagram schemas, extend active board diagrams, or compile interactive diagram canvas HTML files. Do NOT use for embeddable 3-tab diagram widgets (use bejson-diagram-component).
 ---
 
-# BEJSON Diagrammer CLI (Canvas + Embeddable Component)
+# BEJSON Diagrammer CLI
 
-Generate, scaffold, validate, extend, and compile interactive systems architecture diagrams and workflow boards into standalone read-only SVG canvas HTML deliverables or embeddable 3-tab components using the BEJSON Diagrammer CLI tool and Elton Boehnen's AI Prompt and Instruction Historical Ledger.
+Generate, scaffold, validate, extend, and compile interactive systems architecture diagrams and workflow boards into standalone read-only SVG canvas HTML deliverables using the BEJSON Diagrammer CLI tool and Elton Boehnen's AI Prompt and Instruction Historical Ledger.
 
 ## Summary
 
@@ -13,16 +13,7 @@ This skill equips the agent to act as a Senior Diagram Systems Architect and Lay
 
 The skill integrates the **Prompt Concept** (Relational ID: 64b9314e-f6bf-4807-84c7-a2852eae1771) and the **Diagram Arrival Validation Protocols & AI Optimization Ledger** (Relational ID: c9f8e7d6-c5b4-4321-8765-43210fe98765) from the React flagship codebase.
 
-## Output Modes
-
-| Mode | Command | Template | Deliverable |
-| :--- | :--- | :--- | :--- |
-| **Canvas** | `inject` / `append --inject` | `assets/diagram_canvas_template.html` | Standalone read-only SVG canvas HTML page |
-| **Component** | `component` | `assets/diagram_component_template.html` | Single `<div class="w-diag-comp">` snippet with 3-tab switcher, embeddable in host pages or iframes |
-
-Both modes share one data model, one validation pipeline, and one CLI (`scripts/diagram-cli.js`, Python mirror `scripts/diagram_cli.py`).
-
-## Mode 1: Read-Only Canvas Deliverable Specifications
+## Read-Only Canvas Deliverable Specifications
 
 The output HTML file produced by the skill adheres strictly to these UX specifications:
 
@@ -36,19 +27,7 @@ The output HTML file produced by the skill adheres strictly to these UX specific
 6. **Tri-Color Palette Standard**: Clean high-contrast styling adhering to `#000000` (dark mode) / `#FFFFFF` (light mode) with `#DE2626` active accents.
 7. **Mobile 100px Lower Toolbar Clearance**: On mobile screens (`max-width: 768px`), all bottom-anchored controls (including the `#btn-fab-sidebar` button, drawer scroll bodies, and canvas viewport bounds) must strictly account for the 100-pixel lower browser toolbar (`bottom: calc(100px + env(safe-area-inset-bottom, 0px) + 16px)` and `padding-bottom: calc(100px + 30px)`) so action targets and bottom-most nodes are never obscured by mobile browser navigation bars.
 
-
-## Mode 2: 3-Tab Embeddable Component Specifications
-
-The `component` command produces a single self-contained `<div class="w-diag-comp">` (Portable Widget Contract, Release_Version 300) whose switcher isolates the clean diagram from descriptions, attribution, and raw schema data:
-
-1. **Tab 1: Diagram** - uncluttered interactive SVG surface with 50px grid snap, drag-pan, wheel-zoom, docked toolbar (`[Fit View] [－] [85%] [＋] [Reset] [🌓 Theme]`), and an on-canvas inspector card (`.w-diag-node-popup`) on node/zone click. No descriptive paragraphs on the canvas surface.
-2. **Tab 2: Description & Schema** - vertical scroll container (`.w-diag-scroll-panel`) holding the scope narrative (`#w-diag-scope-text`), the live Inspected Element card, an iframe embed-code box with `📋 Copy Iframe Code`, and the formatted verified Diagram Schema with `📋 Copy Schema JSON`.
-3. **Tab 3: About** - scroll container with Author **Elton Boehnen**, Location **Roseburg, Oregon, United States**, Standard **Release_Version 300 · MFDB Diagrammer React Standard**, and portfolio links `boehnenelton2024@gmail.com` · `boehnenelton2024.pages.dev` · `github.com/boehnenelton`.
-4. **Mobile 100px clearance** (`max-width: 768px`): `.w-diag-node-popup` at `bottom: calc(100px + env(safe-area-inset-bottom, 0px) + 16px)`; `.w-diag-scroll-body` with `padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px) + 30px)`; `fitView()` reserves at least 160px bottom clearance.
-
-The generated component file is ready for inclusion in articles, docs, or iframes without a full-page HTML shell.
-
-## Diagram Data Model & Arrival Validation Protocols (Both Modes)
+## Diagram Data Model & Arrival Validation Protocols
 
 Diagrams adhere to the React ecosystem's canonical data model:
 
@@ -127,19 +106,3 @@ node scripts/diagram-cli.js append \
   --out payment_extended.json \
   --inject assets/diagram_canvas_template.html
 ```
-
-### 5. Injecting into the 3-Tab Component Template (Mode 2)
-
-```bash
-node scripts/diagram-cli.js component \
-  --diagram payment_plan.json \
-  --template assets/diagram_component_template.html \
-  --out payment_component.html \
-  --title "Payment Architecture"
-```
-
-```bash
-python3 scripts/diagram_cli.py validate -f payment_plan.json
-```
-
-`assets/example_payment_plan.json` is a ready sample diagram for smoke-testing every command above (copy it to `payment_plan.json`).
