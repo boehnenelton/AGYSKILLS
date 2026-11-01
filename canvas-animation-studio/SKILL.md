@@ -261,6 +261,52 @@ compile_frames_to_gif("captures/slideshow", "captures/slideshow.gif", fps=24)
 
 ---
 
+## 6.1 Branding Slide Deck Templates & Family Registry
+
+The Graphics library provides 5 canonical 16:9 (`1280x720`) branding slide archetypes stored in the Graphics family registry (`canvas_templates_registry.105a.bejson`) under category `branding_slide`:
+
+1. `branding_slide_title`: Modern high-impact title cover with red accent branding bars, category tag, subtitle, and footer metadata.
+2. `branding_slide_architecture`: 3-Pillar architectural breakdown showcasing L1 Core, L2 Validation, and L3 Graphics pipelines.
+3. `branding_slide_feature`: Feature matrix highlighting 4 architectural capabilities with high-contrast indicator dots.
+4. `branding_slide_metrics`: Operational telemetry dashboard featuring 4 key performance indicators and status badges.
+5. `branding_slide_summary`: Conclusion and next steps layout with key milestone takeaways and call-to-action indicators.
+
+### Generating Slide Decks & Header Differentiation
+
+Format 105a presentations include custom deck metadata headers (`Remove_Frame_Source`, `Total_Slides`, `Total_Duration_Sec`), whereas MFDB entity tables (Format 105) strictly omit custom headers to pass Core and Graphics barrier validation:
+
+```python
+from lib_bejson_Graphics_graphics_schemas import create_branding_slide_deck_105a
+from lib_bejson_Graphics_graphics_canvas_templates import (
+    list_branding_slide_templates,
+    get_branding_slide_template_html
+)
+
+# 1. Query registered branding slide archetypes from family registry
+slide_templates = list_branding_slide_templates()
+
+# 2. Compile slide records with remove_frame_source boolean
+slide_deck_105a = create_branding_slide_deck_105a(
+    deck_name="System_Overview_Deck",
+    slides=slide_templates,
+    fps=24,
+    remove_frame_source=True,
+    is_mfdb_entity=False  # Format 105a with custom headers
+)
+
+# 3. Create MFDB entity table (Format 105 without custom headers)
+slide_entity_105 = create_branding_slide_deck_105a(
+    deck_name="Presentation_Slides",
+    slides=slide_templates,
+    fps=24,
+    remove_frame_source=True,
+    is_mfdb_entity=True,
+    parent_hierarchy="104a.mfdb.bejson"
+)
+```
+
+---
+
 ## 7. CLI Quickstart Reference
 
 ```bash
