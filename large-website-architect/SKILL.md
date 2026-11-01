@@ -52,6 +52,7 @@ All templates adhere strictly to the core spatial laws:
 - **Row Quantization ($R_y = 32\text{px}$)**: Vertical control heights, topbars, and header spacing align to integer multiples of 32px.
 - **BECSS Tri-Color Standard**: Pure Black (`#060606`, `#101010`), Pure White (`#FFFFFF`, `#CCCCCC`), and Strict Red Accent (`#DE2626`).
 - **Dedicated Paging Feet**: Deep documentation and feed pages include category-scoped pagination bars preserving navigation flow.
+- **Zero Wall-of-Text Law (Modular Navigation Partitioning)**: Prohibit monolithic, continuous walls of text. Segment all multi-feature suites and deep content into dedicated navigation pages (`root/<category>/<module>/index.html`), interactive tabbed panels (`[role="tablist"]`), split-pane sidebar navigation (`aside.becss-doc-sidebar`), and modular Layer 2 cards.
 - **Zero Filler Content**: All templates use strictly functional placeholders (`Page Title`, `Card Title`, `Body Paragraph text`, `Action Button`).
 
 ## Workflow Steps

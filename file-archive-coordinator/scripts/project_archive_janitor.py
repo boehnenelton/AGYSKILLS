@@ -340,7 +340,24 @@ def execute_session_initialization_sweep(
             else:
                 normalized_records_list.append(individual_package_record)
 
+        # Deduplicate records by resolved filesystem path
+        seen_paths = set()
+        deduped_records: List[ParsedPackageRecord] = []
+        for rec in normalized_records_list:
+            if rec.filesystem_path not in seen_paths:
+                seen_paths.add(rec.filesystem_path)
+                deduped_records.append(rec)
+        normalized_records_list = deduped_records
+
         if not normalized_records_list:
+            continue
+
+        # Skip archiving library development variants per user policy (handled via library maintenance)
+        if "libraries" in canonical_project_key:
+            LOGGER_INSTANCE.info(
+                "Skipping archiving for library variant '%s' per policy.",
+                canonical_project_key,
+            )
             continue
 
         # Sort packages ascending so highest version is last
@@ -368,6 +385,8 @@ def execute_session_initialization_sweep(
         # Move older versions to project archive
         for older_record in older_package_records_list:
             source_file_path = older_record.filesystem_path
+            if not source_file_path.exists():
+                continue
             destination_file_path = target_project_archive_dir / source_file_path.name
 
             if dry_run_simulation_flag:

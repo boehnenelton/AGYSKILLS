@@ -100,27 +100,29 @@
         <path d="M 40,210 L 800,210" stroke="url(#beamGrad)" stroke-width="2" class="anim-wave" />
 
         <!-- Floating Stage Cluster -->
-        <g class="anim-float" transform="translate(420, 210)">
-          <!-- Left Node -->
-          <circle cx="-260" cy="0" r="28" fill="#141418" stroke="#2d2d38" stroke-width="2" />
-          <circle cx="-260" cy="0" r="10" fill="#DE2626" />
-          <text x="-260" y="48" fill="#888899" font-size="11" font-family="monospace" text-anchor="middle">SOURCE</text>
+        <g transform="translate(420, 210)">
+          <g class="anim-float">
+            <!-- Left Node -->
+            <circle cx="-260" cy="0" r="28" fill="#141418" stroke="#2d2d38" stroke-width="2" />
+            <circle cx="-260" cy="0" r="10" fill="#DE2626" />
+            <text x="-260" y="48" fill="#888899" font-size="11" font-family="monospace" text-anchor="middle">SOURCE</text>
 
-          <!-- Center Cube Complex -->
-          <!-- Base Hexagon -->
-          <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="#18181f" stroke="#333340" stroke-width="2" />
-          <!-- Inner Isometric Cube -->
-          <polygon points="0,-40 34,-20 0,0 -34,-20" fill="#3a3a46" stroke="#4e4e5c" stroke-width="1.2" />
-          <polygon points="-34,-20 0,0 0,40 -34,20" fill="#1f1f26" stroke="#33333e" stroke-width="1.2" />
-          <polygon points="0,0 34,-20 34,20 0,40" fill="#14141a" stroke="#262630" stroke-width="1.2" />
-          <!-- Red Core Point -->
-          <circle cx="0" cy="0" r="5" fill="#DE2626" />
-          <text x="0" y="80" fill="#FFFFFF" font-size="13" font-family="sans-serif" font-weight="700" letter-spacing="2" text-anchor="middle">PIPELINE CORE</text>
+            <!-- Center Cube Complex -->
+            <!-- Base Hexagon -->
+            <polygon points="0,-60 52,-30 52,30 0,60 -52,30 -52,-30" fill="#18181f" stroke="#333340" stroke-width="2" />
+            <!-- Inner Isometric Cube -->
+            <polygon points="0,-40 34,-20 0,0 -34,-20" fill="#3a3a46" stroke="#4e4e5c" stroke-width="1.2" />
+            <polygon points="-34,-20 0,0 0,40 -34,20" fill="#1f1f26" stroke="#33333e" stroke-width="1.2" />
+            <polygon points="0,0 34,-20 34,20 0,40" fill="#14141a" stroke="#262630" stroke-width="1.2" />
+            <!-- Red Core Point -->
+            <circle cx="0" cy="0" r="5" fill="#DE2626" />
+            <text x="0" y="80" fill="#FFFFFF" font-size="13" font-family="sans-serif" font-weight="700" letter-spacing="2" text-anchor="middle">PIPELINE CORE</text>
 
-          <!-- Right Node -->
-          <circle cx="260" cy="0" r="28" fill="#141418" stroke="#2d2d38" stroke-width="2" />
-          <polygon points="260,-10 268,6 252,6" fill="#DE2626" />
-          <text x="260" y="48" fill="#888899" font-size="11" font-family="monospace" text-anchor="middle">OUTPUT</text>
+            <!-- Right Node -->
+            <circle cx="260" cy="0" r="28" fill="#141418" stroke="#2d2d38" stroke-width="2" />
+            <polygon points="260,-10 268,6 252,6" fill="#DE2626" />
+            <text x="260" y="48" fill="#888899" font-size="11" font-family="monospace" text-anchor="middle">OUTPUT</text>
+          </g>
         </g>
 
         <!-- Stage Header & Footers -->

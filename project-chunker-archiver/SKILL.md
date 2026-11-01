@@ -1,7 +1,7 @@
 ---
 name: project-chunker-archiver
 description: >-
-  Automate verified project archiving, snapshotting, atomic scoop-and-wipe, and multi-version tracking using Project_Chunker and BEJSON 104a snapshot containers. Sweeps and processes project directories and release ZIPs, detects and registers canonical project types (python, bash, react, skill, website, app, library) from the Type Ledger and statuses (Active, Inactive, Archived), executes 100% byte-verified atomic scoops, and manages the master projects registry. Use when archiving projects, chunking codebases into portable BEJSON snapshots, scooping verified directories, defining version/pkg overrides, or restoring project releases from snapshots. Do NOT use for raw single-file table CRUD (use bejson-104-core) or MFDB manifest editing (use mfdb-104-core).
+  Automate verified project archiving, snapshotting, atomic scoop-and-wipe, and multi-version tracking using Project_Chunker and BEJSON 104a snapshot containers. Sweeps and processes project directories and release ZIPs, detects and registers canonical project types (python, bash, react, skill, website, app, library) from the Type Ledger and statuses (Active, Inactive, Archived), executes 100% byte-verified atomic scoops, and manages the master projects registry. Specifically tracks and chunks entire project ecosystems such as the entire libraries_104 or entire libraries_105 suites as separate registered projects. Use when archiving whole projects, chunking codebases into portable BEJSON snapshots, scooping verified directories, or restoring project releases. Do NOT use for smaller pieces/individual library families (use library-chunker or simple-chunker), raw single-file table CRUD (use bejson-104-core), or MFDB manifest editing (use mfdb-104-core).
 ---
 
 # project-chunker-archiver (Layer 6 Verified Project Archiving & Snapshot Management)
@@ -10,18 +10,22 @@ description: >-
 
 `project-chunker-archiver` operates at Layer 6 (`L6_Composition_Root`) to provide tamper-evident, zero-SQL project archiving and lifecycle management backed by Elton Boehnen's `Project_Chunker` and the `lib_bejson_Projects_*` library family. It transitions archiving from loose ZIP drops to byte-verified BEJSON 104a snapshot containers (`.bejson`), multi-version tracker databases, and a queryable master registry with first-class **Type** (conforming to the Canonical Project Type Ledger) and **Status** (Active, Inactive, Archived, Legacy) governance.
 
+Crucially, `project-chunker` with `--track` and `--chunk` governs **entire project codebases as standalone entities**—including tracking and snapshotting the entire `libraries_104` bundle or entire `libraries_105` bundle as separate, registered projects in the master registry.
+
 ## When to Use
 
+- Tracking and snapshotting entire project repositories or major library bundles (e.g. the entire `libraries_104` or entire `libraries_105` libraries as separate projects) with `--track` and `--chunk`.
 - Archiving projects or packages with verified byte-for-byte SHA-256 integrity before source deletion.
-- Converting project directory trees or incoming release ZIPs into single-file BEJSON 104a snapshot containers.
+- Converting whole project directory trees or incoming release ZIPs into single-file BEJSON 104a snapshot containers.
 - Scooping source directories (`--scoop`) with atomic wipe only after verification against stored snapshots.
-- Querying, filtering, and listing registered project releases by **Type** (`--filter-type python`, `--filter-type bash`, etc.) and **Status** (`--filter-status Active`, `--filter-status Archived`).
+- Querying, filtering, and listing registered project releases by **Type** (`--filter-type python`, `--filter-type bash`, `--filter-type library`, etc.) and **Status** (`--filter-status Active`, `--filter-status Archived`).
 - Overriding or manually defining project version (`-V`, `--ver`, `--project-version`), package version (`-P`, `--pkg`, `--package`), project type (`--type`), or status (`--status`) on the CLI.
 - Updating metadata on existing registered projects (`--set-version`, `--set-pkg`, `--set-type`, `--set-status`).
 - Lossless restoration (`--restore <UUID>`) of archived codebases to original paths or new destinations.
 
 ## When NOT to Use
 
+- **Smaller Sub-Pieces & Individual Library Families**: Do NOT use Project Chunker to chunk smaller pieces such as individual library families (`Lib_JS`, `Lib_PY`, `Lib_SH`, `Lib_TS`). Use [library-chunker](file:///data/data/com.termux/files/home/.gemini/config/skills/library-chunker/SKILL.md) or [simple-chunker](file:///data/data/com.termux/files/home/.gemini/config/skills/simple-chunker/SKILL.md) for lightweight, non-registry flat chunks.
 - Do NOT use for basic loose ZIP directory sweeping without chunking (use `file-archive-coordinator` for initial download sorting).
 - Do NOT use for raw single-file BEJSON CRUD operations without project manifests (use `bejson-104-core`).
 - Do NOT use for multi-file MFDB database manifest linkage and schema federation (use `mfdb-104-core`).
@@ -105,6 +109,20 @@ python3 "$PROJECT_CHUNKER_ROOT/CLI/project_chunker.py" --restore <UUID_OR_PREFIX
 # Restore to custom destination
 python3 "$PROJECT_CHUNKER_ROOT/CLI/project_chunker.py" --restore <UUID_OR_PREFIX> --dest /storage/emulated/0/Admin/Dev/Repos/RestoredTool
 ```
+
+### 2.8 Entire Admin Libraries Tracking & Snapshotting (104 & 105 Separate Projects)
+To track and snapshot the complete `libraries_104` or `libraries_105` codebase as a registered standalone project:
+```bash
+# 1. Track & Snapshot Entire libraries_104 (uses internal bejson_project.json):
+python3 "$PROJECT_CHUNKER_ROOT/CLI/project_chunker.py" --track "$ADMIN_LIBRARIES_104"
+python3 "$PROJECT_CHUNKER_ROOT/CLI/project_chunker.py" --chunk "$ADMIN_LIBRARIES_104"
+
+# 2. Track & Snapshot Entire libraries_105 (uses version/pkg overrides or tracker DB):
+python3 "$PROJECT_CHUNKER_ROOT/CLI/project_chunker.py" --track "$ADMIN_LIBRARIES_105" -V 5.8.1 -P 112 --type library
+python3 "$PROJECT_CHUNKER_ROOT/CLI/project_chunker.py" --chunk "$ADMIN_LIBRARIES_105" -V 5.8.1 -P 112 --type library
+```
+> [!NOTE]
+> Project Chunker manages only **whole project ecosystems** like the entire `libraries_104` or `libraries_105` trees. Smaller modular pieces (such as individual language families `Lib_JS`, `Lib_PY`, `Lib_SH`, `Lib_TS`) are chunked using [simple-chunker](file:///data/data/com.termux/files/home/.gemini/config/skills/simple-chunker/SKILL.md) or the coordinated [library-chunker](file:///data/data/com.termux/files/home/.gemini/config/skills/library-chunker/SKILL.md) skill.
 
 ---
 
