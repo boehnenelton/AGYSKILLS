@@ -307,6 +307,63 @@ slide_entity_105 = create_branding_slide_deck_105a(
 
 ---
 
+## 6.2 Automated Video Presentation Export (MP4 & WebM Demo Reels)
+
+Rendered presentation slides can be exported directly into broadcast-ready H.264 MP4 or VP9 WebM demo reels with customizable slide dwell durations (e.g., 4s, 8s, 12s per slide):
+
+```python
+from lib_bejson_Graphics_graphics_core import (
+    compile_frames_to_mp4,
+    compile_frames_to_webm,
+    compile_presentation_slides_to_video
+)
+
+# 1. Compile directly from slide deck BEJSON schema with 4s, 8s, or 12s dwell
+mp4_reel_4s = compile_presentation_slides_to_video(
+    slide_deck_or_path="animations/presentation_slides_schema.104a.bejson",
+    output_video_path="animations/presentation_demo_reel_4s.mp4",
+    dwell_sec=4.0,       # 4s per slide -> 20s total demo reel for 5 slides
+    fps=24,
+    video_format="mp4",
+    preset="veryfast",
+    remove_frame_source=False
+)
+
+# 2. Compile an 8s dwell demo reel
+mp4_reel_8s = compile_presentation_slides_to_video(
+    slide_deck_or_path="animations/presentation_slides_schema.104a.bejson",
+    output_video_path="animations/presentation_demo_reel_8s.mp4",
+    dwell_sec=8.0,       # 8s per slide -> 40s total demo reel
+    fps=24,
+    video_format="mp4"
+)
+
+# 3. Compile a 12s dwell WebM (VP9) demo reel
+webm_reel_12s = compile_presentation_slides_to_video(
+    slide_deck_or_path="animations/presentation_slides_schema.104a.bejson",
+    output_video_path="animations/presentation_demo_reel_12s.webm",
+    dwell_sec=12.0,      # 12s per slide -> 60s total demo reel
+    fps=24,
+    video_format="webm",
+    crf=28
+)
+```
+
+### CLI Command Execution
+
+```bash
+# 20-second MP4 demo reel (4s dwell per slide)
+python3 svg_animation_framework.py --build slides --export-mp4 --dwell 4
+
+# 40-second MP4 demo reel (8s dwell per slide)
+python3 svg_animation_framework.py --build slides --export-mp4 --dwell 8
+
+# 60-second WebM demo reel (12s dwell per slide)
+python3 svg_animation_framework.py --build slides --export-webm --dwell 12
+```
+
+---
+
 ## 7. CLI Quickstart Reference
 
 ```bash
