@@ -1,22 +1,28 @@
 ---
 name: bejson-cms-canvas-illustrator
 description: >-
-  Generate optimized, context-based SVG diagrams, 1280x640 article hero banners,
-  and Playwright raster captures for BEJSON CMS blog posts using the SVG canvas tool
-  and libraries_105 Canvas family. Analyzes project source files, research briefs,
-  or post plans to render custom isometric BEJSON cube nodes, laser rays, and
-  peripheral subsystem cards adhering to Policy §8.1 Tri-Color standards (#000000,
-  #FFFFFF, #DE2626) and 8-lane quantized geometry. Use when creating featured post
-  imagery or architecture graphics for BEJSON CMS. Do NOT use for basic browser
-  automation (use playwright-termux-automation) or multi-viewport visual testing
-  (use playwright-visual-testing).
+  The Graphics Domain: Static Vector Architecture & Banner Illustrator (Layer 5: UI & Visual Interface Automation).
+  Generate optimized, context-based SVG architecture diagrams, 1280x640 article hero banners, and high-DPI Playwright
+  raster captures for BEJSON CMS and publications using libraries_105 Graphics and Canvas families. Renders custom
+  isometric BEJSON cube nodes, laser rays, and peripheral subsystem cards adhering to Policy §8.1 Tri-Color standards
+  (#000000, #FFFFFF, #DE2626) and 8-lane quantized geometry. Use when creating static featured post imagery,
+  architecture schematics, or CMS headers. Do NOT use for multi-frame animations or timeline recordings (use
+  canvas-animation-studio), HTML DOM layout composition (use behtml-layout-builder), or drafting blog post markdown
+  prose (use bejson-cms-blog-writer).
 ---
 
-# bejson-cms-canvas-illustrator (Layer 4 Services & Media Automation)
+# `bejson-cms-canvas-illustrator` (Graphics Domain: Static Vector Architecture & Banner Illustrator)
+
+- **Target Architecture**: Android Termux (aarch64 / ARM 64-bit, Android Bionic libc) & POSIX Linux
+- **Architectural Tier**: Layer 5 (L5) UI & Visual Interface Automation
+- **Author Credit**: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
+- **RELATIONAL_ID**: `71929e8c-4c3e-40d6-a371-98fbd4dbf45c`
+- **Version**: `1.2.0`
+- **Domain**: Graphics Domain (`libraries_105/Lib_PY/Graphics` & `libraries_105/Lib_PY/Canvas`)
 
 ## Summary
 
-`bejson-cms-canvas-illustrator` is the dedicated Layer 4 skill for generating context-optimized SVG vector graphics and Playwright raster captures for BEJSON CMS blog posts and NewAgent CMS publications. It directly links with the **SVG Graphic Animation Studio** (`/storage/emulated/0/Admin/Dev/Templates/Canvas_SVG_Capture_Templates/`) and `libraries_105/Lib_PY/Canvas`, translating article research, titles, and extracted module structures into high-impact, brand-aligned visual assets adhering to Policy §8.1 Tri-Color standards.
+`bejson-cms-canvas-illustrator` is the dedicated Graphics Domain skill for generating static context-optimized SVG vector graphics and Playwright raster captures for BEJSON CMS blog posts and NewAgent CMS publications. It directly links with the **SVG Graphic Animation Studio** (`/storage/emulated/0/Admin/Dev/Templates/Canvas_SVG_Capture_Templates/`), `libraries_105/Lib_PY/Graphics`, and `libraries_105/Lib_PY/Canvas`, translating article research, titles, and extracted module structures into high-impact, brand-aligned visual assets adhering to Policy §8.1 Tri-Color standards.
 
 ---
 
@@ -24,22 +30,25 @@ description: >-
 
 - Generating 1280x640 featured hero banners for BEJSON CMS blog posts.
 - Extracting architecture nodes from `00_context_research.md` or `01_plan.md` to illustrate the 4 peripheral subsystem cards.
-- Rendering standalone optimized SVG or capturing high-DPI PNGs via Termux Playwright.
+- Rendering standalone optimized static SVG or capturing high-DPI PNGs via Termux Playwright.
 - Producing BEJSON cube taxonomy badges (104 Standard, 104a Floating, 104db Pillar, MFDB Federation).
 - Outputting ready-to-embed BEHTML and Markdown snippets for direct inclusion in post drafts.
 
-## When NOT to Use
+## When NOT to Use (Mutual Negative Constraints)
 
-- Do NOT use for generic web page scraping (use [`playwright-termux-automation`](file:///data/data/com.termux/files/home/.gemini/config/skills/playwright-termux-automation/SKILL.md)).
-- Do NOT use for multi-viewport pixel regression auditing (use [`playwright-visual-testing`](file:///data/data/com.termux/files/home/.gemini/config/skills/playwright-visual-testing/SKILL.md)).
-- Do NOT use for authoring the blog post text or running the 5-part drafting pipeline (use [`bejson-cms-blog-writer`](file:///data/data/com.termux/files/home/.gemini/config/skills/bejson-cms-blog-writer/SKILL.md)).
+- **Code 430**: Do NOT use for multi-frame timeline animations, row-per-frame animations, animated GIFs, or video recordings (use [`canvas-animation-studio`](file:///data/data/com.termux/files/home/.gemini/config/skills/canvas-animation-studio/SKILL.md)).
+- **Code 431**: Do NOT use for 8-lane quantized HTML page layouts, UI component grids, or 18-field BEHTMLElement layout datasets (use [`behtml-layout-builder`](file:///data/data/com.termux/files/home/.gemini/config/skills/behtml-layout-builder/SKILL.md)).
+- **Code 432**: Do NOT use for authoring blog post markdown text or running the 5-part drafting pipeline (use [`bejson-cms-blog-writer`](file:///data/data/com.termux/files/home/.gemini/config/skills/bejson-cms-blog-writer/SKILL.md)).
+- **Code 433**: Do NOT use for generic external web page scraping or form submissions (use [`playwright-termux-automation`](file:///data/data/com.termux/files/home/.gemini/config/skills/playwright-termux-automation/SKILL.md)).
+- **Code 434**: Do NOT use for multi-viewport pixel regression auditing or CSS token checks (use [`playwright-visual-testing`](file:///data/data/com.termux/files/home/.gemini/config/skills/playwright-visual-testing/SKILL.md)).
 
 ---
 
 ## 1. Architectural Guardrails & Tri-Color Policy
 
-- **Assigned Skill Tier**: Layer 4 (`L4`) Services & Media Automation
-- **Codebase Layer Mapping**: `L4_Services_And_Tooling_Ports`
+- **Assigned Skill Tier**: Layer 5 (`L5`) UI & Visual Interface Automation
+- **Codebase Layer Mapping**: `L5_UI_Visual_Interface_Automation`
+- **Domain**: Graphics Domain (`libraries_105/Lib_PY/Graphics` & `libraries_105/Lib_PY/Canvas`)
 - **Color Palette (Policy §8.1)**:
   - Background: `#000000` (Pure Black)
   - Text: `#FFFFFF` (Pure White)

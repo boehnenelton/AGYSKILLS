@@ -1,17 +1,26 @@
 ---
 name: canvas-animation-studio
 description: >-
-  Automate, parameterize, seek, and capture fixed-size SVG canvas animations, dynamic blank-slate stages, row-per-frame animations, and seamless repeating texture tiles using BEJSON 105a configuration schemas, Playwright, and multi-format exporters (GIF, WebM, APNG, MP4). Control frame rates (FPS), duration, dynamic SVG injection, X-Y coordinate text overlays pre-recording, and slideshow compilation. Use when generating animated SVG assets, capturing deterministic keyframes or frame sequences, rendering dynamic blank slates, or exporting video/GIF recordings. Do NOT use for basic website screenshots (use playwright-termux-automation) or multi-viewport visual regression audits (use playwright-visual-testing).
+  The Graphics Domain: Timeline Animation & Playwright Capture Engine (Layer 5: UI & Visual Interface Automation).
+  Automate, parameterize, seek, and capture fixed-size SVG canvas animations, dynamic blank-slate stages,
+  BEJSON 105a timeline schemas with explicit frame duration quantization (frame_duration_ms, timestamp_ms, rotation_deg),
+  procedural vector renderers (spinning cube, radar scanner), and seamless repeating texture tiles using
+  libraries_105/Lib_PY/Graphics and Playwright multi-format exporters (GIF, WebM, APNG, MP4). Use when authoring
+  multi-frame SVG animations, building procedural animated graphics, or capturing deterministic visual sequences.
+  Do NOT use for static single-image CMS article hero banners (use bejson-cms-canvas-illustrator), HTML DOM layout
+  composition (use behtml-layout-builder), basic web page scraping (use playwright-termux-automation), or CSS token
+  regression auditing (use playwright-visual-testing).
 ---
 
-# `canvas-animation-studio` (Layer 5 SVG Animation, Canvas Studio & Graphics Core)
+# `canvas-animation-studio` (Graphics Domain: Timeline Animation, Canvas Studio & Graphics Core)
 
 - **Target Architecture**: Android Termux (aarch64 / ARM 64-bit, Android Bionic libc) & POSIX Linux
 - **Architectural Tier**: Layer 5 (L5) UI & Visual Interface Automation
 - **Author Credit**: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
-- **RELATIONAL_ID**: `b3e8c1a9-4f7d-4a2b-9e5c-0d1e2f3a4b5c`
-- **Version**: `1.8.0`
-- **BEJSON Libraries**: `lib_bejson_Graphics_graphics_core`, `lib_bejson_Graphics_graphics_canvas_templates`, `lib_bejson_Graphics_graphics_schemas`, `lib_bejson_Graphics_graphics_diagram_loader` (`libraries_105/Lib_PY/Graphics` & `libraries_105/Lib_JS/Graphics`)
+- **RELATIONAL_ID**: `1dfbfc4d-733b-4e89-b9e2-b26284cf8f4b`
+- **Version**: `1.9.0`
+- **Domain**: Graphics Domain (`libraries_105/Lib_PY/Graphics` & `libraries_105/Lib_JS/Graphics`)
+- **BEJSON Libraries**: `lib_bejson_Graphics_graphics_core`, `lib_bejson_Graphics_graphics_canvas_templates`, `lib_bejson_Graphics_graphics_schemas`, `lib_bejson_Graphics_graphics_diagram_loader`
 
 ---
 
@@ -20,6 +29,8 @@ description: >-
 ### Use This Skill When:
 - Generating deterministic still frames or multi-frame animation sequences from dynamic SVG canvas templates.
 - Controlling animation duration, speed, frame rate (FPS), resolution, and timeline seek ratio via BEJSON 105a schemas.
+- Defining **BEJSON 105a Timeline Schemas** with explicit per-frame duration (`frame_duration_ms`), cumulative timestamps (`timestamp_ms`), and geometric properties (`rotation_deg`, `scale_factor`, `opacity`).
+- Generating procedural vector graphics animations such as isometric spinning cubes (`render_spinning_cube_svg`) and radar scanners (`render_radar_scanner_svg`).
 - Using **blank-slate canvas stages** to host arbitrary dynamic SVGs, images, and frame states across any dimension.
 - Executing **BEJSON 105a Row-Per-Frame Animations** where each row declares a single frame with dynamic SVG markup, timestamp, seek progress, FPS, and post-render SHA-256 verification.
 - Applying **X, Y coordinate-based text overlays** onto the canvas pre-recording defined by active canvas schema configs.
@@ -27,10 +38,11 @@ description: >-
 - Generating automated **slideshows** sequencing arbitrary images or SVG slides with configurable hold and transition times.
 - Capturing seamless repeating pattern tiles (Isometric Cube 128px, Checkerboard 64px, Circuit Grid 64px).
 
-### Do NOT Use This Skill When:
-- Capturing general external web page screenshots or navigating login portals (use `playwright-termux-automation`).
-- Running multi-viewport responsive design audits and Tri-Color CSS token compliance checks (use `playwright-visual-testing`).
-- Diagnosing internal browser runtime crashes or DOM context faults (use `playwright-debugger-auditor`).
+### Do NOT Use This Skill When (Mutual Negative Constraints):
+- **Code 430**: Do NOT use for static single-image CMS article hero banners or peripheral subsystem card diagrams (use [`bejson-cms-canvas-illustrator`](file:///data/data/com.termux/files/home/.gemini/config/skills/bejson-cms-canvas-illustrator/SKILL.md)).
+- **Code 431**: Do NOT use for 8-lane quantized HTML page layouts, UI component grids, or 18-field BEHTMLElement layout datasets (use [`behtml-layout-builder`](file:///data/data/com.termux/files/home/.gemini/config/skills/behtml-layout-builder/SKILL.md)).
+- **Code 432**: Do NOT use for basic unblocked page scraping or external web browser navigation (use [`playwright-termux-automation`](file:///data/data/com.termux/files/home/.gemini/config/skills/playwright-termux-automation/SKILL.md)).
+- **Code 433**: Do NOT use for multi-viewport visual regression audits or CSS token compliance verification (use [`playwright-visual-testing`](file:///data/data/com.termux/files/home/.gemini/config/skills/playwright-visual-testing/SKILL.md)).
 
 ---
 
@@ -100,6 +112,59 @@ In the Graphics 105 library, multi-frame animations are declared as **BEJSON 105
   ]
 }
 ```
+
+---
+
+## 3.1 BEJSON 105a Timeline Schema with Frame Duration Quantization
+
+For high-precision, variable-duration, or rotation-based animation pipelines, the Graphics library provides canonical timeline schemas with explicit `frame_duration_ms` per row:
+
+```python
+from lib_bejson_Graphics_graphics_schemas import (
+    compute_frame_timeline_105a,
+    create_svg_animation_timeline_105a,
+    GRAPHIC_ANIMATION_TIMELINE_FIELDS
+)
+from lib_bejson_Graphics_graphics_core import (
+    render_spinning_cube_svg,
+    render_radar_scanner_svg,
+    compile_frames_to_gif
+)
+
+# 1. Compute timeline rows with duration, timestamp, and geometric rotation
+timeline_rows = compute_frame_timeline_105a(
+    total_frames=36,
+    fps=18,
+    duration_sec=2.0,
+    easing="linear"
+)
+
+# 2. Populate procedural SVG vector markup into each frame record
+for row in timeline_rows:
+    rotation_angle = row["rotation_deg"]
+    # Generate procedural isometric wireframe cube SVG
+    row["svg_markup"] = render_spinning_cube_svg(
+        angle_deg=rotation_angle,
+        width=400,
+        height=400,
+        stroke_color="#DE2626",
+        fill_color="#08080C",
+        accent_color="#FFFFFF"
+    )
+
+# 3. Create BEJSON 105a timeline document
+timeline_doc = create_svg_animation_timeline_105a(
+    animation_name="spinning_cube_105a",
+    timeline_records=timeline_rows,
+    width_px=400,
+    height_px=400,
+    canvas_id="canvas_spinning_cube"
+)
+```
+
+### Procedural Vector Renderers
+- **`render_spinning_cube_svg(angle_deg, width, height, stroke_color, fill_color, accent_color)`**: Generates mathematically projected 3D isometric cube wireframes with rotating faces and Policy §8.1 Tri-Color laser accents.
+- **`render_radar_scanner_svg(angle_deg, width, height, sweep_color, reticle_color)`**: Generates tactical radar sweep arcs with 3 concentric reticles, crosshair grids, and animated blips.
 
 ---
 
