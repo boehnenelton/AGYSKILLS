@@ -1,12 +1,12 @@
 ---
 name: ui-navigation-decomposer
 description: >-
-  Traces, extracts, decomposes, and maps the complete hierarchical navigation structure, site architecture, and spatial BEHTML/BECSS UI layout of any web page, web application, SPA, native UI, wireframe, or DOM dump. Use when asking for site maps, navigation trees, UI decomposition, routing architecture, app menus, sidebar hierarchy, or breadcrumbs before generating spatial templates. Do NOT use for generating HTML component grids (use behtml-layout-builder).
+  Traces, extracts, decomposes, and maps the complete hierarchical navigation structure, site architecture, and spatial BEHTML/BECSS UI layout of any web page, web application, SPA, native UI, wireframe, or DOM dump. Governs the Decomposition Domain (Analysis & Reverse-Engineering), strictly separate from forward creation domains. Use when analyzing existing websites, extracting site maps, reverse-engineering navigation trees, app menus, sidebar hierarchies, or breadcrumbs before planning new architectures. Do NOT use for forward database field or category planning (use web-taxonomy-planner), forward template design (use large-website-architect or template-architect), framework routing compilation (use web-framework-architect), or multi-domain coordination (use web-domain-coordinator).
 compatibility: Works with HTML, DOM dumps, accessibility trees, JSON routing tables, sitemaps, UI screenshots, wireframes, and design outlines.
 ---
-# Web UI & Navigation Deideation-feature-composer
+# UI & Navigation Decomposer (Decomposition Domain)
 
-A deterministic framework for systematically discovering, decomposing, and structuring every layer of navigation, route flow, functional interaction, and spatial component layout within web applications and native interfaces into detailed hierarchical trees and BEHTML/BECSS spatial models.
+The **UI & Navigation Decomposer** operates strictly within the **Decomposition Domain (Analysis & Reverse-Engineering)**. It is decoupled from the Three Creation Domains (Taxonomy, Template, and Web Framework) and serves as an analytical reverse-engineering tool to systematically discover, deconstruct, and structure live web pages, SPAs, DOM dumps, and UI screenshots into clean hierarchical navigation trees and spatial models.
 
 ---
 

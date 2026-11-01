@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Page Title</title>
 <!--
-Name:           BEHTML Technical Document Scaffold
-Description:    Documentation layout featuring split-pane sidebar navigation, document header, prose sections, callout boxes, and metadata footer.
+Name:           BEHTML Technical Document Scaffold (Domain 2: The Templator)
+Description:    Defensive documentation layout featuring docked horizontal toolbar, default-collapsed sidebar tree, breadcrumb rail, prose sections, callout boxes, and horizontal-scroll body table.
 Author:         Elton Boehnen
 Release_Version: 300
-Package_Version: 105
+Package_Version: 106
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&family=Source+Code+Pro:wght@400;600&display=swap" rel="stylesheet">
@@ -26,6 +26,7 @@ Package_Version: 105
     --border-light: #3a3a3a;
     --accent-red: #DE2626;
     --radius-main: 6px;
+    --fw-ry-unit: 32px;
   }
 
   *, *::before, *::after {
@@ -41,20 +42,36 @@ Package_Version: 105
     line-height: 1.7;
     min-height: 100vh;
     padding: 0 0 60px 0;
+    overflow-x: hidden;
   }
 
   code, pre, .becss-mono {
     font-family: 'Source Code Pro', monospace;
   }
 
-  .becss-navbar {
+  /* 1. DOCKED HORIZONTAL-SCROLL TOOLBAR */
+  .fw-docked-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
-    height: 56px;
-    border-bottom: 1px solid var(--border-color);
-    padding: 0 24px;
-    background: var(--bg-surface);
+    gap: 8px;
+    height: calc(var(--fw-ry-unit) * 1.5);
+    padding: 0 20px;
+    background-color: var(--bg-surface);
+    border-bottom: 2px solid var(--accent-red);
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .fw-docked-toolbar > * {
+    flex: 0 0 auto;
   }
 
   .becss-brand {
@@ -65,6 +82,7 @@ Package_Version: 105
     gap: 8px;
     color: var(--fg-primary);
     text-decoration: none;
+    margin-right: 12px;
   }
 
   .becss-badge {
@@ -77,13 +95,44 @@ Package_Version: 105
     font-family: 'Source Code Pro', monospace;
   }
 
+  .fw-tool-pill {
+    color: var(--fg-secondary);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 4px 10px;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-canvas);
+  }
+
+  .fw-tool-pill:hover {
+    border-color: var(--accent-red);
+    color: var(--fg-primary);
+  }
+
+  .fw-tool-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--fg-secondary);
+    padding: 4px 10px;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+
+  .fw-tool-btn:hover {
+    border-color: var(--accent-red);
+    color: var(--accent-red);
+  }
+
   /* Two-Column Document Layout */
   .becss-doc-layout {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 32px 24px;
+    padding: 0 24px;
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 280px 1fr;
     gap: 40px;
   }
 
@@ -93,14 +142,20 @@ Package_Version: 105
     }
   }
 
-  /* Sidebar Navigation */
-  .becss-doc-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    position: sticky;
-    top: 24px;
+  /* 2. COLLAPSIBLE SIDEBAR TAXONOMY TREE ("Classified to Fall") */
+  .fw-sidebar-tree {
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    border-left: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+    padding: 16px 12px;
+    margin-top: 24px;
+    overflow-y: auto;
+    overflow-x: auto;
     height: fit-content;
+    position: sticky;
+    top: calc(var(--fw-ry-unit) * 1.5 + 24px);
+    border-radius: var(--radius-main);
   }
 
   .becss-sidebar-title {
@@ -109,29 +164,82 @@ Package_Version: 105
     text-transform: uppercase;
     letter-spacing: 0.05em;
     color: var(--fg-muted);
-    margin-bottom: 8px;
+    margin-bottom: 12px;
   }
 
-  .becss-sidebar-link {
+  .fw-tree-node {
+    margin: 0;
+    padding: 0;
+  }
+
+  .fw-tree-branch {
+    margin-left: 14px;
+    padding-left: 8px;
+    border-left: 1px solid var(--border-color);
+  }
+
+  .fw-tree-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--fw-ry-unit);
+    gap: 6px;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .fw-tree-link {
     color: var(--fg-secondary);
     text-decoration: none;
+    padding: 4px 6px;
+    flex: 1 1 auto;
     font-size: 13px;
-    padding: 6px 12px;
     border-radius: 4px;
-    border-left: 2px solid transparent;
-    transition: all 0.15s ease;
   }
 
-  .becss-sidebar-link:hover {
-    color: #FFFFFF;
-    background: var(--bg-surface);
+  .fw-tree-link:hover {
+    color: var(--fg-primary);
+    background: var(--bg-surface-elevated);
   }
 
-  .becss-sidebar-link.is-active {
-    color: #FFFFFF;
-    background: var(--bg-surface);
-    border-left-color: var(--accent-red);
+  .fw-tree-link.is-active {
+    color: var(--fg-primary);
+    background: var(--bg-surface-elevated);
+    border-left: 2px solid var(--accent-red);
     font-weight: 600;
+  }
+
+  /* 3. HORIZONTAL-SCROLL BREADCRUMB RAIL */
+  .fw-breadcrumb-rail {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    height: var(--fw-ry-unit);
+    padding: 0 0;
+    margin-top: 24px;
+    margin-bottom: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    font-size: 12px;
+    color: var(--fg-muted);
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .fw-breadcrumb-rail a {
+    color: var(--fg-secondary);
+    text-decoration: none;
+  }
+
+  .fw-breadcrumb-rail a:hover {
+    color: var(--accent-red);
+  }
+
+  .fw-breadcrumb-rail span {
+    color: var(--border-color);
   }
 
   /* Document Body */
@@ -139,6 +247,7 @@ Package_Version: 105
     display: flex;
     flex-direction: column;
     gap: 28px;
+    min-width: 0;
   }
 
   .becss-doc-header {
@@ -180,42 +289,94 @@ Package_Version: 105
     margin-bottom: 16px;
   }
 
-  .becss-btn-sm {
-    background: transparent;
+  /* 4. HORIZONTAL-SCROLL BODY TABLE */
+  .fw-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
     border: 1px solid var(--border-color);
-    color: var(--fg-secondary);
-    padding: 4px 10px;
-    font-size: 12px;
-    font-weight: 500;
-    border-radius: 3px;
-    cursor: pointer;
-    font-family: inherit;
-    text-decoration: none;
+    margin: 16px 0;
+    border-radius: var(--radius-main);
   }
 
-  .becss-btn-sm:hover {
-    border-color: var(--accent-red);
-    color: var(--accent-red);
+  .fw-table-scroll table {
+    width: 100%;
+    min-width: 640px;
+    border-collapse: collapse;
+  }
+
+  .fw-table-scroll th,
+  .fw-table-scroll td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+    font-size: 13px;
+  }
+
+  .fw-table-scroll th {
+    background-color: var(--bg-surface-elevated);
+    border-top: 2px solid var(--accent-red);
+    color: var(--fg-primary);
+    font-weight: 600;
+  }
+
+  .fw-table-scroll td {
+    color: var(--fg-secondary);
   }
 </style>
 </head>
 <body>
-  <header class="becss-navbar">
+  <!-- DOCKED HORIZONTAL-SCROLL TOOLBAR -->
+  <header class="fw-docked-toolbar" role="toolbar" aria-label="Primary Action Toolbar">
     <a href="#" class="becss-brand">
       <span class="becss-badge">DOCS</span>
       <span>App Brand</span>
     </a>
-    <a href="#" class="becss-btn-sm">nav_link_1</a>
+    <a href="#link1" class="fw-tool-pill">Links</a>
+    <a href="#link2" class="fw-tool-pill">Blog</a>
+    <a href="#link3" class="fw-tool-pill">Wiki</a>
+    <button type="button" class="fw-tool-btn">Action Button 1</button>
+    <button type="button" class="fw-tool-btn">Action Button 2</button>
   </header>
 
   <div class="becss-doc-layout">
-    <aside class="becss-doc-sidebar">
-      <div class="becss-sidebar-title">Sidebar</div>
-      <a href="#sec1" class="becss-sidebar-link is-active">Sidebar link1</a>
-      <a href="#sec2" class="becss-sidebar-link">Sidebar link2</a>
+    <!-- COLLAPSIBLE SIDEBAR TAXONOMY TREE ("Classified to Fall") -->
+    <aside class="fw-sidebar-tree" aria-label="Taxonomy Navigation Tree">
+      <div class="becss-sidebar-title">Taxonomy Navigation</div>
+      <!-- Taxonomy Branch 1 (Default Collapsed) -->
+      <details class="fw-tree-node">
+        <summary class="fw-tree-row">
+          <a href="#sec1" class="fw-tree-link">Taxonomy Item 1</a>
+        </summary>
+        <div class="fw-tree-branch">
+          <div class="fw-tree-row"><a href="#sub1" class="fw-tree-link is-active">Category Leaf 1</a></div>
+          <div class="fw-tree-row"><a href="#sub2" class="fw-tree-link">Category Leaf 2</a></div>
+        </div>
+      </details>
+      <!-- Taxonomy Branch 2 (Default Collapsed) -->
+      <details class="fw-tree-node">
+        <summary class="fw-tree-row">
+          <a href="#sec2" class="fw-tree-link">Taxonomy Item 2</a>
+        </summary>
+        <div class="fw-tree-branch">
+          <div class="fw-tree-row"><a href="#sub3" class="fw-tree-link">Category Leaf 3</a></div>
+        </div>
+      </details>
     </aside>
 
     <main class="becss-doc-content">
+      <!-- HORIZONTAL-SCROLL BREADCRUMB RAIL -->
+      <nav class="fw-breadcrumb-rail" aria-label="Breadcrumb">
+        <a href="#home">Home</a>
+        <span>/</span>
+        <a href="#sec1">Taxonomy Item 1</a>
+        <span>/</span>
+        <span aria-current="page">Category Leaf 1</span>
+      </nav>
+
       <header class="becss-doc-header">
         <h1 class="becss-doc-title">Page Title</h1>
         <p class="becss-doc-sub">Subtitle</p>
@@ -229,9 +390,35 @@ Package_Version: 105
         </div>
       </section>
 
+      <!-- HORIZONTAL-SCROLL BODY TABLE -->
       <section class="becss-doc-section" id="sec2">
-        <h2>Section Heading</h2>
-        <p>Body Paragraph text</p>
+        <h2>Reference Data Table</h2>
+        <div class="fw-table-scroll" role="region" aria-label="Scrollable Data Table" tabindex="0">
+          <table>
+            <thead>
+              <tr>
+                <th>Column Header 1</th>
+                <th>Column Header 2</th>
+                <th>Column Header 3</th>
+                <th>Column Header 4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Row Cell 1</td>
+                <td>Row Cell 2</td>
+                <td>Row Cell 3</td>
+                <td>Row Cell 4</td>
+              </tr>
+              <tr>
+                <td>Row Cell 5</td>
+                <td>Row Cell 6</td>
+                <td>Row Cell 7</td>
+                <td>Row Cell 8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </section>
     </main>
   </div>

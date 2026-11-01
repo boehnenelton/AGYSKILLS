@@ -411,6 +411,86 @@
       "efficiency audit,audit efficiency,probe efficiency,redundancy probe,system redundancy,audit-efficiency-auditor",
       "audit-efficiency-auditor/SKILL.md",
       "Layer 2 Verification / System Optimization"
+    ],
+    [
+      "def-0030-webf-0001",
+      "Web Framework",
+      "Web_Architecture",
+      "The active structural contract, routing topology engine, navigation tree synthesizer, and binding rulebook that marries a Taxonomy to a set of Templates.",
+      "Implements the 12 Invariant Laws of Web Frameworks, produces 104a.web_framework.bejson, and compiles isomorphic static directory structures.",
+      "web framework,system framework,routing framework,web framework domain",
+      "web-framework-architect/SKILL.md",
+      "Web Frameworks Architecture Spec \u00a71.1"
+    ],
+    [
+      "def-0031-taxp-0002",
+      "The Taxonomy Planner (Domain 1)",
+      "Web_Architecture",
+      "The planner role governing Domain 1: plans database field definitions (<prefix>_field) AND website organizational directory structure.",
+      "Emits 104a.taxonomy_schema.bejson. Never writes CSS or decides terminal routing.",
+      "taxonomy planner,domain 1,taxonomy domain",
+      "web-taxonomy-planner/SKILL.md",
+      "Web Frameworks Architecture Spec \u00a714.2"
+    ],
+    [
+      "def-0032-tmpr-0003",
+      "The Templator (Domain 2)",
+      "Web_Architecture",
+      "The visual, spatial, and defensive UI engineer governing Domain 2: builds reusable HTML/CSS layout skeletons with horizontal overflow defense.",
+      "Enforces 8-lane grid, Ry=32px rhythm, .fw-docked-toolbar, .fw-table-scroll, .fw-sidebar-tree, and zero-filler skeletons.",
+      "the templator,templator,template domain,domain 2",
+      "large-website-architect/SKILL.md",
+      "Web Frameworks Architecture Spec \u00a714.3"
+    ],
+    [
+      "def-0033-frmp-0004",
+      "The Framework Planner (Domain 3)",
+      "Web_Architecture",
+      "The system architect governing Domain 3: articulates and compiles the website system framework from Taxonomy and Template inputs.",
+      "Enforces the 12 Invariant Laws, Page-Style default, terminal node cardinality, depth-deterministic template binding, and compiles index.html.",
+      "framework planner,the framework planner,domain 3,web framework planner",
+      "web-framework-architect/SKILL.md",
+      "Web Frameworks Architecture Spec \u00a714.4"
+    ],
+    [
+      "def-0034-pstl-0005",
+      "Page-Style Taxonomy Hub",
+      "Web_Architecture",
+      "A taxonomy or category index.html document containing substantive opening prose, section descriptions, or reference tables rather than a bare link feed.",
+      "Universal default for all non-blog taxonomies per Law 3. Global navigation is handled by the default-collapsed sidebar tree.",
+      "page style,page-style taxonomy,page-style hub",
+      "web-framework-architect/references/web_framework_invariant_laws.md",
+      "Web Frameworks Architecture Spec Law 3"
+    ],
+    [
+      "def-0035-fstl-0006",
+      "Feed-Style Taxonomy (Blog Exception)",
+      "Web_Architecture",
+      "A stream-driven layout featuring chronological post cards and pagination feet, reserved exclusively for the /blog/ taxonomy.",
+      "Exclusive to blog taxonomies per Law 3; forbidden on all non-blog hubs.",
+      "feed style,blog feed,feed-style taxonomy",
+      "web-framework-architect/references/web_framework_invariant_laws.md",
+      "Web Frameworks Architecture Spec Law 3"
+    ],
+    [
+      "def-0036-sbtr-0007",
+      "Default-Collapsed Sidebar Tree (\"Classified to Fall\") ",
+      "Web_Architecture",
+      "A hierarchical sidebar navigation tree using native <details class=\"fw-tree-node\"> elements initialized closed/collapsed by default.",
+      "Enforces Law 4: only the active taxonomy branch containing the currently viewed page expands automatically.",
+      "sidebar tree,default-collapsed sidebar,classified to fall,fw-sidebar-tree",
+      "web-framework-architect/references/web_framework_invariant_laws.md",
+      "Web Frameworks Architecture Spec Law 4"
+    ],
+    [
+      "def-0037-uhor-0008",
+      "Universal Horizontal Overflow",
+      "Web_Architecture",
+      "The spatial layout mandate that toolbars (.fw-docked-toolbar), tables (.fw-table-scroll), and breadcrumbs (.fw-breadcrumb-rail) must horizontally scroll on overflow.",
+      "Enforces Law 5: prevents multi-line wrapping and outer viewport horizontal bleed on mobile screens.",
+      "horizontal scroll,horizontal overflow,fw-docked-toolbar,fw-table-scroll",
+      "web-framework-architect/assets/framework_core_layout.css",
+      "Web Frameworks Architecture Spec Law 5"
     ]
   ]
 }

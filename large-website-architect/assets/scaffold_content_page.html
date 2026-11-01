@@ -172,14 +172,23 @@ Package_Version: 105
   }
 
   /* Metadata Table */
+  .fw-table-scroll {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--border-color);
+    margin-bottom: 28px;
+    border-radius: var(--radius-main);
+  }
+
   .becss-meta-table {
     width: 100%;
+    min-width: 480px;
     border-collapse: collapse;
     font-size: 13px;
-    margin-bottom: 28px;
     background: var(--bg-surface);
-    border-radius: var(--radius-main);
-    overflow: hidden;
   }
 
   .becss-meta-table th,
@@ -187,6 +196,7 @@ Package_Version: 105
     padding: 10px 16px;
     text-align: left;
     border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
   }
 
   .becss-meta-table th {
@@ -262,18 +272,20 @@ Package_Version: 105
       <textarea class="becss-code-area" readonly>Body Paragraph text</textarea>
     </section>
 
-    <table class="becss-meta-table">
-      <tbody>
-        <tr>
-          <th>Field Name 1</th>
-          <td>Value 1</td>
-        </tr>
-        <tr>
-          <th>Field Name 2</th>
-          <td>Value 2</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="fw-table-scroll" role="region" aria-label="Metadata Table" tabindex="0">
+      <table class="becss-meta-table">
+        <tbody>
+          <tr>
+            <th>Field Name 1</th>
+            <td>Value 1</td>
+          </tr>
+          <tr>
+            <th>Field Name 2</th>
+            <td>Value 2</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <nav class="becss-paging-feet" aria-label="Module Pagination">
       <a href="#" class="becss-btn-sm">Prev: prev_item</a>

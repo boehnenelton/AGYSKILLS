@@ -1,7 +1,7 @@
 ---
 name: web-ui-component-mapper
 description: >-
-  Extract, structure, and map complete component-level interface hierarchies of web applications, CMS platforms, admin portals, and dashboards into clean, database-agnostic ASCII tree maps from entry surfaces down to atomic controls. Use when analyzing existing web apps, mapping UI component trees, auditing interface surfaces for feature parity, generating hierarchical ASCII component blueprints, or preparing frontend structural specs. Do NOT use for tracing URL routing paths or sitemaps (use ui-navigation-decomposer), quantizing elements into 8-lane Ry=32px grids (use behtml-design-preferences), scaffolding zero-filler template code (use template-literal-skeleton), or modeling database schemas and table columns (use component-taxonomy-architect).
+  Extract, structure, and map complete component-level interface hierarchies of web applications, CMS platforms, admin portals, and dashboards into clean, database-agnostic ASCII tree maps from entry surfaces down to atomic controls. Governs the Decomposition Domain (Analysis & Reverse-Engineering), strictly separate from forward creation domains. Use when analyzing existing web apps, mapping UI component trees, auditing interface surfaces for feature parity, generating hierarchical ASCII component blueprints, or preparing frontend structural specs. Do NOT use for forward database field or category planning (use web-taxonomy-planner), forward template design (use large-website-architect or template-architect), framework routing compilation (use web-framework-architect), or multi-domain coordination (use web-domain-coordinator).
 ---
 
 # Skill: `web-ui-component-mapper` (Layer 4 - Web UI Component Architecture Mapping)

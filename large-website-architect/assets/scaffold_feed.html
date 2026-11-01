@@ -52,18 +52,24 @@ Package_Version: 105
   }
 
   /* Breadcrumb Navigation */
-  .becss-breadcrumbs {
+  .becss-breadcrumbs, .fw-breadcrumb-rail {
     display: flex;
     align-items: center;
     gap: 8px;
     font-size: 13px;
     color: var(--fg-muted);
     margin-bottom: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
 
   .becss-breadcrumb-link {
     color: var(--fg-muted);
     text-decoration: none;
+    flex: 0 0 auto;
   }
 
   .becss-breadcrumb-link:hover {
@@ -72,11 +78,13 @@ Package_Version: 105
 
   .becss-breadcrumb-separator {
     color: var(--border-light);
+    flex: 0 0 auto;
   }
 
   .becss-breadcrumb-current {
     color: var(--accent-red);
     font-weight: 600;
+    flex: 0 0 auto;
   }
 
   /* Header Section */
@@ -107,12 +115,16 @@ Package_Version: 105
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 20px;
-    flex-wrap: wrap;
   }
 
   .becss-filter-group {
     display: flex;
     gap: 8px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
 
   .becss-filter-pill {
@@ -125,6 +137,7 @@ Package_Version: 105
     border-radius: 4px;
     cursor: pointer;
     font-family: inherit;
+    flex: 0 0 auto;
   }
 
   .becss-filter-pill.is-active {

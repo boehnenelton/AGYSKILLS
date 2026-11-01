@@ -1,0 +1,54 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["WebTaxonomyManifest"],
+  "Site_Identifier": "canonical_web_ecosystem",
+  "Fields": [
+    {"name": "taxonomy_id", "type": "string"},
+    {"name": "taxonomy_slug", "type": "string"},
+    {"name": "taxonomy_display_name", "type": "string"},
+    {"name": "parent_taxonomy_id", "type": "string"},
+    {"name": "depth_level", "type": "integer"},
+    {"name": "entity_prefix", "type": "string"},
+    {"name": "content_style_intent", "type": "string"},
+    {"name": "schema_fields_json", "type": "string"}
+  ],
+  "Values": [
+    [
+      "tax_links_root", "links", "Directory Links", "", 1,
+      "link_", "page_style",
+      "[{\"name\":\"link_uuid\",\"type\":\"string\"},{\"name\":\"link_title\",\"type\":\"string\"},{\"name\":\"link_url\",\"type\":\"string\"}]"
+    ],
+    [
+      "tax_links_partners", "partners", "Partner Directory", "tax_links_root", 2,
+      "partner_", "page_style",
+      "[{\"name\":\"partner_uuid\",\"type\":\"string\"},{\"name\":\"partner_title\",\"type\":\"string\"},{\"name\":\"partner_tier\",\"type\":\"string\",\"display_target\":\"table\"},{\"name\":\"partner_url\",\"type\":\"string\"}]"
+    ],
+    [
+      "tax_blog_root", "blog", "Engineering Blog", "", 1,
+      "blog_post_", "feed_style",
+      "[{\"name\":\"blog_post_uuid\",\"type\":\"string\"},{\"name\":\"blog_post_title\",\"type\":\"string\"},{\"name\":\"blog_post_date\",\"type\":\"string\"}]"
+    ],
+    [
+      "tax_blog_releases", "releases", "Release Notes", "tax_blog_root", 2,
+      "blog_post_", "feed_style",
+      "[{\"name\":\"blog_post_uuid\",\"type\":\"string\"},{\"name\":\"blog_post_title\",\"type\":\"string\"},{\"name\":\"blog_post_version\",\"type\":\"string\",\"display_target\":\"table\"}]"
+    ],
+    [
+      "tax_wiki_root", "wiki", "Encyclopedia Wiki", "", 1,
+      "wiki_entry_", "page_style",
+      "[{\"name\":\"wiki_entry_uuid\",\"type\":\"string\"},{\"name\":\"wiki_entry_title\",\"type\":\"string\"},{\"name\":\"wiki_entry_rank\",\"type\":\"string\",\"display_target\":\"table\"}]"
+    ],
+    [
+      "tax_wiki_letter_a", "a", "Letter A", "tax_wiki_root", 2,
+      "wiki_entry_", "page_style",
+      "[{\"name\":\"wiki_entry_uuid\",\"type\":\"string\"},{\"name\":\"wiki_entry_title\",\"type\":\"string\"}]"
+    ],
+    [
+      "tax_wiki_animals", "animals", "Animals Subcategory", "tax_wiki_letter_a", 3,
+      "wiki_entry_", "page_style",
+      "[{\"name\":\"wiki_entry_uuid\",\"type\":\"string\"},{\"name\":\"wiki_entry_title\",\"type\":\"string\"},{\"name\":\"wiki_entry_genus\",\"type\":\"string\",\"display_target\":\"table\"}]"
+    ]
+  ]
+}

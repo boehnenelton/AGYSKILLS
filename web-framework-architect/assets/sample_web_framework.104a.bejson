@@ -1,0 +1,62 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["WebFrameworkManifest"],
+  "Site_Identifier": "canonical_web_ecosystem",
+  "Fields": [
+    {"name": "route_id", "type": "string"},
+    {"name": "taxonomy_slug", "type": "string"},
+    {"name": "category_slug", "type": "string"},
+    {"name": "depth_level", "type": "integer"},
+    {"name": "content_style_mode", "type": "string"},
+    {"name": "terminal_node_storage_mode", "type": "string"},
+    {"name": "bound_template_file", "type": "string"},
+    {"name": "sidebar_tree_default_collapsed_flag", "type": "boolean"},
+    {"name": "horizontal_scroll_toolbar_flag", "type": "boolean"},
+    {"name": "horizontal_scroll_table_flag", "type": "boolean"},
+    {"name": "breadcrumb_rail_flag", "type": "boolean"}
+  ],
+  "Values": [
+    [
+      "route_root", "", "", 0,
+      "page_style", "folder_index", "scaffold_master_index.html",
+      true, true, true, false
+    ],
+    [
+      "route_links_hub", "links", "", 1,
+      "page_style", "folder_index", "scaffold_document.html",
+      true, true, true, true
+    ],
+    [
+      "route_links_partners", "links", "partners", 2,
+      "page_style", "hybrid", "scaffold_document.html",
+      true, true, true, true
+    ],
+    [
+      "route_blog_hub", "blog", "", 1,
+      "feed_style", "category_direct", "scaffold_feed.html",
+      true, true, false, true
+    ],
+    [
+      "route_blog_releases", "blog", "releases", 2,
+      "feed_style", "category_direct", "scaffold_category_feed.html",
+      true, true, true, true
+    ],
+    [
+      "route_wiki_hub", "wiki", "", 1,
+      "page_style", "n_tier_folder", "scaffold_document.html",
+      true, true, true, true
+    ],
+    [
+      "route_wiki_letter_a", "wiki", "a", 2,
+      "page_style", "n_tier_folder", "scaffold_document.html",
+      true, true, true, true
+    ],
+    [
+      "route_wiki_animals", "wiki", "a/animals", 3,
+      "page_style", "n_tier_folder", "scaffold_document.html",
+      true, true, true, true
+    ]
+  ]
+}

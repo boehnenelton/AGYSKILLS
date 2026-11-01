@@ -1,7 +1,7 @@
 ---
 name: template-literal-skeleton
 description: >-
-  Enforce the global Zero-Filler Skeleton Law across templates of all formats (HTML, CLI menus, UI layouts, scripts, BEJSON): output strict, bare-bones structural skeletons with zero filler, zero 'lorem ipsum', and zero fabricated examples using simple, literal placeholder text labels ('Title', 'Content Body', 'Menu Header', 'Menu Item 1'). Use whenever generating or scaffolding bare-bones templates of any format. Do NOT use for scaffolding Release 300 Foundational Era BEJSON 104 data stores (use template-104-template), Integrity Era Format 105 UUID data stores (use template-105-template), populating real production content, or executing runtime logic.
+  Enforce the global Zero-Filler Skeleton Law across templates of all formats (HTML, CLI menus, UI layouts, scripts, BEJSON): output strict, bare-bones structural skeletons with zero filler, zero 'lorem ipsum', and zero fabricated examples using simple, literal placeholder text labels ('Title', 'Content Body', 'Menu Header', 'Menu Item 1'). Governs the placeholder standards of Domain 2 (The Template Domain / The Templator). Use whenever generating or scaffolding bare-bones templates of any format. Do NOT use for scaffolding Release 300 Foundational Era BEJSON 104 data stores (use template-104-template), Integrity Era Format 105 UUID data stores (use template-105-template), populating real production content, or executing runtime logic.
 ---
 
 # Skill: `template-literal-skeleton` (Layer 4 - Global Zero-Filler Skeleton Law)
