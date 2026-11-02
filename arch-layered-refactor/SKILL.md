@@ -145,3 +145,26 @@ Follow this 6-stage workflow for every refactoring initiative:
 - **Premature Concurrency Overreach**: In single-threaded runtimes (Node.js) or constrained mobile environments (Android Termux / Pydroid 3), avoid multithreading or process forking. Use serial promise queues or single background daemon threads with explicit pacing delays and memory budgets.
 - **Simultaneous Multi-Layer Editing**: Never refactor the presentation layer and persistence layer simultaneously without locked domain contracts. Doing so causes conflicting assumptions and broken interfaces.
 - **Destructive Migration**: Never overwrite existing data files in place during refactoring. Always maintain fallback backups and write to new structures atomically with validation before swapping paths.
+
+
+## Subagent & Headless Execution Containment
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent & Headless Execution Containment
+When invoking automated operations, always mandate container isolation:
+
+```bash
+agy --sandbox -p "Execute task"
+```

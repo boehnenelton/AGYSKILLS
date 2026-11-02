@@ -1,7 +1,7 @@
 ---
 name: agy-subagents
 description: >-
-  Architect, define, spawn, monitor, and coordinate concurrent Antigravity CLI subagents (define_subagent, invoke_subagent, manage_subagents, send_message). Enforces workspace isolation strategies (inherit, branch, share), model tier selection (flash, flash_lite, pro, inherit), clean-slate context boundaries, reactive wakeup protocols (zero status polling), and structured delegation payloads. Use when designing parallel research workers, background debugging agents, worktree refactoring tasks, or multi-agent pipelines.
+  Architect, define, spawn, monitor, and coordinate concurrent Antigravity CLI subagents (define_subagent, invoke_subagent, manage_subagents, send_message). Enforces workspace isolation strategies (inherit, branch, share), model tier selection (flash, flash_lite, pro, inherit), clean-slate context boundaries, reactive wakeup protocols (zero status polling), and structured delegation payloads. Use when designing parallel research workers, background debugging agents, worktree refactoring tasks, or multi-agent pipelines. Do NOT use for authoring workspace rules (use agy-rules), packaging plugins (use agy-plugins), or running single headless CLI tasks (use agy-prompt-automator).
 ---
 
 # Skill: `agy-subagents`
@@ -72,4 +72,27 @@ invoke_subagent(
     ]
 )
 # Stop calling tools here; the system wakes you when the subagent responds.
+```
+
+
+## Subagent & Headless Execution Containment
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent & Headless Execution Containment
+When invoking automated operations, always mandate container isolation:
+
+```bash
+agy --sandbox -p "Execute task"
 ```

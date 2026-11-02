@@ -356,7 +356,15 @@ def execute_inspect_chunk_info(chunk_file_path: str) -> int:
 
         ext = Path(rel_p).suffix.lower() or "(no-ext)"
         extension_counts[ext] = extension_counts.get(ext, 0) + 1
-        content_len = len(content) if not is_bin else len(base64.b64decode(content.encode("ascii"), validate=False))
+        try:
+            if not is_bin:
+                content_len = len(content)
+            else:
+                pad_needed = len(content) % 4
+                padded_content = content + ("=" * (4 - pad_needed) if pad_needed else "")
+                content_len = len(base64.b64decode(padded_content.encode("ascii"), validate=False))
+        except Exception:
+            content_len = int(len(content) * 0.75) if is_bin else len(content)
         total_uncompressed_bytes += content_len
 
     if context_note:

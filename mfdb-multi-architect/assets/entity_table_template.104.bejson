@@ -1,0 +1,15 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../104a.mfdb.bejson",
+  "Network_Role": "Slave",
+  "Records_Type": ["PrimaryEntity"],
+  "Fields": [
+    {"name": "ent_uuid", "type": "string"},
+    {"name": "ent_title", "type": "string"},
+    {"name": "ent_status", "type": "string"},
+    {"name": "ent_created_at", "type": "string"}
+  ],
+  "Values": []
+}

@@ -1,0 +1,74 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "CouncilAdvisoryPlan"
+  ],
+  "Fields": [
+    {
+      "name": "plan_uuid",
+      "type": "string"
+    },
+    {
+      "name": "plan_title",
+      "type": "string"
+    },
+    {
+      "name": "iteration_cycle",
+      "type": "integer"
+    },
+    {
+      "name": "satisfaction_status",
+      "type": "string"
+    },
+    {
+      "name": "grounding_state_ref",
+      "type": "string"
+    },
+    {
+      "name": "council_perspectives",
+      "type": "string"
+    },
+    {
+      "name": "strategic_suggestions",
+      "type": "string"
+    },
+    {
+      "name": "target_file_scope",
+      "type": "string"
+    },
+    {
+      "name": "negative_guardrails",
+      "type": "string"
+    },
+    {
+      "name": "definition_of_done",
+      "type": "string"
+    },
+    {
+      "name": "handoff_skills",
+      "type": "string"
+    },
+    {
+      "name": "updated_at",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "00000000-0000-4000-8000-000000000001",
+      "Initial Council Advisory Deliberation Plan",
+      1,
+      "Iterating",
+      "dev/council_grounding_state.104a.bejson",
+      "{\"Substrate_Guardian\": \"Ensure O(1) field map and boundary sanitization\", \"Ecosystem_Architect\": \"Preserve 6-tier layer boundaries\", \"Operational_Strategist\": \"Align with recent Log-2026-11-02 tasks\", \"Tactical_Executor\": \"Enforce surgical scope and DoD validation\"}",
+      "[\"Synthesize operational grounding state\", \"Present 3 structured implementation options with tradeoff analysis\"]",
+      "[\"dev/\", \"config/\"]",
+      "[\"Never modify official libraries without explicit instruction\", \"No unversioned deliveries\"]",
+      "All unit tests and quality gate linters return Exit Code 0.",
+      "[\"goal-contract-architect\", \"goal-roadmap-composer\"]",
+      "2026-11-02T00:00:00Z"
+    ]
+  ]
+}

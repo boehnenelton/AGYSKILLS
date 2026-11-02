@@ -1,7 +1,7 @@
 ---
 name: behtml-document-template
 description: >-
-  Use when creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (clean empty scaffold for standardization records with preset headers, 1-tab multi-file switcher, and word-wrapped blank input box). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use as a global scaffold for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder).
+  Use when creating formal web documents, specifications, or operational telemetry reports using the canonical BEHTML document templates: Document with Shelf (16-sublane stage, Row 1 32px title bar, Rows 2..18 544px canvas, Row 19 32px buffer, Rows 20..24 160px widget shelf with 150x150px slots), Document Widgetless Variant (full-canvas document for uninterrupted technical reading), and Declaration of Standardization (clean empty scaffold for standardization records with preset headers, 1-tab multi-file switcher, and word-wrapped blank input box). Use ONLY when creating formal web documents, specifications, or operational telemetry reports. Do NOT use for general web apps, dashboards, or feeds (use behtml-templates), defining base BEHTML design preferences and grid geometry (use behtml-design-preferences), or rendering vertical domain tables and terminal menus (use behtml-104-builder).
 ---
 
 # Skill: `behtml-document-template` (Layer 4 - Canonical BEHTML Web Document Templates)
@@ -36,7 +36,7 @@ description: >-
 ### 2.1 Variant A: Document With Widget Shelf (`assets/Template_HTML_Document.html`)
 - **Geometry**: 16-sublane horizontal partitioning (Sublane 1: 6.25% left gutter, Sublanes 2..15: 87.5% inner canvas, Sublane 16: 6.25% right gutter).
 - **Row 1 (`32px`)**: Title bar spanning `1 / -1` with `border-bottom: 2px solid #DE2626`.
-- **Rows 2..18 (`544px`)**: Scrollable document canvas (`display: block`, `overflow-y: auto`). Provided as a clean, bare-bones empty canvas with at most a preset header and metadata bar—zero fake text, zero made-up sections, zero marketing fluff. Ready to deploy and build on immediately.
+- **Rows 2..18 (`544px`)**: Scrollable document canvas (`display: block`, `overflow-y: auto`). Provided as a clean, bare-bones empty canvas with at most a preset header and metadata bar - zero fake text, zero made-up sections, zero marketing fluff. Ready to deploy and build on immediately.
 - **Smashed Text Box Prevention**: Canvas uses `display: block` (not flex) with `pre, textarea, .text-box { min-height: calc(3 * var(--ry-unit)); box-sizing: border-box; }` and `.behtml-doc-canvas > * { flex-shrink: 0; }` to ensure code blocks and text boxes are never squashed into a single row.
 - **Row 19 (`32px`)**: Unallocated spatial breathing buffer.
 - **Rows 20..24 (`160px`)**: Centered widget shelf with fixed `150px x 150px` widget blocks (`border: 1px solid transparent`, red header underline).
@@ -45,7 +45,7 @@ description: >-
 ### 2.2 Variant B: Document Widgetless (`assets/Template_Document_Widgetless.html`)
 - **Geometry**: 16-sublane horizontal partitioning (6.25% side gutters, 87.5% inner canvas).
 - **Row 1 (`32px`)**: Title bar spanning `1 / -1`.
-- **Rows 2..24 / 1fr**: Full-height scrollable document canvas (`height: calc(var(--app-height) - var(--ry-unit))`, `display: block`). Strict empty scaffold with preset header and author footer—zero filler content.
+- **Rows 2..24 / 1fr**: Full-height scrollable document canvas (`height: calc(var(--app-height) - var(--ry-unit))`, `display: block`). Strict empty scaffold with preset header and author footer - zero filler content.
 - **Smashed Text Box Prevention**: Multi-row minimum height (`min-height: calc(3 * var(--ry-unit))`) and block document flow prevent single-row text box collapse.
 - **Eliminations**: Omit Row 19 buffer and Rows 20..24 widget shelf.
 - **Use Case**: Long-form architectural specifications, research publications, and technical documentation where a bottom widget shelf would obstruct continuous vertical reading.

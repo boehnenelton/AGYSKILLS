@@ -7,7 +7,7 @@ description: >-
   topic selection and interactive tuning of the 5-part plan prompt and configuration
   in BEJSON 104a, generating turnkey builder prompts and context paths for direct handoff
   to bejson-cms-blog-writer. Use when brainstorming topics from real Admin codebases
-  or configuring blog drafting pipelines.
+  or configuring blog drafting pipelines. Do NOT use for drafting the 4-part blog content itself (use bejson-cms-blog-writer), compiling CMS static sites (use bejson-cms-publish-automator), or generating SVG banners (use bejson-cms-canvas-illustrator).
 ---
 
 # bejson-cms-admin-scout (Layer 5 Discovery & Plan Configuration)

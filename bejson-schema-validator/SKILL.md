@@ -34,7 +34,7 @@ description: >-
 - Executing Layer 2 stage gates in build pipelines and DAG runners prior to payload delivery.
 - Validating POL-002 primitive-only field typing rules for `104a` and `105a` configuration stores.
 - Enforcing `104db` and `105db` discriminator row rules (`Record_Type_Parent` matching `Records_Type`).
-- Enforcing Integrity Era E90–E95 UUID invariants (mandatory `field_uuid` definitions and row index 0 `record_uuid`).
+- Enforcing Integrity Era E90-E95 UUID invariants (mandatory `field_uuid` definitions and row index 0 `record_uuid`).
 - Batch scanning directories for corrupt or invalid `.bejson` files.
 
 ---

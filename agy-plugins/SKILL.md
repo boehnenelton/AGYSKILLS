@@ -1,7 +1,7 @@
 ---
 name: agy-plugins
 description: >-
-  Scaffold, package, configure, and audit Antigravity CLI plugins (plugin.json, mcp_config.json, hooks.json, rules/AGENTS.md, skills/). Enforces standard directory topology, manifest declaration syntax, lifecycle hook registration, tool namespacing, and enable/disable configuration management in config.json. Use when packaging multi-skill ecosystems, building team developer bundles, configuring plugin-scoped MCP servers, or preparing plugins for marketplace distribution.
+  Scaffold, package, configure, and audit Antigravity CLI plugins (plugin.json, mcp_config.json, hooks.json, rules/AGENTS.md, skills/). Enforces standard directory topology, manifest declaration syntax, lifecycle hook registration, tool namespacing, and enable/disable configuration management in config.json. Use when packaging multi-skill ecosystems, building team developer bundles, configuring plugin-scoped MCP servers, or preparing plugins for marketplace distribution. Do NOT use for authoring workspace rules (use agy-rules), coordinating subagents (use agy-subagents), or executing headless task prompts (use agy-prompt-automator).
 ---
 
 # Skill: `agy-plugins`
@@ -77,3 +77,26 @@ agy plugin disable bejson-developer-toolkit
 1. **Rule Consolidation**: Always place rules under `rules/AGENTS.md` rather than scattering multiple `.md` files.
 2. **Tool Namespacing**: Ensure bundled tool scripts and MCP servers avoid colliding with built-in commands.
 3. **Relative Execution**: All commands declared in `hooks.json` or `mcp_config.json` inside a plugin should use paths relative to the plugin root or environment variables.
+
+
+## Subagent & Headless Execution Containment
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent & Headless Execution Containment
+When invoking automated operations, always mandate container isolation:
+
+```bash
+agy --sandbox -p "Execute task"
+```

@@ -1,0 +1,15 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "105",
+  "Format_Creator": "Elton Boehnen",
+  "Parent_Hierarchy": "../105a.mfdb.bejson",
+  "Network_Role": "Slave",
+  "Records_Type": ["PrimaryEntity"],
+  "Fields": [
+    {"name": "record_uuid", "type": "string", "field_uuid": "e2050002-0000-4000-8000-000000000001"},
+    {"name": "ent_title", "type": "string", "field_uuid": "e2050002-0000-4000-8000-000000000002"},
+    {"name": "ent_status", "type": "string", "field_uuid": "e2050002-0000-4000-8000-000000000003"},
+    {"name": "ent_created_at", "type": "string", "field_uuid": "e2050002-0000-4000-8000-000000000004"}
+  ],
+  "Values": []
+}

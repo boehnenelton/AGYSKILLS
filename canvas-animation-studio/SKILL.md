@@ -141,9 +141,10 @@ timeline_rows = compute_frame_timeline_105a(
 
 # 2. Populate procedural SVG vector markup into each frame record
 for row in timeline_rows:
-    rotation_angle = row["rotation_deg"]
+    field_map = bejson_core_get_field_map(doc["Fields"])
+    rotation_angle = row[field_map["rotation_deg"]]
     # Generate procedural isometric wireframe cube SVG
-    row["svg_markup"] = render_spinning_cube_svg(
+    row[field_map["svg_markup"]] = render_spinning_cube_svg(
         angle_deg=rotation_angle,
         width=400,
         height=400,

@@ -155,3 +155,26 @@ python3 skills/spark-skill-refactor/scripts/spark_skill_linter.py --cluster skil
 - **One-Way Negative Guardrails**: Excluding Skill B from Skill A without updating Skill B to exclude Skill A leaves an asymmetric routing vulnerability (`Code 432`).
 - **Upward Layer Dependencies**: Never wire a lower-layer skill (L1-L3) to depend on a higher-layer skill (L4-L6).
 - **Taxonomy Contamination**: Never put mock sample copy inside a `Template` or leave unhydrated placeholders inside a `Demonstration`.
+
+
+## Subagent & Headless Execution Containment
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent & Headless Execution Containment
+When invoking automated operations, always mandate container isolation:
+
+```bash
+agy --sandbox -p "Execute task"
+```

@@ -140,7 +140,7 @@ python3 src/newagent-manage.py skeleton new-theme my-theme --from default
   # Ingest new asset
   python3 src/newagent-manage.py asset add /path/to/image.png
 
-  # Batch convert PNG assets to WebP (88%–94% compression) and patch page references
+  # Batch convert PNG assets to WebP (88%-94% compression) and patch page references
   python3 src/newagent-manage.py asset optimize
   ```
 

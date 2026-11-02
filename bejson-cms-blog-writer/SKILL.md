@@ -8,7 +8,7 @@ description: >-
   targets at least 120 lines minimum; Part 2 drafts Sections 1 and 2 (>=120 lines each);
   Part 3 drafts Sections 3 and 4 (>=120 lines each); Part 4 verifies line count thresholds,
   zero-filler compliance, and integrates context-based SVG canvas imagery; Part 5 merges
-  all 4 sections, renders semantic HTML, and imports directly to BEJSON CMS using cms-manage.py page import.
+  all 4 sections, renders semantic HTML, and imports directly to BEJSON CMS using cms-manage.py page import. Use when authoring multi-part technical blog posts or publishing into BEJSON CMS. Do NOT use for initial topic discovery (use bejson-cms-admin-scout), static site publishing automation (use bejson-cms-publish-automator), or generating SVG banners (use bejson-cms-canvas-illustrator).
 ---
 
 # bejson-cms-blog-writer (Layer 5 Use Cases & Publication Drafting)

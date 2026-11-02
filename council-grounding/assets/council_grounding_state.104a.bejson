@@ -1,0 +1,74 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": [
+    "CouncilGroundingState"
+  ],
+  "Fields": [
+    {
+      "name": "state_uuid",
+      "type": "string"
+    },
+    {
+      "name": "capture_timestamp",
+      "type": "string"
+    },
+    {
+      "name": "environment_definitions_path",
+      "type": "string"
+    },
+    {
+      "name": "active_storage_roots",
+      "type": "string"
+    },
+    {
+      "name": "recent_global_log_keys",
+      "type": "string"
+    },
+    {
+      "name": "recent_completed_tasks",
+      "type": "string"
+    },
+    {
+      "name": "recent_files_modified",
+      "type": "string"
+    },
+    {
+      "name": "active_repositories",
+      "type": "string"
+    },
+    {
+      "name": "library_tiers_status",
+      "type": "string"
+    },
+    {
+      "name": "installed_skills_count",
+      "type": "integer"
+    },
+    {
+      "name": "active_negative_constraints",
+      "type": "string"
+    },
+    {
+      "name": "summary_digest",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "00000000-0000-4000-8000-000000000000",
+      "2026-11-02T00:00:00Z",
+      "/storage/emulated/0/.env/user/definitions.json",
+      "{\"INTERNAL_STORAGE\": \"/storage/emulated/0\", \"PROJECTS_ARCHIVE_ROOT\": \"/storage/emulated/0/Admin/Core/Projects_Archive\", \"GLOBAL_LOGS\": \"/storage/emulated/0/Admin/System/Global_Logs\"}",
+      "[\"skill.scaffold\", \"skills.harmony_expansion\"]",
+      "[\"Build mfdb-multi-architect skill\", \"Ecosystem harmony expansion\"]",
+      "[\"/data/data/com.termux/files/home/.gemini/config/skills/mfdb-multi-architect/SKILL.md\"]",
+      "[\"BEJSON_CMS\", \"NewAgent\", \"NA-CMS\"]",
+      "{\"libraries_104\": \"Stable/Frozen\", \"libraries_105\": \"Development/Active\"}",
+      65,
+      "[\"Do not edit official library directories without explicit instruction\", \"Field Map Cache mandatory across all BEJSON operations\"]",
+      "Initial council grounding state baseline container."
+    ]
+  ]
+}

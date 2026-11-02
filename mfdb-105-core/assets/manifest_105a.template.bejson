@@ -1,0 +1,21 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "105a",
+  "Format_Creator": "Elton Boehnen",
+  "MFDB_Version": "1.40",
+  "Network_Role": "Master",
+  "DB_Name": "ENTERPRISE_105_TEMPLATE",
+  "Schema_Version": "1.0.0",
+  "Author": "Elton Boehnen",
+  "Created_At": "2026-11-02T00:00:00Z",
+  "Records_Type": ["mfdb"],
+  "Fields": [
+    {"name": "entity_name", "type": "string", "field_uuid": "e1050001-0000-4000-8000-000000000001"},
+    {"name": "file_path", "type": "string", "field_uuid": "e1050001-0000-4000-8000-000000000002"},
+    {"name": "description", "type": "string", "field_uuid": "e1050001-0000-4000-8000-000000000003"},
+    {"name": "record_count", "type": "integer", "field_uuid": "e1050001-0000-4000-8000-000000000004"},
+    {"name": "table_sha256", "type": "string", "field_uuid": "e1050001-0000-4000-8000-000000000005"},
+    {"name": "primary_key", "type": "string", "field_uuid": "e1050001-0000-4000-8000-000000000006"}
+  ],
+  "Values": []
+}

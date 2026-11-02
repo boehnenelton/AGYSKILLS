@@ -1,7 +1,7 @@
 ---
 name: chunking-core
 description: >-
-  Chunk directories, codebases, project repositories, and individual Admin Library families (104/105 Lib_JS, Lib_PY, Lib_SH, Lib_TS) into standardized single-file flat BEJSON archives (.104a.bejson.txt or .bejson.txt) using the Chunked-104 schema, and unchunk archives back to directory trees or zip files using Simple_Chunker_CLI. Suited for smaller pieces, library families, and unversioned folders without tracker overhead. Defaults to Is_Binary off (pure text files only), chunk-in-target disabled, and no project tracker required. For snapshotting entire libraries_104 or libraries_105 projects with version tracking, use project-chunker-archiver; for complete library orchestration, use library-chunker. Do NOT use for Chunked-132 MFDB container mounting (use mfdb-104-chunker).
+  Use when chunking directories, codebases, project repositories, and individual Admin Library families (104/105 Lib_JS, Lib_PY, Lib_SH, Lib_TS) into standardized single-file flat BEJSON archives (.104a.bejson.txt or .bejson.txt) using the Chunked-104 schema, and unchunk archives back to directory trees or zip files using Simple_Chunker_CLI. Suited for smaller pieces, library families, and unversioned folders without tracker overhead. Defaults to Is_Binary off (pure text files only), chunk-in-target disabled, and no project tracker required. For snapshotting entire libraries_104 or libraries_105 projects with version tracking, use project-chunker-archiver; for complete library orchestration, use library-chunker. Do NOT use for Chunked-132 MFDB container mounting (use mfdb-104-chunker).
 ---
 
 # Skill: `chunking-core`

@@ -1,12 +1,22 @@
 ---
 name: large-website-architect
 description: >-
-  Architect, design, and scaffold production-ready large multi-page websites, documentation portals, taxonomy feeds, media galleries, and e-books using clean BEHTML structural skeletons adhering strictly to 8-lane spatial grids, Ry=32px row quantization, BECSS Tri-Color standards, and zero-filler laws. Governs Domain 2 (The Template Domain / The Templator) of the Three-Domain Web Architecture. Provides 13 canonical production templates engineered with horizontal overflow scrolling (.fw-docked-toolbar, .fw-table-scroll, .fw-breadcrumb-rail) and default-collapsed sidebar trees (.fw-sidebar-tree). Use when building or scaffolding multi-page websites, portals, video feeds, image galleries, video players, documentation hubs, blog posts, project showcases, or e-book publications. Do NOT use for database field planning or category hierarchy design (use web-taxonomy-planner), website routing compilation or terminal node resolution (use web-framework-architect), multi-domain workflow orchestration (use web-domain-coordinator), or reverse-engineering existing websites (use ui-navigation-decomposer).
+  Architect, design, and scaffold production-ready large multi-page websites,
+  documentation portals, taxonomy feeds, media galleries, and e-books using clean
+  BEHTML structural skeletons adhering strictly to 8-lane spatial grids, Ry=32px
+  row quantization, BECSS Tri-Color standards, and zero-filler laws. Provides 13
+  canonical production templates engineered with horizontal overflow scrolling and
+  collapsible sidebar trees. Use when building or scaffolding multi-page websites,
+  portals, video feeds, image galleries, documentation hubs, or e-books. Do NOT use
+  for database field planning or category hierarchy design (use web-taxonomy-planner),
+  website routing compilation (use web-framework-architect), multi-domain workflow
+  orchestration (use web-domain-coordinator), or reverse-engineering existing
+  websites (use ui-navigation-decomposer).
 ---
 
 # Large Website Architect (Domain 2: The Template Domain / The Templator)
 
-The **Large Website Architect** governs **Domain 2 (The Template Domain / The Templator)** of the Three-Domain Web Architecture. The Templator is a pure visual, spatial, and defensive UI engineer. Its sole responsibility is to build and maintain the **Reusable Template Design Files**—the structural `.html` and `.css` layout skeletons that websites use to display content.
+The **Large Website Architect** governs **Domain 2 (The Template Domain / The Templator)** of the Three-Domain Web Architecture. The Templator is a pure visual, spatial, and defensive UI engineer. Its sole responsibility is to build and maintain the **Reusable Template Design Files** - the structural `.html` and `.css` layout skeletons that websites use to display content.
 
 ---
 

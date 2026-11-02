@@ -51,9 +51,9 @@ description: >-
 ## 1. Visual Testing Matrix & Policy 8.1 Verification
 
 ### Multi-Viewport Execution Roster
-1. **Mobile Portrait**: `360 x 640` (DPR: 2.0, touch-enabled) — verifies hamburger menus, drawer sidebars, and portrait quantization.
-2. **Tablet Portrait**: `768 x 1024` (DPR: 2.0, touch-enabled) — verifies intermediate responsive reflow.
-3. **Desktop Canvas**: `1280 x 720` (DPR: 1.0) — verifies 8-lane 16:9 full-canvas layouts.
+1. **Mobile Portrait**: `360 x 640` (DPR: 2.0, touch-enabled)  -  verifies hamburger menus, drawer sidebars, and portrait quantization.
+2. **Tablet Portrait**: `768 x 1024` (DPR: 2.0, touch-enabled)  -  verifies intermediate responsive reflow.
+3. **Desktop Canvas**: `1280 x 720` (DPR: 1.0)  -  verifies 8-lane 16:9 full-canvas layouts.
 
 ### Policy §8.1 Tri-Color Tokens
 - **Background**: `#FFFFFF` (White) or `#000000` (Black)

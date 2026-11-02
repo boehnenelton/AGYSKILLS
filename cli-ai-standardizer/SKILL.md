@@ -1,6 +1,6 @@
 ---
 name: cli-ai-standardizer
-description: Create, scaffold, or refactor standalone Python CLI AI file-processing and prompting tools powered by stdlib REST API dispatch (Gemini REST, OpenAI-compatible REST for Groq, OpenRouter, TokenRouter, Grok, HuggingFace, OpenAI, Ollama Cloud, and Ollama Local), round-robin API key rotation with retry backoff, self-bootstrapping directories, embedded BEJSON 104/104a validation, single-instance locking, XML command output parsing, and resumable state tracking. Use when building AI-powered CLI file processors, autoprompters, batch AI asset transformers, or refactoring CLI AI scripts to use zero-SDK REST endpoints. Do NOT use for non-AI media or local file converters (use cli-processing-standardizer) or non-AI general CLI utilities without REST LLM calls (use cli-standardizer).
+description: Create, scaffold, or refactor standalone Python CLI AI file-processing and prompting tools powered by stdlib REST API dispatch (Gemini REST, OpenAI-compatible REST for Groq, OpenRouter, TokenRouter, Grok, HuggingFace, OpenAI, Ollama Cloud, and Ollama Local), round-robin API key rotation with retry backoff, self-bootstrapping directories, embedded BEJSON 104/104a validation, single-instance locking, XML command output parsing, and resumable state tracking. Use when building AI-powered CLI file processors, autoprompters, batch AI asset transformers, or refactoring CLI AI scripts to use zero-SDK REST endpoints. Do NOT use for non-AI media or local file converters (use auto-processing-toolbuilder) or non-AI general CLI utilities without REST LLM calls (use auto-processing-standardizer).
 ---
 # cli-ai-standardizer
 
@@ -8,7 +8,7 @@ Standardize Python CLI tools that combine automated `assets/` file-processing pi
 
 ## Summary
 
-Unifies the file-processing guarantees of `cli-processing-standardizer` and the embedded BEJSON 104/104a Core/Validator of `cli-standardizer` with the zero-SDK REST AI architecture from `CLI_AI`. Every generated tool uses Python's standard library (`urllib.request`) to call Gemini REST (`v1beta/models/<model>:generateContent`), OpenAI-compatible REST endpoints (`/v1/chat/completions` for Groq, OpenRouter, TokenRouter, Grok, HuggingFace, OpenAI, and Ollama Cloud), or local Ollama (`/api/chat`) without requiring third-party AI SDKs.
+Unifies the file-processing guarantees of `auto-processing-toolbuilder` and the embedded BEJSON 104/104a Core/Validator of `auto-processing-standardizer` with the zero-SDK REST AI architecture from `CLI_AI`. Every generated tool uses Python's standard library (`urllib.request`) to call Gemini REST (`v1beta/models/<model>:generateContent`), OpenAI-compatible REST endpoints (`/v1/chat/completions` for Groq, OpenRouter, TokenRouter, Grok, HuggingFace, OpenAI, and Ollama Cloud), or local Ollama (`/api/chat`) without requiring third-party AI SDKs.
 
 ## When to Use
 
@@ -19,8 +19,8 @@ Unifies the file-processing guarantees of `cli-processing-standardizer` and the 
 
 ## When NOT to Use
 
-- Creating local file-processing or FFmpeg media CLI tools that do not make AI/LLM API calls (use `cli-processing-standardizer`).
-- Scaffolding general-purpose non-AI CLI utilities without an `assets/` dropzone or REST AI dispatcher (use `cli-standardizer`).
+- Creating local file-processing or FFmpeg media CLI tools that do not make AI/LLM API calls (use `auto-processing-toolbuilder`).
+- Scaffolding general-purpose non-AI CLI utilities without an `assets/` dropzone or REST AI dispatcher (use `auto-processing-standardizer`).
 - Building multi-page web applications or Flask/FastAPI servers.
 
 ## Core Standardization Principles

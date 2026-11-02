@@ -1,7 +1,17 @@
 ---
 name: web-framework-architect
 description: >-
-  Architect, compile, and validate deterministic website routing systems marrying taxonomies to templates per the 12 Invariant Laws of Web Frameworks. Governs Domain 3 (The Web Framework Domain) of the Three-Domain Web Architecture. Enforces Taxonomic Filesystem Isomorphism, Universal Directory Index Resolution (index.html mandate), Page-Style Default vs. Blog Feed Exception, Default-Collapsed Sidebar Navigation Trees ('Classified to Fall'), Universal Horizontal Overflow Scrolling (.fw-docked-toolbar, .fw-table-scroll, .fw-breadcrumb-rail), and Terminal Node Cardinality (folder_index vs. flat_html vs. category_direct). Emits canonical 104a.web_framework.bejson manifests and compiles static multi-tier websites with relative path mathematics. Use when compiling website routing, binding templates across folder depths, synthesizing sidebar trees, or enforcing web framework routing laws. Do NOT use for planning database fields or taxonomy categories (use web-taxonomy-planner), designing visual HTML/CSS templates (use large-website-architect or template-architect), multi-domain workflow orchestration (use web-domain-coordinator), or reverse-engineering existing websites (use ui-navigation-decomposer).
+  Architect, compile, and validate deterministic website routing systems marrying
+  taxonomies to templates per the 12 Invariant Laws of Web Frameworks. Governs
+  Domain 3 of the Three-Domain Web Architecture. Enforces Taxonomic Filesystem
+  Isomorphism, Universal Directory Index Resolution, Collapsible Sidebar Trees,
+  Horizontal Overflow Scrolling, and Terminal Node Cardinality. Emits canonical
+  104a.web_framework.bejson manifests. Use when compiling website routing, binding
+  templates across folder depths, synthesizing sidebar trees, or enforcing web
+  routing laws. Do NOT use for planning database fields (use web-taxonomy-planner),
+  designing visual templates (use large-website-architect or template-architect),
+  multi-domain coordination (use web-domain-coordinator), or reverse-engineering
+  existing sites (use ui-navigation-decomposer).
 ---
 
 # Web Framework Architect (Domain 3: The Web Framework Domain)
@@ -71,7 +81,7 @@ Every directory level within a taxonomy must resolve cleanly via a bare trailing
 
 ### Law 3: The Law of Page-Style Default vs. Blog Feed Exception
 A Web Framework strictly distinguishes between **Page-Style Taxonomies (The Universal Default)** and **Feed-Style Taxonomies (Reserved Strictly for Blogs)**:
-- **Page-Style Mandate (All Non-Blog Taxonomies & Categories)**: Unless a taxonomy is explicitly a chronological **Blog**, every taxonomy hub (`site.domain/taxonomy/index.html`) and category page (`site.domain/taxonomy/category/index.html`) **MUST be a Page-Style document**. It must contain substantive page content directly related to that section or taxonomy—such as an opening essay, a domain description, architectural documentation, usage guidelines, or a structured reference matrix. **It must NEVER be just a bare feed of links.**
+- **Page-Style Mandate (All Non-Blog Taxonomies & Categories)**: Unless a taxonomy is explicitly a chronological **Blog**, every taxonomy hub (`site.domain/taxonomy/index.html`) and category page (`site.domain/taxonomy/category/index.html`) **MUST be a Page-Style document**. It must contain substantive page content directly related to that section or taxonomy - such as an opening essay, a domain description, architectural documentation, usage guidelines, or a structured reference matrix. **It must NEVER be just a bare feed of links.**
 - **Feed-Style Exception (Exclusive to Blog Taxonomies)**: Only a **Blog** taxonomy (`site.domain/blog/` and `site.domain/blog/category/index.html`) uses a pure **Feed Style** as its primary main-canvas layout, because blog consumption is inherently chronological and stream-driven.
 - **Why Bare Link Feeds Are Forbidden on Non-Blog Hubs**: Because global and taxonomic navigation is handled comprehensively by the **Collapsible Sidebar Tree** and **Breadcrumb Rail**, turning a non-blog taxonomy or category `index.html` into a glorified list of links wastes the main viewport and deprives the section of its own authoritative documentation.
 

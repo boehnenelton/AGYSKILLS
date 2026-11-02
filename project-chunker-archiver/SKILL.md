@@ -10,7 +10,7 @@ description: >-
 
 `project-chunker-archiver` operates at Layer 6 (`L6_Composition_Root`) to provide tamper-evident, zero-SQL project archiving and lifecycle management backed by Elton Boehnen's `Project_Chunker` and the `lib_bejson_Projects_*` library family. It transitions archiving from loose ZIP drops to byte-verified BEJSON 104a snapshot containers (`.bejson`), multi-version tracker databases, and a queryable master registry with first-class **Type** (conforming to the Canonical Project Type Ledger) and **Status** (Active, Inactive, Archived, Legacy) governance.
 
-Crucially, `project-chunker` with `--track` and `--chunk` governs **entire project codebases as standalone entities**—including tracking and snapshotting the entire `libraries_104` bundle or entire `libraries_105` bundle as separate, registered projects in the master registry.
+Crucially, `project-chunker` with `--track` and `--chunk` governs **entire project codebases as standalone entities** - including tracking and snapshotting the entire `libraries_104` bundle or entire `libraries_105` bundle as separate, registered projects in the master registry.
 
 ## When to Use
 

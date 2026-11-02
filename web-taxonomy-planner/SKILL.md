@@ -6,7 +6,7 @@ description: >-
 
 # Web Taxonomy Planner (Domain 1: The Taxonomy Domain)
 
-The **Web Taxonomy Planner** governs **Domain 1 (The Taxonomy Domain)** of the Three-Domain Web Architecture. It establishes the foundational principle that **taxonomies do not merely define columns in a database table—they govern how information is partitioned, categorized, and structured across physical directories and URL namespaces**.
+The **Web Taxonomy Planner** governs **Domain 1 (The Taxonomy Domain)** of the Three-Domain Web Architecture. It establishes the foundational principle that **taxonomies do not merely define columns in a database table - they govern how information is partitioned, categorized, and structured across physical directories and URL namespaces**.
 
 In this architecture, database schema design and website hierarchy planning are unified into a single coherent domain: **The Taxonomy Domain**.
 

@@ -1,7 +1,7 @@
 ---
 name: agy-rules
 description: >-
-  Author, audit, structure, and enforce directory-scoped and global Antigravity CLI rules (GEMINI.md, AGENTS.md, .agents/rules/*.md). Enforces the 24 KB per-file ceiling, the 20,000-token rules budget ceiling, hierarchical upward directory traversal inheritance, automatic deduplication by resolved filesystem path, and strict negative constraint formulations. Use when crafting project rules, establishing directory boundaries, auditing rule files for token bloat, or debugging rule precedence.
+  Author, audit, structure, and enforce directory-scoped and global Antigravity CLI rules (GEMINI.md, AGENTS.md, .agents/rules/*.md). Enforces the 24 KB per-file ceiling, the 20,000-token rules budget ceiling, hierarchical upward directory traversal inheritance, automatic deduplication by resolved filesystem path, and strict negative constraint formulations. Use when crafting project rules, establishing directory boundaries, auditing rule files for token bloat, or debugging rule precedence. Do NOT use for packaging multi-skill plugins (use agy-plugins), coordinating subagents (use agy-subagents), or executing headless task prompts (use agy-prompt-automator).
 ---
 
 # Skill: `agy-rules`
@@ -67,4 +67,27 @@ wc -c AGENTS.md
 
 # Scan for policy contradiction patterns
 grep -iE "never|prohibited|forbidden|mandatory" AGENTS.md
+```
+
+
+## Subagent & Headless Execution Containment
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent & Headless Execution Containment
+When invoking automated operations, always mandate container isolation:
+
+```bash
+agy --sandbox -p "Execute task"
 ```

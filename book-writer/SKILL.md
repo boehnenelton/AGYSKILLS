@@ -1,11 +1,18 @@
 ---
 name: book-writer
 description: >-
-  Emulate Elton Boehnen's Cli_Bookwriter multi-turn chained-context book generation engine with an embedded SEO-ready publication HTML template. Guides the user through a disciplined chapter-by-chapter book writing workflow: Turn 1 creates the comprehensive multi-chapter plan outline from attached context; subsequent turns write exactly one chapter per turn maintaining plan scope and preceding chapter continuity; the final turn compiles all chapters into a standalone, SEO-optimized HTML publication using the embedded template. Use when writing long-form books, technical guides, manuals, or comprehensive documentation requiring multi-turn chapter execution and HTML compilation. Do NOT use for single-turn summary articles (use publication-html-builder), general task job tracking (use job-workflow-manager), or pre-planning database schemas (use planning-schema-planner).
+  Legacy book-writing workflow skill superseded by publication-book-builder.
+  Emulates Elton Boehnen's original multi-turn chained-context book generation.
+  Use when maintaining legacy book projects. For all new books, technical manuals,
+  and BKS-1 standard publications, use publication-book-builder. Do NOT use for
+  BKS-1 BEJSON 104db book documents (use publication-book-builder), single-turn
+  summary articles (use publication-html-builder), or general task jobs (use
+  job-workflow-manager).
 ---
-# Book Writer
+# Book Writer (Legacy - Superseded by `publication-book-builder`)
 
-Emulates Elton Boehnen's `Cli_Bookwriter` architecture to execute state-persistent, multi-turn, chapter-by-chapter book writing, culminating in an SEO-optimized, publication-ready standalone HTML document.
+> [!IMPORTANT]
+> This skill represents the legacy Bookmaker workflow. It is superseded by **[`publication-book-builder`](file:///data/data/com.termux/files/home/.gemini/config/skills/publication-book-builder/SKILL.md)** conforming to the authoritative **BEJSON Book Standard (BKS-1 kit v1.1.5)**. All new book projects should execute via `publication-book-builder`.
 
 ## Summary
 
@@ -164,3 +171,26 @@ Upon completing Chapter M, merge all chapters into the embedded template and out
 - **Losing Continuity**: Never generate Chapter N without referencing the exact text and terminology established in Chapter N-1.
 
 - **Missing SEO Tags**: Always populate all meta tags, Open Graph cards, and JSON-LD structured data during final HTML compilation.
+
+
+## Subagent & Headless Execution Containment
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent Execution Contract
+Always mandate sandbox isolation:
+
+
+
+## Subagent & Headless Execution Containment
+When invoking automated operations, always mandate container isolation:
+
+```bash
+agy --sandbox -p "Execute task"
+```

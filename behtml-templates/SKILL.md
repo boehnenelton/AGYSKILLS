@@ -57,14 +57,14 @@ description: >-
 
 ### 3.1 Document Template (With Widget Shelf)
 - **Gutter Sublanes**: Sublane 1 (`1 / 2`, `6.25%`) and Sublane 16 (`16 / -1`, `6.25%`).
-- **Inner Canvas**: Sublanes 2..15 (`2 / 16`, `87.5%`), height: `calc(17 * var(--ry-unit))` = `544px`. Must use `display: block; overflow-y: auto;` (not flex) to prevent flex-shrink squashing. Strict zero-fluff empty canvas with preset section header and metadata bar—ready to deploy immediately.
+- **Inner Canvas**: Sublanes 2..15 (`2 / 16`, `87.5%`), height: `calc(17 * var(--ry-unit))` = `544px`. Must use `display: block; overflow-y: auto;` (not flex) to prevent flex-shrink squashing. Strict zero-fluff empty canvas with preset section header and metadata bar - ready to deploy immediately.
 - **Smashed Text Box Prevention**: All `pre`, `textarea`, and `.text-box` elements enforce `min-height: calc(3 * var(--ry-unit))` (96px) and `box-sizing: border-box; flex-shrink: 0;` ensuring text boxes are never crushed to a single row.
 - **Buffer**: Row 19 unallocated spatial buffer (`32px`).
 - **Shelf**: Rows 20..24 (`20 / span 5`, `160px`) containing horizontal flex array of `150px x 150px` `.widget-block` containers with transparent borders and red header underlines.
 
 ### 3.2 Document Template (Widgetless Variant)
 - **Full Vertical Canvas**: Eliminates Row 19 and Rows 20..24. Canvas spans `grid-row: 2 / -1` with `height: calc(var(--app-height) - var(--ry-unit))` and `display: block`.
-- **Seamless Flow & Clean Scaffold**: Empty canvas scaffold ready for long-form prose and specifications—zero fake text, zero fake tables, zero marketing fluff.
+- **Seamless Flow & Clean Scaffold**: Empty canvas scaffold ready for long-form prose and specifications - zero fake text, zero fake tables, zero marketing fluff.
 - **Smashed Text Box Prevention**: Multi-row minimum height on pre/textarea blocks prevents single-row collapse.
 - **Retained Invariants**: Viewport lock, `visualViewport` dynamic height sync, 16-sublane horizontal alignment, Policy 8.1 colors (`#FFFFFF`, `#000000`, `#DE2626`), and Author footer.
 
