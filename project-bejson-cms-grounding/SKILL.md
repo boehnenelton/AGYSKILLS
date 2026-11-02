@@ -1,14 +1,28 @@
 ---
 name: project-bejson-cms-grounding
 description: >-
-  Grounding, architectural mapping, schema inspection, and operational navigation for the zero-SQL BEJSON CMS platform across the standalone suite (BEJSON_CMS) and the integrated NewAgent CMS (tools/NA-CMS). Use when analyzing CMS architecture, navigating src/web microservices and Flask blueprints, inspecting 104a.mfdb.bejson manifests, auditing static publishing pipelines, or understanding library dependencies across NewAgent/lib and tools_lib/na-cms. Do NOT use for active CLI management commands (use project-bejson-cms-manage), raw standalone BEJSON table mutations (use bejson-104-core), general multi-file database manifest validation (use mfdb-104-core), or general skill scaffolding (use skill-architect).
+  Grounding, architectural mapping, schema inspection, and operational navigation for the zero-SQL
+  BEJSON CMS platform across the standalone suite (BEJSON_CMS) and the integrated NewAgent CMS (tools/NA-CMS).
+  Covers the 4 microservices, BKS Blog Job Studio, CLI_AI 48 AI writing engine, Graphics 105 visual pipeline,
+  and dual repository topology. Use when analyzing CMS architecture, navigating src/web microservices and Flask blueprints,
+  inspecting 104a.mfdb.bejson manifests, auditing static publishing pipelines, or understanding library dependencies.
+  Do NOT use for active CLI management commands (use project-bejson-cms-manage), raw standalone BEJSON table mutations
+  (use bejson-104-core), general multi-file database manifest validation (use mfdb-104-core), or general skill scaffolding
+  (use skill-architect).
 ---
 
 # `project-bejson-cms-grounding` (Layer 5 Project Domain Grounding & Architectural Mapper)
 
+- **Target Architecture**: Android Termux (aarch64 / ARM 64-bit, Android Bionic libc) & POSIX Linux
+- **Architectural Tier**: Layer 5 (L5) Project Domain Grounding & Architectural Mapper
+- **Author Credit**: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
+- **RELATIONAL_ID**: `4a5b6c7d-8901-4ef2-bc34-56789abcdef1`
+- **Version**: `1.3.0`
+- **Domain**: Project Domain Grounding (`BEJSON_CMS` & `NewAgent CMS`)
+
 ## Summary
 
-`project-bejson-cms-grounding` provides architectural blueprints, schema specifications, repository topologies, and operational navigation across both the standalone **BEJSON CMS** (`/storage/emulated/0/Admin/Dev/Repos/BEJSON_CMS` and mirror `/storage/emulated/0/Admin/Dev/Python/Development/BEJSON_CMS`) and the integrated **NewAgent CMS** (`/storage/emulated/0/Admin/Dev/Repos/NewAgent/tools/NA-CMS`).
+`project-bejson-cms-grounding` provides architectural blueprints, schema specifications, repository topologies, and operational navigation across both the standalone **BEJSON CMS** (`/storage/emulated/0/Admin/Dev/Repos/BEJSON_CMS` and mirror `/storage/emulated/0/Admin/Dev/Python/Development/BEJSON_CMS`) and the integrated **NewAgent CMS** (`/storage/emulated/0/Admin/Dev/Repos/NewAgent/tools/NA-CMS`). It maps the modern production architecture including the **BKS Blog Job Studio**, **CLI_AI 48 Multi-Provider Engine**, **Graphics 105 Architecture**, and Playwright responsive QA gates.
 
 ---
 
@@ -16,9 +30,9 @@ description: >-
 
 - Analyzing or modifying the CMS codebase, its Flask services, or its static export publisher.
 - Navigating the dual architecture: the 4-microservice standalone suite vs. the streamlined NewAgent CMS fork.
-- Inspecting MFDB manifest structures (`104a.mfdb.bejson`), entity schemas, and two-part page storage (`pages_db/<uuid>.json`).
-- Understanding library boundaries: shared frozen Core libraries (`NewAgent/lib/`) vs. tool-specific libraries (`tools_lib/na-cms/`).
-- Inspecting the Dynamic Skeleton Loader registry (`resources/skeleton_registry.json`) and BEHTML layout standards.
+- Inspecting MFDB manifest structures (`104a.mfdb.bejson`), entity schemas, media assets (`mediaasset.bejson`), and two-part page storage (`pages_db/<uuid>.json`).
+- Understanding library boundaries: shared frozen Core libraries (`NewAgent/lib/`), Graphics 105 (`libraries_105/Lib_PY/Graphics` & `Canvas`), and AI writing engines (`lib_bejson_AI_*`).
+- Auditing responsive layouts and mobile viewports (`scrollWidth <= clientWidth`).
 
 ## When NOT to Use
 
@@ -33,110 +47,69 @@ description: >-
 
 ```mermaid
 flowchart TD
-    subgraph Standalone ["BEJSON CMS (Development/BEJSON_CMS)"]
+    subgraph Standalone ["BEJSON CMS (Repos/BEJSON_CMS & Development/BEJSON_CMS)"]
         A1["src/cms-manage.py (CLI)"]
         A2["BEJSON_CMS_Admin.py (Port 5000)"]
         A3["BEJSON_CMS_Publisher.py (Port 5001)"]
-        A4["PageEditorV2.py (Port 5002)"]
+        A4["PageEditorV2.py (Port 5002 - Tasking Hub & BKS Studio)"]
         A5["ProfileManager.py (Port 5003)"]
+        A6["BKS Blog Job Engine (storage/mfdb/bks_jobs/)"]
+        A7["Media & Asset Store (storage/mfdb/assets/)"]
     end
 
-    subgraph NewAgent ["NewAgent CMS (tools/NA-CMS)"]
-        B1["src/newagent-manage.py (CLI v20.1+)"]
-        B2["NewAgent_CMS_Admin.py (Port 5001)"]
-        B3["NewAgent_CMS_Publisher.py (Port 5001/5011)"]
-        B4["Dynamic Skeleton Loader (templates/default/)"]
-        B5["storage/mfdb/pages_db/ (104db page stores)"]
+    subgraph GraphicsEngine ["Graphics 105 & Canvas Domain"]
+        G1["libraries_105/Lib_PY/Graphics/lib_bejson_Graphics_graphics_core.py"]
+        G2["bejson-cms-canvas-illustrator (cms_canvas_illustrator.py)"]
+        G3["Hero Banners (1280x640 Tri-Color SVG + Playwright PNG/WebP)"]
+        G4["Architecture Blueprints (1280x720 16:9 3-Pillar Slides)"]
     end
 
-    subgraph Libs ["Library Tier Hierarchy"]
-        L1["NewAgent/lib/lib_bejson_Core_* (Frozen Core)"]
-        L2["tools_lib/na-cms/lib_bejson_NewAgentCMS_* (CMS Family)"]
+    subgraph WritingEngine ["CLI_AI 48 & BKS-1 Writing"]
+        W1["lib_bejson_AI_ai_writing.py (Multi-Provider REST Dispatch)"]
+        W2["lib_bejson_CMS_bks_blog_jobs.py (4-Part Plan & Execution)"]
     end
 
-    NewAgent --> L1
-    NewAgent --> L2
+    Standalone --> GraphicsEngine
+    Standalone --> WritingEngine
 ```
 
 ---
 
-## 2. NewAgent CMS Architectural Topology (`tools/NA-CMS`)
-
-Located at `/storage/emulated/0/Admin/Dev/Repos/NewAgent/tools/NA-CMS`:
+## 2. Directory Architecture & Storage Contracts
 
 ```text
-tools/NA-CMS/
-|-- AGENTS.md                  # Developer operational rules and quick reference
-|-- README.md                  # System overview and feature list
-|-- advanced_launcher.py       # Multi-service daemon manager
-|-- cms_launcher.sh            # Interactive shell runner
-|-- config.json                # Bootstrap 104a configuration
-|-- src/
-|   |-- newagent-manage.py     # Unified CLI Toolkit (v20.1+)
-|   `-- web/
-|       |-- NewAgent_CMS_Admin.py       # Thin entrypoint registering the 4 Blueprints
-|       |-- NewAgent_CMS_Shared.py      # Auth, paths, R() renderer
-|       |-- NewAgent_CMS_System.py      # System Blueprint: Dashboard, config, reset
-|       |-- NewAgent_CMS_Content.py     # Content Blueprint: Pages, categories, apps, authors
-|       |-- NewAgent_CMS_Media.py       # Media Blueprint: Low-memory gallery & uploads
-|       |-- NewAgent_CMS_Interface.py   # Interface Blueprint: Nav, ads, publish trigger
-|       |-- NewAgent_CMS_Publisher.py   # Static site compiler & preview server
-|       `-- NewAgent_CMS_Renderers.py   # Polymorphic page-type strategy renderers
+BEJSON_CMS/
+|-- bejson_project.json        # Canonical project tracker (Schema v1.8.0, Versioned UUID)
+|-- dev/
+|   |-- change-log.md          # Comprehensive per-package release notes
+|   `-- UIPref.md              # User interface preferences and mobile styling rules
 |-- resources/
-|   |-- skeleton_registry.json # BEJSON 104a registry tracking all HTML templates & {{tags}}
-|   |-- templates/
-|   |   |-- default/           # Canonical live skeleton HTML files (7 templates)
-|   |   `-- _factory/default/  # Frozen baseline for factory reset
-|   `-- styles/
-|       |-- behtml.css         # Canonical BEHTML quantized theme (Ry=32px, 8-lane X-axis)
-|       |-- dark.css           # Classic dark theme
-|       `-- light.css          # Classic light theme
+|   |-- styles/ (dark.css, light.css)
+|   `-- templates/ (canonical HTML skeleton templates)
+|-- src/
+|   |-- cms-manage.py          # Unified CLI management toolkit
+|   |-- lib/                   # Local Core, AI, and BKS libraries
+|   `-- web/                   # Flask microservices & Static Publisher
 `-- storage/
-    |-- mfdb/site_master/      # Manifest + tabular entity records (the database)
-    |   |-- 104a.mfdb.bejson   # Central master manifest
-    |   `-- data/*.bejson      # Tabular entity tables
-    |-- mfdb/pages_db/         # Standalone 104db content files keyed by page_uuid
-    |-- mfdb/assets/           # Optimized local media assets (WebP format)
-    `-- builds/                # Ephemeral static export output directory
+    |-- builds/                # Static export root (HTML pages, assets, feeds)
+    `-- mfdb/
+        |-- site_master/data/
+        |   |-- pagerecord.bejson     # Page manifest & page_featured_img links
+        |   `-- mediaasset.bejson     # Registered media assets (hash, size, mime)
+        |-- pages_db/                 # Two-part page content files (<uuid>.json)
+        |-- bks_jobs/                 # BKS-1 Blog Job templates & registries
+        `-- assets/                   # High-res SVG banners, PNGs, and WebPs
 ```
 
 ---
 
-## 3. Storage Architecture: Two-Part Page Persistence
+## 3. Media Asset & Graphics 105 Standard
 
-In NewAgent CMS, pages are decoupled into index metadata and body content:
-
-1. **`PageRecord` (in `storage/mfdb/site_master/data/pagerecord.bejson`)**:
-   - Fields: `page_uuid`, `page_title`, `page_slug`, `page_cat_name`, `page_type`, `page_created_at`, `page_external_url`, `page_author_name`, `page_featured_img`.
-   - Category references resolve via **Category Name** (`page_cat_name`), not slug.
-   - Author references resolve via **Author Display Name** (`page_author_name`).
-2. **Page Content File (in `storage/mfdb/pages_db/<page_uuid>.json`)**:
-   - Multi-record BEJSON `104db` format:
-     - `PageMeta` row: `Record_Type_Parent`, `meta_title`.
-     - `Content` row: `Record_Type_Parent`, `html_body`, `markdown_body`, `source_code`.
-   - Both halves are required; creating a manifest row without the content file results in empty or broken pages.
-
----
-
-## 4. Dynamic Skeleton Loader Architecture (v20.0+)
-
-The legacy practice of embedding skeleton HTML as Python string literals in `NewAgent_CMS_Publisher.py` was replaced by the `SkeletonLoader` (`tools_lib/na-cms/lib_bejson_NewAgentCMS_cms_skeletons.py`).
-
-### Structural Principles:
-1. **Disk-Only Markup**: Skeletons reside only on disk in `resources/templates/default/`.
-2. **Registry-Gated Validation**: `resources/skeleton_registry.json` tracks required `{{tags}}` per template.
-3. **Pre-Publish Gate**: The static publisher checks all wired-up skeletons via `validate_all()` before touching `storage/builds/`. If any tag is missing, the build halts with a clear error report.
-4. **Draft/Promote Safety**: Editing a template stages a draft copy, allows visual diffing (`skeleton diff`), verifies tags (`skeleton validate`), and creates an archival backup in `resources/templates/_history/` upon promotion (`skeleton promote`).
-
----
-
-## 5. BEHTML & Featured Media Visual Standards
-
-1. **BEHTML Quantized Grid (`behtml.css`)**:
-   - X-axis partitioned into 8 octal lanes (`X0`..`X7` at 12.5% intervals).
-   - Y-axis quantized to `Ry = 32px` row increments.
-   - Tri-Color system: Pitch Black (`#000000`), Pure White (`#FFFFFF`), Accent Red (`#DE2626`).
-2. **Optimal Featured Image Geometry**:
-   - Standard 2:1 widescreen aspect ratio: **1280 × 640 px** (or 16:9 **1280 × 720 px**).
-   - `.article-featured-image` CSS rule locks `aspect-ratio: 2 / 1; object-fit: cover; margin-bottom: calc(var(--behtml-ry) * 1.5); border: 1px solid var(--behtml-ethereal-line);`.
-   - Image assets generated via `canvas-animation-studio` and compressed via `asset optimize` (WebP).
+Every article record in `pagerecord.bejson` must maintain visual integrity:
+1. **Featured Image Rule**: Must point to an authored 1280x640 Policy §8.1 Tri-Color SVG hero banner in `storage/mfdb/assets/` (never `default_page_image.webp`).
+2. **Architecture Blueprint Rule**: Section 2 of long-form articles must embed an authored 1280x720 3-pillar blueprint diagram.
+3. **Format Triad**: Every visual asset is produced and registered in 3 formats:
+   - Vector: `.svg` (crisp infinite scaling)
+   - High-DPI Raster: `.png` (2x device scale via Playwright `render_still_frame`)
+   - Compressed Web: `.webp` (quality=90 via PIL)
+4. **Referential Integrity**: Every file in `storage/mfdb/assets/` must have a corresponding row in `mediaasset.bejson`.

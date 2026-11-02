@@ -28,15 +28,13 @@ EXPORTS_DIRNAME = "exports"
 
 # Why: R6 - an export is rendered, written atomically, recorded as an Export row, and the book is committed at C4, all as one operation.
 # Input: project root (all stored paths are relative to it), the book's file path, the document, a format and theme.
-# `slug` (optional) replaces the title slug in the folder and file names, so an app holding two books with the same title can keep their exports apart.
 # Output: the new Export row. Re-exporting the same format and path replaces its row. Raises BKSError on a refused render or commit.
 def bks_export_write(project_root: str, book_path: str, doc: dict, fmt: str, *, theme: str = "becss", credit: bool = True,
-                     now: Optional[str] = None, slug: Optional[str] = None) -> dict:
+                     now: Optional[str] = None) -> dict:
     X = Registry.F.Export
     rendered = Render.bks_render_book(doc, fmt, theme=theme, credit=credit)
-    slug = slug or Derive.bks_derive_slugify(Store.bks_store_book(doc)[Registry.F.Book.book_title_text])
-    filename = slug + Render.FILE_EXTENSIONS[fmt]
-    rel = f"{EXPORTS_DIRNAME}/{slug}/{filename}"
+    slug = Derive.bks_derive_slugify(Store.bks_store_book(doc)[Registry.F.Book.book_title_text])
+    rel = f"{EXPORTS_DIRNAME}/{slug}/{rendered['filename']}"
     target = os.path.join(project_root, *rel.split("/"))
     os.makedirs(os.path.dirname(target), exist_ok=True)
     fd, tmp = tempfile.mkstemp(dir=os.path.dirname(target), suffix=".tmp")
@@ -68,22 +66,3 @@ def bks_export_stale(doc: dict) -> List[dict]:
 # Output: render result dict (bytes, filename, ...).
 def bks_export_preview(doc: dict, fmt: str = "md", *, theme: str = "becss") -> dict:
     return Render.bks_render_book(doc, fmt, theme=theme, preview=True)
-
-
-# Why: removing a book from a library must remove its export files and rows, or C4 would flag rows pointing at nothing.
-# Input: project root, the book file path and the document. Effect: deletes each exported file that exists, removes all Export rows and commits (level 3).
-# Output: number of files deleted.
-def bks_export_clear(project_root: str, book_path: str, doc: dict) -> int:
-    X = Registry.F.Export
-    tables = Store.bks_store_tables(doc)
-    removed = 0
-    for row in tables["Export"]:
-        target = os.path.join(project_root, *row[X.export_path_text].split("/"))
-        if os.path.isfile(target):
-            os.remove(target)
-            removed += 1
-    if tables["Export"]:
-        tables["Export"] = []
-        Store.bks_store_set_tables(doc, tables)
-        Store.bks_store_commit(book_path, doc)
-    return removed

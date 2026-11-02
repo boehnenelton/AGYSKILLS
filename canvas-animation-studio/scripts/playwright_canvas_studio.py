@@ -218,6 +218,8 @@ def main():
     parser.add_argument("--sequence", action="store_true", help="Render full multi-frame animation sequence")
     parser.add_argument("--list-templates", action="store_true", help="List all available canvas templates in the catalog")
     parser.add_argument("--gen-config", type=str, help="Generate a new BEJSON 105a config file at specified path")
+    parser.add_argument("--tts-text", type=str, default=None, help="Optional narration text to synthesize and speak via Termux TTS")
+    parser.add_argument("--termux-tts", action="store_true", help="Enable live Termux TTS (termux-tts-speak + PulseAudio OpenSL ES paplay)")
     parser.add_argument("--version", action="version", version=f"playwright_canvas_studio v{VERSION}")
 
     args = parser.parse_args()
@@ -275,6 +277,21 @@ def main():
         render_sequence=is_seq
     ))
     print(f"\nCapture complete. Captured {result['total_captured']} frame(s).")
+
+    if args.tts_text or args.termux_tts:
+        try:
+            sys.path.insert(0, str(_HERE))
+            from termux_tts_video_compiler import synthesize_tts_segment, speak_termux_tts_live
+            nar_text = args.tts_text or f"Canvas capture completed for {config_dict.get('template_name', 'stage')}."
+            out_dir = Path(args.output).resolve().parent / "tts_audio"
+            mp3_p = out_dir / "capture_tts.mp3"
+            wav_p = out_dir / "capture_tts.wav"
+            dur = synthesize_tts_segment(nar_text, mp3_p, wav_p)
+            if args.termux_tts:
+                speak_termux_tts_live(nar_text, wav_path=wav_p)
+            print(f"Synthesized TTS audio ({dur}s): {wav_p}")
+        except Exception as exc:
+            logger.warning(f"Optional TTS step skipped: {exc}")
 
 if __name__ == "__main__":
     main()

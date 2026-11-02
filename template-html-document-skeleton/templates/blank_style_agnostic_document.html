@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Title</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 1.5rem; }
+        .bejson-cms-article { width: 100%; max-width: 900px; margin: 0 auto; }
+        img { max-width: 100% !important; height: auto !important; display: block; }
+        pre, code, table, div { max-width: 100% !important; overflow-x: auto; }
+        .table-container { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1.5rem 0; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th, td { padding: 10px 14px; text-align: left; }
+        pre { padding: 1.25rem; overflow-x: auto; margin-bottom: 1.5rem; }
+        blockquote { margin: 1.5rem 0; padding: 1rem 1.25rem; border-left: 4px solid #DE2626; }
+    </style>
+</head>
+<body>
+<article class="bejson-cms-article">
+    <header class="article-header">
+        <h1 class="article-title">Document Title</h1>
+    </header>
+
+    <section class="article-section" id="section-1">
+        <h2>Section 1 Title</h2>
+        <p>Section 1 Content Body</p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Value 1</td>
+                        <td>Value 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="article-section" id="section-2">
+        <h2>Section 2 Title</h2>
+        <pre><code class="language-text">Code Content 1</code></pre>
+    </section>
+</article>
+</body>
+</html>

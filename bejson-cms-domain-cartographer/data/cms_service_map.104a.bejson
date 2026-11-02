@@ -4,17 +4,179 @@
   "Format_Creator": "Elton Boehnen",
   "Registry_Domain": "BEJSON_CMS_Service_Cartography",
   "Schema_Version": "1.0.0",
-  "Records_Type": ["CMSServiceEntry"],
-  "Fields": [
-    {"name": "service_entry_uuid", "type": "string"},
-    {"name": "service_canonical_name", "type": "string"},
-    {"name": "service_relative_path", "type": "string"},
-    {"name": "cms_distribution_flavor", "type": "string"},
-    {"name": "http_routes_count", "type": "integer"},
-    {"name": "underlying_stores_csv", "type": "string"},
-    {"name": "static_export_supported", "type": "boolean"},
-    {"name": "source_sha256_hash", "type": "string"},
-    {"name": "indexed_at_timestamp", "type": "string"}
+  "Records_Type": [
+    "CMSServiceEntry"
   ],
-  "Values": []
+  "Fields": [
+    {
+      "name": "service_entry_uuid",
+      "type": "string"
+    },
+    {
+      "name": "service_canonical_name",
+      "type": "string"
+    },
+    {
+      "name": "service_relative_path",
+      "type": "string"
+    },
+    {
+      "name": "cms_distribution_flavor",
+      "type": "string"
+    },
+    {
+      "name": "http_routes_count",
+      "type": "integer"
+    },
+    {
+      "name": "underlying_stores_csv",
+      "type": "string"
+    },
+    {
+      "name": "static_export_supported",
+      "type": "boolean"
+    },
+    {
+      "name": "source_sha256_hash",
+      "type": "string"
+    },
+    {
+      "name": "indexed_at_timestamp",
+      "type": "string"
+    }
+  ],
+  "Values": [
+    [
+      "0b2c89ba-6c7e-5dfa-a907-eb19a9df4772",
+      "BEJSON_CMS_Admin",
+      "src/web/BEJSON_CMS_Admin.py",
+      "Standalone_BEJSON_CMS",
+      0,
+      "pages_db.bejson",
+      true,
+      "74915c5dd7d9ac47f58b50b1a6442eadf90a3ec9a472f594e3faa3010e60ae3b",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "170b9bfc-fa4b-533a-9fc8-9afe17a1b280",
+      "BEJSON_CMS_Content",
+      "src/web/BEJSON_CMS_Content.py",
+      "Standalone_BEJSON_CMS",
+      33,
+      "pages_db.bejson",
+      false,
+      "295534952d0c9eb274a153b2b545973c3004efe1e315d1ded0b8fe5aa11662b6",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "e8f4198e-fa4f-5f0d-8be0-ce2b1df99686",
+      "BEJSON_CMS_FileBrowser",
+      "src/web/BEJSON_CMS_FileBrowser.py",
+      "Standalone_BEJSON_CMS",
+      4,
+      "pages_db.bejson",
+      false,
+      "8972e0f67e838dfb6c55681d9d7eced90b01805823a55895c7ffc27cd209aea1",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "e57cf7c1-bf66-5170-8801-c5c62a46c7e2",
+      "BEJSON_CMS_Interface",
+      "src/web/BEJSON_CMS_Interface.py",
+      "Standalone_BEJSON_CMS",
+      5,
+      "pages_db.bejson",
+      true,
+      "fb385c369dd36b79a7bbcca8ee24c6b322714c2ec8298e3b2e930678c51d2c61",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "f379bcec-6ed4-5027-b549-65dc9c6f11ef",
+      "BEJSON_CMS_Media",
+      "src/web/BEJSON_CMS_Media.py",
+      "Standalone_BEJSON_CMS",
+      10,
+      "pages_db.bejson",
+      false,
+      "f6585af9188291c85de2814ebf2cba8d3a515692bf37c24229c304e9f5ae3afe",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "f61d38e8-1a62-5074-a280-0b27f9025a07",
+      "BEJSON_CMS_PageEditor",
+      "src/web/BEJSON_CMS_PageEditor.py",
+      "Standalone_BEJSON_CMS",
+      11,
+      "pages_db.bejson",
+      true,
+      "c5482ad57bfd5592a160219fda4d5164b02f005265b0ee5333acdccf2490aa46",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "eeb516b5-3b27-571e-b0fa-af77fd54d75c",
+      "BEJSON_CMS_PageEditorV2",
+      "src/web/BEJSON_CMS_PageEditorV2.py",
+      "Standalone_BEJSON_CMS",
+      29,
+      "gemini_keys_export.bejson,import_keys_upload.bejson",
+      true,
+      "012241f61408b870fbb9714e329f92c6df92c78511a1f1ac89d9b8b933d5df55",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "a155d441-9a65-5fc7-b5d7-770194f394dd",
+      "BEJSON_CMS_ProfileManager",
+      "src/web/BEJSON_CMS_ProfileManager.py",
+      "Standalone_BEJSON_CMS",
+      4,
+      "pages_db.bejson",
+      true,
+      "acd4692c4d8ee573e9d6a71775df4489e5c5b9c772abc7cb945b46055412dbe8",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "7ca1e2b6-0dfd-5a69-bf52-2788fea7ac6b",
+      "BEJSON_CMS_Publisher",
+      "src/web/BEJSON_CMS_Publisher.py",
+      "Standalone_BEJSON_CMS",
+      10,
+      "pages_db.bejson",
+      true,
+      "feeb1cc0b078e0b0bc5bb2f9c396736a45ab55d3a4173e70d458d28788b8a876",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "66cc3544-2bc8-5d87-b1cf-a2c701653f94",
+      "BEJSON_CMS_Renderers",
+      "src/web/BEJSON_CMS_Renderers.py",
+      "Standalone_BEJSON_CMS",
+      0,
+      "pages_db.bejson",
+      true,
+      "98dabacd909765d2489c4a9398a61c9f88bcc5f3aafb710a859c940869655fdd",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "4a9aa03f-d52c-5aa9-b55f-60d98d24ed2a",
+      "BEJSON_CMS_Shared",
+      "src/web/BEJSON_CMS_Shared.py",
+      "Standalone_BEJSON_CMS",
+      0,
+      "pages_db.bejson",
+      true,
+      "a2bb42191b54e5ae5efe2467d8eff7d30510cfc17d85564709f23088777b747b",
+      "2026-11-02T18:58:34Z"
+    ],
+    [
+      "92cfe6ee-6d67-5552-bf1b-e6c92c4abdb5",
+      "BEJSON_CMS_System",
+      "src/web/BEJSON_CMS_System.py",
+      "Standalone_BEJSON_CMS",
+      5,
+      "pages_db.bejson",
+      true,
+      "c89c55f543ef4ae806af5d5ee6a98860ed4791e8a8622175471308af2ad5ad0f",
+      "2026-11-02T18:58:34Z"
+    ]
+  ]
 }

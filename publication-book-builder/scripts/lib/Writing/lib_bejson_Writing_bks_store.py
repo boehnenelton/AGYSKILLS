@@ -243,67 +243,6 @@ def bks_store_apply_failure(doc: dict, chapter_uuid: str, *, error_code: Optiona
         input_tokens=None, output_tokens=None, error_code=error_code))
     bks_store_set_tables(doc, tables)
 
-# Why: titles and briefs are edited after planning; a chapter whose wording changed is no longer accepted, but its text is kept for the author (status "drafted").
-# Input: doc, chapter uuid, new title and/or brief (None = unchanged). Effect: updates the row; an accepted chapter becomes "drafted"; a complete or final book returns to draft (W7).
-# Output: the updated chapter row.
-def bks_store_update_chapter(doc: dict, chapter_uuid: str, *, title: Optional[str] = None, brief: Optional[str] = None,
-                             now: Optional[str] = None) -> dict:
-    C = Registry.F.Chapter
-    stamp = now or Derive.bks_derive_now_utc()
-    tables = bks_store_tables(doc)
-    ch = _find_chapter(tables, chapter_uuid)
-    changed = False
-    if title is not None and title != ch[C.chapter_title_text]:
-        ch[C.chapter_title_text], changed = title, True
-    if brief is not None and brief != ch[C.chapter_brief_text]:
-        ch[C.chapter_brief_text], changed = brief, True
-    if changed:
-        if ch[C.chapter_status_text] == "accepted":
-            ch[C.chapter_status_text] = "drafted"
-            ch[C.chapter_audit_passed_flag] = None
-            ch[C.chapter_audit_fail_reason_text] = None
-        ch[C.chapter_updated_at] = stamp
-        if _touch_book(tables["Book"][0], stamp):
-            tables["Export"] = []
-    bks_store_set_tables(doc, tables)
-    bks_store_refresh_derived(doc)
-    return [c for c in bks_store_chapters(doc) if c[C.chapter_uuid] == chapter_uuid][0]
-
-BOOK_METADATA_FIELDS = ("book_subtitle_text", "book_goal_text", "book_audience_text", "book_summary_text", "book_cover_path_text",
-                        "book_tags_list", "book_language_text", "book_category_uuid_fk", "book_category_name_text",
-                        "book_author_uuid_fk", "book_author_name_text", "book_booktype_uuid_fk", "book_booktype_slug_text")
-
-# Why: catalog metadata (category, author, language...) changes without touching content, so it never drops a released book to draft or changes the hash.
-# Input: doc and {field name: value} limited to BOOK_METADATA_FIELDS. Raises BKSError for any other field (title is content: edit it with bks_store_update_title).
-def bks_store_update_book(doc: dict, updates: dict, *, now: Optional[str] = None) -> None:
-    tables = bks_store_tables(doc)
-    for key, value in updates.items():
-        if key not in BOOK_METADATA_FIELDS:
-            raise Errors.BKSError(Errors.E_BKS_SCHEMA_MISMATCH, f"{key} is not catalog metadata")
-        tables["Book"][0][key] = value
-    tables["Book"][0][Registry.F.Book.book_updated_at] = now or Derive.bks_derive_now_utc()
-    bks_store_set_tables(doc, tables)
-
-# Why: the title is part of the content hash, so changing it is a content edit (W7).
-def bks_store_update_title(doc: dict, title: str, *, now: Optional[str] = None) -> None:
-    B = Registry.F.Book
-    stamp = now or Derive.bks_derive_now_utc()
-    tables = bks_store_tables(doc)
-    if tables["Book"][0][B.book_title_text] != title:
-        tables["Book"][0][B.book_title_text] = title
-        if _touch_book(tables["Book"][0], stamp):
-            tables["Export"] = []
-    bks_store_set_tables(doc, tables)
-    bks_store_refresh_derived(doc)
-
-# Why: later chapters are drafted with the previous chapter's text as context.
-# Input: 1-based position among writable nodes. Output: the body, or None when absent or out of range.
-def bks_store_body_by_position(doc: dict, position: int) -> Optional[str]:
-    nodes = [c for c in bks_store_chapters(doc) if bks_store_is_writable(c)]
-    if not 1 <= position <= len(nodes):
-        return None
-    return nodes[position - 1][Registry.F.Chapter.chapter_body_md]
-
 # Why: "complete" is only true when every writable node is accepted (BKS-1 C3).
 def bks_store_mark_complete(doc: dict, now: Optional[str] = None) -> None:
     C, B = Registry.F.Chapter, Registry.F.Book

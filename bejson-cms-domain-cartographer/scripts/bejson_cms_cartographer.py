@@ -169,7 +169,13 @@ def main() -> int:
     }
     fmap = bejson_core_get_field_map(catalog_doc)
 
-    py_files = sorted(list(scan_dir.glob("**/routes*.py")) + list(scan_dir.glob("**/app*.py")) + list(scan_dir.glob("**/server*.py")))
+    py_files = sorted(set(
+        list(scan_dir.glob("**/routes*.py"))
+        + list(scan_dir.glob("**/app*.py"))
+        + list(scan_dir.glob("**/server*.py"))
+        + list(scan_dir.glob("**/src/web/*.py"))
+        + list(scan_dir.glob("**/BEJSON_CMS*.py"))
+    ))
     for pf in py_files:
         if ".git" in pf.parts or "venv" in pf.parts or "__pycache__" in pf.parts:
             continue

@@ -106,3 +106,16 @@ node scripts/diagram-cli.js append \
   --out payment_extended.json \
   --inject assets/diagram_canvas_template.html
 ```
+
+### 5. Optional Termux TTS & Synchronized Narrated Video Compilation
+
+Any validated BEJSON Diagrammer plan (`payment_plan.json`) can be optionally compiled into a synchronized **H.264/AAC MP4** and **VP9/Opus WebM** walkthrough video with burned-in Policy §8.1 Tri-Color `🔊 TTS` subtitle HUDs and live Termux TTS audio (`termux-tts-speak` + PulseAudio OpenSL ES `paplay`) via the Graphics Domain compiler:
+
+```bash
+python3 ~/.gemini/config/skills/canvas-animation-studio/scripts/termux_tts_video_compiler.py \
+  --diagram payment_plan.json \
+  --output-mp4 payment_walkthrough.mp4 \
+  --output-webm payment_walkthrough.webm \
+  --termux-tts
+```
+

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimal HTML Specification for BEJSON CMS Ingestion</title>
+    <style>
+        :root {
+            --primary-color: #DE2626;
+            --background-color: #050505;
+            --text-color: #FFFFFF;
+            --text-muted: #888888;
+            --border-color: #222222;
+            --code-bg: #0A0A0A;
+            --font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+            --font-family-mono: 'Source Code Pro', monospace;
+        }
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: var(--font-family-base);
+            line-height: 1.8;
+            margin: 0;
+            padding: 2rem 1.5rem;
+        }
+        .bejson-cms-article {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .article-header {
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1.5rem;
+        }
+        .article-title {
+            color: var(--primary-color);
+            font-size: clamp(2rem, 5vw, 3rem);
+            line-height: 1.15;
+            font-weight: 900;
+            letter-spacing: -1px;
+            margin: 0 0 1rem 0;
+        }
+        .article-meta-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .article-meta-bar strong {
+            color: #CCCCCC;
+        }
+        .featured-banner-wrapper {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        .article-featured-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        .executive-abstract {
+            background: #111111;
+            border-left: 4px solid var(--primary-color);
+            padding: 1.25rem 1.75rem;
+            margin-bottom: 2.5rem;
+            border-radius: 0 4px 4px 0;
+        }
+        .executive-abstract h3 {
+            color: #FFFFFF;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .executive-abstract p {
+            margin: 0;
+            color: #CCCCCC;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .table-of-contents {
+            background: #0A0A0A;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 3rem;
+        }
+        .table-of-contents h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .table-of-contents ol {
+            margin: 0;
+            padding-left: 1.5rem;
+            line-height: 1.8;
+            color: #EEEEEE;
+        }
+        .table-of-contents a {
+            color: #CCCCCC;
+            text-decoration: none;
+        }
+        .table-of-contents a:hover {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+        .article-section {
+            margin-bottom: 3.5rem;
+        }
+        .article-section h2 {
+            color: #FFFFFF;
+            font-size: 1.8rem;
+            font-weight: 900;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 16px;
+            margin-top: 0;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.5px;
+        }
+        .article-section h3 {
+            color: #EEEEEE;
+            font-size: 1.3rem;
+            font-weight: 800;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
+        }
+        .article-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        .article-section strong {
+            color: var(--primary-color);
+        }
+        .table-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 2rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+            color: #DDDDDD;
+            min-width: 600px;
+        }
+        thead {
+            background: #141414;
+            border-bottom: 2px solid var(--primary-color);
+            color: #FFFFFF;
+        }
+        th {
+            padding: 12px 16px;
+            font-weight: 700;
+            border-right: 1px solid var(--border-color);
+        }
+        th:last-child {
+            border-right: none;
+        }
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+        }
+        td:last-child {
+            border-right: none;
+        }
+        tr:nth-child(even) {
+            background: #0C0C0C;
+        }
+        tr:hover {
+            background: #161616;
+        }
+        pre {
+            background: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-left: 3px solid var(--primary-color);
+            border-radius: 4px;
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin-bottom: 2rem;
+        }
+        code {
+            font-family: var(--font-family-mono);
+            font-size: 0.95rem;
+            color: #F0F0F0;
+        }
+        .schema-box {
+            margin: 2rem 0;
+            background: #0D0D0D;
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            padding: 14px;
+        }
+        .schema-box label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+        .schema-box textarea {
+            width: 100%;
+            height: 220px;
+            background: #000000;
+            color: #00FF66;
+            font-family: var(--font-family-mono);
+            font-size: 0.85rem;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 12px;
+            resize: vertical;
+            box-sizing: border-box;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin: 2.5rem 0;
+        }
+        .card {
+            background: #0F0F0F;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 20px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+        }
+        .card-type {
+            font-size: 0.7rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            display: block;
+        }
+        .card h4 {
+            margin: 0 0 10px 0;
+            color: #FFFFFF;
+            font-size: 1.15rem;
+        }
+        .card p {
+            font-size: 0.95rem;
+            color: #AAAAAA;
+            margin: 0;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+<article class="bejson-cms-article">
+
+    <header class="article-header">
+        <h1 class="article-title">Optimal HTML Specification for BEJSON CMS Ingestion</h1>
+        <div class="article-meta-bar">
+            <span><strong>Author:</strong> Elton Boehnen</span>
+            <span>&bull;</span>
+            <span><strong>Category:</strong> Architecture</span>
+            <span>&bull;</span>
+            <span><strong>Date:</strong> 2026-11-02</span>
+            <span>&bull;</span>
+            <span><strong>Standard:</strong> BEJSON 104db / MFDB v1.31</span>
+            <span>&bull;</span>
+            <span><strong>Engine:</strong> BEJSON CMS Publisher</span>
+        </div>
+    </header>
+
+    <div class="featured-banner-wrapper">
+        <img alt="BEJSON CMS Architecture Banner" class="article-featured-image" src="default_brand_assets/banner.webp" />
+    </div>
+
+    <div class="executive-abstract">
+        <h3>Executive Summary</h3>
+        <p>
+            This document demonstrates the authoritative, high-fidelity HTML formatting architecture engineered for frictionless ingestion into Elton Boehnen's <strong>BEJSON CMS</strong>. By aligning with the backend parser requirements in <code>BEJSON_CMS_Content.py</code> and the styling contracts in <code>dark.css</code> and <code>Global_Skeleton.html</code>, this template guarantees bit-perfect title extraction, automatic image lightbox binding, zero Word/AI artifact rejection, and horizontal responsive table containment.
+        </p>
+    </div>
+
+    <nav class="table-of-contents">
+        <h2>Table of Contents</h2>
+        <ol>
+            <li><a href="#section-1">1. Parser Ingestion Architecture & Title Extraction</a></li>
+            <li><a href="#section-2">2. Heading Progression & Section Hierarchy</a></li>
+            <li><a href="#section-3">3. Responsive Table Containment Standards</a></li>
+            <li><a href="#section-4">4. Code Block Formatting & O(1) Field Map Caching</a></li>
+            <li><a href="#section-5">5. Interactive Schema Inspection Boxes</a></li>
+            <li><a href="#section-6">6. Component Card Grids & Layout Containers</a></li>
+            <li><a href="#section-7">7. Zero Watermark & Sanitization Hygiene Checklist</a></li>
+        </ol>
+    </nav>
+
+    <section class="article-section" id="section-1">
+        <h2>1. Parser Ingestion Architecture & Title Extraction</h2>
+        <p>
+            The BEJSON CMS ingestion engine operates through <code>extract_from_html(html_bytes)</code> inside <code>src/web/BEJSON_CMS_Content.py</code>. Understanding its extraction sequence guarantees that imported articles preserve complete structural fidelity:
+        </p>
+        <p>
+            <strong>Title Extraction Priority:</strong> The parser first queries the document <code>&lt;title&gt;</code> element. If present, its inner text becomes the canonical <code>meta_title</code> and <code>page_slug</code>. Only if <code>&lt;title&gt;</code> is missing does the parser fall back to scanning for an <code>&lt;h1&gt;</code>. Therefore, declaring a clean <code>&lt;title&gt;</code> tag in the head guarantees deterministic naming.
+        </p>
+        <p>
+            <strong>Body De-Noising:</strong> Upon ingestion, the parser automatically deconstructs <code>&lt;script&gt;</code>, <code>&lt;style&gt;</code>, <code>&lt;noscript&gt;</code>, <code>&lt;link&gt;</code>, and <code>&lt;meta&gt;</code> tags from the body. It then extracts <code>soup.find('body') or soup</code> and commits the inner HTML into the per-page <code>104db</code> content record (<code>storage/mfdb/pages_db/&lt;uuid&gt;.json</code>).
+        </p>
+    </section>
+
+    <section class="article-section" id="section-2">
+        <h2>2. Heading Progression & Section Hierarchy</h2>
+        <p>
+            Because the master layout skeleton (<code>Article_Skeleton.html</code>) already injects the page title as an <code>&lt;h1 class="article-title"&gt;</code>, article bodies should structure their internal hierarchy using <code>&lt;h2&gt;</code> for major section divisions and <code>&lt;h3&gt;</code> for sub-components:
+        </p>
+        <p>
+            In the CMS stylesheet (<code>dark.css</code>), all <code>.article-body h2</code> elements receive an authoritative <strong>5px left border in #DE2626</strong> with 20px left padding, establishing strong visual anchors without requiring redundant inline styles.
+        </p>
+        <h3>2.1 Text Formatting & Accent Discipline</h3>
+        <p>
+            Within paragraph blocks, bold elements (<code>&lt;strong&gt;</code> and <code>&lt;b&gt;</code>) are automatically mapped to <code>var(--primary-color)</code> (canonical red accent <code>#DE2626</code>). Hyperlinks (<code>&lt;a&gt;</code>) inherit the accent color with clear underline styling.
+        </p>
+    </section>
+
+    <section class="article-section" id="section-3">
+        <h2>3. Responsive Table Containment Standards</h2>
+        <p>
+            To prevent data tables from breaking mobile viewports and causing page-widening overflow on small screens, every table must be enclosed in a dedicated horizontal scroll container:
+        </p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Ingestion Stage</th>
+                        <th>Target Element</th>
+                        <th>Enforcement Rule</th>
+                        <th>CMS Outcome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-family: monospace; color: #DE2626;">Phase 1: Meta</td>
+                        <td><code>&lt;title&gt;</code></td>
+                        <td>Exact, concise headline string</td>
+                        <td>Mapped to <code>page_title</code> &amp; URL slug</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace; color: #DE2626;">Phase 2: Scrub</td>
+                        <td><code>&lt;o:p&gt;, Mso*</code></td>
+                        <td>Strip all Microsoft Word tags &amp; AI watermarks</td>
+                        <td>Guarantees 100% clean sanitized HTML</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace; color: #DE2626;">Phase 3: Table</td>
+                        <td><code>&lt;table&gt;</code></td>
+                        <td>Wrap in <code>&lt;div class="table-container"&gt;</code></td>
+                        <td>Enables touch scrolling without layout break</td>
+                    </tr>
+                    <tr>
+                        <td style="font-family: monospace; color: #DE2626;">Phase 4: Store</td>
+                        <td><code>104db Record</code></td>
+                        <td>Commit to <code>storage/mfdb/pages_db/&lt;uuid&gt;.json</code></td>
+                        <td>Atomic BEJSON persistence with O(1) retrieval</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="article-section" id="section-4">
+        <h2>4. Code Block Formatting & O(1) Field Map Caching</h2>
+        <p>
+            Technical articles in the CMS frequently present code algorithms. The optimal format uses standard <code>&lt;pre&gt;&lt;code&gt;</code> wrappers with horizontal overflow scrolling:
+        </p>
+
+        <pre><code># Mandatory Policy Section 6.2 O(1) Field Map Cache Compliance
+def read_cms_page_manifest(manifest_bejson: dict) -> list:
+    fields_list = manifest_bejson.get("Fields", [])
+    # Build dynamic O(1) lookup cache
+    field_map = {field_def["name"]: col_idx for col_idx, field_def in enumerate(fields_list)}
+    
+    slug_idx = field_map.get("page_slug")
+    title_idx = field_map.get("page_title")
+    
+    pages = []
+    for row in manifest_bejson.get("Values", []):
+        pages.append({
+            "slug": row[slug_idx],
+            "title": row[title_idx]
+        })
+    return pages
+</code></pre>
+    </section>
+
+    <section class="article-section" id="section-5">
+        <h2>5. Interactive Schema Inspection Boxes</h2>
+        <p>
+            When showcasing BEJSON or MFDB specifications, embedding a <code>.schema-box</code> container with a selectable, read-only <code>&lt;textarea&gt;</code> provides one-click developer ergonomics:
+        </p>
+
+        <div class="schema-box">
+            <label>Canonical Page Content Schema (BEJSON 104db)</label>
+            <textarea onclick="this.select();" readonly>{
+  "Format": "BEJSON",
+  "Format_Version": "104db",
+  "Format_Creator": "Elton Boehnen",
+  "Records_Type": ["PageMeta", "Content"],
+  "Fields": [
+    {"name": "Record_Type_Parent", "type": "string"},
+    {"name": "meta_title", "type": "string", "Record_Type_Parent": "PageMeta"},
+    {"name": "html_body", "type": "string", "Record_Type_Parent": "Content"},
+    {"name": "markdown_body", "type": "string", "Record_Type_Parent": "Content"},
+    {"name": "source_code", "type": "string", "Record_Type_Parent": "Content"}
+  ],
+  "Values": [
+    ["PageMeta", "Sample Article Title", null, null, null],
+    ["Content", null, "<article>...</article>", "", ""]
+  ]
+}</textarea>
+        </div>
+    </section>
+
+    <section class="article-section" id="section-6">
+        <h2>6. Component Card Grids & Layout Containers</h2>
+        <p>
+            For modular content summaries, feature highlights, or application portfolios, use the responsive card grid standard:
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <span class="card-type">Standard 1</span>
+                <h4>Semantic Purity</h4>
+                <p>Pure HTML5 tags (<code>&lt;article&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;nav&gt;</code>) without bloated CMS wrapper div soups.</p>
+            </div>
+            <div class="card">
+                <span class="card-type">Standard 2</span>
+                <h4>Lightbox Binding</h4>
+                <p>Images automatically bind to the native JavaScript modal viewer for full-screen inspection.</p>
+            </div>
+            <div class="card">
+                <span class="card-type">Standard 3</span>
+                <h4>Tri-Color Palette</h4>
+                <p>Adheres strictly to Elton Boehnen's Tri-Color design rules: #000000, #FFFFFF, and #DE2626.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article-section" id="section-7">
+        <h2>7. Zero Watermark & Sanitization Hygiene Checklist</h2>
+        <p>
+            Before committing or importing any HTML file into the CMS, ensure compliance with these core validation gates:
+        </p>
+        <ul style="color: rgba(255, 255, 255, 0.9); font-size: 1.1rem; line-height: 1.8; padding-left: 1.5rem;">
+            <li><strong>Zero Forbidden AI Watermarks:</strong> The import filter rejects or strips paragraphs matching terms like <em>"generated by"</em>, <em>"created with"</em>, or proprietary AI brand names.</li>
+            <li><strong>Zero Microsoft Word Junk:</strong> Never paste raw Word documents without stripping <code>o:p</code> namespace tags and <code>MsoNormal</code> inline styles.</li>
+            <li><strong>Self-Contained Image Paths:</strong> Reference images relatively or point to <code>default_brand_assets/</code> or <code>images/</code>.</li>
+            <li><strong>Single Root Article Container:</strong> Wrap content within <code>&lt;article class="bejson-cms-article"&gt;</code> for clean DOM boundary encapsulation.</li>
+        </ul>
+    </section>
+
+</article>
+</body>
+</html>

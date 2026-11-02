@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Title</title>
+    <style>
+        :root {
+            --primary-color: #DE2626;
+            --background-color: #FFFFFF;
+            --text-color: #111111;
+            --border-color: #E0E0E0;
+            --code-bg: #F4F4F4;
+            --font-family-base: 'Inter', system-ui, sans-serif;
+            --font-family-mono: 'Roboto Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: var(--font-family-base);
+            background: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 2rem 1.5rem;
+        }
+        .bejson-cms-article {
+            max-width: 860px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .article-header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 1rem;
+        }
+        .article-title {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--text-color);
+            line-height: 1.2;
+        }
+        .article-section {
+            margin-bottom: 2.5rem;
+        }
+        .article-section h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid var(--primary-color);
+            padding-left: 14px;
+        }
+        .article-section p {
+            margin-bottom: 1.25rem;
+        }
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        th {
+            background: rgba(222, 38, 38, 0.08);
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        td {
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        pre {
+            background: var(--code-bg);
+            border-left: 3px solid var(--primary-color);
+            padding: 1.25rem;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+        code {
+            font-family: var(--font-family-mono);
+            font-size: 0.95rem;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: #666666;
+        }
+    </style>
+</head>
+<body>
+<article class="bejson-cms-article">
+    <header class="article-header">
+        <h1 class="article-title">Document Title</h1>
+    </header>
+
+    <section class="article-section" id="section-1">
+        <h2>Section 1 Title</h2>
+        <p>Section 1 Content Body</p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Header 1</th>
+                        <th>Header 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Value 1</td>
+                        <td>Value 2</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="article-section" id="section-2">
+        <h2>Section 2 Title</h2>
+        <pre><code class="language-text">Code Content 1</code></pre>
+    </section>
+
+    <footer>
+        <p>Author: Author Name &bull; Date: YYYY-MM-DD</p>
+    </footer>
+</article>
+</body>
+</html>

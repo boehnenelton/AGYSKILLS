@@ -4,7 +4,8 @@ description: >-
   The Graphics Domain: Timeline Animation & Playwright Capture Engine (Layer 5: UI & Visual Interface Automation).
   Automate, parameterize, seek, and capture fixed-size SVG canvas animations, dynamic blank-slate stages,
   BEJSON 105a timeline schemas with explicit frame duration quantization (frame_duration_ms, timestamp_ms, rotation_deg),
-  procedural vector renderers (spinning cube, radar scanner), and seamless repeating texture tiles using
+  procedural vector renderers (spinning cube, radar scanner), seamless repeating texture tiles, and optional
+  Termux TTS (termux-tts-speak + PulseAudio OpenSL ES paplay) synchronized narrated video compilation using
   libraries_105/Lib_PY/Graphics and Playwright multi-format exporters (GIF, WebM, APNG, MP4). Use when authoring
   multi-frame SVG animations, building procedural animated graphics, or capturing deterministic visual sequences.
   Do NOT use for static single-image CMS article hero banners (use bejson-cms-canvas-illustrator), HTML DOM layout
@@ -18,7 +19,7 @@ description: >-
 - **Architectural Tier**: Layer 5 (L5) UI & Visual Interface Automation
 - **Author Credit**: Elton Boehnen · boehnenelton2024@gmail.com · boehnenelton2024.pages.dev · github.com/boehnenelton
 - **RELATIONAL_ID**: `1dfbfc4d-733b-4e89-b9e2-b26284cf8f4b`
-- **Version**: `1.9.0`
+- **Version**: `2.0.0`
 - **Domain**: Graphics Domain (`libraries_105/Lib_PY/Graphics` & `libraries_105/Lib_JS/Graphics`)
 - **BEJSON Libraries**: `lib_bejson_Graphics_graphics_core`, `lib_bejson_Graphics_graphics_canvas_templates`, `lib_bejson_Graphics_graphics_schemas`, `lib_bejson_Graphics_graphics_diagram_loader`
 
@@ -361,6 +362,38 @@ python3 svg_animation_framework.py --build slides --export-mp4 --dwell 8
 
 # 60-second WebM demo reel (12s dwell per slide)
 python3 svg_animation_framework.py --build slides --export-webm --dwell 12
+```
+
+---
+
+## 6.3 Optional Termux TTS & Synchronized Narrated Video Compilation
+
+The Graphics Domain provides an optional **Termux TTS + Narrated Video Compiler** ([`scripts/termux_tts_video_compiler.py`](./scripts/termux_tts_video_compiler.py)) that converts BEJSON diagrams, slide decks, or frame sequences into broadcast-ready **H.264 + AAC MP4** and **VP9 + Opus WebM** videos with burned-in Policy §8.1 Tri-Color `🔊 TTS` subtitle HUDs, red progress bars, and multi-mode Termux TTS playback:
+
+1. **Direct Hardware Audio Playback (`pulseaudio` + `paplay`)**: Automatically initializes the Termux OpenSL ES hardware sink (`pulseaudio --start --load=module-sles-sink --exit-idle-time=-1`), synthesizes 24 kHz stereo `.wav` segments mixed with an 880 Hz telemetry transition chime, measures exact durations via `ffprobe`, and plays audio out loud via `paplay`.
+2. **Non-Blocking Android System TTS (`termux-tts-speak`)**: Dispatches non-blocking speech requests (`termux-tts-speak -s MUSIC -r 1.05`) without hanging if the `com.termux.api` background socket is idle.
+3. **Burned-In Subtitle HUD & Progress Bar (`inject_tts_subtitle_hud_into_svg`)**: Injects a bottom Policy §8.1 Tri-Color caption bar and progress indicator into each SVG frame before Playwright capture.
+
+### CLI & Python Usage (Optional Method)
+
+```bash
+# 1. Compile a BEJSON Diagram JSON into a narrated H.264 MP4 + VP9 WebM video with live Termux TTS
+python3 ~/.gemini/config/skills/canvas-animation-studio/scripts/termux_tts_video_compiler.py \
+  --diagram data/ai_104_family_diagram.json \
+  --output-mp4 exports/ai_104_family_narrated_video.mp4 \
+  --output-webm exports/ai_104_family_narrated_video.webm \
+  --termux-tts
+
+# 2. Speak a single caption or status message via Termux TTS + OpenSL ES paplay
+python3 ~/.gemini/config/skills/canvas-animation-studio/scripts/termux_tts_video_compiler.py \
+  --speak-text "BEJSON 105 Graphics pipeline capture completed."
+
+# 3. Capture a canvas stage with optional Termux TTS voiceover via playwright_canvas_studio.py
+python3 ~/.gemini/config/skills/canvas-animation-studio/scripts/playwright_canvas_studio.py \
+  --template blank_slate_widescreen_1280x720.html \
+  --output captures/stage.png \
+  --tts-text "Widescreen stage capture complete." \
+  --termux-tts
 ```
 
 ---
