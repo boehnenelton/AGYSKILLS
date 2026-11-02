@@ -1,7 +1,7 @@
 ---
 name: simple-chunker
 description: >-
-  Quick, non-archiving single-file BEJSON project and directory chunking (.104a.bejson.txt) for ephemeral packaging, AI context injection, scratch backups, and ad-hoc unchunking. Specially suited for smaller sub-pieces and individual library families (Lib_JS, Lib_PY, Lib_SH, Lib_TS) without registry overhead. Zero registry tracking, zero history logs, and zero archive directory pollution. Use when needing fast, lightweight, standalone in-place or scratch directory chunks without committing to persistent archive registries. Do NOT use for entire 104/105 libraries bundles or formal archive scoops with versioned tracking (use project-chunker-archiver), full library orchestration (use library-chunker), or MFDB container packaging (use mfdb-104-chunker).
+  Quick, non-archiving single-file BEJSON project and directory chunking (.104a.bejson.txt) for ephemeral packaging, AI context injection, scratch backups, and ad-hoc unchunking. Specially suited for smaller sub-pieces and individual library families (Lib_JS, Lib_PY, Lib_SH, Lib_TS) without registry overhead. Zero registry tracking, zero history logs, and zero archive directory pollution. Use when needing fast, lightweight, standalone in-place or scratch directory chunks without committing to persistent archive registries. Do NOT use for entire 104/105 libraries bundles or formal archive scoops with versioned tracking (use project-chunker-archiver), full library orchestration (use library-chunker), unified chunk serialization engines (use bejson-chunker-engine), or MFDB container packaging (use mfdb-104-chunker).
 ---
 
 # simple-chunker (Layer 2 Ad-Hoc & Ephemeral Chunker)

@@ -1,5 +1,5 @@
 ---
-name: large-website-architect
+name: web-large-architect
 description: >-
   Architect, design, and scaffold production-ready large multi-page websites,
   documentation portals, taxonomy feeds, media galleries, and e-books using clean
@@ -14,9 +14,25 @@ description: >-
   websites (use ui-navigation-decomposer).
 ---
 
-# Large Website Architect (Domain 2: The Template Domain / The Templator)
+# web-large-architect (Layer 5 Composition & Architecture)
 
-The **Large Website Architect** governs **Domain 2 (The Template Domain / The Templator)** of the Three-Domain Web Architecture. The Templator is a pure visual, spatial, and defensive UI engineer. Its sole responsibility is to build and maintain the **Reusable Template Design Files** - the structural `.html` and `.css` layout skeletons that websites use to display content.
+## Summary
+
+`web-large-architect` governs **Domain 2 (The Template Domain / The Templator)** of the Three-Domain Web Architecture. The Templator is a pure visual, spatial, and defensive UI engineer. Its sole responsibility is to build and maintain the **Reusable Template Design Files** - the structural `.html` and `.css` layout skeletons that websites use to display content.
+
+## When to Use
+
+- Building or scaffolding multi-page websites, documentation hubs, or digital publication portals.
+- Designing responsive, defensive 8-lane UI templates with $R_y = 32\text{px}$ row quantization.
+- Instantiating canonical templates with collapsible sidebar navigation trees and horizontal-scroll toolbars.
+- Authoring structural HTML/CSS skeletons adhering strictly to the zero-filler law.
+
+## When NOT to Use
+
+- Planning database entity fields or category taxonomies (use `web-taxonomy-planner`).
+- Compiling framework directory trees and site routing maps (use `web-framework-architect`).
+- Coordinating cross-domain website delivery pipelines (use `web-domain-coordinator`).
+- Reverse-engineering or tracing existing live websites (use `ui-navigation-decomposer`).
 
 ---
 

@@ -55,13 +55,23 @@ logging.basicConfig(
 LOG = logging.getLogger("cartographer_index")
 
 SUFFIX_TO_LAYER: Dict[str, Tuple[int, str]] = {
+    # Layer 1: L0_Substrate_L1_Entities
     "-core": (1, "L0_Substrate_L1_Entities"),
     "-nesting-core": (1, "L0_Substrate_L1_Entities"),
     "-mfdb-core": (1, "L0_Substrate_L1_Entities"),
+    "-substrate": (1, "L0_Substrate_L1_Entities"),
+    "-entities": (1, "L0_Substrate_L1_Entities"),
+
+    # Layer 2: L1_Validation_L2_Verification
     "-validator": (2, "L1_Validation_L2_Verification"),
     "-chunker": (2, "L1_Validation_L2_Verification"),
     "-auditor": (2, "L1_Validation_L2_Verification"),
     "-engine": (2, "L1_Validation_L2_Verification"),
+    "-finalizer": (2, "L1_Validation_L2_Verification"),
+    "-testing": (2, "L1_Validation_L2_Verification"),
+    "-reviewer": (2, "L1_Validation_L2_Verification"),
+
+    # Layer 3: L2_Adapters_L3_Services
     "-automator": (3, "L2_Adapters_L3_Services"),
     "-pipeline": (3, "L2_Adapters_L3_Services"),
     "-scaffold-python": (3, "L2_Adapters_L3_Services"),
@@ -70,12 +80,30 @@ SUFFIX_TO_LAYER: Dict[str, Tuple[int, str]] = {
     "-manager": (3, "L2_Adapters_L3_Services"),
     "-manage": (3, "L2_Adapters_L3_Services"),
     "-delivery": (3, "L2_Adapters_L3_Services"),
+    "-standardizer": (3, "L2_Adapters_L3_Services"),
+    "-toolbuilder": (3, "L2_Adapters_L3_Services"),
+    "-agent": (3, "L2_Adapters_L3_Services"),
+    "-automation": (3, "L2_Adapters_L3_Services"),
+    "-archiver": (3, "L2_Adapters_L3_Services"),
+    "-server": (3, "L2_Adapters_L3_Services"),
+
+    # Layer 4: L4_Presentation_Transport
     "-builder": (4, "L4_Presentation_Transport"),
     "-diagrammer": (4, "L4_Presentation_Transport"),
     "-decomposer": (4, "L4_Presentation_Transport"),
     "-mapper": (4, "L4_Presentation_Transport"),
     "-template": (4, "L4_Presentation_Transport"),
+    "-templates": (4, "L4_Presentation_Transport"),
     "-preferences": (4, "L4_Presentation_Transport"),
+    "-illustrator": (4, "L4_Presentation_Transport"),
+    "-component": (4, "L4_Presentation_Transport"),
+    "-cli": (4, "L4_Presentation_Transport"),
+    "-studio": (4, "L4_Presentation_Transport"),
+    "-skeleton": (4, "L4_Presentation_Transport"),
+    "-enhancer": (4, "L4_Presentation_Transport"),
+    "-menu": (4, "L4_Presentation_Transport"),
+
+    # Layer 5: L3_Use_Cases_Cross_Layer_Blueprinting
     "-composer": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
     "-planner": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
     "-architect": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
@@ -85,9 +113,19 @@ SUFFIX_TO_LAYER: Dict[str, Tuple[int, str]] = {
     "-analysis": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
     "-extraction": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
     "-grounding": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
+    "-advise": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
+    "-advisor": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
+    "-scout": (5, "L3_Use_Cases_Cross_Layer_Blueprinting"),
+
+    # Layer 6: L5_Composition_Root
     "-coordinator": (6, "L5_Composition_Root"),
+    "-coordinators": (6, "L5_Composition_Root"),
     "-cartographer": (6, "L5_Composition_Root"),
     "-recipe-composer": (6, "L5_Composition_Root"),
+    "-packager": (6, "L5_Composition_Root"),
+    "-plugins": (6, "L5_Composition_Root"),
+    "-rules": (6, "L5_Composition_Root"),
+    "-subagents": (6, "L5_Composition_Root"),
 }
 
 LAYER6_OVERRIDES: Set[str] = {
@@ -98,6 +136,11 @@ LAYER6_OVERRIDES: Set[str] = {
     "planning-coordinator",
     "arch-layered-refactor",
     "agy-skill-refactor",
+    "agy-plugins",
+    "agy-rules",
+    "agy-subagents",
+    "domain-scoped-coordinators",
+    "project-delivery-packager",
 }
 
 
@@ -166,10 +209,21 @@ def bejson_core_atomic_write(target_file_path: Path, bejson_doc: Dict[str, Any])
 
 def infer_layer_and_suffix(skill_name: str) -> Tuple[int, str, str]:
     if skill_name in LAYER6_OVERRIDES:
-        for sfx in ("-coordinator", "-cartographer", "-recipe-composer", "-architect", "-refactor"):
+        for sfx in (
+            "-coordinator",
+            "-coordinators",
+            "-cartographer",
+            "-recipe-composer",
+            "-architect",
+            "-refactor",
+            "-packager",
+            "-plugins",
+            "-rules",
+            "-subagents",
+        ):
             if skill_name.endswith(sfx):
                 return 6, "L5_Composition_Root", sfx
-        return 6, "L5_Composition_Root", "-architect"
+        return 6, "L5_Composition_Root", "-governance"
     for sfx, (layer_num, cb_layer) in sorted(
         SUFFIX_TO_LAYER.items(), key=lambda x: len(x[0]), reverse=True
     ):
@@ -274,6 +328,32 @@ def create_empty_catalog_doc() -> Dict[str, Any]:
     }
 
 
+STOPWORDS: Set[str] = {
+    "the", "and", "for", "with", "from", "this", "that", "when", "use",
+    "not", "all", "any", "into", "over", "than", "more", "both", "each",
+    "such", "also", "their", "they", "them", "these", "those", "will",
+    "can", "should", "would", "could", "may", "might", "must", "have",
+    "has", "had", "having", "been", "were", "was", "are", "is", "being"
+}
+
+
+def extract_pos_tokens(pos_text: str) -> Set[str]:
+    return {
+        tok.lower()
+        for tok in re.findall(r"[a-zA-Z0-9][a-zA-Z0-9_-]*", pos_text)
+        if tok.lower() not in STOPWORDS and len(tok) > 2
+    }
+
+
+def jaccard_similarity(set_a: Set[str], set_b: Set[str]) -> float:
+    if not set_a or not set_b:
+        return 0.0
+    union = set_a | set_b
+    if not union:
+        return 0.0
+    return len(set_a & set_b) / len(union)
+
+
 def audit_pairwise_collisions(
     catalog_doc: Dict[str, Any], fmap: Dict[str, int]
 ) -> Tuple[List[str], str]:
@@ -290,6 +370,16 @@ def audit_pairwise_collisions(
             errors.append(f"E_CARTOGRAPHER_DUPLICATE_SKILL (430): Duplicate skill '{cname}'.")
         seen_names.add(cname)
         entries.append(rec)
+
+    # Code 433 check: verify that all referenced siblings exist in the indexed catalog
+    for e_a in entries:
+        name_a = e_a["skill_canonical_name"]
+        blocked_a = set(filter(None, e_a["skill_blocked_siblings_csv"].split(",")))
+        for target in sorted(blocked_a):
+            if target not in seen_names:
+                errors.append(
+                    f"E_CARTOGRAPHER_DANGLING_SIBLING_REF (433): Skill '{name_a}' references unregistered skill '{target}'."
+                )
 
     md_lines: List[str] = [
         "# Ecosystem Topology & Pairwise Trigger Collision Matrix",
@@ -317,10 +407,15 @@ def audit_pairwise_collisions(
     md_lines.append(f"| Skill | {header_cols} |")
     md_lines.append(f"| :--- | {sep_cols} |")
 
+    entry_tokens = {
+        e["skill_canonical_name"]: extract_pos_tokens(e["skill_positive_triggers_csv"])
+        for e in entries
+    }
+
     for e_a in entries:
         name_a = e_a["skill_canonical_name"]
         blocked_a = set(filter(None, e_a["skill_blocked_siblings_csv"].split(",")))
-        dom_a = e_a["skill_domain_prefix_token"]
+        tokens_a = entry_tokens[name_a]
         row_cells: List[str] = []
         for e_b in entries:
             name_b = e_b["skill_canonical_name"]
@@ -328,19 +423,24 @@ def audit_pairwise_collisions(
                 row_cells.append("`-`")
                 continue
             blocked_b = set(filter(None, e_b["skill_blocked_siblings_csv"].split(",")))
-            dom_b = e_b["skill_domain_prefix_token"]
+            tokens_b = entry_tokens[name_b]
 
-            if name_b in blocked_a and name_a in blocked_b:
+            is_reciprocal = name_b in blocked_a and name_a in blocked_b
+            is_directed = name_b in blocked_a or name_a in blocked_b
+
+            if is_reciprocal:
                 row_cells.append("`COND (Reciprocal)`")
-            elif name_b in blocked_a or name_a in blocked_b:
+            elif is_directed:
                 row_cells.append("`COND (Directed)`")
-            elif dom_a != dom_b:
-                row_cells.append("`OK (Orthogonal)`")
             else:
-                errors.append(
-                    f"E_CARTOGRAPHER_TRIGGER_COLLISION (431): Same-domain skills '{name_a}' and '{name_b}' lack mutual negative guardrails."
-                )
-                row_cells.append("`ERR_D (Collision)`")
+                j_score = jaccard_similarity(tokens_a, tokens_b)
+                if j_score >= 0.25:
+                    errors.append(
+                        f"E_CARTOGRAPHER_TRIGGER_COLLISION (431): Skills '{name_a}' and '{name_b}' share positive trigger Jaccard overlap J={j_score:.2f} (>= 0.25) without mutual negative guardrails."
+                    )
+                    row_cells.append("`ERR_D (Collision)`")
+                else:
+                    row_cells.append("`OK (Orthogonal)`")
         md_lines.append(f"| **`{name_a}`** | {' | '.join(row_cells)} |")
 
     md_lines.extend(

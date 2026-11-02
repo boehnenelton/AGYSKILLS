@@ -7,8 +7,9 @@ description: >-
   UUIDv4 field_uuid and record_uuid compilation, and E90-E95 verification using upgrade_mfdb_to_105.py.
   Use when migrating complete multi-file MFDB databases from v1.31 to v1.40. Do NOT use for
   single-file 104 document upgrades (use bejson-105-upgrade-automator), Foundational Era MFDB v1.31
-  manifest CRUD (use mfdb-104-core), packing or mounting single-file MFDB-132 containers
-  (use mfdb-104-chunker), or standalone MFDB validation without upgrading (use mfdb-105-validator).
+  manifest CRUD (use mfdb-104-core), regular Format 105 MFDB queries and mutations (use mfdb-105-core),
+  packing or mounting single-file MFDB-132 containers (use mfdb-104-chunker), or standalone MFDB
+  validation without upgrading (use mfdb-105-validator).
 ---
 
 # Skill: `mfdb-105-upgrade-coordinator` (Layer 4)

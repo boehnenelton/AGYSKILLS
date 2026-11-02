@@ -1,7 +1,7 @@
 ---
 name: mfdb-104-core
 description: >-
-  Create, link, query, and validate Foundational Era Multi-File Databases (MFDB v1.31/v1.39) comprising a central 104a.mfdb.bejson manifest and dense BEJSON 104 entity files linked via bidirectional Parent_Hierarchy headers and Master-Slave Network_Role federation (E30-E38) using libraries_104. Use when managing 104a.mfdb.bejson manifests, registering 104 entity tables, or validating bidirectional manifest-to-entity paths. Do NOT use for packing or mounting single-file MFDB-132 (.mfdb132.bejson) chunk containers (use mfdb-104-chunker), validating Format 105 MFDB v1.40 cross-entity UUID FK cascades (use mfdb-105-validator), or standalone single-file 104 CRUD (use bejson-104-core).
+  Create, link, query, and validate Foundational Era Multi-File Databases (MFDB v1.31/v1.39) comprising a central 104a.mfdb.bejson manifest and dense BEJSON 104 entity files linked via bidirectional Parent_Hierarchy headers and Master-Slave Network_Role federation (E30-E38) using libraries_104. Use when managing 104a.mfdb.bejson manifests, registering 104 entity tables, or validating bidirectional manifest-to-entity paths. Do NOT use for packing or mounting single-file MFDB-132 (.mfdb132.bejson) chunk containers (use mfdb-104-chunker), Format 105 MFDB v1.40 database operations (use mfdb-105-core), validating Format 105 MFDB v1.40 cross-entity UUID FK cascades (use mfdb-105-validator), or standalone single-file 104 CRUD (use bejson-104-core).
 ---
 
 # Skill: `mfdb-104-core` (Layer 1)

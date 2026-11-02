@@ -10,9 +10,10 @@ description: >-
   packaging codebases into single-file text archives, unchunking .bejson.txt files,
   creating prompt context snapshots, or archiving library families. Do NOT use
   for whole-project release packaging with versioned ZIPs and registry tracking
-  (use project-chunker-archiver), packing or mounting single-file MFDB containers
-  (use mfdb-104-chunker), single-file 104 table operations (use bejson-104-core),
-  or validating BEJSON schemas (use bejson-schema-validator).
+  (use project-chunker-archiver), ad-hoc ephemeral scratch chunks (use simple-chunker),
+  full library family orchestration (use library-chunker), general directory chunking
+  (use chunking-core), packing or mounting single-file MFDB containers (use mfdb-104-chunker),
+  single-file 104 table operations (use bejson-104-core), or validating BEJSON schemas (use bejson-schema-validator).
 ---
 
 # Skill: `bejson-chunker-engine` (Layer 2 Text Chunker & Container Engine)

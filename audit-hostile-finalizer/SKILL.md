@@ -1,10 +1,20 @@
 ---
-name: hostile-audit-finalizer
-description: Conducts adversarial quality audits prior to task completion, verifies strict surgical scope (§5.1), synchronizes dev/change-log.md with bejson_project.json, logs UI directives to dev/UIPref.md, and emits the standby verbalization (§3.1, §3.6). Use when finalizing coding tasks, conducting pre-delivery reviews, or wrapping up development sessions. Do NOT use for AST field-map cache verification (use policy-bejson-auditor) or web browser testing (use playwright-debugger-auditor).
+name: audit-hostile-finalizer
+description: >-
+  Conduct adversarial quality audits prior to task completion, verify strict surgical
+  scope (Policy §5.1), synchronize dev/change-log.md with bejson_project.json, log UI
+  directives to dev/UIPref.md, and emit the standby verbalization. Use when finalizing
+  coding tasks, conducting pre-delivery reviews, or wrapping up development sessions.
+  Do NOT use for AST field-map cache verification (use policy-bejson-auditor), web
+  browser testing (use playwright-debugger-auditor), or detecting session goal drift
+  (use goal-drift-auditor).
 ---
-# Hostile Audit Finalizer
 
-Adopts the adversarial posture of a hostile code auditor before concluding execution. Verifies surgical task scope, inspects modified files for regressions or syntax flaws, synchronizes changelogs, records user design directives in `dev/UIPref.md`, and verbalizes the standby state.
+# audit-hostile-finalizer (Layer 2 Verification & Audit)
+
+## Summary
+
+`audit-hostile-finalizer` adopts the adversarial posture of a hostile code auditor before concluding execution. It verifies surgical task scope, inspects modified files for regressions or syntax flaws, synchronizes changelogs, records user design directives in `dev/UIPref.md`, and verbalizes the standby state.
 
 ## When to Use
 
@@ -12,6 +22,12 @@ Adopts the adversarial posture of a hostile code auditor before concluding execu
 * Auditing git diffs or file modifications prior to ending an interaction turn.
 * Synchronizing release notes between `dev/change-log.md` and `bejson_project.json`.
 * Capturing user styling, theme, button, or menu preferences into `dev/UIPref.md`.
+
+## When NOT to Use
+
+* Auditing AST field-map cache compliance in BEJSON sources (use `policy-bejson-auditor`).
+* Automating browser interactions or visual regression tests (use `playwright-debugger-auditor`).
+* Detecting high-level architectural deviations from stated goals (use `goal-drift-auditor`).
 
 ## Core Audit Rules
 

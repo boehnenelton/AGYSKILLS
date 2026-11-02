@@ -9,7 +9,7 @@ description: >-
   104a.web_framework.bejson manifests. Use when compiling website routing, binding
   templates across folder depths, synthesizing sidebar trees, or enforcing web
   routing laws. Do NOT use for planning database fields (use web-taxonomy-planner),
-  designing visual templates (use large-website-architect or template-architect),
+  designing visual templates (use web-large-architect or template-architect),
   multi-domain coordination (use web-domain-coordinator), or reverse-engineering
   existing sites (use ui-navigation-decomposer).
 ---
@@ -64,7 +64,7 @@ Website creation is strictly partitioned into three mutually exclusive domains:
 
 ### Strict Negative Constraints & Guardrails
 - **NEVER Invent Database Fields or Taxonomies**: The Framework Planner never invents database columns, entity prefixes, or logical categories out of thin air. It consumes the taxonomy contract emitted by [`web-taxonomy-planner`](file:///data/data/com.termux/files/home/.gemini/config/skills/web-taxonomy-planner/SKILL.md).
-- **NEVER Design Visual Templates or Raw CSS From Scratch**: The Framework Planner never drafts raw HTML wireframes, CSS styles, or 8-lane grid measurements. It selects and binds existing design files provided by [`large-website-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/large-website-architect/SKILL.md) and [`template-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/template-architect/SKILL.md).
+- **NEVER Design Visual Templates or Raw CSS From Scratch**: The Framework Planner never drafts raw HTML wireframes, CSS styles, or 8-lane grid measurements. It selects and binds existing design files provided by [`web-large-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/web-large-architect/SKILL.md) and [`template-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/template-architect/SKILL.md).
 - **NEVER Violate the 12 Invariant Laws**: Any compiled website that breaks `index.html` resolution, turns non-blog hubs into bare link feeds, or fails to initialize sidebar trees in the collapsed state will fail validation.
 
 ---
@@ -210,7 +210,7 @@ python3 ~/.gemini/config/skills/web-framework-architect/scripts/fw_compiler.py -
 python3 ~/.gemini/config/skills/web-framework-architect/scripts/fw_compiler.py \
   --taxonomy 104a.taxonomy_schema.bejson \
   --framework 104a.web_framework.bejson \
-  --templates-dir ~/.gemini/config/skills/large-website-architect/assets \
+  --templates-dir ~/.gemini/config/skills/web-large-architect/assets \
   --output-dir ./dist_site
 ```
 

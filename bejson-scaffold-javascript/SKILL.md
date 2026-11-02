@@ -1,7 +1,7 @@
 ---
 name: bejson-scaffold-javascript
 description: >-
-  Scaffold new standalone vanilla-JavaScript or Node.js files for Elton Boehnen's BEJSON/MFDB ecosystem using bundled starter templates embedding BEJSON Core error registry, primitives, Web Crypto AES-GCM record encryption, and validator. Use when asking to create, scaffold, or start a new plain JS file, browser script, or Node script touching BEJSON documents. Do NOT use for Python (use bejson-scaffold-python) or full HTML layouts (use behtml-layout-builder).
+  Scaffold new standalone vanilla-JavaScript or Node.js files for Elton Boehnen's BEJSON/MFDB ecosystem using bundled starter templates embedding BEJSON Core error registry, primitives, Web Crypto AES-GCM record encryption, and validator. Use when asking to create, scaffold, or start a new plain JS file, browser script, or Node script touching BEJSON documents. Do NOT use for Python (use bejson-scaffold-python), Bash (use bejson-scaffold-bash), or full HTML layouts (use behtml-layout-builder).
 ---
 # BEJSON Vanilla-JS Script Templates
 

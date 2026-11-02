@@ -1,7 +1,7 @@
 ---
 name: playwright-termux-automation
 description: >-
-  Start, stop, navigate, scrape, screenshot, and manage native Chromium and Playwright browser automation workflows directly on Android Termux (ARM64) without PRoot or root privileges. Use when executing headless or headful browser sessions in Termux, capturing page screenshots, rendering dynamic SPAs, evaluating in-browser JavaScript, handling HTTP authentication, and managing browser process lifecycles. Do NOT use for standard non-browser HTTP requests (use curl, requests, or httpx) or standard Termux URL opening in the external Android Chrome app (use termux-open).
+  Start, stop, navigate, scrape, screenshot, and manage native Chromium and Playwright browser automation workflows directly on Android Termux (ARM64) without PRoot or root privileges. Use when executing headless or headful browser sessions in Termux, capturing page screenshots, rendering dynamic SPAs, evaluating in-browser JavaScript, handling HTTP authentication, and managing browser process lifecycles. Do NOT use for standard non-browser HTTP requests (use curl, requests, or httpx) or standard Termux URL opening in the external Android Chrome app via the termux-open CLI.
 ---
 
 # Skill: `playwright-termux-automation`

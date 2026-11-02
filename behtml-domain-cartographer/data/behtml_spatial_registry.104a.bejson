@@ -1,0 +1,22 @@
+{
+  "Format": "BEJSON",
+  "Format_Version": "104a",
+  "Format_Creator": "Elton Boehnen",
+  "Registry_Domain": "BEHTML_Spatial_Cartography",
+  "Schema_Version": "1.0.0",
+  "Records_Type": ["BEHTMLSpatialEntry"],
+  "Fields": [
+    {"name": "spatial_entry_uuid", "type": "string"},
+    {"name": "document_canonical_name", "type": "string"},
+    {"name": "document_relative_path", "type": "string"},
+    {"name": "archetype_kind", "type": "string"},
+    {"name": "optionset_schema_version", "type": "string"},
+    {"name": "element_record_count", "type": "integer"},
+    {"name": "max_y_quantized_px", "type": "integer"},
+    {"name": "lane_span_coverage", "type": "string"},
+    {"name": "tri_color_compliant_flag", "type": "boolean"},
+    {"name": "sha256_checksum_hash", "type": "string"},
+    {"name": "indexed_at_timestamp", "type": "string"}
+  ],
+  "Values": []
+}

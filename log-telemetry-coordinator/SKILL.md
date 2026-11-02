@@ -30,10 +30,12 @@ description: >-
 `log-telemetry-coordinator` is the authoritative orchestrator for Elton Boehnen's global logging architecture. Under the **October 31, 2026 Standards Announcement**, logging is partitioned globally under `$GLOBAL_LOGS/` with strict daily UTC rotation (`Log-<YYYY-MM-DD>.bejson`) and isolated secure sinks (`$GLOBAL_LOGS_SECURE/Log-<YYYY-MM-DD>-secure.bejson`).
 
 This skill coordinates:
-1. **Daily Partition Initialization**: Bootstraps compliant BEJSON 104a log envelopes at UTC midnight rollover.
-2. **Dual-Path Secure Telemetry**: Routes secret modifications to secure sinks while maintaining automated redacted placeholder rows in public sinks.
-3. **Archival Retention**: Automates movement of logs older than 30 days to `$GLOBAL_LOGS_ARCHIVES/`.
-4. **Log Indexing**: Maintains an O(1) index of log dates and entries for fast ecosystem query resolution.
+1. **Management Tool & Subsystem Routing**: Integrates with the master management tool router at `$ADMIN_SYSTEM_TOOLS/management_tool/management_tool.py` routing between Mode 1 (Stateful Logging) and Mode 2 (Research Reports Tracking & Indexing).
+2. **Stateful Loaded Chamber Telemetry**: Operates the stateful context engine (`lib_bejson_Standards_state.py`) allowing agents and daemons to load session context once (`subsystem`, `category`, `actor`, `session`, `flags`) and emit minimal, zero-friction log entries.
+3. **Daily Partition Initialization**: Bootstraps compliant BEJSON 104a log envelopes at UTC midnight rollover.
+4. **Dual-Path Secure Telemetry**: Routes secret modifications to secure sinks while maintaining automated redacted placeholder rows in public sinks.
+5. **Archival Retention**: Automates movement of logs older than 30 days to `$GLOBAL_LOGS_ARCHIVES/`.
+6. **Log Indexing**: Maintains an O(1) index of log dates and entries for fast ecosystem query resolution.
 
 ---
 

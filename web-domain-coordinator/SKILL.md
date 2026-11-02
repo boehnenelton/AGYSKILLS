@@ -1,7 +1,7 @@
 ---
 name: web-domain-coordinator
 description: >-
-  Coordinate and orchestrate end-to-end website generation workflows across the Three-Domain Web Architecture: Domain 1 (The Taxonomy Planner via web-taxonomy-planner), Domain 2 (The Templator via large-website-architect / template-architect), and Domain 3 (The Framework Planner via web-framework-architect). Enforces the 3-phase handoff protocol, anti-collision boundaries, and stage-gate validation checks. When reverse-engineering or auditing existing live websites, delegates to the Decomposition Domain (ui-navigation-decomposer and web-ui-component-mapper). Use when executing end-to-end website creation pipelines, managing inter-domain handoffs, or validating architectural compliance across all three domains. Do NOT use for direct database field planning (use web-taxonomy-planner), direct HTML/CSS template design (use large-website-architect), or standalone route compilation (use web-framework-architect).
+  Coordinate and orchestrate end-to-end website generation workflows across the Three-Domain Web Architecture: Domain 1 (The Taxonomy Planner via web-taxonomy-planner), Domain 2 (The Templator via web-large-architect / template-architect), and Domain 3 (The Framework Planner via web-framework-architect). Enforces the 3-phase handoff protocol, anti-collision boundaries, and stage-gate validation checks. When reverse-engineering or auditing existing live websites, delegates to the Decomposition Domain (ui-navigation-decomposer and web-ui-component-mapper). Use when executing end-to-end website creation pipelines, managing inter-domain handoffs, or validating architectural compliance across all three domains. Do NOT use for direct database field planning (use web-taxonomy-planner), direct HTML/CSS template design (use web-large-architect), or standalone route compilation (use web-framework-architect).
 ---
 
 # Web Domain Coordinator (Triad Orchestrator)
@@ -36,7 +36,7 @@ The **Web Domain Coordinator** is the master orchestration skill for the **Three
                    ▼ [Stage Gate 1: Verified Taxonomy Manifest]
   ┌─────────────────────────────────┐       ┌─────────────────────────────────┐
   │   DOMAIN 3: FRAMEWORK PLANNER   │ <──── │      DOMAIN 2: THE TEMPLATOR    │
-  │    (web-framework-architect)    │       │    (large-website-architect)    │
+  │    (web-framework-architect)    │       │      (web-large-architect)      │
   │  - 12 Invariant Laws            │       │  - Reusable Design Skeletons    │
   │  - Page-Style vs Feed-Style     │       │  - Horizontal Overflow Defense  │
   │  - Collapsible Sidebar Trees    │       │  - 8-Lane Grid & Ry=32px Rhythm │
@@ -62,7 +62,7 @@ When building or updating a multi-tier website, the Coordinator enforces this de
 - **Gate 1 Verification**: Emits `104a.taxonomy_schema.bejson` and validates field map caching.
 
 ### Phase 2: Design File Verification & Overflow Hardening (Domain 2)
-- **Executor**: [`large-website-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/large-website-architect/SKILL.md) & [`template-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/template-architect/SKILL.md)
+- **Executor**: [`web-large-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/web-large-architect/SKILL.md) & [`template-architect`](file:///data/data/com.termux/files/home/.gemini/config/skills/template-architect/SKILL.md)
 - **Input**: Visual standards and responsive layout requirements.
 - **Actions**:
   1. Select appropriate template scaffolds from the 13 canonical layouts.

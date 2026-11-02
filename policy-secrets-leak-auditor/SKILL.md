@@ -1,7 +1,7 @@
 ---
 name: policy-secrets-leak-auditor
 description: >-
-  Audit codebases, configuration files, BEJSON caches, and session logs for unmasked API credentials, raw tokens, and private keys per Policy Section 4.5. Enforces the pointer-only persistence standard (ENV:<var_name>) before release packaging or git commits. Use when auditing repositories for exposed secrets, verifying zero-leakage credential compliance in BEJSON key caches, inspecting session logs prior to distribution, or validating pre-commit security gates. Do NOT use for static AST BEJSON field-map validation (use policy-bejson-auditor), policy conflict analysis (use policy-conflict-auditor), or single-file Flask endpoint security reviews (use adversarial-code-reviewer).
+  Audit codebases, configuration files, BEJSON caches, and session logs for unmasked API credentials, raw tokens, and private keys per Policy Section 4.5. Enforces the pointer-only persistence standard (ENV:<var_name>) before release packaging or git commits. Use when auditing repositories for exposed secrets, verifying zero-leakage credential compliance in BEJSON key caches, inspecting session logs prior to distribution, or validating pre-commit security gates. Do NOT use for static AST BEJSON field-map validation (use policy-bejson-auditor), policy conflict analysis (use policy-conflict-auditor), or single-file Flask endpoint security reviews (use audit-adversarial-reviewer).
 ---
 
 # policy-secrets-leak-auditor (Layer 2 Policy Section 4.5 Zero-Leakage Credential Gate)

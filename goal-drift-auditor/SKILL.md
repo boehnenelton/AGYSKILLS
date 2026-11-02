@@ -12,7 +12,7 @@ description: >-
   file edits, or confirming user override requests. Do NOT use for formalizing
   initial goal contracts (use goal-contract-architect), breaking goals down into
   task checklists (use goal-roadmap-composer), final pre-delivery release audits
-  (use hostile-audit-finalizer), or static AST policy auditing (use
+  (use audit-hostile-finalizer), or static AST policy auditing (use
   policy-bejson-auditor).
 ---
 
@@ -104,7 +104,7 @@ Do NOT use `goal-drift-auditor` for out-of-scope tasks. Route immediately to the
 
 - **Formalizing initial goal contracts and acceptance criteria**: Redirect immediately to `goal-contract-architect`.
 - **Composing small-step checklist roadmaps**: Redirect immediately to `goal-roadmap-composer`.
-- **Conducting hostile pre-release quality audits at session wrap-up**: Redirect immediately to `hostile-audit-finalizer`.
+- **Conducting hostile pre-release quality audits at session wrap-up**: Redirect immediately to `audit-hostile-finalizer`.
 - **Auditing source code AST for BEJSON field map caching**: Redirect immediately to `policy-bejson-auditor`.
 
 ---

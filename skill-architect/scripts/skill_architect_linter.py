@@ -63,6 +63,7 @@ APPROVED_DOMAIN_PREFIXES: Tuple[str, ...] = (
     "concept-",
     "concepts-",
     "council-",
+    "design-",
     "domain-",
     "env-",
     "file-",
@@ -118,6 +119,7 @@ LAYER_SUFFIX_MAP: Dict[int, Tuple[str, ...]] = {
         "-templates",
         "-skeleton",
         "-enhancer",
+        "-menu",
     ),
     5: (
         "-composer",
